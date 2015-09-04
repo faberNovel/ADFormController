@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */; };
+		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
+		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
+		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
+		7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A189F861535FB5300A22149 /* FDAppDelegate.m */; };
+		7A189F931535FD5C00A22149 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A189F901535FD5C00A22149 /* main.m */; };
+		7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */; };
+		FF4C27BD154F77607C1EED78 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2053F57A5BBFE87A9B7232 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2E2053F57A5BBFE87A9B7232 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		537CFF47C8936EAC573B2E2E /* Pods.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.production.xcconfig; path = "Pods/Target Support Files/Pods/Pods.production.xcconfig"; sourceTree = "<group>"; };
+		6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Distribution.h; sourceTree = "<group>"; };
+		6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Preproduction.h; sourceTree = "<group>"; };
+		6F69A4151A69668E00DF4971 /* FormDemo_Stubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Stubs.h; sourceTree = "<group>"; };
+		6FE3EFE91A6D3ABA007A4AD5 /* ADTargetSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTargetSettings.h; path = ADTargetSettings/ADTargetSettings.h; sourceTree = "<group>"; };
+		6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTargetSettings.m; path = ADTargetSettings/ADTargetSettings.m; sourceTree = "<group>"; };
+		7A0EC64F1535D8ED00E5F54A /* FD Stubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FD Stubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0EC6531535D8ED00E5F54A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7A0EC6551535D8ED00E5F54A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7A189F851535FB5300A22149 /* FDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAppDelegate.h; sourceTree = "<group>"; };
+		7A189F861535FB5300A22149 /* FDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAppDelegate.m; sourceTree = "<group>"; };
+		7A189F901535FD5C00A22149 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		7A189F921535FD5C00A22149 /* FormDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FormDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		7A6BEEFB153700CF0075E2A7 /* FormDemo_Production.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Production.h; sourceTree = "<group>"; };
+		7ABC1627153612960039E546 /* FormDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDemo.h; sourceTree = "<group>"; };
+		7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVersionInfo.m; sourceTree = "<group>"; };
+		8CF2583EDF4500FBFDED12F1 /* Pods.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.stubs.xcconfig; path = "Pods/Target Support Files/Pods/Pods.stubs.xcconfig"; sourceTree = "<group>"; };
+		98F3DBBA24E16358A6E1F5DB /* Pods.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.distribution.xcconfig; path = "Pods/Target Support Files/Pods/Pods.distribution.xcconfig"; sourceTree = "<group>"; };
+		9DDE743530A44550827ECBF1 /* Pods.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.preproduction.xcconfig; path = "Pods/Target Support Files/Pods/Pods.preproduction.xcconfig"; sourceTree = "<group>"; };
+		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
+		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
+		F83B92181A7A8CCF009E7ADF /* Defaults-Info_Preproduction.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Preproduction.plist"; sourceTree = "<group>"; };
+		F83B92191A7A8CCF009E7ADF /* Defaults-Info_Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Production.plist"; sourceTree = "<group>"; };
+		F83B921A1A7A8CCF009E7ADF /* Defaults-Info_Stubs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Stubs.plist"; sourceTree = "<group>"; };
+		F83B921C1A7A8CCF009E7ADF /* FormDemo-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info_Defaults.plist"; sourceTree = "<group>"; };
+		F83B921D1A7A8CCF009E7ADF /* FormDemo-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info_Distribution.plist"; sourceTree = "<group>"; };
+		F83B921E1A7A8CCF009E7ADF /* FormDemo-Info_Preproduction.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info_Preproduction.plist"; sourceTree = "<group>"; };
+		F83B921F1A7A8CCF009E7ADF /* FormDemo-Info_Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info_Production.plist"; sourceTree = "<group>"; };
+		F83B92201A7A8CCF009E7ADF /* FormDemo-Info_Stubs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info_Stubs.plist"; sourceTree = "<group>"; };
+		F83B922D1A7A8D04009E7ADF /* FormDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A0EC64C1535D8ED00E5F54A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */,
+				7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */,
+				7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */,
+				FF4C27BD154F77607C1EED78 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FE3EFE81A6D3A8B007A4AD5 /* ADTargetSettings */ = {
+			isa = PBXGroup;
+			children = (
+				6FE3EFE91A6D3ABA007A4AD5 /* ADTargetSettings.h */,
+				6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */,
+			);
+			name = ADTargetSettings;
+			sourceTree = "<group>";
+		};
+		7A0EC6441535D8ED00E5F54A = {
+			isa = PBXGroup;
+			children = (
+				7A189F7F1535FB5300A22149 /* Classes */,
+				7AFC5ED1155AA37F009D92A7 /* Modules */,
+				7A189F8F1535FD0D00A22149 /* Other Sources */,
+				F83B92141A7A8CCF009E7ADF /* Configuration */,
+				7A189F951535FD6800A22149 /* Resources */,
+				7A0EC6521535D8ED00E5F54A /* Frameworks */,
+				7A0EC6501535D8ED00E5F54A /* Products */,
+				991A06FB029B81F9A04D80BC /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		7A0EC6501535D8ED00E5F54A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EC64F1535D8ED00E5F54A /* FD Stubs.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A0EC6521535D8ED00E5F54A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EC6531535D8ED00E5F54A /* UIKit.framework */,
+				7A0EC6551535D8ED00E5F54A /* Foundation.framework */,
+				7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */,
+				2E2053F57A5BBFE87A9B7232 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A189F7F1535FB5300A22149 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7ABC1627153612960039E546 /* FormDemo.h */,
+				6F69A4151A69668E00DF4971 /* FormDemo_Stubs.h */,
+				6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */,
+				7A6BEEFB153700CF0075E2A7 /* FormDemo_Production.h */,
+				6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */,
+				7A189F851535FB5300A22149 /* FDAppDelegate.h */,
+				7A189F861535FB5300A22149 /* FDAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7A189F8F1535FD0D00A22149 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7A189F901535FD5C00A22149 /* main.m */,
+				7A189F921535FD5C00A22149 /* FormDemo-Prefix.pch */,
+			);
+			name = "Other Sources";
+			path = FormDemo;
+			sourceTree = "<group>";
+		};
+		7A189F951535FD6800A22149 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F83B922B1A7A8CE1009E7ADF /* Defaults */,
+				F83B922C1A7A8CE1009E7ADF /* FormDemo */,
+			);
+			name = Resources;
+			path = FormDemo;
+			sourceTree = "<group>";
+		};
+		7AFC5ED1155AA37F009D92A7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6FE3EFE81A6D3A8B007A4AD5 /* ADTargetSettings */,
+				7AFC5ED2155AA37F009D92A7 /* ADVersionInfo */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7AFC5ED2155AA37F009D92A7 /* ADVersionInfo */ = {
+			isa = PBXGroup;
+			children = (
+				7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */,
+			);
+			path = ADVersionInfo;
+			sourceTree = "<group>";
+		};
+		991A06FB029B81F9A04D80BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8CF2583EDF4500FBFDED12F1 /* Pods.stubs.xcconfig */,
+				9DDE743530A44550827ECBF1 /* Pods.preproduction.xcconfig */,
+				537CFF47C8936EAC573B2E2E /* Pods.production.xcconfig */,
+				98F3DBBA24E16358A6E1F5DB /* Pods.distribution.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F83B92141A7A8CCF009E7ADF /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				F83B92151A7A8CCF009E7ADF /* Defaults */,
+				F83B921B1A7A8CCF009E7ADF /* FormDemo */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		F83B92151A7A8CCF009E7ADF /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */,
+				F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */,
+				F83B92181A7A8CCF009E7ADF /* Defaults-Info_Preproduction.plist */,
+				F83B92191A7A8CCF009E7ADF /* Defaults-Info_Production.plist */,
+				F83B921A1A7A8CCF009E7ADF /* Defaults-Info_Stubs.plist */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		F83B921B1A7A8CCF009E7ADF /* FormDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F83B922D1A7A8D04009E7ADF /* FormDemo-Info.plist */,
+				F83B921C1A7A8CCF009E7ADF /* FormDemo-Info_Defaults.plist */,
+				F83B921D1A7A8CCF009E7ADF /* FormDemo-Info_Distribution.plist */,
+				F83B921E1A7A8CCF009E7ADF /* FormDemo-Info_Preproduction.plist */,
+				F83B921F1A7A8CCF009E7ADF /* FormDemo-Info_Production.plist */,
+				F83B92201A7A8CCF009E7ADF /* FormDemo-Info_Stubs.plist */,
+			);
+			path = FormDemo;
+			sourceTree = "<group>";
+		};
+		F83B922B1A7A8CE1009E7ADF /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Defaults;
+			path = ../Resources/Defaults;
+			sourceTree = "<group>";
+		};
+		F83B922C1A7A8CE1009E7ADF /* FormDemo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FormDemo;
+			path = ../Resources/FormDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A0EC64E1535D8ED00E5F54A /* FormDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "FormDemo" */;
+			buildPhases = (
+				58A5FDB77FB27AA5689991FE /* Check Pods Manifest.lock */,
+				7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */,
+				7A0EC64B1535D8ED00E5F54A /* Sources */,
+				7A0EC64C1535D8ED00E5F54A /* Frameworks */,
+				7A0EC64D1535D8ED00E5F54A /* Resources */,
+				6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */,
+				12C126E1E66FBB3F11C274B9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FormDemo;
+			productName = FormDemo;
+			productReference = 7A0EC64F1535D8ED00E5F54A /* FD Stubs.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A0EC6461535D8ED00E5F54A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FD;
+				LastUpgradeCheck = 0610;
+			};
+			buildConfigurationList = 7A0EC6491535D8ED00E5F54A /* Build configuration list for PBXProject "FormDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7A0EC6441535D8ED00E5F54A;
+			productRefGroup = 7A0EC6501535D8ED00E5F54A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A0EC64E1535D8ED00E5F54A /* FormDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A0EC64D1535D8ED00E5F54A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12C126E1E66FBB3F11C274B9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58A5FDB77FB27AA5689991FE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Patch Info.plist according to the environment";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PLIST_FILENAME=$(basename \"$PRODUCT_SETTINGS_PATH\")\nPLIST_EXTENSION=\"${PLIST_FILENAME##*.}\"\nPLIST_FILENAME=\"${PLIST_FILENAME%.*}\"\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/$TARGET_NAME/${PLIST_FILENAME}_${CONFIGURATION}.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/$TARGET_NAME/${PLIST_FILENAME}_Defaults.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/Defaults/Defaults-Info_${CONFIGURATION}.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/Defaults/Defaults-Info_Defaults.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n";
+			showEnvVarsInLog = 0;
+		};
+		7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Inject git informations in Info.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GIT_COMMIT=`git rev-parse --short HEAD`\nGIT_BRANCH=`git symbolic-ref HEAD`\nGIT_STATUS=`git status --porcelain -z`\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitCommit\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitBranch\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitStatus\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\nif [ -n \"$GIT_COMMIT\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitCommit string \\\"${GIT_COMMIT}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_BRANCH\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitBranch string \\\"${GIT_BRANCH}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_STATUS\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitStatus string \\\"${GIT_STATUS}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A0EC64B1535D8ED00E5F54A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
+				7A189F931535FD5C00A22149 /* main.m in Sources */,
+				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
+				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7A0EC6651535D8ED00E5F54A /* Stubs */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+			};
+			name = Stubs;
+		};
+		7A0EC6681535D8ED00E5F54A /* Stubs */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF2583EDF4500FBFDED12F1 /* Pods.stubs.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_NAME = "FD Stubs";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Stubs;
+		};
+		7A6BEEF71536FE3D0075E2A7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		7A6BEEF81536FE3D0075E2A7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98F3DBBA24E16358A6E1F5DB /* Pods.distribution.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
+		F88C93CE1A66D9D8009EB642 /* Preproduction */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+			};
+			name = Preproduction;
+		};
+		F88C93CF1A66D9D8009EB642 /* Preproduction */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DDE743530A44550827ECBF1 /* Pods.preproduction.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_NAME = "FD Preprod";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Preproduction;
+		};
+		F88C93D01A66DA0D009EB642 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+			};
+			name = Production;
+		};
+		F88C93D11A66DA0D009EB642 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 537CFF47C8936EAC573B2E2E /* Pods.production.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Production;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A0EC6491535D8ED00E5F54A /* Build configuration list for PBXProject "FormDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A0EC6651535D8ED00E5F54A /* Stubs */,
+				F88C93CE1A66D9D8009EB642 /* Preproduction */,
+				F88C93D01A66DA0D009EB642 /* Production */,
+				7A6BEEF71536FE3D0075E2A7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Distribution;
+		};
+		7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "FormDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A0EC6681535D8ED00E5F54A /* Stubs */,
+				F88C93CF1A66D9D8009EB642 /* Preproduction */,
+				F88C93D11A66DA0D009EB642 /* Production */,
+				7A6BEEF81536FE3D0075E2A7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Distribution;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A0EC6461535D8ED00E5F54A /* Project object */;
+}

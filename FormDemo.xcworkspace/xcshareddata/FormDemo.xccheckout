@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>56C7925E-7DAE-4AB1-A7C2-453350843738</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FormDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F5D3F26DCF3AF9C94A1827827E45CAA01F491E68</key>
+		<string>scm.applidium.net:Templater.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FormDemo/FormDemo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F5D3F26DCF3AF9C94A1827827E45CAA01F491E68</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>scm.applidium.net:Templater.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F5D3F26DCF3AF9C94A1827827E45CAA01F491E68</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F5D3F26DCF3AF9C94A1827827E45CAA01F491E68</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Templater</string>
+		</dict>
+	</array>
+</dict>
+</plist>
