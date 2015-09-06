@@ -62,15 +62,21 @@ static NSString * sCellIdentifier = @"Identifier";
     CTFormTextFieldTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:sCellIdentifier forIndexPath:indexPath];
 
     NSString * placeholder = nil;
+    UIKeyboardType keyboardType = UIKeyboardTypeAlphabet;
+    UITextAutocapitalizationType autocapitalizationType = UITextAutocapitalizationTypeNone;
+    UITextAutocorrectionType autocorrectionType = UITextAutocorrectionTypeNo;
     switch (indexPath.row) {
         case FDRowTypeName: {
             placeholder = @"Name";
+            autocapitalizationType = UITextAutocapitalizationTypeWords;
         } break;
         case FDRowTypeEmail: {
             placeholder = @"Email";
+            keyboardType = UIKeyboardTypeEmailAddress;
         } break;
         case FDRowTypePhoneNumber: {
             placeholder = @"Phone Number";
+            keyboardType = UIKeyboardTypePhonePad;
         } break;
         case FDRowTypeDate: {
             placeholder = @"Date";
@@ -79,6 +85,9 @@ static NSString * sCellIdentifier = @"Identifier";
             break;
     }
     cell.textField.placeholder = placeholder;
+    cell.textField.keyboardType = keyboardType;
+    cell.textField.autocapitalizationType = autocapitalizationType;
+    cell.textField.autocorrectionType = autocorrectionType;
 
     return cell;
 }
