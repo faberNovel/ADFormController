@@ -8,6 +8,7 @@
 
 #import "FDKeyboardManager.h"
 #import "UIView+Responder.h"
+#import "NSNotification+Keyboard.h"
 
 @interface FDKeyboardManager () {
     UITableView * _tableView;
@@ -52,13 +53,7 @@
 - (void)_keyboardWillShow:(NSNotification *)notification {
     UITableViewCell * cell = [self _cellFromFirstResponder];
     if (cell) {
-        NSDictionary * keyboardInfo = [notification userInfo];
-
-        NSTimeInterval keyboardAnimationDuration = [keyboardInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        UIViewAnimationCurve keyboardAnimationCurve = [keyboardInfo[UIKeyboardAnimationCurveUserInfoKey] intValue];
-        CGRect keyboardFrameEnd = [keyboardInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-
-        CGRect keyboardFrame = [_tableView.window convertRect:keyboardFrameEnd
+        CGRect keyboardFrame = [_tableView.window convertRect:notification.keyboardFrameEnd
                                                        toView:_tableView.superview];
 
         CGFloat newBottomInset = _tableView.frame.origin.y + _tableView.frame.size.height - keyboardFrame.origin.y;
@@ -69,8 +64,8 @@
             tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
 
             [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDuration:keyboardAnimationDuration];
-            [UIView setAnimationCurve:keyboardAnimationCurve]; {
+            [UIView setAnimationDuration:notification.keyboardAnimationDuration];
+            [UIView setAnimationCurve:notification.keyboardAnimationCurve]; {
                 _tableView.contentInset = tableContentInset;
                 _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
                 NSIndexPath * selectedRow = [_tableView indexPathForCell:cell];
@@ -85,19 +80,14 @@
 - (void)_keyboardWillHide:(NSNotification *)notification {
     UITableViewCell * cell = [self _cellFromFirstResponder];
     if (cell) {
-        NSDictionary * keyboardInfo = [notification userInfo];
-
-        NSTimeInterval keyboardAnimationDuration = [keyboardInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        UIViewAnimationCurve keyboardAnimationCurve = [keyboardInfo[UIKeyboardAnimationCurveUserInfoKey] intValue];
-
         UIEdgeInsets tableContentInset = _tableView.contentInset;
         UIEdgeInsets tableScrollIndicatorInsets = _tableView.scrollIndicatorInsets;
         tableContentInset.bottom = 0;
         tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
 
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:keyboardAnimationDuration];
-        [UIView setAnimationCurve:keyboardAnimationCurve]; {
+        [UIView setAnimationDuration:notification.keyboardAnimationDuration];
+        [UIView setAnimationCurve:notification.keyboardAnimationCurve]; {
             _tableView.contentInset = tableContentInset;
             _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
         } [UIView commitAnimations];
