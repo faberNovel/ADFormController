@@ -10,9 +10,12 @@
 
 @implementation FDTableViewController
 
++ (UITableViewStyle)tableViewStyle {
+    return UITableViewStylePlain;
+}
+
 - (void)loadView {
     [super loadView];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.clipsToBounds = YES;
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -21,7 +24,7 @@
     _tableView.alwaysBounceVertical = YES;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+//    _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     [self.view addSubview:_tableView];
 
     NSDictionary * views = NSDictionaryOfVariableBindings(_tableView);
@@ -31,8 +34,14 @@
 //    _keyboardManager = [[CTKeyboardManager alloc] initWithTableView:_tableView];
 }
 
-+ (UITableViewStyle)tableViewStyle {
-    return UITableViewStylePlain;
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 @end
