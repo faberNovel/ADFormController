@@ -8,6 +8,7 @@
 
 #import "FDMainFormViewController.h"
 #import "CTFormTextFieldTableViewCell.h"
+#import "FDKeyboardManager.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeName,
@@ -19,7 +20,9 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 
 static NSString * sCellIdentifier = @"Identifier";
 
-@interface FDMainFormViewController ()
+@interface FDMainFormViewController () {
+    FDKeyboardManager * _keyboardManager;
+}
 
 @end
 
@@ -35,6 +38,18 @@ static NSString * sCellIdentifier = @"Identifier";
 
     [self.tableView registerClass:[CTFormTextFieldTableViewCell class] forCellReuseIdentifier:sCellIdentifier];
     self.tableView.tableFooterView = [UIView new];
+
+    _keyboardManager = [[FDKeyboardManager alloc] initWithTableView:self.tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_keyboardManager startObservingKeyboard];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_keyboardManager endObservingKeyboard];
 }
 
 #pragma mark - UITableViewDataSource
