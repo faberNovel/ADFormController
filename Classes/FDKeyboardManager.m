@@ -53,42 +53,46 @@
 
 - (void)_keyboardWillShow:(NSNotification *)notification {
     UITableViewCell * cell = [self _cellFromFirstResponder];
-    if (cell) {
-        CGRect keyboardFrame = [_tableView.window convertRect:notification.keyboardFrameEnd
-                                                       toView:_tableView.superview];
-
-        CGFloat newBottomInset = _tableView.frame.origin.y + _tableView.frame.size.height - keyboardFrame.origin.y;
-        if (newBottomInset > 0){
-            UIEdgeInsets tableContentInset = _tableView.contentInset;
-            UIEdgeInsets tableScrollIndicatorInsets = _tableView.scrollIndicatorInsets;
-            tableContentInset.bottom = newBottomInset;
-            tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
-
-            [UIView animateWithDuration:notification.keyboardAnimationDuration curve:notification.keyboardAnimationCurve animations:^{
-                _tableView.contentInset = tableContentInset;
-                _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
-                NSIndexPath * selectedRow = [_tableView indexPathForCell:cell];
-                [_tableView scrollToRowAtIndexPath:selectedRow
-                                  atScrollPosition:UITableViewScrollPositionNone
-                                          animated:NO];
-            }];
-        }
+    if (!cell) {
+        return;
     }
-}
 
-- (void)_keyboardWillHide:(NSNotification *)notification {
-    UITableViewCell * cell = [self _cellFromFirstResponder];
-    if (cell) {
+    CGRect keyboardFrame = [_tableView.window convertRect:notification.keyboardFrameEnd
+                                                   toView:_tableView.superview];
+
+    CGFloat newBottomInset = _tableView.frame.origin.y + _tableView.frame.size.height - keyboardFrame.origin.y;
+    if (newBottomInset > 0){
         UIEdgeInsets tableContentInset = _tableView.contentInset;
         UIEdgeInsets tableScrollIndicatorInsets = _tableView.scrollIndicatorInsets;
-        tableContentInset.bottom = 0;
+        tableContentInset.bottom = newBottomInset;
         tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
 
         [UIView animateWithDuration:notification.keyboardAnimationDuration curve:notification.keyboardAnimationCurve animations:^{
             _tableView.contentInset = tableContentInset;
             _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
+            NSIndexPath * selectedRow = [_tableView indexPathForCell:cell];
+            [_tableView scrollToRowAtIndexPath:selectedRow
+                              atScrollPosition:UITableViewScrollPositionNone
+                                      animated:NO];
         }];
     }
+}
+
+- (void)_keyboardWillHide:(NSNotification *)notification {
+    UITableViewCell * cell = [self _cellFromFirstResponder];
+    if (!cell) {
+        return;
+    }
+
+    UIEdgeInsets tableContentInset = _tableView.contentInset;
+    UIEdgeInsets tableScrollIndicatorInsets = _tableView.scrollIndicatorInsets;
+    tableContentInset.bottom = 0;
+    tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
+
+    [UIView animateWithDuration:notification.keyboardAnimationDuration curve:notification.keyboardAnimationCurve animations:^{
+        _tableView.contentInset = tableContentInset;
+        _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
+    }];
 }
 
 - (UITableViewCell *)_cellFromFirstResponder {
