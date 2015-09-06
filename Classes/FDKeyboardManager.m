@@ -9,6 +9,7 @@
 #import "FDKeyboardManager.h"
 #import "UIView+Responder.h"
 #import "NSNotification+Keyboard.h"
+#import "UIView+CurveAnimation.h"
 
 @interface FDKeyboardManager () {
     UITableView * _tableView;
@@ -63,16 +64,14 @@
             tableContentInset.bottom = newBottomInset;
             tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
 
-            [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDuration:notification.keyboardAnimationDuration];
-            [UIView setAnimationCurve:notification.keyboardAnimationCurve]; {
+            [UIView animateWithDuration:notification.keyboardAnimationDuration curve:notification.keyboardAnimationCurve animations:^{
                 _tableView.contentInset = tableContentInset;
                 _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
                 NSIndexPath * selectedRow = [_tableView indexPathForCell:cell];
                 [_tableView scrollToRowAtIndexPath:selectedRow
                                   atScrollPosition:UITableViewScrollPositionNone
                                           animated:NO];
-            } [UIView commitAnimations];
+            }];
         }
     }
 }
@@ -85,12 +84,10 @@
         tableContentInset.bottom = 0;
         tableScrollIndicatorInsets.bottom = tableContentInset.bottom;
 
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:notification.keyboardAnimationDuration];
-        [UIView setAnimationCurve:notification.keyboardAnimationCurve]; {
+        [UIView animateWithDuration:notification.keyboardAnimationDuration curve:notification.keyboardAnimationCurve animations:^{
             _tableView.contentInset = tableContentInset;
             _tableView.scrollIndicatorInsets = tableScrollIndicatorInsets;
-        } [UIView commitAnimations];
+        }];
     }
 }
 

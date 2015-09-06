@@ -14,6 +14,7 @@
 		496042FA1B9A1BCA0010B11A /* UIView+Responder.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F91B9A1BCA0010B11A /* UIView+Responder.m */; };
 		497A19861B9CA7D800E2336C /* FDKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A19851B9CA7D800E2336C /* FDKeyboardManager.m */; };
 		497A19891B9CAC8900E2336C /* NSNotification+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A19881B9CAC8900E2336C /* NSNotification+Keyboard.m */; };
+		497A198C1B9CADDD00E2336C /* UIView+CurveAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A198B1B9CADDD00E2336C /* UIView+CurveAnimation.m */; };
 		497C97931B9AC1B3002175AC /* FDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C97921B9AC1B3002175AC /* FDTableViewController.m */; };
 		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
 		497C979D1B9AC546002175AC /* FDMainFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C979C1B9AC546002175AC /* FDMainFormViewController.m */; };
@@ -42,6 +43,8 @@
 		497A19851B9CA7D800E2336C /* FDKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeyboardManager.m; sourceTree = "<group>"; };
 		497A19871B9CAC8900E2336C /* NSNotification+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotification+Keyboard.h"; sourceTree = "<group>"; };
 		497A19881B9CAC8900E2336C /* NSNotification+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Keyboard.m"; sourceTree = "<group>"; };
+		497A198A1B9CADDD00E2336C /* UIView+CurveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CurveAnimation.h"; sourceTree = "<group>"; };
+		497A198B1B9CADDD00E2336C /* UIView+CurveAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CurveAnimation.m"; sourceTree = "<group>"; };
 		497C97911B9AC1B3002175AC /* FDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDTableViewController.h; path = ADFormTableViewController/FDTableViewController.h; sourceTree = "<group>"; };
 		497C97921B9AC1B3002175AC /* FDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDTableViewController.m; path = ADFormTableViewController/FDTableViewController.m; sourceTree = "<group>"; };
 		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
@@ -117,6 +120,8 @@
 			children = (
 				497A19871B9CAC8900E2336C /* NSNotification+Keyboard.h */,
 				497A19881B9CAC8900E2336C /* NSNotification+Keyboard.m */,
+				497A198A1B9CADDD00E2336C /* UIView+CurveAnimation.h */,
+				497A198B1B9CADDD00E2336C /* UIView+CurveAnimation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				497A19891B9CAC8900E2336C /* NSNotification+Keyboard.m in Sources */,
 				496042F41B9A1B110010B11A /* CTFormTextFieldTableViewCell.m in Sources */,
 				496042F31B9A1B110010B11A /* CTFormTableViewController.m in Sources */,
+				497A198C1B9CADDD00E2336C /* UIView+CurveAnimation.m in Sources */,
 				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
 				496042FA1B9A1BCA0010B11A /* UIView+Responder.m in Sources */,
 				7A189F931535FD5C00A22149 /* main.m in Sources */,
