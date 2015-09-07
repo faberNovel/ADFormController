@@ -22,6 +22,7 @@ static NSString * sCellIdentifier = @"Identifier";
 
 @interface FDMainFormViewController () {
     FDKeyboardManager * _keyboardManager;
+    UIDatePicker * _datePicker;
 }
 
 @end
@@ -40,6 +41,8 @@ static NSString * sCellIdentifier = @"Identifier";
     self.tableView.tableFooterView = [UIView new];
 
     _keyboardManager = [[FDKeyboardManager alloc] initWithTableView:self.tableView];
+    _datePicker = [[UIDatePicker alloc] init];
+    _datePicker.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,6 +68,7 @@ static NSString * sCellIdentifier = @"Identifier";
     UIKeyboardType keyboardType = UIKeyboardTypeAlphabet;
     UITextAutocapitalizationType autocapitalizationType = UITextAutocapitalizationTypeNone;
     UITextAutocorrectionType autocorrectionType = UITextAutocorrectionTypeNo;
+    UIView * inputView = nil;
     switch (indexPath.row) {
         case FDRowTypeName: {
             placeholder = @"Name";
@@ -80,6 +84,7 @@ static NSString * sCellIdentifier = @"Identifier";
         } break;
         case FDRowTypeDate: {
             placeholder = @"Date";
+            inputView = _datePicker;
         } break;
         default:
             break;
@@ -88,6 +93,7 @@ static NSString * sCellIdentifier = @"Identifier";
     cell.textField.keyboardType = keyboardType;
     cell.textField.autocapitalizationType = autocapitalizationType;
     cell.textField.autocorrectionType = autocorrectionType;
+    cell.textField.inputView = inputView;
 
     return cell;
 }
