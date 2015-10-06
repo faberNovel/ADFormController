@@ -6,11 +6,11 @@
 //
 //
 
-#import "FDTableViewController.h"
+#import "ADTableViewController.h"
 
 @class CTFormTextFieldTableViewCell;
 
-@interface CTFormTableViewController : FDTableViewController <UITextFieldDelegate>
+@interface CTFormTableViewController : ADTableViewController <UITextFieldDelegate>
 
 - (NSInteger)numberOfFormCells;
 - (void)configureCell:(CTFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;

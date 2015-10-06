@@ -11,6 +11,7 @@
 #import "ADDynamicLogLevel.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "FDMainFormViewController.h"
+#import "FDMainFormTableViewController.h"
 
 @interface FDAppDelegate (Private)
 - (void)_setupLogger;
@@ -25,7 +26,8 @@
     // FIXME set window.rootViewController
 
 
-    FDMainFormViewController * formViewController = [FDMainFormViewController new];
+//    FDMainFormViewController * formViewController = [FDMainFormViewController new];
+    FDMainFormTableViewController * formViewController = [FDMainFormTableViewController new];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:formViewController];
     self.window.rootViewController = navigationController;
 

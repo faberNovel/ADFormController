@@ -8,7 +8,7 @@
 
 #import "FDMainFormViewController.h"
 #import "CTFormTextFieldTableViewCell.h"
-#import "FDKeyboardManager.h"
+#import "ADKeyboardManager.h"
 #import "UIView+Responder.h"
 
 typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 static NSString * sCellIdentifier = @"Identifier";
 
 @interface FDMainFormViewController () {
-    FDKeyboardManager * _keyboardManager;
+    ADKeyboardManager * _keyboardManager;
     UIDatePicker * _datePicker;
 
     UIView * _textFieldAccessoryView;
@@ -50,7 +50,7 @@ static NSString * sCellIdentifier = @"Identifier";
     [self.tableView registerClass:[CTFormTextFieldTableViewCell class] forCellReuseIdentifier:sCellIdentifier];
     self.tableView.tableFooterView = [UIView new];
 
-    _keyboardManager = [[FDKeyboardManager alloc] initWithTableView:self.tableView];
+    _keyboardManager = [[ADKeyboardManager alloc] initWithTableView:self.tableView];
     _datePicker = [[UIDatePicker alloc] init];
     _datePicker.backgroundColor = [UIColor whiteColor];
 }
@@ -87,6 +87,12 @@ static NSString * sCellIdentifier = @"Identifier";
         case FDRowTypeEmail: {
             placeholder = @"Email";
             keyboardType = UIKeyboardTypeEmailAddress;
+
+            UIImageView * imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"FDNextIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+            imageView.tintColor = [UIColor redColor];
+            cell.textField.rightViewMode = UITextFieldViewModeAlways;
+            cell.textField.rightView = imageView;
+
         } break;
         case FDRowTypePhoneNumber: {
             placeholder = @"Phone Number";
@@ -193,7 +199,7 @@ static NSString * sCellIdentifier = @"Identifier";
 }
 
 - (NSIndexPath *)_indexPathForFirstResponder {
-    UIView * firstResponder = [self.tableView ct_findFirstResponder];
+    UIView * firstResponder = [self.tableView ad_findFirstResponder];
     if ([firstResponder isKindOfClass:[UITextField class]]) {
         return [self _indexPathForTextField:(UITextField *)firstResponder];
     }
@@ -212,7 +218,7 @@ static NSString * sCellIdentifier = @"Identifier";
 }
 
 - (CTFormTextFieldTableViewCell *)_cellFromFirstResponder {
-    UIView * firstResponderView = [self.tableView ct_findFirstResponder];
+    UIView * firstResponderView = [self.tableView ad_findFirstResponder];
     if ([firstResponderView isKindOfClass:UITextField.class]) {
         return [self _cellForTextField:(UITextField *)firstResponderView];
     }

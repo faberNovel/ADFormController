@@ -6,9 +6,16 @@
 //
 //
 
-#import "FDTableViewController.h"
+#import "ADTableViewController.h"
+#import "ADKeyboardManager.h"
 
-@implementation FDTableViewController
+@interface ADTableViewController () {
+    ADKeyboardManager * _keyboardManager;
+}
+
+@end
+
+@implementation ADTableViewController
 
 + (UITableViewStyle)tableViewStyle {
     return UITableViewStylePlain;
@@ -31,7 +38,17 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|" options:0 metrics:nil views:views]];
 
-//    _keyboardManager = [[CTKeyboardManager alloc] initWithTableView:_tableView];
+    _keyboardManager = [[ADKeyboardManager alloc] initWithTableView:_tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_keyboardManager startObservingKeyboard];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_keyboardManager endObservingKeyboard];
 }
 
 #pragma mark - UITableViewDataSource

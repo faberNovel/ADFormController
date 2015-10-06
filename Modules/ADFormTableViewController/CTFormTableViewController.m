@@ -119,7 +119,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     // dismiss keyboard
-    UIView * firstResponder = [self.tableView ct_findFirstResponder];
+    UIView * firstResponder = [self.tableView ad_findFirstResponder];
     if (![firstResponder isKindOfClass:UITextField.class]){
         return;
     }
@@ -195,7 +195,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 }
 
 - (CTFormTextFieldTableViewCell *)_cellFromFirstResponder {
-    UIView * firstResponderView = [self.tableView ct_findFirstResponder];
+    UIView * firstResponderView = [self.tableView ad_findFirstResponder];
     if ([firstResponderView isKindOfClass:UITextField.class]) {
         return [self _cellForTextField:(UITextField *)firstResponderView];
     }
@@ -208,7 +208,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 }
 
 - (NSIndexPath *)_indexPathForFirstResponder {
-    UIView * firstResponder = [self.tableView ct_findFirstResponder];
+    UIView * firstResponder = [self.tableView ad_findFirstResponder];
     if ([firstResponder isKindOfClass:[UITextField class]]) {
         return [self _indexPathForTextField:(UITextField *)firstResponder];
     }
@@ -224,9 +224,9 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     if (!_textFieldAccessoryView) {
         UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44.0f)];
         toolbar.tintColor = [UIColor blackColor];
-        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CTNextIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(_next:)];
+        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDNextIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(_next:)];
         _nextBarButtonItem.width = 44.0f;
-        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CTPreviousIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(_previous:)];
+        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDPreviousIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(_previous:)];
         _previousBarButtonItem.width = 44.0f;
         UIBarButtonItem * flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         toolbar.items = @[flexibleBarButtonItem, _previousBarButtonItem, _nextBarButtonItem];

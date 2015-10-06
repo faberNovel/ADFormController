@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FDTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ADTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView * tableView;
 

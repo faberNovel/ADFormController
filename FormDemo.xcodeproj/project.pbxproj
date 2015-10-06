@@ -11,13 +11,10 @@
 		496042F31B9A1B110010B11A /* CTFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* CTFormTableViewController.m */; };
 		496042F41B9A1B110010B11A /* CTFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* CTFormTextFieldTableViewCell.m */; };
 		496042F71B9A1B920010B11A /* CTTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F61B9A1B920010B11A /* CTTextFieldFormatter.m */; };
-		496042FA1B9A1BCA0010B11A /* UIView+Responder.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F91B9A1BCA0010B11A /* UIView+Responder.m */; };
-		497A19861B9CA7D800E2336C /* FDKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A19851B9CA7D800E2336C /* FDKeyboardManager.m */; };
-		497A19891B9CAC8900E2336C /* NSNotification+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A19881B9CAC8900E2336C /* NSNotification+Keyboard.m */; };
-		497A198C1B9CADDD00E2336C /* UIView+CurveAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A198B1B9CADDD00E2336C /* UIView+CurveAnimation.m */; };
-		497C97931B9AC1B3002175AC /* FDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C97921B9AC1B3002175AC /* FDTableViewController.m */; };
+		497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C97921B9AC1B3002175AC /* ADTableViewController.m */; };
 		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
 		497C979D1B9AC546002175AC /* FDMainFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C979C1B9AC546002175AC /* FDMainFormViewController.m */; };
+		499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999003F1BAFDFE400C09B9A /* FDMainFormTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */; };
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
@@ -37,19 +34,13 @@
 		496042F21B9A1B110010B11A /* CTFormTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTFormTextFieldTableViewCell.m; path = ADFormTableViewController/CTFormTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		496042F51B9A1B920010B11A /* CTTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTTextFieldFormatter.h; path = ADFormTableViewController/CTTextFieldFormatter.h; sourceTree = "<group>"; };
 		496042F61B9A1B920010B11A /* CTTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTTextFieldFormatter.m; path = ADFormTableViewController/CTTextFieldFormatter.m; sourceTree = "<group>"; };
-		496042F81B9A1BCA0010B11A /* UIView+Responder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Responder.h"; path = "ADFormTableViewController/UIView+Responder.h"; sourceTree = "<group>"; };
-		496042F91B9A1BCA0010B11A /* UIView+Responder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Responder.m"; path = "ADFormTableViewController/UIView+Responder.m"; sourceTree = "<group>"; };
-		497A19841B9CA7D800E2336C /* FDKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDKeyboardManager.h; sourceTree = "<group>"; };
-		497A19851B9CA7D800E2336C /* FDKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeyboardManager.m; sourceTree = "<group>"; };
-		497A19871B9CAC8900E2336C /* NSNotification+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotification+Keyboard.h"; sourceTree = "<group>"; };
-		497A19881B9CAC8900E2336C /* NSNotification+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Keyboard.m"; sourceTree = "<group>"; };
-		497A198A1B9CADDD00E2336C /* UIView+CurveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CurveAnimation.h"; sourceTree = "<group>"; };
-		497A198B1B9CADDD00E2336C /* UIView+CurveAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CurveAnimation.m"; sourceTree = "<group>"; };
-		497C97911B9AC1B3002175AC /* FDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDTableViewController.h; path = ADFormTableViewController/FDTableViewController.h; sourceTree = "<group>"; };
-		497C97921B9AC1B3002175AC /* FDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDTableViewController.m; path = ADFormTableViewController/FDTableViewController.m; sourceTree = "<group>"; };
+		497C97911B9AC1B3002175AC /* ADTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTableViewController.h; path = ADFormTableViewController/ADTableViewController.h; sourceTree = "<group>"; };
+		497C97921B9AC1B3002175AC /* ADTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTableViewController.m; path = ADFormTableViewController/ADTableViewController.m; sourceTree = "<group>"; };
 		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
 		497C979B1B9AC546002175AC /* FDMainFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDMainFormViewController.h; sourceTree = "<group>"; };
 		497C979C1B9AC546002175AC /* FDMainFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDMainFormViewController.m; sourceTree = "<group>"; };
+		4999003E1BAFDFE400C09B9A /* FDMainFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDMainFormTableViewController.h; sourceTree = "<group>"; };
+		4999003F1BAFDFE400C09B9A /* FDMainFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDMainFormTableViewController.m; sourceTree = "<group>"; };
 		537CFF47C8936EAC573B2E2E /* Pods.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.production.xcconfig; path = "Pods/Target Support Files/Pods/Pods.production.xcconfig"; sourceTree = "<group>"; };
 		6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Distribution.h; sourceTree = "<group>"; };
 		6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Preproduction.h; sourceTree = "<group>"; };
@@ -107,10 +98,8 @@
 				496042F21B9A1B110010B11A /* CTFormTextFieldTableViewCell.m */,
 				496042F51B9A1B920010B11A /* CTTextFieldFormatter.h */,
 				496042F61B9A1B920010B11A /* CTTextFieldFormatter.m */,
-				496042F81B9A1BCA0010B11A /* UIView+Responder.h */,
-				496042F91B9A1BCA0010B11A /* UIView+Responder.m */,
-				497C97911B9AC1B3002175AC /* FDTableViewController.h */,
-				497C97921B9AC1B3002175AC /* FDTableViewController.m */,
+				497C97911B9AC1B3002175AC /* ADTableViewController.h */,
+				497C97921B9AC1B3002175AC /* ADTableViewController.m */,
 			);
 			name = ADFormTableViewController;
 			sourceTree = "<group>";
@@ -118,10 +107,6 @@
 		497C97981B9AC4F5002175AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				497A19871B9CAC8900E2336C /* NSNotification+Keyboard.h */,
-				497A19881B9CAC8900E2336C /* NSNotification+Keyboard.m */,
-				497A198A1B9CADDD00E2336C /* UIView+CurveAnimation.h */,
-				497A198B1B9CADDD00E2336C /* UIView+CurveAnimation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -131,8 +116,8 @@
 			children = (
 				497C979B1B9AC546002175AC /* FDMainFormViewController.h */,
 				497C979C1B9AC546002175AC /* FDMainFormViewController.m */,
-				497A19841B9CA7D800E2336C /* FDKeyboardManager.h */,
-				497A19851B9CA7D800E2336C /* FDKeyboardManager.m */,
+				4999003E1BAFDFE400C09B9A /* FDMainFormTableViewController.h */,
+				4999003F1BAFDFE400C09B9A /* FDMainFormTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -434,19 +419,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				497A19891B9CAC8900E2336C /* NSNotification+Keyboard.m in Sources */,
 				496042F41B9A1B110010B11A /* CTFormTextFieldTableViewCell.m in Sources */,
 				496042F31B9A1B110010B11A /* CTFormTableViewController.m in Sources */,
-				497A198C1B9CADDD00E2336C /* UIView+CurveAnimation.m in Sources */,
 				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
-				496042FA1B9A1BCA0010B11A /* UIView+Responder.m in Sources */,
 				7A189F931535FD5C00A22149 /* main.m in Sources */,
-				497A19861B9CA7D800E2336C /* FDKeyboardManager.m in Sources */,
+				499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */,
 				497C979D1B9AC546002175AC /* FDMainFormViewController.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
 				496042F71B9A1B920010B11A /* CTTextFieldFormatter.m in Sources */,
-				497C97931B9AC1B3002175AC /* FDTableViewController.m in Sources */,
+				497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

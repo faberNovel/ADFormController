@@ -1,0 +1,20 @@
+h1. Commit: Starting State
+
+An trivial implémentation of tableview with cell that contains textfields
+We want 4 different inputs : name, email, phone and date.
+For now there are few issues: 
+	- table inset is not updated
+	- keyboard is not correct for email and phone
+	- no date picker for last cell
+	- can't go forward and backwark without clicking in cell textfields
+
+Let's fix all this!
+
+Starting with insets when keyboard appears.
+The good thing to do is to register for keyboard notifications. Then update the insets with data passed in notification. We could do it directly in the view controller, but there is a clever way to handle this. Let's create an external class, with only purpose to handle those notifications.
+This class only has 3 methods, an initializer with a table view, a method to start listening for notifications, and a method to stop listening.
+
+
+
+
+

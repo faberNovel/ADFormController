@@ -6,8 +6,8 @@
 //
 //
 
-#import "FDTableViewController.h"
+#import "ADTableViewController.h"
 
-@interface FDMainFormViewController : FDTableViewController
+@interface FDMainFormViewController : ADTableViewController
 
 @end
