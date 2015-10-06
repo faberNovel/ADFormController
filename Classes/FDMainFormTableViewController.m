@@ -10,6 +10,7 @@
 #import "ADFormTextFieldTableViewCell.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
+    FDRowTypeGender,
     FDRowTypeName,
     FDRowTypeEmail,
     FDRowTypePhoneNumber,
@@ -17,7 +18,20 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeCount
 };
 
+@interface FDMainFormTableViewController () {
+    NSArray * _genders;
+}
+
+@end
+
 @implementation FDMainFormTableViewController
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        _genders = @[ @"Male", @"Female" ];
+    }
+    return self;
+}
 
 #pragma mark - FDTableViewController
 
@@ -35,6 +49,10 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     [super configureCell:cell forIndexPath:indexPath];
 
     switch (indexPath.row) {
+        case FDRowTypeGender: {
+            cell.textField.placeholder = @"Gender";
+            cell.cellType = CTFormTextCellTypePicker;
+        } break;
         case FDRowTypeName: {
             cell.textField.placeholder = @"Name";
             cell.cellType = CTFormTextCellTypeName;
@@ -58,6 +76,24 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 
 - (void)formAction:(id)sender {
     NSLog(@"FORM ACTION");
+}
+
+- (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
+    return 1;
+}
+
+- (NSArray *)optionsForComponent:(NSInteger)component indexPath:(NSIndexPath *)indexPath {
+    return _genders;
+}
+
+- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes indexPath:(NSIndexPath *)indexPath {
+    NSInteger index = [[indexes lastObject] integerValue];
+    return _genders[index];
+}
+
+- (NSArray *)selectedIndexesFromString:(NSString *)string indexPath:(NSIndexPath *)indexPath {
+    NSInteger index = [_genders indexOfObject:string];
+    return @[ @(index) ];
 }
 
 @end
