@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */; settings = {ASSET_TAGS = (); }; };
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
 		496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* ADFormTableViewController.m */; };
 		496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */; };
@@ -27,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		2E2053F57A5BBFE87A9B7232 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		490418041BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCreditCardTextFieldFormatter.h; sourceTree = "<group>"; };
+		490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCreditCardTextFieldFormatter.m; sourceTree = "<group>"; };
 		496042EA1B9A1A550010B11A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		496042EF1B9A1B110010B11A /* ADFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormTableViewController.h; path = ADFormTableViewController/ADFormTableViewController.h; sourceTree = "<group>"; };
 		496042F01B9A1B110010B11A /* ADFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormTableViewController.m; path = ADFormTableViewController/ADFormTableViewController.m; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 		497C97981B9AC4F5002175AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				490418041BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.h */,
+				490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
 				7A189F931535FD5C00A22149 /* main.m in Sources */,
 				499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */,
+				490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */,
 				497C979D1B9AC546002175AC /* FDMainFormViewController.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,

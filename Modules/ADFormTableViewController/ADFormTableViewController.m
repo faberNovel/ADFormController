@@ -83,22 +83,6 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     // to override
 }
 
-- (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
-    return 1; // to override
-}
-
-- (NSArray *)optionsForComponent:(NSInteger)component indexPath:(NSIndexPath *)indexPath {
-    return nil; // to override
-}
-
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes indexPath:(NSIndexPath *)indexPath {
-    return @""; // to override
-}
-
-- (NSArray *)selectedIndexesFromString:(NSString *)string indexPath:(NSIndexPath *)indexPath {
-    return nil; // to override
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -282,5 +266,27 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
         _previousBarButtonItem.enabled = [self _canMoveToDirection:CTAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
     }
 }
+
+@end
+
+
+@implementation ADFormTableViewController (Picker)
+
+- (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
+    return 1; // to override
+}
+
+- (NSArray *)optionsForComponent:(NSInteger)component indexPath:(NSIndexPath *)indexPath {
+    return nil; // to override
+}
+
+- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes indexPath:(NSIndexPath *)indexPath {
+    return @""; // to override
+}
+
+- (NSArray *)selectedIndexesFromString:(NSString *)string indexPath:(NSIndexPath *)indexPath {
+    return nil; // to override
+}
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "FDMainFormTableViewController.h"
 #import "ADFormTextFieldTableViewCell.h"
+#import "FDCreditCardTextFieldFormatter.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -15,6 +16,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeEmail,
     FDRowTypePhoneNumber,
     FDRowTypeDate,
+    FDRowTypeCreditCard,
     FDRowTypeCount
 };
 
@@ -68,6 +70,11 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
         case FDRowTypeDate: {
             cell.textField.placeholder = @"Date";
             cell.cellType = CTFormTextCellTypeDate;
+        } break;
+        case FDRowTypeCreditCard: {
+            cell.textField.placeholder = @"Credit card";
+            cell.cellType = CTFormTextCellTypeNumber;
+            cell.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
         } break;
         default:
             break;
