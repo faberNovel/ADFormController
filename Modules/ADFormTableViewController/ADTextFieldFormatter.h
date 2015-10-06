@@ -10,7 +10,7 @@
 
 @interface ADTextFieldFormatter : NSObject
 
-@property (nonatomic, strong) UITextField * textField;
+@property (nonatomic, weak) UITextField * textField;
 
 - (instancetype)initWithTextField:(UITextField *)textField;
 - (void)editingValueChanged;
