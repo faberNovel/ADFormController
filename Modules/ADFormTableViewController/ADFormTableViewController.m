@@ -101,14 +101,11 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSIndexPath * indexPath = [self _indexPathForTextField:textField];
-    if (indexPath && indexPath.row < [self numberOfFormCells] - 1) {
-        NSIndexPath * nextIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
-        ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
-        [nextCell.textField becomeFirstResponder];
-    } else {
-        [self formAction:nil];
+    if ([self _canMoveToDirection:CTAccessoryViewDirectionNext fromIndexPath:indexPath]) {
+        [self _moveToDirection:CTAccessoryViewDirectionNext];
+        return NO;
     }
-
+    [self formAction:nil];
     return YES;
 }
 
