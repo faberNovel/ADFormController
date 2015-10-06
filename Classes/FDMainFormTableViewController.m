@@ -35,6 +35,12 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(formAction:)];
+}
+
 #pragma mark - FDTableViewController
 
 + (UITableViewStyle)tableViewStyle {
@@ -82,7 +88,11 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 }
 
 - (void)formAction:(id)sender {
-    NSLog(@"FORM ACTION");
+    [super formAction:sender];
+
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDRowTypeGender inSection:0];
+    NSString * gender = [self stringValueForIndexPath:indexPath];
+    DDLogInfo(@"Gender = %@", gender);
 }
 
 - (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
