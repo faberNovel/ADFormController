@@ -6,20 +6,20 @@
 //
 //
 
-#import "CTFormTextFieldTableViewCell.h"
-#import "CTTextFieldFormatter.h"
+#import "ADFormTextFieldTableViewCell.h"
+#import "ADTextFieldFormatter.h"
 
-@interface CTFormTextFieldTableViewCell () <UIPickerViewDataSource, UIPickerViewDelegate> {
+@interface ADFormTextFieldTableViewCell () <UIPickerViewDataSource, UIPickerViewDelegate> {
     NSMutableArray * _dynamicConstraints;
     UIDatePicker * _datePicker;
     UIPickerView * _pickerView;
-    CTTextFieldFormatter * _textFieldFormatter;
+    ADTextFieldFormatter * _textFieldFormatter;
 }
 - (void)_dateChanged:(UIDatePicker *)sender;
 - (void)_textChanged:(UITextField *)textField;
 @end
 
-@implementation CTFormTextFieldTableViewCell
+@implementation ADFormTextFieldTableViewCell
 
 static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 

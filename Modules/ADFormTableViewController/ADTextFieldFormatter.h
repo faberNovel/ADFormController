@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CTTextFieldFormatter : NSObject
+@interface ADTextFieldFormatter : NSObject
 
 @property (nonatomic, strong) UITextField * textField;
 

@@ -7,7 +7,7 @@
 //
 
 #import "FDMainFormTableViewController.h"
-#import "CTFormTextFieldTableViewCell.h"
+#import "ADFormTextFieldTableViewCell.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeName,
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     return FDRowTypeCount;
 }
 
-- (void)configureCell:(CTFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     [super configureCell:cell forIndexPath:indexPath];
 
     switch (indexPath.row) {

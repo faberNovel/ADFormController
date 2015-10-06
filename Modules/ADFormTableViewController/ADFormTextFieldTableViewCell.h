@@ -19,17 +19,17 @@ typedef NS_ENUM(NSUInteger, CTFormTextCellType) {
     CTFormTextCellTypePicker
 };
 
-@class CTFormTextFieldTableViewCell;
+@class ADFormTextFieldTableViewCell;
 
 @protocol CTFormTextFieldTableViewCellDelegate <NSObject>
 @optional
-- (NSInteger)numberOfComponentsForCell:(CTFormTextFieldTableViewCell *)cell;
-- (NSArray *)optionsForComponent:(NSInteger)component cell:(CTFormTextFieldTableViewCell *)cell;
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes cell:(CTFormTextFieldTableViewCell *)cell;
-- (NSArray *)selectedIndexesFromString:(NSString *)string cell:(CTFormTextFieldTableViewCell *)cell;
+- (NSInteger)numberOfComponentsForCell:(ADFormTextFieldTableViewCell *)cell;
+- (NSArray *)optionsForComponent:(NSInteger)component cell:(ADFormTextFieldTableViewCell *)cell;
+- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes cell:(ADFormTextFieldTableViewCell *)cell;
+- (NSArray *)selectedIndexesFromString:(NSString *)string cell:(ADFormTextFieldTableViewCell *)cell;
 @end
 
-@interface CTFormTextFieldTableViewCell : UITableViewCell
+@interface ADFormTextFieldTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel * leftLabel;
 @property (nonatomic, strong) UITextField * textField;

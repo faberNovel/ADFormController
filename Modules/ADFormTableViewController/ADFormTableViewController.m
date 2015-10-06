@@ -6,8 +6,8 @@
 //
 //
 
-#import "CTFormTableViewController.h"
-#import "CTFormTextFieldTableViewCell.h"
+#import "ADFormTableViewController.h"
+#import "ADFormTextFieldTableViewCell.h"
 #import "UIView+Responder.h"
 
 typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
@@ -15,19 +15,19 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     CTAccessoryViewDirectionNext
 };
 
-@interface CTFormTableViewController () <CTFormTextFieldTableViewCellDelegate> {
+@interface ADFormTableViewController () <CTFormTextFieldTableViewCellDelegate> {
     NSMutableDictionary * _cells;
     UIView * _textFieldAccessoryView;
     UIBarButtonItem * _nextBarButtonItem;
     UIBarButtonItem * _previousBarButtonItem;
 }
-- (CTFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath;
-- (CTFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField;
+- (ADFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath;
+- (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField;
 - (NSIndexPath *)_indexPathForTextField:(UITextField *)textField;
 - (void)_textFieldValueChanged:(UITextField *)textField;
 @end
 
-@implementation CTFormTableViewController
+@implementation ADFormTableViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 #pragma mark - Methods
 
-- (void)configureCell:(CTFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     cell.textField.textColor = [UIColor blackColor];
     cell.textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     cell.textField.tintColor = [UIColor blackColor];
@@ -72,7 +72,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 - (NSString *)stringValueForRow:(NSInteger)row {
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    CTFormTextFieldTableViewCell * cell = (CTFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if (cell) {
         return cell.textField.text;
     }
@@ -110,7 +110,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CTFormTextFieldTableViewCell * cell = [self _formCellForIndexPath:indexPath];
+    ADFormTextFieldTableViewCell * cell = [self _formCellForIndexPath:indexPath];
     [self configureCell:cell forIndexPath:indexPath];
     return cell;
 }
@@ -132,7 +132,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     NSIndexPath * indexPath = [self _indexPathForTextField:textField];
     if (indexPath && indexPath.row < [self numberOfFormCells] - 1) {
         NSIndexPath * nextIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
-        CTFormTextFieldTableViewCell * nextCell = (CTFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
+        ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
         [nextCell.textField becomeFirstResponder];
     } else {
         [self formAction:nil];
@@ -143,58 +143,58 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self _updateInputAccessoryView];
-    CTFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
+    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
     [cell startEditing];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    CTFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
+    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
     return [cell shouldChangeCharactersInRange:range replacementString:string];
 }
 
 #pragma mark - CTFormTextFieldTableViewCellDelegate
 
-- (NSInteger)numberOfComponentsForCell:(CTFormTextFieldTableViewCell *)cell {
+- (NSInteger)numberOfComponentsForCell:(ADFormTextFieldTableViewCell *)cell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
     return [self numberOfComponentsForIndexPath:indexPath];
 }
 
-- (NSArray *)optionsForComponent:(NSInteger)component cell:(CTFormTextFieldTableViewCell *)cell {
+- (NSArray *)optionsForComponent:(NSInteger)component cell:(ADFormTextFieldTableViewCell *)cell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
     return [self optionsForComponent:component indexPath:indexPath];
 }
 
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes cell:(CTFormTextFieldTableViewCell *)cell {
+- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes cell:(ADFormTextFieldTableViewCell *)cell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
     return [self stringFromSelectedIndexes:indexes indexPath:indexPath];
 }
 
-- (NSArray *)selectedIndexesFromString:(NSString *)string cell:(CTFormTextFieldTableViewCell *)cell {
+- (NSArray *)selectedIndexesFromString:(NSString *)string cell:(ADFormTextFieldTableViewCell *)cell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
     return [self selectedIndexesFromString:string indexPath:indexPath];
 }
 
 #pragma mark - Private
 
-- (CTFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath {
+- (ADFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath {
     if (!_cells[@(indexPath.row)]) {
-        _cells[@(indexPath.row)] = [[CTFormTextFieldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        _cells[@(indexPath.row)] = [[ADFormTextFieldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
     return _cells[@(indexPath.row)];
 }
 
-- (CTFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
+- (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
     UIView * view = textField;
     while (view != nil) {
-        if ([view isKindOfClass:CTFormTextFieldTableViewCell.class]) {
-            return (CTFormTextFieldTableViewCell *)view;
+        if ([view isKindOfClass:ADFormTextFieldTableViewCell.class]) {
+            return (ADFormTextFieldTableViewCell *)view;
         }
         view = view.superview;
     }
     return nil;
 }
 
-- (CTFormTextFieldTableViewCell *)_cellFromFirstResponder {
+- (ADFormTextFieldTableViewCell *)_cellFromFirstResponder {
     UIView * firstResponderView = [self.tableView ad_findFirstResponder];
     if ([firstResponderView isKindOfClass:UITextField.class]) {
         return [self _cellForTextField:(UITextField *)firstResponderView];
@@ -203,7 +203,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 }
 
 - (NSIndexPath *)_indexPathForTextField:(UITextField *)textField {
-    CTFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
+    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
     return [self.tableView indexPathForCell:cell];
 }
 
@@ -247,7 +247,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     NSIndexPath * nextIndexPath = [self _indexPathForDirection:direction andBaseIndexPath:currentIndexPath];
     if (nextIndexPath) {
-        CTFormTextFieldTableViewCell * nextCell = (CTFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
+        ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
         [nextCell.textField becomeFirstResponder];
     }
 }

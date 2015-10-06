@@ -6,9 +6,9 @@
 //
 //
 
-#import "CTTextFieldFormatter.h"
+#import "ADTextFieldFormatter.h"
 
-@implementation CTTextFieldFormatter
+@implementation ADTextFieldFormatter
 
 - (instancetype)initWithTextField:(UITextField *)textField {
     if (self = [super init]) {

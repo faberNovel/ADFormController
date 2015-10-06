@@ -6,8 +6,8 @@
 //
 //
 
-#import "CTFormTableViewController.h"
+#import "ADFormTableViewController.h"
 
-@interface FDMainFormTableViewController : CTFormTableViewController
+@interface FDMainFormTableViewController : ADFormTableViewController
 
 @end

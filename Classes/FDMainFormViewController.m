@@ -7,7 +7,7 @@
 //
 
 #import "FDMainFormViewController.h"
-#import "CTFormTextFieldTableViewCell.h"
+#import "ADFormTextFieldTableViewCell.h"
 #import "ADKeyboardManager.h"
 #import "UIView+Responder.h"
 
@@ -47,7 +47,7 @@ static NSString * sCellIdentifier = @"Identifier";
     [super viewDidLoad];
     self.title = @"My Profile";
 
-    [self.tableView registerClass:[CTFormTextFieldTableViewCell class] forCellReuseIdentifier:sCellIdentifier];
+    [self.tableView registerClass:[ADFormTextFieldTableViewCell class] forCellReuseIdentifier:sCellIdentifier];
     self.tableView.tableFooterView = [UIView new];
 
     _keyboardManager = [[ADKeyboardManager alloc] initWithTableView:self.tableView];
@@ -72,7 +72,7 @@ static NSString * sCellIdentifier = @"Identifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CTFormTextFieldTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:sCellIdentifier forIndexPath:indexPath];
+    ADFormTextFieldTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:sCellIdentifier forIndexPath:indexPath];
 
     NSString * placeholder = nil;
     UIKeyboardType keyboardType = UIKeyboardTypeAlphabet;
@@ -156,7 +156,7 @@ static NSString * sCellIdentifier = @"Identifier";
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     NSIndexPath * nextIndexPath = [self _indexPathForDirection:direction andBaseIndexPath:currentIndexPath];
     if (nextIndexPath) {
-        CTFormTextFieldTableViewCell * nextCell = (CTFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
+        ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
         [nextCell.textField becomeFirstResponder];
     }
     [self _updateInputAccessoryView];
@@ -194,7 +194,7 @@ static NSString * sCellIdentifier = @"Identifier";
 }
 
 - (NSIndexPath *)_indexPathForTextField:(UITextField *)textField {
-    CTFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
+    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
     return [self.tableView indexPathForCell:cell];
 }
 
@@ -206,18 +206,18 @@ static NSString * sCellIdentifier = @"Identifier";
     return nil;
 }
 
-- (CTFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
+- (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
     UIView * view = textField;
     while (view != nil) {
-        if ([view isKindOfClass:CTFormTextFieldTableViewCell.class]) {
-            return (CTFormTextFieldTableViewCell *)view;
+        if ([view isKindOfClass:ADFormTextFieldTableViewCell.class]) {
+            return (ADFormTextFieldTableViewCell *)view;
         }
         view = view.superview;
     }
     return nil;
 }
 
-- (CTFormTextFieldTableViewCell *)_cellFromFirstResponder {
+- (ADFormTextFieldTableViewCell *)_cellFromFirstResponder {
     UIView * firstResponderView = [self.tableView ad_findFirstResponder];
     if ([firstResponderView isKindOfClass:UITextField.class]) {
         return [self _cellForTextField:(UITextField *)firstResponderView];

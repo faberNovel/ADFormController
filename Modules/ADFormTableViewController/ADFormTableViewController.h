@@ -8,12 +8,12 @@
 
 #import "ADTableViewController.h"
 
-@class CTFormTextFieldTableViewCell;
+@class ADFormTextFieldTableViewCell;
 
-@interface CTFormTableViewController : ADTableViewController <UITextFieldDelegate>
+@interface ADFormTableViewController : ADTableViewController <UITextFieldDelegate>
 
 - (NSInteger)numberOfFormCells;
-- (void)configureCell:(CTFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
 - (void)formAction:(id)sender;
 - (void)valueChangedForTextField:(UITextField *)textField atIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)stringValueForRow:(NSInteger)row;

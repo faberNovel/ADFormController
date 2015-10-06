@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
-		496042F31B9A1B110010B11A /* CTFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* CTFormTableViewController.m */; };
-		496042F41B9A1B110010B11A /* CTFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* CTFormTextFieldTableViewCell.m */; };
-		496042F71B9A1B920010B11A /* CTTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F61B9A1B920010B11A /* CTTextFieldFormatter.m */; };
+		496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* ADFormTableViewController.m */; };
+		496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */; };
+		496042F71B9A1B920010B11A /* ADTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F61B9A1B920010B11A /* ADTextFieldFormatter.m */; };
 		497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C97921B9AC1B3002175AC /* ADTableViewController.m */; };
 		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
 		497C979D1B9AC546002175AC /* FDMainFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C979C1B9AC546002175AC /* FDMainFormViewController.m */; };
@@ -28,12 +28,12 @@
 /* Begin PBXFileReference section */
 		2E2053F57A5BBFE87A9B7232 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		496042EA1B9A1A550010B11A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		496042EF1B9A1B110010B11A /* CTFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTFormTableViewController.h; path = ADFormTableViewController/CTFormTableViewController.h; sourceTree = "<group>"; };
-		496042F01B9A1B110010B11A /* CTFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTFormTableViewController.m; path = ADFormTableViewController/CTFormTableViewController.m; sourceTree = "<group>"; };
-		496042F11B9A1B110010B11A /* CTFormTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTFormTextFieldTableViewCell.h; path = ADFormTableViewController/CTFormTextFieldTableViewCell.h; sourceTree = "<group>"; };
-		496042F21B9A1B110010B11A /* CTFormTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTFormTextFieldTableViewCell.m; path = ADFormTableViewController/CTFormTextFieldTableViewCell.m; sourceTree = "<group>"; };
-		496042F51B9A1B920010B11A /* CTTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTTextFieldFormatter.h; path = ADFormTableViewController/CTTextFieldFormatter.h; sourceTree = "<group>"; };
-		496042F61B9A1B920010B11A /* CTTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTTextFieldFormatter.m; path = ADFormTableViewController/CTTextFieldFormatter.m; sourceTree = "<group>"; };
+		496042EF1B9A1B110010B11A /* ADFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormTableViewController.h; path = ADFormTableViewController/ADFormTableViewController.h; sourceTree = "<group>"; };
+		496042F01B9A1B110010B11A /* ADFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormTableViewController.m; path = ADFormTableViewController/ADFormTableViewController.m; sourceTree = "<group>"; };
+		496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormTextFieldTableViewCell.h; path = ADFormTableViewController/ADFormTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormTextFieldTableViewCell.m; path = ADFormTableViewController/ADFormTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		496042F51B9A1B920010B11A /* ADTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextFieldFormatter.h; path = ADFormTableViewController/ADTextFieldFormatter.h; sourceTree = "<group>"; };
+		496042F61B9A1B920010B11A /* ADTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTextFieldFormatter.m; path = ADFormTableViewController/ADTextFieldFormatter.m; sourceTree = "<group>"; };
 		497C97911B9AC1B3002175AC /* ADTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTableViewController.h; path = ADFormTableViewController/ADTableViewController.h; sourceTree = "<group>"; };
 		497C97921B9AC1B3002175AC /* ADTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTableViewController.m; path = ADFormTableViewController/ADTableViewController.m; sourceTree = "<group>"; };
 		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
@@ -92,12 +92,12 @@
 		496042EE1B9A1AFE0010B11A /* ADFormTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				496042EF1B9A1B110010B11A /* CTFormTableViewController.h */,
-				496042F01B9A1B110010B11A /* CTFormTableViewController.m */,
-				496042F11B9A1B110010B11A /* CTFormTextFieldTableViewCell.h */,
-				496042F21B9A1B110010B11A /* CTFormTextFieldTableViewCell.m */,
-				496042F51B9A1B920010B11A /* CTTextFieldFormatter.h */,
-				496042F61B9A1B920010B11A /* CTTextFieldFormatter.m */,
+				496042EF1B9A1B110010B11A /* ADFormTableViewController.h */,
+				496042F01B9A1B110010B11A /* ADFormTableViewController.m */,
+				496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */,
+				496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */,
+				496042F51B9A1B920010B11A /* ADTextFieldFormatter.h */,
+				496042F61B9A1B920010B11A /* ADTextFieldFormatter.m */,
 				497C97911B9AC1B3002175AC /* ADTableViewController.h */,
 				497C97921B9AC1B3002175AC /* ADTableViewController.m */,
 			);
@@ -419,15 +419,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496042F41B9A1B110010B11A /* CTFormTextFieldTableViewCell.m in Sources */,
-				496042F31B9A1B110010B11A /* CTFormTableViewController.m in Sources */,
+				496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */,
+				496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */,
 				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
 				7A189F931535FD5C00A22149 /* main.m in Sources */,
 				499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */,
 				497C979D1B9AC546002175AC /* FDMainFormViewController.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
-				496042F71B9A1B920010B11A /* CTTextFieldFormatter.m in Sources */,
+				496042F71B9A1B920010B11A /* ADTextFieldFormatter.m in Sources */,
 				497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
