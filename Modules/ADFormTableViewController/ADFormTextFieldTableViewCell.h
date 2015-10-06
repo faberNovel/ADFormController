@@ -31,9 +31,9 @@ typedef NS_ENUM(NSUInteger, CTFormTextCellType) {
 
 @interface ADFormTextFieldTableViewCell : UITableViewCell
 
+@property (nonatomic) CTFormTextCellType cellType;
 @property (nonatomic, strong) UILabel * leftLabel;
 @property (nonatomic, strong) UITextField * textField;
-@property (nonatomic) CTFormTextCellType cellType;
 @property (nonatomic, strong) UIView * rightView;
 
 @property (nonatomic, weak) id<CTFormTextFieldTableViewCellDelegate> delegate;

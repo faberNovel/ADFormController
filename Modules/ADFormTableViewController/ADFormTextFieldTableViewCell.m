@@ -15,8 +15,10 @@
     UIPickerView * _pickerView;
     ADTextFieldFormatter * _textFieldFormatter;
 }
-- (void)_dateChanged:(UIDatePicker *)sender;
-- (void)_textChanged:(UITextField *)textField;
+- (IBAction)_dateChanged:(UIDatePicker *)sender;
+- (IBAction)_textChanged:(UITextField *)textField;
+- (void)_startEditingDatePicker;
+- (void)_startEditingPickerView;
 @end
 
 @implementation ADFormTextFieldTableViewCell
@@ -179,30 +181,13 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 - (void)startEditing {
     switch (self.cellType) {
         case CTFormTextCellTypeDate: {
-            if (self.textField.text.length == 0) {
-                [self _dateChanged:_datePicker];
-            } else {
-                NSDate * date = [[self.class dateFormatter] dateFromString:self.textField.text];
-                _datePicker.date = date;
-            }
+            [self _startEditingDatePicker];
         } break;
         case CTFormTextCellTypePicker: {
-            if (self.textField.text.length == 0) {
-                for (int component = 0; component < _pickerView.numberOfComponents; component++) {
-                    [self pickerView:_pickerView didSelectRow:0 inComponent:component];
-                }
-            } else {
-                if ([self.delegate respondsToSelector:@selector(selectedIndexesFromString:cell:)]) {
-                    NSArray * indexes = [self.delegate selectedIndexesFromString:self.textField.text cell:self];
-                    [indexes enumerateObjectsUsingBlock:^(NSNumber * indexNumber, NSUInteger idx, BOOL *stop) {
-                        [_pickerView selectRow:[indexNumber integerValue] inComponent:idx animated:NO];
-                    }];
-                }
-            }
-
+            [self _startEditingPickerView];
         } break;
         default:
-            break;
+            break; // no op
     }
 }
 
@@ -255,14 +240,38 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 #pragma mark - Private
 
-- (void)_dateChanged:(UIDatePicker *)sender {
+- (IBAction)_dateChanged:(UIDatePicker *)sender {
     // Use insertText to simulate touch
     self.textField.text = @"";
     [self.textField insertText:[[self.class dateFormatter] stringFromDate:sender.date]];
 }
 
-- (void)_textChanged:(UITextField *)textField {
+- (IBAction)_textChanged:(UITextField *)textField {
     [_textFieldFormatter editingValueChanged];
+}
+
+- (void)_startEditingDatePicker {
+    if (self.textField.text.length == 0) {
+        [self _dateChanged:_datePicker];
+    } else {
+        NSDate * date = [[self.class dateFormatter] dateFromString:self.textField.text];
+        _datePicker.date = date;
+    }
+}
+
+- (void)_startEditingPickerView {
+    if (self.textField.text.length == 0) {
+        for (int component = 0; component < _pickerView.numberOfComponents; component++) {
+            [self pickerView:_pickerView didSelectRow:0 inComponent:component];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(selectedIndexesFromString:cell:)]) {
+            NSArray * indexes = [self.delegate selectedIndexesFromString:self.textField.text cell:self];
+            [indexes enumerateObjectsUsingBlock:^(NSNumber * indexNumber, NSUInteger idx, BOOL *stop) {
+                [_pickerView selectRow:[indexNumber integerValue] inComponent:idx animated:NO];
+            }];
+        }
+    }
 }
 
 @end
