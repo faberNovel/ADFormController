@@ -31,7 +31,6 @@
     _tableView.alwaysBounceVertical = YES;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-//    _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     [self.view addSubview:_tableView];
 
     NSDictionary * views = NSDictionaryOfVariableBindings(_tableView);

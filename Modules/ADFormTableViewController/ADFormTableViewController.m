@@ -39,6 +39,8 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+
     if ([self.class tableViewStyle] == UITableViewStylePlain) {
         self.tableView.tableFooterView = [UIView new];
     }
@@ -93,17 +95,6 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     ADFormTextFieldTableViewCell * cell = [self _formCellForIndexPath:indexPath];
     [self configureCell:cell forIndexPath:indexPath];
     return cell;
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    // dismiss keyboard
-    UIView * firstResponder = [self.tableView ad_findFirstResponder];
-    if (![firstResponder isKindOfClass:UITextField.class]){
-        return;
-    }
-    [self.tableView endEditing:YES];
 }
 
 #pragma mark - UITextFieldDelegate
