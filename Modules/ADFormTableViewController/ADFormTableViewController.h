@@ -35,7 +35,7 @@
 /*
  * Retrieve text value in textfield at row
  */
-- (NSString *)stringValueForRow:(NSInteger)row;
+- (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

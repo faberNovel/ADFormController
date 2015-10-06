@@ -70,8 +70,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     [self.tableView endEditing:YES];
 }
 
-- (NSString *)stringValueForRow:(NSInteger)row {
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+- (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath {
     ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if (cell) {
         return cell.textField.text;
