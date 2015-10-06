@@ -48,18 +48,15 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 - (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     cell.textField.textColor = [UIColor blackColor];
-    cell.textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     cell.textField.tintColor = [UIColor blackColor];
-    cell.textField.delegate = self;
+    cell.textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    cell.leftLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
 
     cell.textField.returnKeyType = (indexPath.row == [self numberOfFormCells] - 1) ? UIReturnKeyGo : UIReturnKeyNext;
     [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-
     cell.textField.inputAccessoryView = [self _textFieldAccessoryView];
-
+    cell.textField.delegate = self;
     cell.delegate = self;
-
-    cell.leftLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];;
 }
 
 - (NSInteger)numberOfFormCells {
