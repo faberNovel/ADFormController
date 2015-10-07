@@ -192,9 +192,9 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     if (!_textFieldAccessoryView) {
         UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44.0f)];
         toolbar.tintColor = [UIColor blackColor];
-        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDNextIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(_next:)];
+        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDNextIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_next:)];
         _nextBarButtonItem.width = 44.0f;
-        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDPreviousIcon"] style:UIBarButtonItemStyleBordered target:self action:@selector(_previous:)];
+        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDPreviousIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_previous:)];
         _previousBarButtonItem.width = 44.0f;
         UIBarButtonItem * flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         toolbar.items = @[flexibleBarButtonItem, _previousBarButtonItem, _nextBarButtonItem];
