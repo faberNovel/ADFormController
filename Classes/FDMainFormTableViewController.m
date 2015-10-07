@@ -59,27 +59,27 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     switch (indexPath.row) {
         case FDRowTypeGender: {
             cell.textField.placeholder = @"Gender";
-            cell.cellType = CTFormTextCellTypePicker;
+            cell.cellType = ADFormTextCellTypePicker;
         } break;
         case FDRowTypeName: {
             cell.textField.placeholder = @"Name";
-            cell.cellType = CTFormTextCellTypeName;
+            cell.cellType = ADFormTextCellTypeName;
         } break;
         case FDRowTypeEmail: {
             cell.textField.placeholder = @"Email";
-            cell.cellType = CTFormTextCellTypeEmail;
+            cell.cellType = ADFormTextCellTypeEmail;
         } break;
         case FDRowTypePhoneNumber: {
             cell.textField.placeholder = @"Phone";
-            cell.cellType = CTFormTextCellTypePhone;
+            cell.cellType = ADFormTextCellTypePhone;
         } break;
         case FDRowTypeDate: {
             cell.textField.placeholder = @"Date";
-            cell.cellType = CTFormTextCellTypeDate;
+            cell.cellType = ADFormTextCellTypeDate;
         } break;
         case FDRowTypeCreditCard: {
             cell.textField.placeholder = @"Credit card";
-            cell.cellType = CTFormTextCellTypeNumber;
+            cell.cellType = ADFormTextCellTypeNumber;
             cell.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
         } break;
         default:

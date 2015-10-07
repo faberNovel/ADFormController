@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, CTFormTextCellType) {
-    CTFormTextCellTypeEmail,
-    CTFormTextCellTypePassword,
-    CTFormTextCellTypeName,
-    CTFormTextCellTypePhone,
-    CTFormTextCellTypeText,
-    CTFormTextCellTypeNumber,
-    CTFormTextCellTypeDate,
-    CTFormTextCellTypePicker
+typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
+    ADFormTextCellTypeEmail,
+    ADFormTextCellTypePassword,
+    ADFormTextCellTypeName,
+    ADFormTextCellTypePhone,
+    ADFormTextCellTypeText,
+    ADFormTextCellTypeNumber,
+    ADFormTextCellTypeDate,
+    ADFormTextCellTypePicker
 };
 
 @class ADFormTextFieldTableViewCell;
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, CTFormTextCellType) {
 
 @interface ADFormTextFieldTableViewCell : UITableViewCell
 
-@property (nonatomic) CTFormTextCellType cellType;
+@property (nonatomic) ADFormTextCellType cellType;
 @property (nonatomic, strong) UILabel * leftLabel;
 @property (nonatomic, strong) UITextField * textField;
 @property (nonatomic, strong) UIView * rightView;

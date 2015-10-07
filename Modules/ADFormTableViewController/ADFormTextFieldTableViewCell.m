@@ -138,37 +138,37 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 #pragma mark - Setters
 
-- (void)setCellType:(CTFormTextCellType)cellType {
+- (void)setCellType:(ADFormTextCellType)cellType {
     _cellType = cellType;
     switch (cellType) {
-        case CTFormTextCellTypeEmail: {
+        case ADFormTextCellTypeEmail: {
             self.textField.keyboardType = UIKeyboardTypeEmailAddress;
             self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
             self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         } break;
-        case CTFormTextCellTypePassword: {
+        case ADFormTextCellTypePassword: {
             self.textField.secureTextEntry = YES;
         } break;
-        case CTFormTextCellTypeName: {
+        case ADFormTextCellTypeName: {
             self.textField.keyboardType = UIKeyboardTypeAlphabet;
             self.textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
             self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         } break;
-        case CTFormTextCellTypePhone: {
+        case ADFormTextCellTypePhone: {
             self.textField.keyboardType = UIKeyboardTypePhonePad;
         } break;
-        case CTFormTextCellTypeText: {
+        case ADFormTextCellTypeText: {
             self.textField.keyboardType = UIKeyboardTypeAlphabet;
             self.textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
             self.textField.autocorrectionType = UITextAutocorrectionTypeDefault;
         } break;
-        case CTFormTextCellTypeNumber: {
+        case ADFormTextCellTypeNumber: {
             self.textField.keyboardType = UIKeyboardTypeNumberPad;
         } break;
-        case CTFormTextCellTypeDate: {
+        case ADFormTextCellTypeDate: {
             self.textField.inputView = _datePicker;
         } break;
-        case CTFormTextCellTypePicker: {
+        case ADFormTextCellTypePicker: {
             self.textField.inputView = _pickerView;
         } break;
         default:
@@ -180,10 +180,10 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (void)startEditing {
     switch (self.cellType) {
-        case CTFormTextCellTypeDate: {
+        case ADFormTextCellTypeDate: {
             [self _startEditingDatePicker];
         } break;
-        case CTFormTextCellTypePicker: {
+        case ADFormTextCellTypePicker: {
             [self _startEditingPickerView];
         } break;
         default:
