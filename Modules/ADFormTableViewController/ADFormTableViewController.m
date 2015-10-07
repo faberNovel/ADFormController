@@ -77,6 +77,14 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     return nil;
 }
 
+- (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath {
+    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell && cell.cellType == ADFormTextCellTypeDate) {
+        return [[ADFormTextFieldTableViewCell dateFormatter] dateFromString:cell.textField.text];
+    }
+    return nil;
+}
+
 - (void)valueChangedForTextField:(UITextField *)textField atIndexPath:(NSIndexPath *)indexPath {
     // to override
 }

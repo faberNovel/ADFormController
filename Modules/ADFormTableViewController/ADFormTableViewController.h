@@ -33,9 +33,14 @@
 - (void)valueChangedForTextField:(UITextField *)textField atIndexPath:(NSIndexPath *)indexPath;
 
 /*
- * Retrieve text value in textfield at row
+ * Retrieve text value in textfield at indexPath
  */
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath;
+
+/*
+ * Retrieve date value in textfield at indexPath
+ */
+- (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
