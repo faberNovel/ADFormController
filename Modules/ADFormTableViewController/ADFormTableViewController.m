@@ -10,9 +10,9 @@
 #import "ADFormTextFieldTableViewCell.h"
 #import "UIView+Responder.h"
 
-typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
-    CTAccessoryViewDirectionPrevious,
-    CTAccessoryViewDirectionNext
+typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
+    ADAccessoryViewDirectionPrevious,
+    ADAccessoryViewDirectionNext
 };
 
 @interface ADFormTableViewController () <CTFormTextFieldTableViewCellDelegate> {
@@ -109,8 +109,8 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSIndexPath * indexPath = [self _indexPathForTextField:textField];
-    if ([self _canMoveToDirection:CTAccessoryViewDirectionNext fromIndexPath:indexPath]) {
-        [self _moveToDirection:CTAccessoryViewDirectionNext fromIndexPath:indexPath];
+    if ([self _canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath]) {
+        [self _moveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath];
         return NO;
     }
     [self formAction:nil];
@@ -212,19 +212,19 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 }
 
 - (void)_next:(id)sender {
-    [self _moveToDirection:CTAccessoryViewDirectionNext];
+    [self _moveToDirection:ADAccessoryViewDirectionNext];
 }
 
 - (void)_previous:(id)sender {
-    [self _moveToDirection:CTAccessoryViewDirectionPrevious];
+    [self _moveToDirection:ADAccessoryViewDirectionPrevious];
 }
 
-- (void)_moveToDirection:(CTAccessoryViewDirection)direction {
+- (void)_moveToDirection:(ADAccessoryViewDirection)direction {
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     [self _moveToDirection:direction fromIndexPath:currentIndexPath];
 }
 
-- (void)_moveToDirection:(CTAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
+- (void)_moveToDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath * nextIndexPath = [self _indexPathForDirection:direction andBaseIndexPath:indexPath];
     if (nextIndexPath) {
         ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
@@ -232,7 +232,7 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
     }
 }
 
-- (NSIndexPath *)_indexPathForDirection:(CTAccessoryViewDirection)direction andBaseIndexPath:(NSIndexPath *)baseIndexPath {
+- (NSIndexPath *)_indexPathForDirection:(ADAccessoryViewDirection)direction andBaseIndexPath:(NSIndexPath *)baseIndexPath {
     if (!baseIndexPath) {
         return nil;
     }
@@ -241,15 +241,15 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
         return nil;
     }
 
-    NSInteger nextRow = baseIndexPath.row + (direction == CTAccessoryViewDirectionPrevious ? -1 : +1);
+    NSInteger nextRow = baseIndexPath.row + (direction == ADAccessoryViewDirectionPrevious ? -1 : +1);
     return [NSIndexPath indexPathForRow:nextRow inSection:baseIndexPath.section];
 }
 
-- (BOOL)_canMoveToDirection:(CTAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)_canMoveToDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
     switch (direction) {
-        case CTAccessoryViewDirectionPrevious:
+        case ADAccessoryViewDirectionPrevious:
             return indexPath.row > 0;
-        case CTAccessoryViewDirectionNext:
+        case ADAccessoryViewDirectionNext:
             return indexPath.row < [self numberOfFormCells] - 1;
     }
     return NO;
@@ -258,8 +258,8 @@ typedef NS_ENUM(NSUInteger, CTAccessoryViewDirection) {
 - (void)_updateInputAccessoryView {
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     if (currentIndexPath) {
-        _nextBarButtonItem.enabled = [self _canMoveToDirection:CTAccessoryViewDirectionNext fromIndexPath:currentIndexPath];
-        _previousBarButtonItem.enabled = [self _canMoveToDirection:CTAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
+        _nextBarButtonItem.enabled = [self _canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:currentIndexPath];
+        _previousBarButtonItem.enabled = [self _canMoveToDirection:ADAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
     }
 }
 
