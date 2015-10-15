@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ADFormPickerDataSource.h"
 
 typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
     ADFormTextCellTypeEmail,
@@ -33,6 +34,7 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 @property (nonatomic, strong) UIColor * textColor;
 @property (nonatomic, strong) UIColor * tintColor;
 @property (nonatomic) Class textFieldFormatterClass;
-@property (nonatomic) NSDateFormatter * dateFormatter;
+@property (nonatomic, strong) NSDateFormatter * dateFormatter;
+@property (nonatomic, strong) id<ADFormPickerDataSource> formPickerDataSource;
 
 @end

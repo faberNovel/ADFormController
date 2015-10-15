@@ -22,19 +22,12 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 };
 
 @interface FDMainFormTableViewController () {
-    NSArray * _genders;
+
 }
 
 @end
 
 @implementation FDMainFormTableViewController
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        _genders = @[ @"Male", @"Female" ];
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +53,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
         case FDRowTypeGender: {
             configuration.placeholder = @"Gender";
             configuration.cellType = ADFormTextCellTypePicker;
+            configuration.formPickerDataSource = [[ADSimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
         } break;
         case FDRowTypeName: {
             configuration.placeholder = @"Name";
@@ -102,24 +96,6 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 
     NSDate * date = [self dateValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeDate inSection:0]];
     DDLogInfo(@"Date = %@", date);
-}
-
-- (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
-    return 1;
-}
-
-- (NSArray *)optionsForComponent:(NSInteger)component indexPath:(NSIndexPath *)indexPath {
-    return _genders;
-}
-
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes indexPath:(NSIndexPath *)indexPath {
-    NSInteger index = [[indexes lastObject] integerValue];
-    return _genders[index];
-}
-
-- (NSArray *)selectedIndexesFromString:(NSString *)string indexPath:(NSIndexPath *)indexPath {
-    NSInteger index = [_genders indexOfObject:string];
-    return @[ @(index) ];
 }
 
 #pragma mark - Private

@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     ADAccessoryViewDirectionNext
 };
 
-@interface ADFormTableViewController () <CTFormTextFieldTableViewCellDelegate, UITextViewDelegate> {
+@interface ADFormTableViewController () <UITextViewDelegate> {
     NSMutableDictionary * _cells;
     UIView * _textFieldAccessoryView;
     UIBarButtonItem * _nextBarButtonItem;
@@ -121,7 +121,6 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
         [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
         cell.textField.inputAccessoryView = [self _textFieldAccessoryView];
         cell.textField.delegate = self;
-        cell.delegate = self;
 
         return cell;
     }
@@ -164,28 +163,6 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     [self _updateInputAccessoryView];
-}
-
-#pragma mark - CTFormTextFieldTableViewCellDelegate
-
-- (NSInteger)numberOfComponentsForCell:(ADFormTextFieldTableViewCell *)cell {
-    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
-    return [self numberOfComponentsForIndexPath:indexPath];
-}
-
-- (NSArray *)optionsForComponent:(NSInteger)component cell:(ADFormTextFieldTableViewCell *)cell {
-    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
-    return [self optionsForComponent:component indexPath:indexPath];
-}
-
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes cell:(ADFormTextFieldTableViewCell *)cell {
-    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
-    return [self stringFromSelectedIndexes:indexes indexPath:indexPath];
-}
-
-- (NSArray *)selectedIndexesFromString:(NSString *)string cell:(ADFormTextFieldTableViewCell *)cell {
-    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
-    return [self selectedIndexesFromString:string indexPath:indexPath];
 }
 
 #pragma mark - Private
@@ -336,27 +313,6 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
         _nextBarButtonItem.enabled = [self _canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:currentIndexPath];
         _previousBarButtonItem.enabled = [self _canMoveToDirection:ADAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
     }
-}
-
-@end
-
-
-@implementation ADFormTableViewController (Picker)
-
-- (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
-    return 1; // to override
-}
-
-- (NSArray *)optionsForComponent:(NSInteger)component indexPath:(NSIndexPath *)indexPath {
-    return nil; // to override
-}
-
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes indexPath:(NSIndexPath *)indexPath {
-    return @""; // to override
-}
-
-- (NSArray *)selectedIndexesFromString:(NSString *)string indexPath:(NSIndexPath *)indexPath {
-    return nil; // to override
 }
 
 @end

@@ -15,6 +15,7 @@
     UIPickerView * _pickerView;
     ADTextFieldFormatter * _textFieldFormatter;
     NSDateFormatter * _dateFormatter;
+    id<ADFormPickerDataSource> _formPickerDataSource;
 }
 
 @property (nonatomic) ADFormTextCellType cellType;
@@ -115,7 +116,6 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 - (void)prepareForReuse {
     [super prepareForReuse];
     [self.textField removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    self.delegate = nil;
     self.textField.inputView = nil;
 }
 
@@ -211,32 +211,23 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     self.textField.text = configuration.text;
     self.textFieldFormatterClass = configuration.textFieldFormatterClass;
     _dateFormatter = configuration.dateFormatter;
+    _formPickerDataSource = configuration.formPickerDataSource;
 }
 
 #pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    if ([self.delegate respondsToSelector:@selector(numberOfComponentsForCell:)]) {
-        return [self.delegate numberOfComponentsForCell:self];
-    }
-    return 0;
+    return [_formPickerDataSource numberOfComponents];
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if ([self.delegate respondsToSelector:@selector(optionsForComponent:cell:)]) {
-        return [[self.delegate optionsForComponent:component cell:self] count];
-    }
-    return 0;
+    return [[_formPickerDataSource optionsForComponent:component] count];
 }
 
 #pragma mark - UIPickerViewDelegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if ([self.delegate respondsToSelector:@selector(optionsForComponent:cell:)]) {
-        NSArray * options = [self.delegate optionsForComponent:component cell:self];
-        return options[row];
-    }
-    return @"";
+    return [_formPickerDataSource optionsForComponent:component][row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -244,9 +235,10 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     for (int component = 0; component < _pickerView.numberOfComponents; component++) {
         [selectedIndexes addObject:@([_pickerView selectedRowInComponent:component])];
     }
-    if (selectedIndexes.count && [self.delegate respondsToSelector:@selector(stringFromSelectedIndexes:cell:)]) {
-        NSString * value = [self.delegate stringFromSelectedIndexes:selectedIndexes cell:self];
-        if (value) {
+
+    if (selectedIndexes.count) {
+        NSString * value = [_formPickerDataSource stringFromSelectedIndexes:selectedIndexes];
+        if (value.length) {
             self.textField.text = @"";
             [self.textField insertText:value];
         }
@@ -280,12 +272,10 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
             [self pickerView:_pickerView didSelectRow:0 inComponent:component];
         }
     } else {
-        if ([self.delegate respondsToSelector:@selector(selectedIndexesFromString:cell:)]) {
-            NSArray * indexes = [self.delegate selectedIndexesFromString:self.textField.text cell:self];
-            [indexes enumerateObjectsUsingBlock:^(NSNumber * indexNumber, NSUInteger idx, BOOL *stop) {
-                [_pickerView selectRow:[indexNumber integerValue] inComponent:idx animated:NO];
-            }];
-        }
+        NSArray * indexes = [_formPickerDataSource selectedIndexesFromString:self.textField.text];
+        [indexes enumerateObjectsUsingBlock:^(NSNumber * indexNumber, NSUInteger idx, BOOL * _Nonnull stop) {
+            [_pickerView selectRow:[indexNumber integerValue] inComponent:idx animated:NO];
+        }];
     }
 }
 
