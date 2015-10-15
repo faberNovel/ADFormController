@@ -10,8 +10,7 @@
 #import "ADTargetSettings.h"
 #import "ADDynamicLogLevel.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import "FDMainFormViewController.h"
-#import "FDMainFormTableViewController.h"
+#import "FDMenuTableViewController.h"
 
 @interface FDAppDelegate (Private)
 - (void)_setupLogger;
@@ -25,10 +24,8 @@
     // Override point for customization after application launch.
     // FIXME set window.rootViewController
 
-
-//    FDMainFormViewController * formViewController = [FDMainFormViewController new];
-    FDMainFormTableViewController * formViewController = [FDMainFormTableViewController new];
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:formViewController];
+    FDMenuTableViewController * menuTableViewController = [[FDMenuTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:menuTableViewController];
     self.window.rootViewController = navigationController;
 
     self.window.backgroundColor = [UIColor whiteColor];

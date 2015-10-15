@@ -56,38 +56,61 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             configuration.placeholder = @"Gender";
             configuration.cellType = ADFormTextCellTypePicker;
             configuration.formPickerDataSource = [[ADSimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
+            if (self.isPrefilled) {
+                configuration.text = @"Male";
+            }
         } break;
         case FDRowTypeName: {
             configuration.placeholder = @"Name";
             configuration.cellType = ADFormTextCellTypeName;
+            if (self.isPrefilled) {
+                configuration.text = @"Georges";
+            }
         } break;
         case FDRowTypeEmail: {
             configuration.placeholder = @"Email";
             configuration.cellType = ADFormTextCellTypeEmail;
+            if (self.isPrefilled) {
+                configuration.text = @"toto.titi@gmail.com";
+            }
         } break;
         case FDRowTypePhoneNumber: {
             configuration.placeholder = @"Phone";
             configuration.cellType = ADFormTextCellTypePhone;
+            if (self.isPrefilled) {
+                configuration.text = @"0612131415";
+            }
         } break;
         case FDRowTypeLongText: {
             configuration.placeholder = @"Long text";
             configuration.cellType = ADFormTextCellTypeLongText;
+            if (self.isPrefilled) {
+                configuration.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.";
+            }
         } break;
         case FDRowTypeDate: {
             configuration.placeholder = @"Date";
             configuration.cellType = ADFormTextCellTypeDate;
             configuration.dateFormatter = [self.class _dateFormatter];
-            configuration.text = @"04/09/1990";
+            if (self.isPrefilled) {
+                configuration.text = @"04/09/1990";
+            }
         } break;
         case FDRowTypeCreditCard: {
             configuration.placeholder = @"Credit card";
             configuration.cellType = ADFormTextCellTypeNumber;
             configuration.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
+            if (self.isPrefilled) {
+                configuration.text = @"5131423412231223";
+            }
         } break;
         case FDRowTypeCreditCardExpirationDate: {
             configuration.placeholder = @"Expiration Date";
             configuration.cellType = ADFormTextCellTypePicker;
             configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
+            if (self.isPrefilled) {
+                configuration.text = @"04/25";
+            }
         } break;
         default:
             break;

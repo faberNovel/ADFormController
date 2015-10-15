@@ -1,0 +1,64 @@
+//
+//  FDMenuTableViewController.m
+//  FormDemo
+//
+//  Created by Pierre Felgines on 15/10/2015.
+//
+//
+
+#import "FDMenuTableViewController.h"
+#import "FDMainFormTableViewController.h"
+
+static NSString * sCellIdentifier = @"sCellIdentifier";
+
+@implementation FDMenuTableViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:sCellIdentifier];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:sCellIdentifier forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    switch (indexPath.row) {
+        case 0: {
+            cell.textLabel.text = @"Empty";
+        } break;
+        case 1: {
+            cell.textLabel.text = @"Filled";
+        } break;
+    }
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0: {
+            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
+            mainFormTableViewController.title = @"Empty";
+            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
+        } break;
+        case 1: {
+            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
+            mainFormTableViewController.prefilled = YES;
+            mainFormTableViewController.title = @"Filled";
+            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
+        } break;
+    }
+}
+
+@end

@@ -9,5 +9,5 @@
 #import "ADFormTableViewController.h"
 
 @interface FDMainFormTableViewController : ADFormTableViewController
-
+@property (nonatomic, getter=isPrefilled) BOOL prefilled;
 @end
