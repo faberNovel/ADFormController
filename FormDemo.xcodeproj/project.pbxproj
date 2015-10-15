@@ -14,6 +14,7 @@
 		490B375E1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B375D1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
 		490B37651BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
 		490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		490B376F1BCFF1E1008E0B5A /* ADFormDirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */; settings = {ASSET_TAGS = (); }; };
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
 		496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* ADFormTableViewController.m */; };
 		496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */; };
@@ -48,6 +49,8 @@
 		490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDExpirationDateFormPickerDataSource.m; sourceTree = "<group>"; };
 		490B376A1BCF9FCC008E0B5A /* FDMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDMenuTableViewController.h; sourceTree = "<group>"; };
 		490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDMenuTableViewController.m; sourceTree = "<group>"; };
+		490B376D1BCFF1E1008E0B5A /* ADFormDirectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormDirectionManager.h; path = ADFormTableViewController/ADFormDirectionManager.h; sourceTree = "<group>"; };
+		490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormDirectionManager.m; path = ADFormTableViewController/ADFormDirectionManager.m; sourceTree = "<group>"; };
 		496042EA1B9A1A550010B11A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		496042EF1B9A1B110010B11A /* ADFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormTableViewController.h; path = ADFormTableViewController/ADFormTableViewController.h; sourceTree = "<group>"; };
 		496042F01B9A1B110010B11A /* ADFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormTableViewController.m; path = ADFormTableViewController/ADFormTableViewController.m; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				490B37621BCF9014008E0B5A /* ADFormPickerDataSource.h */,
 				490B375C1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.h */,
 				490B375D1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m */,
+				490B376D1BCFF1E1008E0B5A /* ADFormDirectionManager.h */,
+				490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */,
 			);
 			name = ADFormTableViewController;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */,
 				490B37591BCF8227008E0B5A /* ADFormCellConfiguration.m in Sources */,
 				496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */,
+				490B376F1BCFF1E1008E0B5A /* ADFormDirectionManager.m in Sources */,
 				490B375A1BCF8227008E0B5A /* ADFormTextViewTableViewCell.m in Sources */,
 				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
 				7A189F931535FD5C00A22149 /* main.m in Sources */,
