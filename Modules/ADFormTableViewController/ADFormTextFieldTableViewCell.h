@@ -21,18 +21,11 @@
 
 @interface ADFormTextFieldTableViewCell : UITableViewCell
 
-@property (nonatomic) ADFormTextCellType cellType;
-@property (nonatomic, strong) UILabel * leftLabel;
 @property (nonatomic, strong) UITextField * textField;
-@property (nonatomic, strong) UIView * rightView;
-
 @property (nonatomic, weak) id<CTFormTextFieldTableViewCellDelegate> delegate;
-@property (nonatomic) Class textFieldFormatterClass;
 
 - (void)startEditing;
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
-
-
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration;
 
 @end

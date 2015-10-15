@@ -16,10 +16,17 @@
     ADTextFieldFormatter * _textFieldFormatter;
     NSDateFormatter * _dateFormatter;
 }
+
+@property (nonatomic) ADFormTextCellType cellType;
+@property (nonatomic) Class textFieldFormatterClass;
+@property (nonatomic, strong) UIView * rightView;
+@property (nonatomic, strong) UILabel * leftLabel;
+
 - (IBAction)_dateChanged:(UIDatePicker *)sender;
 - (IBAction)_textChanged:(UITextField *)textField;
 - (void)_startEditingDatePicker;
 - (void)_startEditingPickerView;
+
 @end
 
 @implementation ADFormTextFieldTableViewCell
