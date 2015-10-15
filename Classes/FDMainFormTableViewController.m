@@ -11,6 +11,7 @@
 #import "FDCreditCardTextFieldFormatter.h"
 #import "FDExpirationDateFormPickerDataSource.h"
 
+
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
     FDRowTypeName,
@@ -18,9 +19,19 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypePhoneNumber,
     FDRowTypeLongText,
     FDRowTypeDate,
-    FDRowTypeCreditCard,
-    FDRowTypeCreditCardExpirationDate,
     FDRowTypeCount
+};
+
+typedef NS_ENUM(NSUInteger, FDCreditCardRowType) {
+    FDCreditCardRowTypeNumber,
+    FDCreditCardRowTypeExpirationDate,
+    FDCreditCardRowTypeCount
+};
+
+typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
+    FDPasswordRowTypeNewPassword,
+    FDPasswordRowTypeNewPasswordConfirmation,
+    FDPasswordRowTypeCount
 };
 
 @interface FDMainFormTableViewController () {
@@ -45,100 +56,146 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 
 #pragma mark - CTFormTableViewController
 
-- (NSInteger)numberOfFormCells {
+- (NSInteger)numberOfFormSections {
+    return 3;
+}
+
+- (NSInteger)numberOfFormCellsInSection:(NSInteger)section {
+    switch (section) {
+        case 0: {
+            return FDRowTypeCount;
+        } break;
+        case 1: {
+            return FDCreditCardRowTypeCount;
+        } break;
+        case 2: {
+            return FDPasswordRowTypeCount;
+        } break;
+        default:
+            break;
+    }
     return FDRowTypeCount;
 }
 
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration forIndexPath:(NSIndexPath *)indexPath {
     [super applyConfiguration:configuration forIndexPath:indexPath];
-    switch (indexPath.row) {
-        case FDRowTypeGender: {
-            configuration.placeholder = @"Gender";
-            configuration.cellType = ADFormTextCellTypePicker;
-            configuration.formPickerDataSource = [[ADSimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
-            if (self.isPrefilled) {
-                configuration.text = @"Male";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Gender";
-            }
-        } break;
-        case FDRowTypeName: {
-            configuration.placeholder = @"Name";
-            configuration.cellType = ADFormTextCellTypeName;
-            if (self.isPrefilled) {
-                configuration.text = @"Georges";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Name";
-            }
-        } break;
-        case FDRowTypeEmail: {
-            configuration.placeholder = @"Email";
-            configuration.cellType = ADFormTextCellTypeEmail;
-            if (self.isPrefilled) {
-                configuration.text = @"toto.titi@gmail.com";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Email";
-            }
-        } break;
-        case FDRowTypePhoneNumber: {
-            configuration.placeholder = @"Phone";
-            configuration.cellType = ADFormTextCellTypePhone;
-            if (self.isPrefilled) {
-                configuration.text = @"0612131415";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Phone";
-            }
-        } break;
-        case FDRowTypeLongText: {
-            configuration.placeholder = @"Long text";
-            configuration.cellType = ADFormTextCellTypeLongText;
-            if (self.isPrefilled) {
-                configuration.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Long text";
-            }
-        } break;
-        case FDRowTypeDate: {
-            configuration.placeholder = @"Date";
-            configuration.cellType = ADFormTextCellTypeDate;
-            configuration.dateFormatter = [self.class _dateFormatter];
-            if (self.isPrefilled) {
-                configuration.text = @"04/09/1990";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Date";
-            }
-        } break;
-        case FDRowTypeCreditCard: {
-            configuration.placeholder = @"Credit card";
-            configuration.cellType = ADFormTextCellTypeNumber;
-            configuration.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
-            if (self.isPrefilled) {
-                configuration.text = @"5131423412231223";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Credit card";
-            }
-        } break;
-        case FDRowTypeCreditCardExpirationDate: {
-            configuration.placeholder = @"Expiration Date";
-            configuration.cellType = ADFormTextCellTypePicker;
-            configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
-            if (self.isPrefilled) {
-                configuration.text = @"04/25";
-            }
-            if (self.showTitles) {
-                configuration.title = @"Expiration date";
-            }
-        } break;
-        default:
-            break;
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case FDRowTypeGender: {
+                configuration.placeholder = @"Gender";
+                configuration.cellType = ADFormTextCellTypePicker;
+                configuration.formPickerDataSource = [[ADSimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
+                if (self.isPrefilled) {
+                    configuration.text = @"Male";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Gender";
+                }
+            } break;
+            case FDRowTypeName: {
+                configuration.placeholder = @"Name";
+                configuration.cellType = ADFormTextCellTypeName;
+                if (self.isPrefilled) {
+                    configuration.text = @"Georges";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Name";
+                }
+            } break;
+            case FDRowTypeEmail: {
+                configuration.placeholder = @"Email";
+                configuration.cellType = ADFormTextCellTypeEmail;
+                if (self.isPrefilled) {
+                    configuration.text = @"toto.titi@gmail.com";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Email";
+                }
+            } break;
+            case FDRowTypePhoneNumber: {
+                configuration.placeholder = @"Phone";
+                configuration.cellType = ADFormTextCellTypePhone;
+                if (self.isPrefilled) {
+                    configuration.text = @"0612131415";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Phone";
+                }
+            } break;
+            case FDRowTypeLongText: {
+                configuration.placeholder = @"Long text";
+                configuration.cellType = ADFormTextCellTypeLongText;
+                if (self.isPrefilled) {
+                    configuration.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Long text";
+                }
+            } break;
+            case FDRowTypeDate: {
+                configuration.placeholder = @"Date";
+                configuration.cellType = ADFormTextCellTypeDate;
+                configuration.dateFormatter = [self.class _dateFormatter];
+                if (self.isPrefilled) {
+                    configuration.text = @"04/09/1990";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Date";
+                }
+            } break;
+            default:
+                break;
+        }
+    } else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case FDCreditCardRowTypeNumber: {
+                configuration.placeholder = @"Credit card";
+                configuration.cellType = ADFormTextCellTypeNumber;
+                configuration.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
+                if (self.isPrefilled) {
+                    configuration.text = @"5131423412231223";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Credit card";
+                }
+            } break;
+            case FDCreditCardRowTypeExpirationDate: {
+                configuration.placeholder = @"Expiration Date";
+                configuration.cellType = ADFormTextCellTypePicker;
+                configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
+                if (self.isPrefilled) {
+                    configuration.text = @"04/25";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Expiration date";
+                }
+            } break;
+        }
+    } else if (indexPath.section == 2) {
+        switch (indexPath.row) {
+            case FDPasswordRowTypeNewPassword: {
+                configuration.placeholder = @"New password";
+                configuration.cellType = ADFormTextCellTypePassword;
+                if (self.isPrefilled) {
+                    configuration.text = @"abcdef";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"New password";
+                }
+            } break;
+            case FDPasswordRowTypeNewPasswordConfirmation: {
+                configuration.placeholder = @"Confirmation";
+                configuration.cellType = ADFormTextCellTypePassword;
+                if (self.isPrefilled) {
+                    configuration.text = @"abcdef";
+                }
+                if (self.showTitles) {
+                    configuration.title = @"Confirmation";
+                }
+            } break;
+        }
     }
+
 }
 
 - (void)formAction:(id)sender {
@@ -150,6 +207,23 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
 
     NSDate * date = [self dateValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeDate inSection:0]];
     DDLogInfo(@"Date = %@", date);
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0: {
+            return @"Profile";
+        } break;
+        case 1: {
+            return @"Credit card";
+        } break;
+        case 2: {
+            return @"Password";
+        } break;
+        default:
+            break;
+    }
+    return nil;
 }
 
 #pragma mark - Private

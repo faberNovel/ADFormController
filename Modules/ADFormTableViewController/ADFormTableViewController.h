@@ -17,7 +17,12 @@
 /*
  * Provides number of cells in the form
  */
-- (NSInteger)numberOfFormCells;
+- (NSInteger)numberOfFormSections;
+
+/*
+ * Provides number of cells in the form
+ */
+- (NSInteger)numberOfFormCellsInSection:(NSInteger)section;
 
 /*
  * Method use to customize each cell. All setup is done in one place

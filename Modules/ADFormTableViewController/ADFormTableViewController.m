@@ -56,7 +56,11 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     configuration.titleFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
 }
 
-- (NSInteger)numberOfFormCells {
+- (NSInteger)numberOfFormSections {
+    return 1;
+}
+
+- (NSInteger)numberOfFormCellsInSection:(NSInteger)section {
     return 0;
 }
 
@@ -91,11 +95,11 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self numberOfFormSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self numberOfFormCells];
+    return [self numberOfFormCellsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,17 +172,19 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 #pragma mark - Private
 
 - (ADFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath {
-    if (!_cells[@(indexPath.row)]) {
-        _cells[@(indexPath.row)] = [[ADFormTextFieldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    }
-    return _cells[@(indexPath.row)];
+    return (ADFormTextFieldTableViewCell *)[self _cellWithClass:ADFormTextFieldTableViewCell.class forIndexPath:indexPath];
 }
 
 - (ADFormTextViewTableViewCell *)_formTextViewCellForIndexPath:(NSIndexPath *)indexPath {
-    if (!_cells[@(indexPath.row)]) {
-        _cells[@(indexPath.row)] = [[ADFormTextViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    return (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class forIndexPath:indexPath];
+}
+
+- (UITableViewCell *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
+    NSInteger key = indexPath.section * 100 + indexPath.row;
+    if (!_cells[@(key)]) {
+        _cells[@(key)] = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
-    return _cells[@(indexPath.row)];
+    return _cells[@(key)];
 }
 
 - (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
@@ -252,7 +258,10 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 }
 
 - (UIReturnKeyType)_returnKeyTypeForIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.row == [self numberOfFormCells] - 1) ? UIReturnKeyGo : UIReturnKeyNext;
+    NSInteger lastSection = [self numberOfFormSections] - 1;
+    BOOL isLastSection = indexPath.section == lastSection;
+    BOOL isLastRowInLastSection = indexPath.row == [self numberOfFormCellsInSection:lastSection] - 1;
+    return (isLastSection && isLastRowInLastSection) ? UIReturnKeyGo : UIReturnKeyNext;
 }
 
 - (void)_next:(id)sender {
@@ -293,18 +302,40 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
         return nil;
     }
 
-    NSInteger nextRow = baseIndexPath.row + (direction == ADAccessoryViewDirectionPrevious ? -1 : +1);
-    return [NSIndexPath indexPathForRow:nextRow inSection:baseIndexPath.section];
+    NSInteger nextSection = baseIndexPath.section;
+    NSInteger nextRow = baseIndexPath.row;
+
+    if (direction == ADAccessoryViewDirectionNext) {
+        BOOL isLastRowInSection = baseIndexPath.row == [self numberOfFormCellsInSection:baseIndexPath.section] - 1;
+        nextSection = isLastRowInSection ? baseIndexPath.section + 1 : baseIndexPath.section;
+        nextRow = isLastRowInSection ? 0 : baseIndexPath.row + 1;
+    } else {
+        BOOL isFirstRowInSection = baseIndexPath.row == 0;
+        nextSection = isFirstRowInSection ? baseIndexPath.section - 1 : baseIndexPath.section;
+        nextRow = isFirstRowInSection ? [self numberOfFormCellsInSection:nextSection] - 1 : baseIndexPath.row - 1;
+    }
+
+    return [NSIndexPath indexPathForRow:nextRow inSection:nextSection];
 }
 
 - (BOOL)_canMoveToDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
     switch (direction) {
         case ADAccessoryViewDirectionPrevious:
-            return indexPath.row > 0;
+            return ![indexPath isEqual:[self _firstIndexPath]];
         case ADAccessoryViewDirectionNext:
-            return indexPath.row < [self numberOfFormCells] - 1;
+            return ![indexPath isEqual:[self _lastIndexPath]];
     }
     return NO;
+}
+
+- (NSIndexPath *)_firstIndexPath {
+    return [NSIndexPath indexPathForRow:0 inSection:0];
+}
+
+- (NSIndexPath *)_lastIndexPath {
+    NSInteger lastSection = [self numberOfFormSections] - 1;
+    return [NSIndexPath indexPathForRow:[self numberOfFormCellsInSection:lastSection] - 1
+                              inSection:lastSection];
 }
 
 - (void)_updateInputAccessoryView {
