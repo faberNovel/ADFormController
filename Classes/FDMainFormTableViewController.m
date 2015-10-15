@@ -80,6 +80,8 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
         case FDRowTypeDate: {
             configuration.placeholder = @"Date";
             configuration.cellType = ADFormTextCellTypeDate;
+            configuration.dateFormatter = [self.class _dateFormatter];
+            configuration.text = @"04/09/1990";
         } break;
         case FDRowTypeCreditCard: {
             configuration.placeholder = @"Credit card";
@@ -97,6 +99,9 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDRowTypeGender inSection:0];
     NSString * gender = [self stringValueForIndexPath:indexPath];
     DDLogInfo(@"Gender = %@", gender);
+
+    NSDate * date = [self dateValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeDate inSection:0]];
+    DDLogInfo(@"Date = %@", date);
 }
 
 - (NSInteger)numberOfComponentsForIndexPath:(NSIndexPath *)indexPath {
@@ -116,5 +121,18 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     NSInteger index = [_genders indexOfObject:string];
     return @[ @(index) ];
 }
+
+#pragma mark - Private
+
++ (NSDateFormatter *)_dateFormatter {
+    static NSDateFormatter * sDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sDateFormatter = [[NSDateFormatter alloc] init];
+        sDateFormatter.dateFormat = @"dd/MM/yyyy";
+    });
+    return sDateFormatter;
+}
+
 
 @end

@@ -14,6 +14,7 @@
     UIDatePicker * _datePicker;
     UIPickerView * _pickerView;
     ADTextFieldFormatter * _textFieldFormatter;
+    NSDateFormatter * _dateFormatter;
 }
 - (IBAction)_dateChanged:(UIDatePicker *)sender;
 - (IBAction)_textChanged:(UITextField *)textField;
@@ -24,16 +25,6 @@
 @implementation ADFormTextFieldTableViewCell
 
 static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
-
-+ (NSDateFormatter *)dateFormatter {
-    static NSDateFormatter * sDateFormatter;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sDateFormatter = [[NSDateFormatter alloc] init];
-        sDateFormatter.dateStyle = NSDateFormatterLongStyle;
-    });
-    return sDateFormatter;
-}
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:kLeftLabelKeyPath];
@@ -212,6 +203,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
     self.textField.text = configuration.text;
     self.textFieldFormatterClass = configuration.textFieldFormatterClass;
+    _dateFormatter = configuration.dateFormatter;
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -259,7 +251,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 - (IBAction)_dateChanged:(UIDatePicker *)sender {
     // Use insertText to simulate touch
     self.textField.text = @"";
-    [self.textField insertText:[[self.class dateFormatter] stringFromDate:sender.date]];
+    [self.textField insertText:[_dateFormatter stringFromDate:sender.date]];
 }
 
 - (IBAction)_textChanged:(UITextField *)textField {
@@ -270,7 +262,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     if (self.textField.text.length == 0) {
         [self _dateChanged:_datePicker];
     } else {
-        NSDate * date = [[self.class dateFormatter] dateFromString:self.textField.text];
+        NSDate * date = [_dateFormatter dateFromString:self.textField.text];
         _datePicker.date = date;
     }
 }

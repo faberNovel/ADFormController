@@ -29,8 +29,6 @@
 @property (nonatomic, weak) id<CTFormTextFieldTableViewCellDelegate> delegate;
 @property (nonatomic) Class textFieldFormatterClass;
 
-+ (NSDateFormatter *)dateFormatter;
-
 - (void)startEditing;
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 

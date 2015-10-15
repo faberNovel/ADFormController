@@ -33,5 +33,6 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 @property (nonatomic, strong) UIColor * textColor;
 @property (nonatomic, strong) UIColor * tintColor;
 @property (nonatomic) Class textFieldFormatterClass;
+@property (nonatomic) NSDateFormatter * dateFormatter;
 
 @end
