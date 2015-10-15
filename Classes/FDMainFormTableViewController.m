@@ -59,12 +59,18 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             if (self.isPrefilled) {
                 configuration.text = @"Male";
             }
+            if (self.showTitles) {
+                configuration.title = @"Gender";
+            }
         } break;
         case FDRowTypeName: {
             configuration.placeholder = @"Name";
             configuration.cellType = ADFormTextCellTypeName;
             if (self.isPrefilled) {
                 configuration.text = @"Georges";
+            }
+            if (self.showTitles) {
+                configuration.title = @"Name";
             }
         } break;
         case FDRowTypeEmail: {
@@ -73,6 +79,9 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             if (self.isPrefilled) {
                 configuration.text = @"toto.titi@gmail.com";
             }
+            if (self.showTitles) {
+                configuration.title = @"Email";
+            }
         } break;
         case FDRowTypePhoneNumber: {
             configuration.placeholder = @"Phone";
@@ -80,12 +89,18 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             if (self.isPrefilled) {
                 configuration.text = @"0612131415";
             }
+            if (self.showTitles) {
+                configuration.title = @"Phone";
+            }
         } break;
         case FDRowTypeLongText: {
             configuration.placeholder = @"Long text";
             configuration.cellType = ADFormTextCellTypeLongText;
             if (self.isPrefilled) {
                 configuration.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.";
+            }
+            if (self.showTitles) {
+                configuration.title = @"Long text";
             }
         } break;
         case FDRowTypeDate: {
@@ -95,6 +110,9 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             if (self.isPrefilled) {
                 configuration.text = @"04/09/1990";
             }
+            if (self.showTitles) {
+                configuration.title = @"Date";
+            }
         } break;
         case FDRowTypeCreditCard: {
             configuration.placeholder = @"Credit card";
@@ -103,6 +121,9 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             if (self.isPrefilled) {
                 configuration.text = @"5131423412231223";
             }
+            if (self.showTitles) {
+                configuration.title = @"Credit card";
+            }
         } break;
         case FDRowTypeCreditCardExpirationDate: {
             configuration.placeholder = @"Expiration Date";
@@ -110,6 +131,9 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
             if (self.isPrefilled) {
                 configuration.text = @"04/25";
+            }
+            if (self.showTitles) {
+                configuration.title = @"Expiration date";
             }
         } break;
         default:

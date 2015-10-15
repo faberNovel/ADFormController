@@ -10,4 +10,5 @@
 
 @interface FDMainFormTableViewController : ADFormTableViewController
 @property (nonatomic, getter=isPrefilled) BOOL prefilled;
+@property (nonatomic) BOOL showTitles;
 @end
