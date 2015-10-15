@@ -7,17 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
-    ADFormTextCellTypeEmail,
-    ADFormTextCellTypePassword,
-    ADFormTextCellTypeName,
-    ADFormTextCellTypePhone,
-    ADFormTextCellTypeText,
-    ADFormTextCellTypeNumber,
-    ADFormTextCellTypeDate,
-    ADFormTextCellTypePicker
-};
+#import "ADFormCellConfiguration.h"
 
 @class ADFormTextFieldTableViewCell;
 
@@ -43,5 +33,8 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 
 - (void)startEditing;
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+
+
+- (void)applyConfiguration:(ADFormCellConfiguration *)configuration;
 
 @end

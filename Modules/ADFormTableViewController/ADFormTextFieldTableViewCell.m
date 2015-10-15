@@ -81,21 +81,6 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     }
 }
 
-- (void)setRightView:(UIView *)rightView {
-    [_rightView removeFromSuperview];
-    _rightView = rightView;
-    _rightView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentView addSubview:_rightView];
-    [self setNeedsUpdateConstraints];
-}
-
-- (void)setTextFieldFormatterClass:(Class)textFieldFormatterClass {
-    _textFieldFormatterClass = textFieldFormatterClass;
-    if (_textFieldFormatterClass) {
-        _textFieldFormatter = [[textFieldFormatterClass alloc] initWithTextField:self.textField];
-    }
-}
-
 - (void)updateConstraints {
     [super updateConstraints];
 
@@ -137,6 +122,21 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 }
 
 #pragma mark - Setters
+
+- (void)setRightView:(UIView *)rightView {
+    [_rightView removeFromSuperview];
+    _rightView = rightView;
+    _rightView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:_rightView];
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)setTextFieldFormatterClass:(Class)textFieldFormatterClass {
+    _textFieldFormatterClass = textFieldFormatterClass;
+    if (_textFieldFormatterClass) {
+        _textFieldFormatter = [[textFieldFormatterClass alloc] initWithTextField:self.textField];
+    }
+}
 
 - (void)setCellType:(ADFormTextCellType)cellType {
     _cellType = cellType;
@@ -196,6 +196,22 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
         return [_textFieldFormatter shouldChangeCharactersInRange:range replacementString:string];
     }
     return YES;
+}
+
+- (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
+    self.textField.placeholder = configuration.placeholder;
+    self.leftLabel.text = configuration.title;
+    self.cellType = configuration.cellType;
+    self.rightView = configuration.rightView;
+
+    self.textField.font = configuration.textFont;
+    self.textField.textColor = configuration.textColor;
+    self.textField.tintColor = configuration.tintColor;
+    self.leftLabel.font = configuration.titleFont;
+    self.leftLabel.textColor = configuration.titleColor;
+
+    self.textField.text = configuration.text;
+    self.textFieldFormatterClass = configuration.textFieldFormatterClass;
 }
 
 #pragma mark - UIPickerViewDataSource

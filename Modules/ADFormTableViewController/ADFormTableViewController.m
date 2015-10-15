@@ -8,6 +8,7 @@
 
 #import "ADFormTableViewController.h"
 #import "ADFormTextFieldTableViewCell.h"
+#import "ADFormTextViewTableViewCell.h"
 #import "UIView+Responder.h"
 
 typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
@@ -15,7 +16,7 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     ADAccessoryViewDirectionNext
 };
 
-@interface ADFormTableViewController () <CTFormTextFieldTableViewCellDelegate> {
+@interface ADFormTableViewController () <CTFormTextFieldTableViewCellDelegate, UITextViewDelegate> {
     NSMutableDictionary * _cells;
     UIView * _textFieldAccessoryView;
     UIBarButtonItem * _nextBarButtonItem;
@@ -48,17 +49,11 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 
 #pragma mark - Methods
 
-- (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    cell.textField.textColor = [UIColor blackColor];
-    cell.textField.tintColor = [UIColor blackColor];
-    cell.textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-    cell.leftLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-
-    cell.textField.returnKeyType = (indexPath.row == [self numberOfFormCells] - 1) ? UIReturnKeyGo : UIReturnKeyNext;
-    [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-    cell.textField.inputAccessoryView = [self _textFieldAccessoryView];
-    cell.textField.delegate = self;
-    cell.delegate = self;
+- (void)applyConfiguration:(ADFormCellConfiguration *)configuration forIndexPath:(NSIndexPath *)indexPath {
+    configuration.textColor = [UIColor blackColor];
+    configuration.tintColor = [UIColor blackColor];
+    configuration.textFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    configuration.titleFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
 }
 
 - (NSInteger)numberOfFormCells {
@@ -70,9 +65,11 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 }
 
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath {
-    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    if (cell) {
-        return cell.textField.text;
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell && [cell isKindOfClass:ADFormTextFieldTableViewCell.class]) {
+        return ((ADFormTextFieldTableViewCell *)cell).textField.text;
+    } else if (cell && [cell isKindOfClass:ADFormTextViewTableViewCell.class]) {
+        return ((ADFormTextViewTableViewCell *)cell).textView.text;
     }
     return nil;
 }
@@ -100,9 +97,42 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ADFormTextFieldTableViewCell * cell = [self _formCellForIndexPath:indexPath];
-    [self configureCell:cell forIndexPath:indexPath];
-    return cell;
+
+    // Create empty configuration
+    ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
+    // Ask subclass to fill configuration
+    [self applyConfiguration:configuration forIndexPath:indexPath];
+
+
+    if (configuration.cellType == ADFormTextCellTypeLongText) {
+        ADFormTextViewTableViewCell * cell = [self _formTextViewCellForIndexPath:indexPath];
+        [cell applyConfiguration:configuration];
+
+        cell.textView.inputAccessoryView = [self _textFieldAccessoryView];
+        cell.textView.delegate = self;
+        return cell;
+    } else {
+        ADFormTextFieldTableViewCell * cell = [self _formCellForIndexPath:indexPath];
+        [cell applyConfiguration:configuration];
+
+        cell.textField.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
+        [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+        cell.textField.inputAccessoryView = [self _textFieldAccessoryView];
+        cell.textField.delegate = self;
+        cell.delegate = self;
+
+        return cell;
+    }
+    return nil;
+}
+
+#pragma mark - UITableViewDelegate method
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
+    [self applyConfiguration:configuration forIndexPath:indexPath];
+
+    return configuration.cellType == ADFormTextCellTypeLongText ? 100.0f : UITableViewAutomaticDimension;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -126,6 +156,12 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
     return [cell shouldChangeCharactersInRange:range replacementString:string];
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self _updateInputAccessoryView];
 }
 
 #pragma mark - CTFormTextFieldTableViewCellDelegate
@@ -159,11 +195,29 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     return _cells[@(indexPath.row)];
 }
 
+- (ADFormTextViewTableViewCell *)_formTextViewCellForIndexPath:(NSIndexPath *)indexPath {
+    if (!_cells[@(indexPath.row)]) {
+        _cells[@(indexPath.row)] = [[ADFormTextViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    }
+    return _cells[@(indexPath.row)];
+}
+
 - (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
     UIView * view = textField;
     while (view != nil) {
         if ([view isKindOfClass:ADFormTextFieldTableViewCell.class]) {
             return (ADFormTextFieldTableViewCell *)view;
+        }
+        view = view.superview;
+    }
+    return nil;
+}
+
+- (ADFormTextViewTableViewCell *)_cellForTextView:(UITextView *)textView {
+    UIView * view = textView;
+    while (view != nil) {
+        if ([view isKindOfClass:ADFormTextViewTableViewCell.class]) {
+            return (ADFormTextViewTableViewCell *)view;
         }
         view = view.superview;
     }
@@ -183,10 +237,17 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     return [self.tableView indexPathForCell:cell];
 }
 
+- (NSIndexPath *)_indexPathForTextView:(UITextView *)textView {
+    ADFormTextViewTableViewCell * cell = [self _cellForTextView:textView];
+    return [self.tableView indexPathForCell:cell];
+}
+
 - (NSIndexPath *)_indexPathForFirstResponder {
     UIView * firstResponder = [self.tableView ad_findFirstResponder];
     if ([firstResponder isKindOfClass:[UITextField class]]) {
         return [self _indexPathForTextField:(UITextField *)firstResponder];
+    } else if ([firstResponder isKindOfClass:[UITextView class]]) {
+        return [self _indexPathForTextView:(UITextView *)firstResponder];
     }
     return nil;
 }
@@ -211,6 +272,10 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     return _textFieldAccessoryView;
 }
 
+- (UIReturnKeyType)_returnKeyTypeForIndexPath:(NSIndexPath *)indexPath {
+    return (indexPath.row == [self numberOfFormCells] - 1) ? UIReturnKeyGo : UIReturnKeyNext;
+}
+
 - (void)_next:(id)sender {
     [self _moveToDirection:ADAccessoryViewDirectionNext];
 }
@@ -227,8 +292,16 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 - (void)_moveToDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath * nextIndexPath = [self _indexPathForDirection:direction andBaseIndexPath:indexPath];
     if (nextIndexPath) {
-        ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:nextIndexPath];
-        [nextCell.textField becomeFirstResponder];
+        UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
+
+        if ([cell isKindOfClass:ADFormTextFieldTableViewCell.class]) {
+            ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)cell;
+            [nextCell.textField becomeFirstResponder];
+        } else if ([cell isKindOfClass:ADFormTextViewTableViewCell.class]) {
+            ADFormTextViewTableViewCell * nextCell = (ADFormTextViewTableViewCell *)cell;
+            [nextCell.textView becomeFirstResponder];
+
+        }
     }
 }
 
@@ -283,6 +356,5 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
 - (NSArray *)selectedIndexesFromString:(NSString *)string indexPath:(NSIndexPath *)indexPath {
     return nil; // to override
 }
-
 
 @end

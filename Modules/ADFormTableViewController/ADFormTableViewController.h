@@ -7,6 +7,7 @@
 //
 
 #import "ADTableViewController.h"
+#import "ADFormCellConfiguration.h"
 
 @class ADFormTextFieldTableViewCell;
 
@@ -20,7 +21,7 @@
 /*
  * Method use to customize each cell. All setup is done in one place
  */
-- (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
+- (void)applyConfiguration:(ADFormCellConfiguration *)configuration forIndexPath:(NSIndexPath *)indexPath;
 
 /*
  * Action when form is validated

@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeName,
     FDRowTypeEmail,
     FDRowTypePhoneNumber,
+    FDRowTypeLongText,
     FDRowTypeDate,
     FDRowTypeCreditCard,
     FDRowTypeCount
@@ -53,34 +54,37 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     return FDRowTypeCount;
 }
 
-- (void)configureCell:(ADFormTextFieldTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    [super configureCell:cell forIndexPath:indexPath];
-
+- (void)applyConfiguration:(ADFormCellConfiguration *)configuration forIndexPath:(NSIndexPath *)indexPath {
+    [super applyConfiguration:configuration forIndexPath:indexPath];
     switch (indexPath.row) {
         case FDRowTypeGender: {
-            cell.textField.placeholder = @"Gender";
-            cell.cellType = ADFormTextCellTypePicker;
+            configuration.placeholder = @"Gender";
+            configuration.cellType = ADFormTextCellTypePicker;
         } break;
         case FDRowTypeName: {
-            cell.textField.placeholder = @"Name";
-            cell.cellType = ADFormTextCellTypeName;
+            configuration.placeholder = @"Name";
+            configuration.cellType = ADFormTextCellTypeName;
         } break;
         case FDRowTypeEmail: {
-            cell.textField.placeholder = @"Email";
-            cell.cellType = ADFormTextCellTypeEmail;
+            configuration.placeholder = @"Email";
+            configuration.cellType = ADFormTextCellTypeEmail;
         } break;
         case FDRowTypePhoneNumber: {
-            cell.textField.placeholder = @"Phone";
-            cell.cellType = ADFormTextCellTypePhone;
+            configuration.placeholder = @"Phone";
+            configuration.cellType = ADFormTextCellTypePhone;
+        } break;
+        case FDRowTypeLongText: {
+            configuration.placeholder = @"Long text";
+            configuration.cellType = ADFormTextCellTypeLongText;
         } break;
         case FDRowTypeDate: {
-            cell.textField.placeholder = @"Date";
-            cell.cellType = ADFormTextCellTypeDate;
+            configuration.placeholder = @"Date";
+            configuration.cellType = ADFormTextCellTypeDate;
         } break;
         case FDRowTypeCreditCard: {
-            cell.textField.placeholder = @"Credit card";
-            cell.cellType = ADFormTextCellTypeNumber;
-            cell.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
+            configuration.placeholder = @"Credit card";
+            configuration.cellType = ADFormTextCellTypeNumber;
+            configuration.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
         } break;
         default:
             break;
