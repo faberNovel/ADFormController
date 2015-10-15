@@ -208,7 +208,9 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     self.leftLabel.font = configuration.titleFont;
     self.leftLabel.textColor = configuration.titleColor;
 
-    self.textField.text = configuration.text;
+    if (configuration.text.length > 0) {
+        self.textField.text = configuration.text;
+    }
     self.textFieldFormatterClass = configuration.textFieldFormatterClass;
     _dateFormatter = configuration.dateFormatter;
     _formPickerDataSource = configuration.formPickerDataSource;

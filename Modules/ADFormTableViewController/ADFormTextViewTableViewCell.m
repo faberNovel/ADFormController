@@ -101,7 +101,9 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
     _placeholderTextView.textColor = configuration.textColor;
     _placeholderTextView.tintColor = configuration.tintColor;
 
-    _placeholderTextView.text = configuration.text;
+    if (configuration.text.length > 0) {
+        _placeholderTextView.text = configuration.text;
+    }
     _placeholderTextView.placeholder = configuration.placeholder;
 }
 
