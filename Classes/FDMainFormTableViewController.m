@@ -9,6 +9,7 @@
 #import "FDMainFormTableViewController.h"
 #import "ADFormTextFieldTableViewCell.h"
 #import "FDCreditCardTextFieldFormatter.h"
+#import "FDExpirationDateFormPickerDataSource.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -18,6 +19,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeLongText,
     FDRowTypeDate,
     FDRowTypeCreditCard,
+    FDRowTypeCreditCardExpirationDate,
     FDRowTypeCount
 };
 
@@ -81,6 +83,11 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
             configuration.placeholder = @"Credit card";
             configuration.cellType = ADFormTextCellTypeNumber;
             configuration.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
+        } break;
+        case FDRowTypeCreditCardExpirationDate: {
+            configuration.placeholder = @"Expiration Date";
+            configuration.cellType = ADFormTextCellTypePicker;
+            configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
         } break;
         default:
             break;
