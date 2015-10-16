@@ -12,7 +12,7 @@
 
 @class ADFormTextFieldTableViewCell;
 
-@interface ADFormTableViewController : ADTableViewController <UITextFieldDelegate>
+@interface ADFormTableViewController : ADTableViewController
 
 /*
  * Provides number of cells in the form

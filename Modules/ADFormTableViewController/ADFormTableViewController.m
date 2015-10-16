@@ -13,7 +13,7 @@
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 
-@interface ADFormTableViewController () <UITextViewDelegate> {
+@interface ADFormTableViewController () <UITextFieldDelegate, UITextViewDelegate> {
     NSMutableDictionary * _cells;
     UIBarButtonItem * _nextBarButtonItem;
     UIBarButtonItem * _previousBarButtonItem;
