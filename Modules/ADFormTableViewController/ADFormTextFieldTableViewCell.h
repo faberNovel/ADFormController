@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ADFormCellConfiguration.h"
 
-@interface ADFormTextFieldTableViewCell : UITableViewCell
+@interface ADFormTextFieldTableViewCell : UITableViewCell <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField * textField;
 
-- (void)startEditing;
-- (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration;
 
 @end

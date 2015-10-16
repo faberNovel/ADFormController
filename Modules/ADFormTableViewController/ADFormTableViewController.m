@@ -174,12 +174,12 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self _updateInputAccessoryView];
     ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
-    [cell startEditing];
+    [cell textFieldDidBeginEditing:textField];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
-    return [cell shouldChangeCharactersInRange:range replacementString:string];
+    return [cell textField:textField shouldChangeCharactersInRange:range replacementString:string];
 }
 
 #pragma mark - UITextViewDelegate

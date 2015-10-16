@@ -176,26 +176,6 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 #pragma mark - Methods
 
-- (void)startEditing {
-    switch (self.cellType) {
-        case ADFormTextCellTypeDate: {
-            [self _startEditingDatePicker];
-        } break;
-        case ADFormTextCellTypePicker: {
-            [self _startEditingPickerView];
-        } break;
-        default:
-            break; // no op
-    }
-}
-
-- (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (_textFieldFormatter) {
-        return [_textFieldFormatter shouldChangeCharactersInRange:range replacementString:string];
-    }
-    return YES;
-}
-
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
     self.textField.placeholder = configuration.placeholder;
     self.leftLabel.text = configuration.title;
@@ -245,6 +225,28 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
             [self.textField insertText:value];
         }
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    switch (self.cellType) {
+        case ADFormTextCellTypeDate: {
+            [self _startEditingDatePicker];
+        } break;
+        case ADFormTextCellTypePicker: {
+            [self _startEditingPickerView];
+        } break;
+        default:
+            break; // no op
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (_textFieldFormatter) {
+        return [_textFieldFormatter shouldChangeCharactersInRange:range replacementString:string];
+    }
+    return YES;
 }
 
 #pragma mark - Private
