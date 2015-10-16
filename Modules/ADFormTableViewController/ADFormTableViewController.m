@@ -15,11 +15,13 @@
 
 @interface ADFormTableViewController () <UITextViewDelegate> {
     NSMutableDictionary * _cells;
-    UIView * _textFieldAccessoryView;
     UIBarButtonItem * _nextBarButtonItem;
     UIBarButtonItem * _previousBarButtonItem;
     ADFormDirectionManager * _formDirectionManager;
 }
+
+@property (nonatomic, strong) UIView * textFieldAccessoryView;
+
 - (ADFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath;
 - (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField;
 - (NSIndexPath *)_indexPathForTextField:(UITextField *)textField;
@@ -45,6 +47,23 @@
     if ([self.class tableViewStyle] == UITableViewStylePlain) {
         self.tableView.tableFooterView = [UIView new];
     }
+}
+
+#pragma mark - Getter
+
+- (UIView *)textFieldAccessoryView {
+    if (!_textFieldAccessoryView) {
+        UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44.0f)];
+        toolbar.tintColor = [UIColor blackColor];
+        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDNextIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_next:)];
+        _nextBarButtonItem.width = 44.0f;
+        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDPreviousIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_previous:)];
+        _previousBarButtonItem.width = 44.0f;
+        UIBarButtonItem * flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        toolbar.items = @[flexibleBarButtonItem, _previousBarButtonItem, _nextBarButtonItem];
+        _textFieldAccessoryView = toolbar;
+    }
+    return _textFieldAccessoryView;
 }
 
 #pragma mark - Methods
@@ -114,7 +133,7 @@
         ADFormTextViewTableViewCell * cell = [self _formTextViewCellForIndexPath:indexPath];
         [cell applyConfiguration:configuration];
 
-        cell.textView.inputAccessoryView = [self _textFieldAccessoryView];
+        cell.textView.inputAccessoryView = self.textFieldAccessoryView;
         cell.textView.delegate = self;
         return cell;
     } else {
@@ -123,7 +142,7 @@
 
         cell.textField.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
         [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-        cell.textField.inputAccessoryView = [self _textFieldAccessoryView];
+        cell.textField.inputAccessoryView = self.textFieldAccessoryView;
         cell.textField.delegate = self;
 
         return cell;
@@ -226,21 +245,6 @@
 - (void)_textFieldValueChanged:(UITextField *)textField {
     NSIndexPath * indexPath = [self _indexPathForTextField:textField];
     [self valueChangedForTextField:textField atIndexPath:indexPath];
-}
-
-- (UIView *)_textFieldAccessoryView {
-    if (!_textFieldAccessoryView) {
-        UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44.0f)];
-        toolbar.tintColor = [UIColor blackColor];
-        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDNextIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_next:)];
-        _nextBarButtonItem.width = 44.0f;
-        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDPreviousIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_previous:)];
-        _previousBarButtonItem.width = 44.0f;
-        UIBarButtonItem * flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        toolbar.items = @[flexibleBarButtonItem, _previousBarButtonItem, _nextBarButtonItem];
-        _textFieldAccessoryView = toolbar;
-    }
-    return _textFieldAccessoryView;
 }
 
 - (UIReturnKeyType)_returnKeyTypeForIndexPath:(NSIndexPath *)indexPath {
