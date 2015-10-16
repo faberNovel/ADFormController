@@ -11,6 +11,7 @@
 #import "ADFormTextViewTableViewCell.h"
 #import "UIView+Responder.h"
 #import "ADFormDirectionManager.h"
+#import "UIView+Traverse.h"
 
 @interface ADFormTableViewController () <UITextViewDelegate> {
     NSMutableDictionary * _cells;
@@ -187,25 +188,11 @@
 }
 
 - (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
-    UIView * view = textField;
-    while (view != nil) {
-        if ([view isKindOfClass:ADFormTextFieldTableViewCell.class]) {
-            return (ADFormTextFieldTableViewCell *)view;
-        }
-        view = view.superview;
-    }
-    return nil;
+    return (ADFormTextFieldTableViewCell *)[textField ad_superviewOfClass:ADFormTextFieldTableViewCell.class];
 }
 
 - (ADFormTextViewTableViewCell *)_cellForTextView:(UITextView *)textView {
-    UIView * view = textView;
-    while (view != nil) {
-        if ([view isKindOfClass:ADFormTextViewTableViewCell.class]) {
-            return (ADFormTextViewTableViewCell *)view;
-        }
-        view = view.superview;
-    }
-    return nil;
+    return (ADFormTextViewTableViewCell *)[textView ad_superviewOfClass:ADFormTextViewTableViewCell.class];
 }
 
 - (ADFormTextFieldTableViewCell *)_cellFromFirstResponder {
