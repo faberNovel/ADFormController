@@ -362,7 +362,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FD;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 7A0EC6491535D8ED00E5F54A /* Build configuration list for PBXProject "FormDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -500,6 +500,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -523,6 +524,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "FD Stubs";
 				WRAPPER_EXTENSION = app;
 			};
@@ -542,6 +544,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -565,6 +568,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -585,6 +589,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -608,6 +613,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "FD Preprod";
 				WRAPPER_EXTENSION = app;
 			};
@@ -628,6 +634,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION=$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -651,6 +658,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
