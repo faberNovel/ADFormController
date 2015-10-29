@@ -151,7 +151,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             case FDCreditCardRowTypeNumber: {
                 configuration.placeholder = @"Credit card";
                 configuration.cellType = ADFormTextCellTypeNumber;
-                configuration.textFieldFormatterClass = [FDCreditCardTextFieldFormatter class];
+                configuration.textFieldFormatter = [FDCreditCardTextFieldFormatter new];
                 if (self.isPrefilled) {
                     configuration.text = @"5131423412231223";
                 }

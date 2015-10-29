@@ -19,7 +19,6 @@
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
 		496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* ADFormTableViewController.m */; };
 		496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */; };
-		496042F71B9A1B920010B11A /* ADTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F61B9A1B920010B11A /* ADTextFieldFormatter.m */; };
 		497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C97921B9AC1B3002175AC /* ADTableViewController.m */; };
 		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
 		499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999003F1BAFDFE400C09B9A /* FDMainFormTableViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -60,7 +59,6 @@
 		496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormTextFieldTableViewCell.h; path = ADFormTableViewController/ADFormTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormTextFieldTableViewCell.m; path = ADFormTableViewController/ADFormTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		496042F51B9A1B920010B11A /* ADTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextFieldFormatter.h; path = ADFormTableViewController/ADTextFieldFormatter.h; sourceTree = "<group>"; };
-		496042F61B9A1B920010B11A /* ADTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTextFieldFormatter.m; path = ADFormTableViewController/ADTextFieldFormatter.m; sourceTree = "<group>"; };
 		497C97911B9AC1B3002175AC /* ADTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTableViewController.h; path = ADFormTableViewController/ADTableViewController.h; sourceTree = "<group>"; };
 		497C97921B9AC1B3002175AC /* ADTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTableViewController.m; path = ADFormTableViewController/ADTableViewController.m; sourceTree = "<group>"; };
 		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
@@ -128,7 +126,6 @@
 				496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */,
 				496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */,
 				496042F51B9A1B920010B11A /* ADTextFieldFormatter.h */,
-				496042F61B9A1B920010B11A /* ADTextFieldFormatter.m */,
 				497C97911B9AC1B3002175AC /* ADTableViewController.h */,
 				497C97921B9AC1B3002175AC /* ADTableViewController.m */,
 				490B37621BCF9014008E0B5A /* ADFormPickerDataSource.h */,
@@ -477,7 +474,6 @@
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
-				496042F71B9A1B920010B11A /* ADTextFieldFormatter.m in Sources */,
 				497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

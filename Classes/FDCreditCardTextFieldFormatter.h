@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ADTextFieldFormatter.h"
 
-@interface FDCreditCardTextFieldFormatter : ADTextFieldFormatter
-
+@interface FDCreditCardTextFieldFormatter : NSObject <ADTextFieldFormatter>
 
 @end

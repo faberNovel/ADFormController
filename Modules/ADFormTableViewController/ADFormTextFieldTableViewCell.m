@@ -13,13 +13,12 @@
     NSMutableArray * _dynamicConstraints;
     UIDatePicker * _datePicker;
     UIPickerView * _pickerView;
-    ADTextFieldFormatter * _textFieldFormatter;
+    id<ADTextFieldFormatter> _textFieldFormatter;
     NSDateFormatter * _dateFormatter;
     id<ADFormPickerDataSource> _formPickerDataSource;
 }
 
 @property (nonatomic) ADFormTextCellType cellType;
-@property (nonatomic) Class textFieldFormatterClass;
 @property (nonatomic, strong) UIView * rightView;
 @property (nonatomic, strong) UILabel * leftLabel;
 
@@ -129,13 +128,6 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     [self setNeedsUpdateConstraints];
 }
 
-- (void)setTextFieldFormatterClass:(Class)textFieldFormatterClass {
-    _textFieldFormatterClass = textFieldFormatterClass;
-    if (_textFieldFormatterClass) {
-        _textFieldFormatter = [[textFieldFormatterClass alloc] initWithTextField:self.textField];
-    }
-}
-
 - (void)setCellType:(ADFormTextCellType)cellType {
     _cellType = cellType;
     switch (cellType) {
@@ -191,7 +183,8 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     if (configuration.text.length > 0) {
         self.textField.text = configuration.text;
     }
-    self.textFieldFormatterClass = configuration.textFieldFormatterClass;
+    _textFieldFormatter = configuration.textFieldFormatter;
+    [_textFieldFormatter textFieldValueChanged:self.textField];
     _dateFormatter = configuration.dateFormatter;
     _formPickerDataSource = configuration.formPickerDataSource;
 }
@@ -244,7 +237,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (_textFieldFormatter) {
-        return [_textFieldFormatter shouldChangeCharactersInRange:range replacementString:string];
+        return [_textFieldFormatter textField:textField shouldChangeCharactersInRange:range replacementString:string];
     }
     return YES;
 }
@@ -258,7 +251,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 }
 
 - (IBAction)_textChanged:(UITextField *)textField {
-    [_textFieldFormatter editingValueChanged];
+    [_textFieldFormatter textFieldValueChanged:textField];
 }
 
 - (void)_startEditingDatePicker {

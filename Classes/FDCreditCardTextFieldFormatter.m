@@ -21,15 +21,15 @@
 
 @implementation FDCreditCardTextFieldFormatter
 
-#pragma mark - Methods
+#pragma mark - ADTextFieldFormatter
 
-- (void)editingValueChanged {
-    [self _reformatAsCardNumber:self.textField];
+- (void)textFieldValueChanged:(UITextField *)textField {
+    [self _reformatAsCardNumber:textField];
 }
 
-- (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    _previousTextFieldContent = self.textField.text;
-    _previousSelection = self.textField.selectedTextRange;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    _previousTextFieldContent = textField.text;
+    _previousSelection = textField.selectedTextRange;
     return YES;
 }
 

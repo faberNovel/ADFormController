@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ADTextFieldFormatter : NSObject
-
-@property (nonatomic, weak) UITextField * textField;
-
-- (instancetype)initWithTextField:(UITextField *)textField;
-- (void)editingValueChanged;
-- (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
-
+@protocol ADTextFieldFormatter <NSObject>
+- (void)textFieldValueChanged:(UITextField *)textField;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 @end
+
