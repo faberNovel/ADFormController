@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */; settings = {ASSET_TAGS = (); }; };
-		490B37591BCF8227008E0B5A /* ADFormCellConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37541BCF8227008E0B5A /* ADFormCellConfiguration.m */; settings = {ASSET_TAGS = (); }; };
-		490B375A1BCF8227008E0B5A /* ADFormTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37561BCF8227008E0B5A /* ADFormTextViewTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		490B375B1BCF8227008E0B5A /* ADPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37581BCF8227008E0B5A /* ADPlaceholderTextView.m */; settings = {ASSET_TAGS = (); }; };
-		490B375E1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B375D1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
-		490B37651BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */; settings = {ASSET_TAGS = (); }; };
-		490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		490B376F1BCFF1E1008E0B5A /* ADFormDirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */; settings = {ASSET_TAGS = (); }; };
-		490B37721BD0D307008E0B5A /* UIView+Traverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37711BD0D307008E0B5A /* UIView+Traverse.m */; settings = {ASSET_TAGS = (); }; };
+		490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */; };
+		490B37591BCF8227008E0B5A /* ADFormCellConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37541BCF8227008E0B5A /* ADFormCellConfiguration.m */; };
+		490B375A1BCF8227008E0B5A /* ADFormTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37561BCF8227008E0B5A /* ADFormTextViewTableViewCell.m */; };
+		490B375B1BCF8227008E0B5A /* ADPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37581BCF8227008E0B5A /* ADPlaceholderTextView.m */; };
+		490B375E1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B375D1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m */; };
+		490B37651BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */; };
+		490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */; };
+		490B376F1BCFF1E1008E0B5A /* ADFormDirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */; };
+		490B37721BD0D307008E0B5A /* UIView+Traverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37711BD0D307008E0B5A /* UIView+Traverse.m */; };
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
 		496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* ADFormTableViewController.m */; };
 		496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */; };
 		497C97931B9AC1B3002175AC /* ADTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497C97921B9AC1B3002175AC /* ADTableViewController.m */; };
 		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
-		499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999003F1BAFDFE400C09B9A /* FDMainFormTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999003F1BAFDFE400C09B9A /* FDMainFormTableViewController.m */; };
 		6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */; };
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
@@ -342,6 +342,7 @@
 				7A0EC64D1535D8ED00E5F54A /* Resources */,
 				6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */,
 				12C126E1E66FBB3F11C274B9 /* Copy Pods Resources */,
+				D6B55F7B53A7B36C64F8324A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -449,6 +450,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GIT_COMMIT=`git rev-parse --short HEAD`\nGIT_BRANCH=`git symbolic-ref HEAD`\nGIT_STATUS=`git status --porcelain -z`\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitCommit\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitBranch\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitStatus\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\nif [ -n \"$GIT_COMMIT\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitCommit string \\\"${GIT_COMMIT}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_BRANCH\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitBranch string \\\"${GIT_BRANCH}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_STATUS\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitStatus string \\\"${GIT_STATUS}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi";
+			showEnvVarsInLog = 0;
+		};
+		D6B55F7B53A7B36C64F8324A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
