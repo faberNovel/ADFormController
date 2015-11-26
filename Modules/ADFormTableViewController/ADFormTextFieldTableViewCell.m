@@ -141,6 +141,10 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
         case ADFormTextCellTypePassword: {
             self.textField.secureTextEntry = YES;
         } break;
+        case ADFormTextCellTypePasswordNumber: {
+            self.textField.keyboardType = UIKeyboardTypeNumberPad;
+            self.textField.secureTextEntry = YES;
+        } break;
         case ADFormTextCellTypeName: {
             self.textField.keyboardType = UIKeyboardTypeAlphabet;
             self.textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
