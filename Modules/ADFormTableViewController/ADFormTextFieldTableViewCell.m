@@ -8,6 +8,7 @@
 
 #import "ADFormTextFieldTableViewCell.h"
 #import "ADTextFieldFormatter.h"
+#import "ADTextField.h"
 
 @interface ADFormTextFieldTableViewCell () <UIPickerViewDataSource, UIPickerViewDelegate> {
     NSMutableArray * _dynamicConstraints;
@@ -16,6 +17,7 @@
     id<ADTextFieldFormatter> _textFieldFormatter;
     NSDateFormatter * _dateFormatter;
     id<ADFormPickerDataSource> _formPickerDataSource;
+    ADTextField * _textField;
 }
 
 @property (nonatomic) ADFormTextCellType cellType;
@@ -41,7 +43,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        _textField = [[UITextField alloc] init];
+        _textField = [[ADTextField alloc] init];
         _textField.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:_textField];
         [_textField addTarget:self action:@selector(_textChanged:) forControlEvents:UIControlEventAllEditingEvents];
@@ -157,13 +159,21 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
         } break;
         case ADFormTextCellTypeDate: {
             self.textField.inputView = _datePicker;
+            _textField.disablePasteAction = YES;
         } break;
         case ADFormTextCellTypePicker: {
             self.textField.inputView = _pickerView;
+            _textField.disablePasteAction = YES;
         } break;
         default:
             break;
     }
+}
+
+#pragma mark - Getters
+
+- (UITextField *)textField {
+    return _textField;
 }
 
 #pragma mark - Methods

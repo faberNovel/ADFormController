@@ -11,7 +11,7 @@
 
 @interface ADFormTextFieldTableViewCell : UITableViewCell <UITextFieldDelegate>
 
-@property (nonatomic, strong) UITextField * textField;
+@property (nonatomic, strong, readonly) UITextField * textField;
 
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration;
 
