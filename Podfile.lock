@@ -1,26 +1,26 @@
 PODS:
   - ADDynamicLogLevel (1.0.0):
     - CocoaLumberjack (~> 2.0.0-rc)
-  - ADKeyboardManager (1.0.0):
+  - ADKeyboardManager (2.0.1):
     - ADDynamicLogLevel (~> 1.0.0)
     - CocoaLumberjack
-  - CocoaLumberjack (2.0.0-rc):
-    - CocoaLumberjack/Default (= 2.0.0-rc)
-    - CocoaLumberjack/Extensions (= 2.0.0-rc)
-  - CocoaLumberjack/Core (2.0.0-rc)
-  - CocoaLumberjack/Default (2.0.0-rc):
+  - CocoaLumberjack (2.0.3):
+    - CocoaLumberjack/Default (= 2.0.3)
+    - CocoaLumberjack/Extensions (= 2.0.3)
+  - CocoaLumberjack/Core (2.0.3)
+  - CocoaLumberjack/Default (2.0.3):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.0.0-rc):
+  - CocoaLumberjack/Extensions (2.0.3):
     - CocoaLumberjack/Default
 
 DEPENDENCIES:
   - ADDynamicLogLevel (~> 1.0.0)
-  - ADKeyboardManager
+  - ADKeyboardManager (~> 2.0.0)
   - CocoaLumberjack (~> 2.0.0-rc)
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 6a68b989ac6a1326e1935c7ab2d53ed1f75a4da5
-  ADKeyboardManager: a8e74ac7daeb5769ac7267c4f1cd571bab508af1
-  CocoaLumberjack: 04c5b9b7479dd4276a09700fcd6644423ea1751c
+  ADKeyboardManager: 6fffd59e15a614e72532b74bbcd2933520373eb6
+  CocoaLumberjack: f58d8a19629f4d8379ae14bb3534def24161430e
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

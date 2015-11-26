@@ -37,7 +37,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|" options:0 metrics:nil views:views]];
 
-    _keyboardManager = [[ADKeyboardManager alloc] initWithTableView:_tableView];
+    _keyboardManager = [[ADKeyboardManager alloc] initWithScrollView:_tableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
