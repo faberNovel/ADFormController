@@ -49,6 +49,11 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self _dismissKeyboard];
+}
+
 #pragma mark - Getter
 
 - (UIView *)textFieldAccessoryView {
@@ -84,7 +89,7 @@
 }
 
 - (void)formAction:(id)sender {
-    [self.tableView endEditing:YES];
+    [self _dismissKeyboard];
 }
 
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath {
@@ -289,6 +294,10 @@
         _nextBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:currentIndexPath];
         _previousBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
     }
+}
+
+- (void)_dismissKeyboard {
+    [self.tableView endEditing:YES];
 }
 
 @end
