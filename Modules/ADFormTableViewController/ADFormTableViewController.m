@@ -156,7 +156,7 @@
     ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
     [self applyConfiguration:configuration forIndexPath:indexPath];
 
-    return configuration.cellType == ADFormTextCellTypeLongText ? 100.0f : UITableViewAutomaticDimension;
+    return configuration.cellType == ADFormTextCellTypeLongText ? 100.0f : 44.0f;
 }
 
 #pragma mark - UITextFieldDelegate
