@@ -12,15 +12,14 @@
 #import "UIView+Responder.h"
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
+#import "ADTextInputAccessoryView.h"
 
 @interface ADFormTableViewController () <UITextFieldDelegate, UITextViewDelegate> {
     NSMutableDictionary * _cells;
-    UIBarButtonItem * _nextBarButtonItem;
-    UIBarButtonItem * _previousBarButtonItem;
     ADFormDirectionManager * _formDirectionManager;
 }
 
-@property (nonatomic, strong) UIView * textFieldAccessoryView;
+@property (nonatomic, strong) ADTextInputAccessoryView * textInputAccessoryView;
 
 - (ADFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath;
 - (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField;
@@ -56,19 +55,16 @@
 
 #pragma mark - Getter
 
-- (UIView *)textFieldAccessoryView {
-    if (!_textFieldAccessoryView) {
-        UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44.0f)];
-        toolbar.tintColor = [UIColor blackColor];
-        _nextBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDNextIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_next:)];
-        _nextBarButtonItem.width = 44.0f;
-        _previousBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FDPreviousIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(_previous:)];
-        _previousBarButtonItem.width = 44.0f;
-        UIBarButtonItem * flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        toolbar.items = @[flexibleBarButtonItem, _previousBarButtonItem, _nextBarButtonItem];
-        _textFieldAccessoryView = toolbar;
+- (ADTextInputAccessoryView *)textInputAccessoryView {
+    if (!_textInputAccessoryView) {
+        CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44.0f);
+        _textInputAccessoryView = [[ADTextInputAccessoryView alloc] initWithFrame:frame];
+        _textInputAccessoryView.nextBarButtonItem.target = self;
+        _textInputAccessoryView.nextBarButtonItem.action = @selector(_next:);
+        _textInputAccessoryView.previousBarButtonItem.target = self;
+        _textInputAccessoryView.previousBarButtonItem.action = @selector(_previous:);
     }
-    return _textFieldAccessoryView;
+    return _textInputAccessoryView;
 }
 
 #pragma mark - Methods
@@ -138,7 +134,7 @@
         ADFormTextViewTableViewCell * cell = [self _formTextViewCellForIndexPath:indexPath];
         [cell applyConfiguration:configuration];
 
-        cell.textView.inputAccessoryView = self.textFieldAccessoryView;
+        cell.textView.inputAccessoryView = self.textInputAccessoryView;
         cell.textView.delegate = self;
         return cell;
     } else {
@@ -147,7 +143,7 @@
 
         cell.textField.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
         [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-        cell.textField.inputAccessoryView = self.textFieldAccessoryView;
+        cell.textField.inputAccessoryView = self.textInputAccessoryView;
         cell.textField.delegate = self;
 
         return cell;
@@ -291,8 +287,10 @@
 - (void)_updateInputAccessoryView {
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     if (currentIndexPath) {
-        _nextBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:currentIndexPath];
-        _previousBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
+        self.textInputAccessoryView.nextBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext
+                                                                                            fromIndexPath:currentIndexPath];
+        self.textInputAccessoryView.previousBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionPrevious
+                                                                                                fromIndexPath:currentIndexPath];
     }
 }
 
