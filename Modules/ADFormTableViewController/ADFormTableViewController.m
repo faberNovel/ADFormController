@@ -215,14 +215,6 @@
     return (ADFormTextViewTableViewCell *)[textView ad_superviewOfClass:ADFormTextViewTableViewCell.class];
 }
 
-- (ADFormTextFieldTableViewCell *)_cellFromFirstResponder {
-    UIView * firstResponderView = [self.tableView ad_findFirstResponder];
-    if ([firstResponderView isKindOfClass:UITextField.class]) {
-        return [self _cellForTextField:(UITextField *)firstResponderView];
-    }
-    return nil;
-}
-
 - (NSIndexPath *)_indexPathForTextField:(UITextField *)textField {
     ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
     return [self.tableView indexPathForCell:cell];
