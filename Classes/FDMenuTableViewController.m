@@ -8,6 +8,7 @@
 
 #import "FDMenuTableViewController.h"
 #import "FDMainFormTableViewController.h"
+#import "FDTestFormTableViewController.h"
 
 static NSString * sCellIdentifier = @"sCellIdentifier";
 
@@ -26,7 +27,7 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,6 +42,9 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
         } break;
         case 2: {
             cell.textLabel.text = @"With Title";
+        } break;
+        case 3: {
+            cell.textLabel.text = @"Test";
         } break;
     }
     return cell;
@@ -66,6 +70,11 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
             mainFormTableViewController.showTitles = YES;
             mainFormTableViewController.title = @"With Title";
             [self.navigationController pushViewController:mainFormTableViewController animated:YES];
+        } break;
+        case 3: {
+            FDTestFormTableViewController * testFormTableViewController = [FDTestFormTableViewController new];
+            testFormTableViewController.title = @"Test";
+            [self.navigationController pushViewController:testFormTableViewController animated:YES];
         } break;
     }
 }

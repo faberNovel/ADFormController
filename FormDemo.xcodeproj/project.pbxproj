@@ -17,6 +17,8 @@
 		490B376F1BCFF1E1008E0B5A /* ADFormDirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */; };
 		490B37721BD0D307008E0B5A /* UIView+Traverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37711BD0D307008E0B5A /* UIView+Traverse.m */; };
 		494008BE1C071BA500E1FD21 /* ADTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 494008BD1C071BA500E1FD21 /* ADTextField.m */; };
+		494008D61C08930C00E1FD21 /* ADFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494008D51C08930C00E1FD21 /* ADFormController.m */; };
+		494008D91C08976600E1FD21 /* FDTestFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494008D81C08976600E1FD21 /* FDTestFormTableViewController.m */; };
 		494008DC1C089D4C00E1FD21 /* ADTextInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 494008DB1C089D4C00E1FD21 /* ADTextInputAccessoryView.m */; };
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
 		496042F31B9A1B110010B11A /* ADFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F01B9A1B110010B11A /* ADFormTableViewController.m */; };
@@ -57,6 +59,10 @@
 		490B37711BD0D307008E0B5A /* UIView+Traverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Traverse.m"; path = "ADFormTableViewController/UIView+Traverse.m"; sourceTree = "<group>"; };
 		494008BC1C071BA500E1FD21 /* ADTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextField.h; path = ADFormTableViewController/ADTextField.h; sourceTree = "<group>"; };
 		494008BD1C071BA500E1FD21 /* ADTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTextField.m; path = ADFormTableViewController/ADTextField.m; sourceTree = "<group>"; };
+		494008D41C08930C00E1FD21 /* ADFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormController.h; path = ADFormTableViewController/ADFormController.h; sourceTree = "<group>"; };
+		494008D51C08930C00E1FD21 /* ADFormController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormController.m; path = ADFormTableViewController/ADFormController.m; sourceTree = "<group>"; };
+		494008D71C08976600E1FD21 /* FDTestFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTestFormTableViewController.h; sourceTree = "<group>"; };
+		494008D81C08976600E1FD21 /* FDTestFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTestFormTableViewController.m; sourceTree = "<group>"; };
 		494008DA1C089D4C00E1FD21 /* ADTextInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextInputAccessoryView.h; path = ADFormTableViewController/ADTextInputAccessoryView.h; sourceTree = "<group>"; };
 		494008DB1C089D4C00E1FD21 /* ADTextInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTextInputAccessoryView.m; path = ADFormTableViewController/ADTextInputAccessoryView.m; sourceTree = "<group>"; };
 		496042EA1B9A1A550010B11A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -173,6 +179,8 @@
 				496042F01B9A1B110010B11A /* ADFormTableViewController.m */,
 				497C97911B9AC1B3002175AC /* ADTableViewController.h */,
 				497C97921B9AC1B3002175AC /* ADTableViewController.m */,
+				494008D41C08930C00E1FD21 /* ADFormController.h */,
+				494008D51C08930C00E1FD21 /* ADFormController.m */,
 				494008D11C0891CA00E1FD21 /* Cells */,
 				494008D21C0891DD00E1FD21 /* Custom View */,
 				494008D31C0891F600E1FD21 /* Model */,
@@ -199,6 +207,8 @@
 				490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */,
 				490B376A1BCF9FCC008E0B5A /* FDMenuTableViewController.h */,
 				490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */,
+				494008D71C08976600E1FD21 /* FDTestFormTableViewController.h */,
+				494008D81C08976600E1FD21 /* FDTestFormTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -527,10 +537,12 @@
 				7A189F931535FD5C00A22149 /* main.m in Sources */,
 				490B375B1BCF8227008E0B5A /* ADPlaceholderTextView.m in Sources */,
 				490B375E1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m in Sources */,
+				494008D61C08930C00E1FD21 /* ADFormController.m in Sources */,
 				499900401BAFDFE400C09B9A /* FDMainFormTableViewController.m in Sources */,
 				490B37651BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m in Sources */,
 				494008DC1C089D4C00E1FD21 /* ADTextInputAccessoryView.m in Sources */,
 				490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */,
+				494008D91C08976600E1FD21 /* FDTestFormTableViewController.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
