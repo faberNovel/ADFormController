@@ -48,6 +48,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _formController = [[ADFormController alloc] initWithTableView:self.tableView];
     _formController.delegate = self;
 }
@@ -203,6 +205,19 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     }
 }
 
+- (UIView *)formController:(ADFormController *)formController inputAccessoryViewForIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2 && indexPath.row == FDPasswordRowTypeNewPasswordConfirmation) {
+        UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
+        UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check password"
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(_checkPassword:)];
+        toolbar.items = @[ barButtonItem ];
+        return toolbar;
+    }
+    return formController.defaultInputAccessoryView;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -240,5 +255,16 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     });
     return sDateFormatter;
 }
+
+- (void)_checkPassword:(id)sender {
+    NSString * newPassword = [_formController stringValueForIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2]];
+    NSString * newPasswordConfirmation = [_formController stringValueForIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPasswordConfirmation inSection:2]];
+    if ([newPassword isEqualToString:newPasswordConfirmation]) {
+        NSLog(@"Same password \\o/");
+    } else {
+        NSLog(@"/!\\ Password error");
+    }
+}
+
 
 @end
