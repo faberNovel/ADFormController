@@ -215,7 +215,6 @@
         } else if ([cell isKindOfClass:ADFormTextViewTableViewCell.class]) {
             ADFormTextViewTableViewCell * nextCell = (ADFormTextViewTableViewCell *)cell;
             [nextCell.textView becomeFirstResponder];
-
         }
     }
 }
