@@ -115,31 +115,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		496042EE1B9A1AFE0010B11A /* ADFormTableViewController */ = {
+		494008D01C0891BF00E1FD21 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				496042EF1B9A1B110010B11A /* ADFormTableViewController.h */,
-				496042F01B9A1B110010B11A /* ADFormTableViewController.m */,
-				490B37531BCF8227008E0B5A /* ADFormCellConfiguration.h */,
-				490B37541BCF8227008E0B5A /* ADFormCellConfiguration.m */,
+				490B37701BD0D307008E0B5A /* UIView+Traverse.h */,
+				490B37711BD0D307008E0B5A /* UIView+Traverse.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		494008D11C0891CA00E1FD21 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				490B37551BCF8227008E0B5A /* ADFormTextViewTableViewCell.h */,
 				490B37561BCF8227008E0B5A /* ADFormTextViewTableViewCell.m */,
-				490B37571BCF8227008E0B5A /* ADPlaceholderTextView.h */,
-				490B37581BCF8227008E0B5A /* ADPlaceholderTextView.m */,
 				496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */,
 				496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		494008D21C0891DD00E1FD21 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				490B37571BCF8227008E0B5A /* ADPlaceholderTextView.h */,
+				490B37581BCF8227008E0B5A /* ADPlaceholderTextView.m */,
+				494008BC1C071BA500E1FD21 /* ADTextField.h */,
+				494008BD1C071BA500E1FD21 /* ADTextField.m */,
+			);
+			name = "Custom View";
+			sourceTree = "<group>";
+		};
+		494008D31C0891F600E1FD21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				490B37531BCF8227008E0B5A /* ADFormCellConfiguration.h */,
+				490B37541BCF8227008E0B5A /* ADFormCellConfiguration.m */,
 				496042F51B9A1B920010B11A /* ADTextFieldFormatter.h */,
-				497C97911B9AC1B3002175AC /* ADTableViewController.h */,
-				497C97921B9AC1B3002175AC /* ADTableViewController.m */,
 				490B37621BCF9014008E0B5A /* ADFormPickerDataSource.h */,
 				490B375C1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.h */,
 				490B375D1BCF8BEF008E0B5A /* ADSimpleFormPickerDataSource.m */,
 				490B376D1BCFF1E1008E0B5A /* ADFormDirectionManager.h */,
 				490B376E1BCFF1E1008E0B5A /* ADFormDirectionManager.m */,
-				490B37701BD0D307008E0B5A /* UIView+Traverse.h */,
-				490B37711BD0D307008E0B5A /* UIView+Traverse.m */,
-				494008BC1C071BA500E1FD21 /* ADTextField.h */,
-				494008BD1C071BA500E1FD21 /* ADTextField.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		496042EE1B9A1AFE0010B11A /* ADFormTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				496042EF1B9A1B110010B11A /* ADFormTableViewController.h */,
+				496042F01B9A1B110010B11A /* ADFormTableViewController.m */,
+				497C97911B9AC1B3002175AC /* ADTableViewController.h */,
+				497C97921B9AC1B3002175AC /* ADTableViewController.m */,
+				494008D11C0891CA00E1FD21 /* Cells */,
+				494008D21C0891DD00E1FD21 /* Custom View */,
+				494008D31C0891F600E1FD21 /* Model */,
+				494008D01C0891BF00E1FD21 /* Category */,
 			);
 			name = ADFormTableViewController;
 			sourceTree = "<group>";
