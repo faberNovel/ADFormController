@@ -119,7 +119,7 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSIndexPath * indexPath = [self _indexPathForTextField:textField];
+    NSIndexPath * indexPath = [self _indexPathForTextInput:textField];
     if ([_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath]) {
         [self _moveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath];
         return NO;
@@ -134,12 +134,12 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self _updateInputAccessoryView];
-    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
+    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self _cellForTextInput:textField];
     [cell textFieldDidBeginEditing:textField];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
+    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self _cellForTextInput:textField];
     return [cell textField:textField shouldChangeCharactersInRange:range replacementString:string];
 }
 
@@ -174,38 +174,19 @@
     return (isLastSection && isLastRowInLastSection) ? UIReturnKeyGo : UIReturnKeyNext;
 }
 
-- (ADFormTextFieldTableViewCell *)_cellForTextField:(UITextField *)textField {
-    return (ADFormTextFieldTableViewCell *)[textField ad_superviewOfClass:ADFormTextFieldTableViewCell.class];
+- (UITableViewCell *)_cellForTextInput:(UIView<UITextInput> *)textInput {
+    return (UITableViewCell *)[textInput ad_superviewOfClass:UITableViewCell.class];
 }
 
-- (ADFormTextViewTableViewCell *)_cellForTextView:(UITextView *)textView {
-    return (ADFormTextViewTableViewCell *)[textView ad_superviewOfClass:ADFormTextViewTableViewCell.class];
-}
-
-- (ADFormTextFieldTableViewCell *)_cellFromFirstResponder {
-    UIView * firstResponderView = [self.tableView ad_findFirstResponder];
-    if ([firstResponderView isKindOfClass:UITextField.class]) {
-        return [self _cellForTextField:(UITextField *)firstResponderView];
-    }
-    return nil;
-}
-
-- (NSIndexPath *)_indexPathForTextField:(UITextField *)textField {
-    ADFormTextFieldTableViewCell * cell = [self _cellForTextField:textField];
-    return [self.tableView indexPathForCell:cell];
-}
-
-- (NSIndexPath *)_indexPathForTextView:(UITextView *)textView {
-    ADFormTextViewTableViewCell * cell = [self _cellForTextView:textView];
+- (NSIndexPath *)_indexPathForTextInput:(UIView<UITextInput> *)textInput {
+    UITableViewCell * cell = [self _cellForTextInput:textInput];
     return [self.tableView indexPathForCell:cell];
 }
 
 - (NSIndexPath *)_indexPathForFirstResponder {
     UIView * firstResponder = [self.tableView ad_findFirstResponder];
-    if ([firstResponder isKindOfClass:[UITextField class]]) {
-        return [self _indexPathForTextField:(UITextField *)firstResponder];
-    } else if ([firstResponder isKindOfClass:[UITextView class]]) {
-        return [self _indexPathForTextView:(UITextView *)firstResponder];
+    if ([firstResponder conformsToProtocol:@protocol(UITextInput)]) {
+        return [self _indexPathForTextInput:(UIView<UITextInput> *)firstResponder];
     }
     return nil;
 }
@@ -240,7 +221,7 @@
 }
 
 - (void)_textFieldValueChanged:(UITextField *)textField {
-    NSIndexPath * indexPath = [self _indexPathForTextField:textField];
+    NSIndexPath * indexPath = [self _indexPathForTextInput:textField];
     if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
         [self.delegate formController:self valueChangedForIndexPath:indexPath];
     }
