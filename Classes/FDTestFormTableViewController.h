@@ -6,9 +6,9 @@
 //
 //
 
-#import "ADTableViewController.h"
+#import "FDTableViewController.h"
 
-@interface FDTestFormTableViewController : ADTableViewController
+@interface FDTestFormTableViewController : FDTableViewController
 
 @property (nonatomic, getter=isPrefilled) BOOL prefilled;
 @property (nonatomic) BOOL showTitles;
