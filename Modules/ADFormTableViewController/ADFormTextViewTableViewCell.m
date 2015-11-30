@@ -133,4 +133,20 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
     return _placeholderTextView.text;
 }
 
+- (void)setInputAccessoryView:(UIView *)inputAccessoryView {
+    _placeholderTextView.inputAccessoryView = inputAccessoryView;
+}
+
+- (UIView *)inputAccessoryView {
+    return _placeholderTextView.inputAccessoryView;
+}
+
+- (void)setReturnKeyType:(UIReturnKeyType)returnKeyType {
+    // no op
+}
+
+- (UIReturnKeyType)returnKeyType {
+    return _placeholderTextView.returnKeyType;
+}
+
 @end

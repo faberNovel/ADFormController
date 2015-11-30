@@ -52,27 +52,13 @@
         accessoryView = [self.delegate formController:self inputAccessoryViewForIndexPath:indexPath];
     }
 
-    if (configuration.cellType == ADFormTextCellTypeLongText) {
-        ADFormTextViewTableViewCell * cell = (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class
-                                                                                    forIndexPath:indexPath];
-        cell.delegate = self;
-        [cell applyConfiguration:configuration];
+    UITableViewCell<ADFormTextInputTableViewCell> * cell = [self _cellFromConfiguration:configuration indexPath:indexPath];;
+    cell.delegate = self;
+    cell.inputAccessoryView = accessoryView;
+    cell.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
+    [cell applyConfiguration:configuration];
 
-        cell.textView.inputAccessoryView = accessoryView;
-        return cell;
-    } else {
-        ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self _cellWithClass:ADFormTextFieldTableViewCell.class
-                                                                                      forIndexPath:indexPath];
-        cell.delegate = self;
-        [cell applyConfiguration:configuration];
-
-        cell.textField.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
-        cell.textField.inputAccessoryView = accessoryView;
-
-        return cell;
-    }
-    return nil;
-
+    return cell;
 }
 
 #pragma mark - Getter
@@ -145,7 +131,21 @@
 
 #pragma mark - Private
 
-- (UITableViewCell *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell<ADFormTextInputTableViewCell> *)_cellFromConfiguration:(ADFormCellConfiguration *)configuration
+                                                                indexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell<ADFormTextInputTableViewCell> * cell = nil;
+    if (configuration.cellType == ADFormTextCellTypeLongText) {
+        cell = [self _cellWithClass:ADFormTextViewTableViewCell.class
+                       forIndexPath:indexPath];
+    } else {
+        cell = [self _cellWithClass:ADFormTextFieldTableViewCell.class
+                       forIndexPath:indexPath];
+    }
+    return cell;
+}
+
+- (UITableViewCell<ADFormTextInputTableViewCell> *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
     NSInteger key = indexPath.section * 100 + indexPath.row;
     if (!_cells[@(key)]) {
         _cells[@(key)] = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];

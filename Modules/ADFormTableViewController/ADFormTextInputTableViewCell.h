@@ -14,6 +14,8 @@
 @protocol ADFormTextInputTableViewCell <NSObject>
 
 @property (nonatomic, weak) id<ADFormTextInputTableViewCellDelegate> delegate;
+@property (nonatomic, strong) UIView * inputAccessoryView;
+@property (nonatomic) UIReturnKeyType returnKeyType;
 
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration;
 - (void)beginEditing;

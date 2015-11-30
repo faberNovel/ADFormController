@@ -248,6 +248,22 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     return _textField.text;
 }
 
+- (void)setInputAccessoryView:(UIView *)inputAccessoryView {
+    _textField.inputAccessoryView = inputAccessoryView;
+}
+
+- (UIView *)inputAccessoryView {
+    return _textField.inputAccessoryView;
+}
+
+- (void)setReturnKeyType:(UIReturnKeyType)returnKeyType {
+    _textField.returnKeyType = returnKeyType;
+}
+
+- (UIReturnKeyType)returnKeyType {
+    return _textField.returnKeyType;
+}
+
 #pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
