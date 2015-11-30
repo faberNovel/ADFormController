@@ -7,7 +7,6 @@
 //
 
 #import "FDMenuTableViewController.h"
-#import "FDMainFormTableViewController.h"
 #import "FDTestFormTableViewController.h"
 
 static NSString * sCellIdentifier = @"sCellIdentifier";
@@ -27,7 +26,7 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -43,9 +42,6 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
         case 2: {
             cell.textLabel.text = @"With Title";
         } break;
-        case 3: {
-            cell.textLabel.text = @"Test";
-        } break;
     }
     return cell;
 }
@@ -53,30 +49,21 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FDTestFormTableViewController * mainFormTableViewController = [FDTestFormTableViewController new];
     switch (indexPath.row) {
         case 0: {
-            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
             mainFormTableViewController.title = @"Empty";
-            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
         } break;
         case 1: {
-            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
             mainFormTableViewController.prefilled = YES;
             mainFormTableViewController.title = @"Filled";
-            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
         } break;
         case 2: {
-            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
             mainFormTableViewController.showTitles = YES;
             mainFormTableViewController.title = @"With Title";
-            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
-        } break;
-        case 3: {
-            FDTestFormTableViewController * testFormTableViewController = [FDTestFormTableViewController new];
-            testFormTableViewController.title = @"Test";
-            [self.navigationController pushViewController:testFormTableViewController animated:YES];
         } break;
     }
+    [self.navigationController pushViewController:mainFormTableViewController animated:YES];
 }
 
 @end

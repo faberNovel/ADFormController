@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADFormCellConfiguration.h"
+#import "ADFormTextInputTableViewCell.h"
 
-@interface ADFormTextFieldTableViewCell : UITableViewCell <UITextFieldDelegate>
+@interface ADFormTextFieldTableViewCell : UITableViewCell <ADFormTextInputTableViewCell>
 
 @property (nonatomic, strong, readonly) UITextField * textField;
-
-- (void)applyConfiguration:(ADFormCellConfiguration *)configuration;
 
 @end

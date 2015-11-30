@@ -9,8 +9,9 @@
 #import "ADFormTextFieldTableViewCell.h"
 #import "ADTextFieldFormatter.h"
 #import "ADTextField.h"
+#import "ADFormCellConfiguration.h"
 
-@interface ADFormTextFieldTableViewCell () <UIPickerViewDataSource, UIPickerViewDelegate> {
+@interface ADFormTextFieldTableViewCell () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate> {
     NSMutableArray * _dynamicConstraints;
     UIDatePicker * _datePicker;
     UIPickerView * _pickerView;
@@ -33,6 +34,8 @@
 
 @implementation ADFormTextFieldTableViewCell
 
+@synthesize delegate = _delegate;
+
 static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (void)dealloc {
@@ -44,6 +47,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
         _textField = [[ADTextField alloc] init];
+        _textField.delegate = self;
         _textField.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:_textField];
         [_textField addTarget:self action:@selector(_textChanged:) forControlEvents:UIControlEventAllEditingEvents];
@@ -180,7 +184,40 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     return _textField;
 }
 
-#pragma mark - Methods
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    switch (self.cellType) {
+        case ADFormTextCellTypeDate: {
+            [self _startEditingDatePicker];
+        } break;
+        case ADFormTextCellTypePicker: {
+            [self _startEditingPickerView];
+        } break;
+        default:
+            break; // no op
+    }
+
+    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellDidBeginEditing:)]) {
+        [self.delegate textInputTableViewCellDidBeginEditing:self];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (_textFieldFormatter) {
+        return [_textFieldFormatter textField:textField shouldChangeCharactersInRange:range replacementString:string];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellShouldReturn:)]) {
+        return [self.delegate textInputTableViewCellShouldReturn:self];
+    }
+    return YES;
+}
+
+#pragma mark - ADFormTextInputTableViewCell
 
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
     self.textField.placeholder = configuration.placeholder;
@@ -201,6 +238,14 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     [_textFieldFormatter textFieldValueChanged:self.textField];
     _dateFormatter = configuration.dateFormatter;
     _formPickerDataSource = configuration.formPickerDataSource;
+}
+
+- (void)beginEditing {
+    [_textField becomeFirstResponder];
+}
+
+- (NSString *)textContent {
+    return _textField.text;
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -234,28 +279,6 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     }
 }
 
-#pragma mark - UITextFieldDelegate
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    switch (self.cellType) {
-        case ADFormTextCellTypeDate: {
-            [self _startEditingDatePicker];
-        } break;
-        case ADFormTextCellTypePicker: {
-            [self _startEditingPickerView];
-        } break;
-        default:
-            break; // no op
-    }
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (_textFieldFormatter) {
-        return [_textFieldFormatter textField:textField shouldChangeCharactersInRange:range replacementString:string];
-    }
-    return YES;
-}
-
 #pragma mark - Private
 
 - (IBAction)_dateChanged:(UIDatePicker *)sender {
@@ -266,6 +289,9 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (IBAction)_textChanged:(UITextField *)textField {
     [_textFieldFormatter textFieldValueChanged:textField];
+    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellValueChanged:)]) {
+        [self.delegate textInputTableViewCellValueChanged:self];
+    }
 }
 
 - (void)_startEditingDatePicker {

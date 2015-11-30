@@ -14,7 +14,7 @@
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
 
-@interface ADFormController () <UITextFieldDelegate, UITextViewDelegate> {
+@interface ADFormController () <ADFormTextInputTableViewCellDelegate> {
     NSMutableDictionary * _cells;
     ADTextInputAccessoryView * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
@@ -53,20 +53,21 @@
     }
 
     if (configuration.cellType == ADFormTextCellTypeLongText) {
-        ADFormTextViewTableViewCell * cell = [self _formTextViewCellForIndexPath:indexPath];
+        ADFormTextViewTableViewCell * cell = (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class
+                                                                                    forIndexPath:indexPath];
+        cell.delegate = self;
         [cell applyConfiguration:configuration];
 
         cell.textView.inputAccessoryView = accessoryView;
-        cell.textView.delegate = self;
         return cell;
     } else {
-        ADFormTextFieldTableViewCell * cell = [self _formCellForIndexPath:indexPath];
+        ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self _cellWithClass:ADFormTextFieldTableViewCell.class
+                                                                                      forIndexPath:indexPath];
+        cell.delegate = self;
         [cell applyConfiguration:configuration];
 
         cell.textField.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
-        [cell.textField addTarget:self action:@selector(_textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
         cell.textField.inputAccessoryView = accessoryView;
-        cell.textField.delegate = self;
 
         return cell;
     }
@@ -95,10 +96,9 @@
 
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if (cell && [cell isKindOfClass:ADFormTextFieldTableViewCell.class]) {
-        return ((ADFormTextFieldTableViewCell *)cell).textField.text;
-    } else if (cell && [cell isKindOfClass:ADFormTextViewTableViewCell.class]) {
-        return ((ADFormTextViewTableViewCell *)cell).textView.text;
+    if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
+        id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
+        return [inputCell textContent];
     }
     return nil;
 }
@@ -116,10 +116,14 @@
     return nil;
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - ADFormTextInputTableViewCellDelegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSIndexPath * indexPath = [self _indexPathForTextInput:textField];
+- (void)textInputTableViewCellDidBeginEditing:(id<ADFormTextInputTableViewCell>)textInputTableViewCell {
+    [self _updateInputAccessoryView];
+}
+
+- (BOOL)textInputTableViewCellShouldReturn:(UITableViewCell<ADFormTextInputTableViewCell> *)textInputTableViewCell {
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:textInputTableViewCell];
     if ([_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath]) {
         [self _moveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath];
         return NO;
@@ -132,32 +136,14 @@
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [self _updateInputAccessoryView];
-    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self _cellForTextInput:textField];
-    [cell textFieldDidBeginEditing:textField];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self _cellForTextInput:textField];
-    return [cell textField:textField shouldChangeCharactersInRange:range replacementString:string];
-}
-
-#pragma mark - UITextViewDelegate
-
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self _updateInputAccessoryView];
+- (void)textInputTableViewCellValueChanged:(UITableViewCell<ADFormTextInputTableViewCell> *)textInputTableViewCell {
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:textInputTableViewCell];
+    if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
+        [self.delegate formController:self valueChangedForIndexPath:indexPath];
+    }
 }
 
 #pragma mark - Private
-
-- (ADFormTextFieldTableViewCell *)_formCellForIndexPath:(NSIndexPath *)indexPath {
-    return (ADFormTextFieldTableViewCell *)[self _cellWithClass:ADFormTextFieldTableViewCell.class forIndexPath:indexPath];
-}
-
-- (ADFormTextViewTableViewCell *)_formTextViewCellForIndexPath:(NSIndexPath *)indexPath {
-    return (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class forIndexPath:indexPath];
-}
 
 - (UITableViewCell *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
     NSInteger key = indexPath.section * 100 + indexPath.row;
@@ -208,21 +194,10 @@
     NSIndexPath * nextIndexPath = [_formDirectionManager indexPathForDirection:direction andBaseIndexPath:indexPath];
     if (nextIndexPath) {
         UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
-
-        if ([cell isKindOfClass:ADFormTextFieldTableViewCell.class]) {
-            ADFormTextFieldTableViewCell * nextCell = (ADFormTextFieldTableViewCell *)cell;
-            [nextCell.textField becomeFirstResponder];
-        } else if ([cell isKindOfClass:ADFormTextViewTableViewCell.class]) {
-            ADFormTextViewTableViewCell * nextCell = (ADFormTextViewTableViewCell *)cell;
-            [nextCell.textView becomeFirstResponder];
+        if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
+            id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
+            [inputCell beginEditing];
         }
-    }
-}
-
-- (void)_textFieldValueChanged:(UITextField *)textField {
-    NSIndexPath * indexPath = [self _indexPathForTextInput:textField];
-    if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
-        [self.delegate formController:self valueChangedForIndexPath:indexPath];
     }
 }
 
