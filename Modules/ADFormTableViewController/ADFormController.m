@@ -36,12 +36,7 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Create empty configuration
-    ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
-    configuration.textColor = [UIColor blackColor];
-    configuration.tintColor = [UIColor blackColor];
-    configuration.textFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-    configuration.titleFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    ADFormCellConfiguration * configuration = [ADFormCellConfiguration defaultConfiguration];
 
     if ([self.delegate respondsToSelector:@selector(formController:applyConfiguration:forIndexPath:)]) {
         [self.delegate formController:self applyConfiguration:configuration forIndexPath:indexPath];
