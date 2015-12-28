@@ -128,6 +128,8 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (void)setCellType:(ADFormTextCellType)cellType {
     _cellType = cellType;
+
+    self.textField.secureTextEntry = NO;
     switch (cellType) {
         case ADFormTextCellTypeEmail: {
             self.textField.keyboardType = UIKeyboardTypeEmailAddress;
