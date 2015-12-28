@@ -186,6 +186,8 @@
 			children = (
 				490418041BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.h */,
 				490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */,
+				490B37631BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.h */,
+				490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -195,8 +197,6 @@
 			children = (
 				494008E11C0C3BBA00E1FD21 /* FDTableViewController.h */,
 				494008E21C0C3BBA00E1FD21 /* FDTableViewController.m */,
-				490B37631BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.h */,
-				490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */,
 				490B376A1BCF9FCC008E0B5A /* FDMenuTableViewController.h */,
 				490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */,
 				494008D71C08976600E1FD21 /* FDTestFormTableViewController.h */,
