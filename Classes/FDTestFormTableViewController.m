@@ -36,8 +36,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 
 @interface FDTestFormTableViewController () <ADFormControllerDelegate> {
     ADFormController * _formController;
+    BOOL _passwordVisible;
 }
-
+@property (nonatomic, strong) UIButton * passwordButton;
 @end
 
 @implementation FDTestFormTableViewController
@@ -52,6 +53,19 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _formController = [[ADFormController alloc] initWithTableView:self.tableView];
     _formController.delegate = self;
+}
+
+- (UIButton *)passwordButton {
+    if (!_passwordButton) {
+        _passwordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_passwordButton setTitle:@"Show" forState:UIControlStateNormal];
+        [_passwordButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _passwordButton.titleLabel.font = [UIFont italicSystemFontOfSize:10.0f];
+        _passwordButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10.0f, 0, 10.0f);
+        [_passwordButton addTarget:self action:@selector(_togglePassword:) forControlEvents:UIControlEventTouchUpInside];
+        [_passwordButton sizeToFit];
+    }
+    return _passwordButton;
 }
 
 #pragma mark - UITableViewDataSource
@@ -183,13 +197,16 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
         switch (indexPath.row) {
             case FDPasswordRowTypeNewPassword: {
                 configuration.placeholder = @"New password";
-                configuration.cellType = ADFormTextCellTypePassword;
+                if (!_passwordVisible) {
+                    configuration.cellType = ADFormTextCellTypePassword;
+                }
                 if (self.isPrefilled) {
                     configuration.text = @"abcdef";
                 }
                 if (self.showTitles) {
                     configuration.title = @"New password";
                 }
+                configuration.rightView = self.passwordButton;
             } break;
             case FDPasswordRowTypeNewPasswordConfirmation: {
                 configuration.placeholder = @"Confirmation";
@@ -266,5 +283,12 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     }
 }
 
+- (void)_togglePassword:(id)sender {
+    _passwordVisible = !_passwordVisible;
+    [self.passwordButton setTitle:_passwordVisible ? @"Hide" : @"Show" forState:UIControlStateNormal];
+
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2];
+    [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 @end
