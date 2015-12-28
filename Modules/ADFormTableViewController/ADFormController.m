@@ -14,7 +14,7 @@
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
 
-@interface ADFormController () <ADFormTextInputTableViewCellDelegate> {
+@interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormDirectionManagerDelegate> {
     NSMutableDictionary * _cells;
     ADTextInputAccessoryView * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
@@ -29,6 +29,7 @@
         _tableView = tableView;
         _cells = [NSMutableDictionary dictionary];
         _formDirectionManager = [[ADFormDirectionManager alloc] initWithTableView:self.tableView];
+        _formDirectionManager.delegate = self;
     }
     return self;
 }
@@ -122,6 +123,13 @@
     if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
         [self.delegate formController:self valueChangedForIndexPath:indexPath];
     }
+}
+
+#pragma mark - ADFormDirectionManagerDelegate
+
+- (BOOL)formDirectionManager:(ADFormDirectionManager *)formDirectionManager canEditCellAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    return [cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)];
 }
 
 #pragma mark - Private
