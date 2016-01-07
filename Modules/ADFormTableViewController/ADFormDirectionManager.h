@@ -13,7 +13,16 @@ typedef NS_ENUM(NSUInteger, ADAccessoryViewDirection) {
     ADAccessoryViewDirectionNext
 };
 
+@class ADFormDirectionManager;
+@protocol ADFormDirectionManagerDelegate <NSObject>
+@optional
+- (BOOL)formDirectionManager:(ADFormDirectionManager *)formDirectionManager
+      canEditCellAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
 @interface ADFormDirectionManager : NSObject
+
+@property (nonatomic, weak) id<ADFormDirectionManagerDelegate> delegate;
 
 - (instancetype)initWithTableView:(UITableView *)tableView;
 

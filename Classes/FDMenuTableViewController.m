@@ -7,7 +7,7 @@
 //
 
 #import "FDMenuTableViewController.h"
-#import "FDMainFormTableViewController.h"
+#import "FDTestFormTableViewController.h"
 
 static NSString * sCellIdentifier = @"sCellIdentifier";
 
@@ -49,25 +49,21 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FDTestFormTableViewController * mainFormTableViewController = [FDTestFormTableViewController new];
     switch (indexPath.row) {
         case 0: {
-            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
             mainFormTableViewController.title = @"Empty";
-            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
         } break;
         case 1: {
-            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
             mainFormTableViewController.prefilled = YES;
             mainFormTableViewController.title = @"Filled";
-            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
         } break;
         case 2: {
-            FDMainFormTableViewController * mainFormTableViewController = [FDMainFormTableViewController new];
             mainFormTableViewController.showTitles = YES;
             mainFormTableViewController.title = @"With Title";
-            [self.navigationController pushViewController:mainFormTableViewController animated:YES];
         } break;
     }
+    [self.navigationController pushViewController:mainFormTableViewController animated:YES];
 }
 
 @end

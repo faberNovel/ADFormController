@@ -8,8 +8,9 @@
 
 #import "ADFormTextViewTableViewCell.h"
 #import "ADPlaceholderTextView.h"
+#import "ADFormCellConfiguration.h"
 
-@interface ADFormTextViewTableViewCell () {
+@interface ADFormTextViewTableViewCell () <UITextViewDelegate> {
     UILabel * _titleLabel;
     NSMutableArray * _dynamicConstraints;
     ADPlaceholderTextView * _placeholderTextView;
@@ -18,6 +19,8 @@
 @end
 
 @implementation ADFormTextViewTableViewCell
+
+@synthesize delegate = _delegate;
 
 static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
 
@@ -30,6 +33,7 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
         _placeholderTextView = [[ADPlaceholderTextView alloc] init];
+        _placeholderTextView.delegate = self;
         _placeholderTextView.textContainerInset = UIEdgeInsetsZero;
         _placeholderTextView.textContainer.lineFragmentPadding = 0;
         _placeholderTextView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -89,7 +93,21 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
     return _placeholderTextView;
 }
 
-#pragma mark - Methods
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellDidBeginEditing:)]) {
+        [self.delegate textInputTableViewCellDidBeginEditing:self];
+    }
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellValueChanged:)]) {
+        [self.delegate textInputTableViewCellValueChanged:self];
+    }
+}
+
+#pragma mark - ADFormTextInputTableViewCell
 
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
     _titleLabel.text = configuration.title;
@@ -105,6 +123,30 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
         _placeholderTextView.text = configuration.text;
     }
     _placeholderTextView.placeholder = configuration.placeholder;
+}
+
+- (void)beginEditing {
+    [_placeholderTextView becomeFirstResponder];
+}
+
+- (NSString *)textContent {
+    return _placeholderTextView.text;
+}
+
+- (void)setInputAccessoryView:(UIView *)inputAccessoryView {
+    _placeholderTextView.inputAccessoryView = inputAccessoryView;
+}
+
+- (UIView *)inputAccessoryView {
+    return _placeholderTextView.inputAccessoryView;
+}
+
+- (void)setReturnKeyType:(UIReturnKeyType)returnKeyType {
+    // no op
+}
+
+- (UIReturnKeyType)returnKeyType {
+    return _placeholderTextView.returnKeyType;
 }
 
 @end

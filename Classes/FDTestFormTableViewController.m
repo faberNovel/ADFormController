@@ -1,16 +1,16 @@
 //
-//  FDMainFormTableViewController.m
+//  FDTestFormTableViewController.m
 //  FormDemo
 //
-//  Created by Pierre Felgines on 21/09/2015.
+//  Created by Pierre Felgines on 27/11/15.
 //
 //
 
-#import "FDMainFormTableViewController.h"
-#import "ADFormTextFieldTableViewCell.h"
-#import "FDCreditCardTextFieldFormatter.h"
+#import "FDTestFormTableViewController.h"
+#import "ADFormController.h"
 #import "FDExpirationDateFormPickerDataSource.h"
-
+#import "FDCreditCardTextFieldFormatter.h"
+#import "ADSimpleFormPickerDataSource.h"    
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -34,33 +34,47 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     FDPasswordRowTypeCount
 };
 
-@interface FDMainFormTableViewController () {
-
+@interface FDTestFormTableViewController () <ADFormControllerDelegate> {
+    ADFormController * _formController;
+    BOOL _passwordVisible;
 }
-
+@property (nonatomic, strong) UIButton * passwordButton;
 @end
 
-@implementation FDMainFormTableViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(formAction:)];
-}
-
-#pragma mark - FDTableViewController
+@implementation FDTestFormTableViewController
 
 + (UITableViewStyle)tableViewStyle {
     return UITableViewStyleGrouped;
 }
 
-#pragma mark - CTFormTableViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
 
-- (NSInteger)numberOfFormSections {
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    _formController = [[ADFormController alloc] initWithTableView:self.tableView];
+    _formController.delegate = self;
+}
+
+- (UIButton *)passwordButton {
+    if (!_passwordButton) {
+        _passwordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_passwordButton setTitle:@"Show" forState:UIControlStateNormal];
+        [_passwordButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _passwordButton.titleLabel.font = [UIFont italicSystemFontOfSize:10.0f];
+        _passwordButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10.0f, 0, 10.0f);
+        [_passwordButton addTarget:self action:@selector(_togglePassword:) forControlEvents:UIControlEventTouchUpInside];
+        [_passwordButton sizeToFit];
+    }
+    return _passwordButton;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-- (NSInteger)numberOfFormCellsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0: {
             return FDRowTypeCount;
@@ -77,8 +91,16 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     return FDRowTypeCount;
 }
 
-- (void)applyConfiguration:(ADFormCellConfiguration *)configuration forIndexPath:(NSIndexPath *)indexPath {
-    [super applyConfiguration:configuration forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [_formController cellForRowAtIndexPath:indexPath];
+}
+
+#pragma mark - ADFormControllerDelegate
+
+- (void)formController:(ADFormController *)formController
+    applyConfiguration:(ADFormCellConfiguration *)configuration
+          forIndexPath:(NSIndexPath *)indexPath {
+
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case FDRowTypeGender: {
@@ -175,13 +197,16 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
         switch (indexPath.row) {
             case FDPasswordRowTypeNewPassword: {
                 configuration.placeholder = @"New password";
-                configuration.cellType = ADFormTextCellTypePassword;
+                if (!_passwordVisible) {
+                    configuration.cellType = ADFormTextCellTypePassword;
+                }
                 if (self.isPrefilled) {
                     configuration.text = @"abcdef";
                 }
                 if (self.showTitles) {
                     configuration.title = @"New password";
                 }
+                configuration.rightView = self.passwordButton;
             } break;
             case FDPasswordRowTypeNewPasswordConfirmation: {
                 configuration.placeholder = @"Confirmation";
@@ -195,18 +220,28 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             } break;
         }
     }
-
 }
 
-- (void)formAction:(id)sender {
-    [super formAction:sender];
+- (UIView *)formController:(ADFormController *)formController inputAccessoryViewForIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2 && indexPath.row == FDPasswordRowTypeNewPasswordConfirmation) {
+        UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
+        UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check password"
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(_checkPassword:)];
+        toolbar.items = @[ barButtonItem ];
+        return toolbar;
+    }
+    return formController.defaultInputAccessoryView;
+}
 
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDRowTypeGender inSection:0];
-    NSString * gender = [self stringValueForIndexPath:indexPath];
-    DDLogInfo(@"Gender = %@", gender);
+#pragma mark - UITableViewDelegate
 
-    NSDate * date = [self dateValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeDate inSection:0]];
-    DDLogInfo(@"Date = %@", date);
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row == FDRowTypeLongText) {
+        return 100.0f;
+    }
+    return 44.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -238,5 +273,22 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     return sDateFormatter;
 }
 
+- (void)_checkPassword:(id)sender {
+    NSString * newPassword = [_formController stringValueForIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2]];
+    NSString * newPasswordConfirmation = [_formController stringValueForIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPasswordConfirmation inSection:2]];
+    if ([newPassword isEqualToString:newPasswordConfirmation]) {
+        NSLog(@"Same password \\o/");
+    } else {
+        NSLog(@"/!\\ Password error");
+    }
+}
+
+- (void)_togglePassword:(id)sender {
+    _passwordVisible = !_passwordVisible;
+    [self.passwordButton setTitle:_passwordVisible ? @"Hide" : @"Show" forState:UIControlStateNormal];
+
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2];
+    [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 @end

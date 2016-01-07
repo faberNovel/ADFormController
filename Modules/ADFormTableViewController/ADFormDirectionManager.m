@@ -28,34 +28,59 @@
         return nil;
     }
 
-    if (![self canMoveToDirection:direction fromIndexPath:baseIndexPath]) {
-        return nil;
-    }
-
-    NSInteger nextSection = baseIndexPath.section;
-    NSInteger nextRow = baseIndexPath.row;
-
-    if (direction == ADAccessoryViewDirectionNext) {
-        BOOL isLastRowInSection = baseIndexPath.row == [_tableView numberOfRowsInSection:baseIndexPath.section] - 1;
-        nextSection = isLastRowInSection ? baseIndexPath.section + 1 : baseIndexPath.section;
-        nextRow = isLastRowInSection ? 0 : baseIndexPath.row + 1;
-    } else {
-        BOOL isFirstRowInSection = baseIndexPath.row == 0;
-        nextSection = isFirstRowInSection ? baseIndexPath.section - 1 : baseIndexPath.section;
-        nextRow = isFirstRowInSection ? [_tableView numberOfRowsInSection:nextSection] - 1 : baseIndexPath.row - 1;
-    }
-
-    return [NSIndexPath indexPathForRow:nextRow inSection:nextSection];
+    NSIndexPath * nextIndexPath = [self _nextIndexPathForDirection:direction fromIndexPath:baseIndexPath];
+    return nextIndexPath;
 }
 
 - (BOOL)canMoveToDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
-    switch (direction) {
-        case ADAccessoryViewDirectionPrevious:
-            return ![indexPath isEqual:[self _firstIndexPath]];
-        case ADAccessoryViewDirectionNext:
-            return ![indexPath isEqual:[self _lastIndexPath]];
+    NSIndexPath * nextIndexPath = [self _nextIndexPathForDirection:direction fromIndexPath:indexPath];
+    return nextIndexPath != nil;
+}
+
+- (NSIndexPath *)_nextIndexPathForDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
+    NSInteger currentRow = indexPath.row;
+    NSInteger currentSection = indexPath.section;
+
+    NSInteger nextRow = currentRow;
+    NSInteger nextSection = currentSection;
+
+    if (direction == ADAccessoryViewDirectionNext) {
+        if ([indexPath isEqual:[self _lastIndexPath]]) {
+            return nil;
+        }
+
+        BOOL isLastRowInSection = currentRow == [_tableView numberOfRowsInSection:currentSection] - 1;
+        if (isLastRowInSection) {
+            nextSection++;
+            nextRow = 0;
+        } else {
+            nextRow++;
+        }
+    } else if (direction == ADAccessoryViewDirectionPrevious) {
+        if ([indexPath isEqual:[self _firstIndexPath]]) {
+            return nil;
+        }
+
+        BOOL isFirstRowInSection = currentRow == 0;
+        if (isFirstRowInSection) {
+            nextSection--;
+            nextRow = [_tableView numberOfRowsInSection:nextSection] - 1;
+        } else {
+            nextRow--;
+        }
     }
-    return NO;
+
+    NSIndexPath * nextIndexPath = [NSIndexPath indexPathForRow:nextRow inSection:nextSection];
+
+    if ([self.delegate respondsToSelector:@selector(formDirectionManager:canEditCellAtIndexPath:)]) {
+        BOOL canEditCell = [self.delegate formDirectionManager:self canEditCellAtIndexPath:nextIndexPath];
+        if (!canEditCell) {
+            // Recursivity
+            return [self _nextIndexPathForDirection:direction fromIndexPath:nextIndexPath];
+        }
+    }
+
+    return nextIndexPath;
 }
 
 #pragma mark - Private
