@@ -38,6 +38,7 @@
  * Retrieve text value in textfield at indexPath
  */
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath;
+- (void)setStringValue:(NSString *)value forIndexPath:(NSIndexPath *)indexPath;
 
 /*
  * Retrieve date value in textfield at indexPath

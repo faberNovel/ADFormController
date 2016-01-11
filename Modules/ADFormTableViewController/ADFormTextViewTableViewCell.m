@@ -133,6 +133,10 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
     return _placeholderTextView.text;
 }
 
+- (void)setTextContent:(NSString *)textContent {
+    _placeholderTextView.text = textContent;
+}
+
 - (void)setInputAccessoryView:(UIView *)inputAccessoryView {
     _placeholderTextView.inputAccessoryView = inputAccessoryView;
 }

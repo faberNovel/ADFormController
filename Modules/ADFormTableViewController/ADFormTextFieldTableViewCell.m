@@ -242,6 +242,10 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     return _textField.text;
 }
 
+- (void)setTextContent:(NSString *)textContent {
+    _textField.text = textContent;
+}
+
 - (void)setInputAccessoryView:(UIView *)inputAccessoryView {
     _textField.inputAccessoryView = inputAccessoryView;
 }

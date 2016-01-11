@@ -85,6 +85,14 @@
     return nil;
 }
 
+- (void)setStringValue:(NSString *)value forIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
+        id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
+        inputCell.textContent = value;
+    }
+}
+
 - (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath {
     ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
