@@ -64,7 +64,7 @@
         BOOL isFirstRowInSection = currentRow == 0;
         if (isFirstRowInSection) {
             nextSection--;
-            nextRow = [_tableView numberOfRowsInSection:nextSection] - 1;
+            nextRow = MAX([_tableView numberOfRowsInSection:nextSection] - 1, 0);
         } else {
             nextRow--;
         }
