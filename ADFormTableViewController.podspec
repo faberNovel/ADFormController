@@ -12,4 +12,5 @@ Pod::Spec.new do |spec|
   spec.resources = 'Ressources/Defaults/InputAccessoryView.xcassets'
   spec.framework    = 'Foundation', 'UIKit'
   spec.requires_arc = true
+  spec.dependency 'ADKeyboardManager', '~> 2.0'
 end
