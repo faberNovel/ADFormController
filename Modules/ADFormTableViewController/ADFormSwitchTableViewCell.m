@@ -24,6 +24,8 @@ static const CGFloat kMargin = 15.f;
 
 @implementation ADFormSwitchTableViewCell
 
+@synthesize delegate;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -92,12 +94,6 @@ static const CGFloat kMargin = 15.f;
 
 #pragma mark - ADFormTextInputTableViewCell
 
-- (id <ADFormTextInputTableViewCellDelegate>)delegate {
-    return nil;
-}
-
-- (void)setDelegate:(id <ADFormTextInputTableViewCellDelegate>)delegate {/* no delegate */}
-
 - (UIView *)inputAccessoryView {
     return nil;
 }
@@ -157,7 +153,7 @@ static const CGFloat kMargin = 15.f;
 }
 
 - (void)_switchValueChanged:(id)sender {
-    //TODO:
+    [self.delegate textInputTableViewCellValueChanged:self];
 }
 
 @end
