@@ -34,6 +34,7 @@
 		7A189F931535FD5C00A22149 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A189F901535FD5C00A22149 /* main.m */; };
 		7AB3195340BC26F702C59F40 /* libPods-FormDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5BBCB567435C7B7609E535 /* libPods-FormDemo.a */; };
 		7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */; };
+		9279701F1CFF1C78004008CE /* ADFormSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9279701E1CFF1C78004008CE /* ADFormSwitchTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,8 @@
 		7A6BEEFB153700CF0075E2A7 /* FormDemo_Production.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Production.h; sourceTree = "<group>"; };
 		7ABC1627153612960039E546 /* FormDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDemo.h; sourceTree = "<group>"; };
 		7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVersionInfo.m; sourceTree = "<group>"; };
+		9279701D1CFF1C78004008CE /* ADFormSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormSwitchTableViewCell.h; path = ADFormTableViewController/ADFormSwitchTableViewCell.h; sourceTree = "<group>"; };
+		9279701E1CFF1C78004008CE /* ADFormSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormSwitchTableViewCell.m; path = ADFormTableViewController/ADFormSwitchTableViewCell.m; sourceTree = "<group>"; };
 		9E13BE430E290E650250C8DB /* Pods-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				490B37561BCF8227008E0B5A /* ADFormTextViewTableViewCell.m */,
 				496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */,
 				496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */,
+				9279701D1CFF1C78004008CE /* ADFormSwitchTableViewCell.h */,
+				9279701E1CFF1C78004008CE /* ADFormSwitchTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */,
 				494008D91C08976600E1FD21 /* FDTestFormTableViewController.m in Sources */,
 				494008E31C0C3BBA00E1FD21 /* FDTableViewController.m in Sources */,
+				9279701F1CFF1C78004008CE /* ADFormSwitchTableViewCell.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
