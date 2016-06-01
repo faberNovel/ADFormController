@@ -19,6 +19,7 @@ static const CGFloat kMargin = 15.f;
 @property (nonatomic, strong) UILabel * leftLabel;
 
 - (void)_switchValueChanged:(id)sender;
+- (void)_setupStaticConstraints;
 @end
 
 @implementation ADFormSwitchTableViewCell
@@ -34,15 +35,11 @@ static const CGFloat kMargin = 15.f;
 
         _leftLabel = [[UILabel alloc] init];
         _leftLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [_leftLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         [self.contentView addSubview:_leftLabel];
-
-
-        NSDictionary * views = NSDictionaryOfVariableBindings(_switchView);
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_switchView]|" options:0 metrics:nil views:views]];
 
         self.separatorInset = UIEdgeInsetsMake(0, kMargin, 0, 0);
 
+        [self _setupStaticConstraints];
         _dynamicConstraints = [NSMutableArray array];
     }
     return self;
@@ -54,12 +51,12 @@ static const CGFloat kMargin = 15.f;
     [self.contentView removeConstraints:_dynamicConstraints];
     [_dynamicConstraints removeAllObjects];
 
-    NSDictionary * views = NSDictionaryOfVariableBindings(_switchView, _leftLabel, _rightView);
     NSDictionary * metrics = @{@"rightViewWidth" : @(_rightView.frame.size.width),
                                @"rightViewHeight" : @(_rightView.frame.size.height),
                                @"margin" : @(kMargin)};
 
     if (_rightView) {
+        NSDictionary * views = NSDictionaryOfVariableBindings(_switchView, _rightView);
         [_dynamicConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_switchView]-[_rightView(rightViewWidth)]-0-|"
                                                                                          options:NSLayoutFormatAlignAllCenterY
                                                                                          metrics:metrics
@@ -69,23 +66,8 @@ static const CGFloat kMargin = 15.f;
                                                                                          metrics:metrics
                                                                                            views:views]];
     } else {
+        NSDictionary * views = NSDictionaryOfVariableBindings(_switchView);
         [_dynamicConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_switchView]-margin-|"
-                                                                                         options:0
-                                                                                         metrics:metrics
-                                                                                           views:views]];
-    }
-
-    if (_leftLabel.text.length > 0) {
-        [_dynamicConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[_leftLabel]-[_switchView]"
-                                                                                         options:0
-                                                                                         metrics:metrics
-                                                                                           views:views]];
-        [_dynamicConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_leftLabel]|"
-                                                                                         options:0
-                                                                                         metrics:metrics
-                                                                                           views:views]];
-    } else {
-        [_dynamicConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[_switchView]"
                                                                                          options:0
                                                                                          metrics:metrics
                                                                                            views:views]];
@@ -153,6 +135,26 @@ static const CGFloat kMargin = 15.f;
 }
 
 #pragma mark - Private
+
+- (void)_setupStaticConstraints {
+    NSDictionary * views = NSDictionaryOfVariableBindings(_switchView, _leftLabel);
+    NSDictionary * metrics = @{@"margin" : @(kMargin)};
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:_switchView
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1.0f
+                                                      constant:0.0f]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[_leftLabel]-margin-[_switchView]"
+                                                                             options:0
+                                                                             metrics:metrics
+                                                                               views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_leftLabel(>=42)]|"
+                                                                             options:0
+                                                                             metrics:metrics
+                                                                               views:views]];
+}
 
 - (void)_switchValueChanged:(id)sender {
     //TODO:
