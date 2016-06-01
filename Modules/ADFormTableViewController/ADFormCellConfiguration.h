@@ -20,7 +20,8 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
     ADFormTextCellTypeDate,
     ADFormTextCellTypePicker,
     ADFormTextCellTypeLongText,
-    ADFormTextCellTypePasswordNumber
+    ADFormTextCellTypePasswordNumber,
+    ADFormTextCellTypeSwitch
 };
 
 @interface ADFormCellConfiguration : NSObject

@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypePhoneNumber,
     FDRowTypeLongText,
     FDRowTypeDate,
+    FDRowTypeSwitch,
     FDRowTypeCount
 };
 
@@ -163,6 +164,12 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 }
                 if (self.showTitles) {
                     configuration.title = @"Date";
+                }
+            } break;
+            case FDRowTypeSwitch: {
+                configuration.cellType = ADFormTextCellTypeSwitch;
+                if (self.showTitles) {
+                    configuration.title = @"Maried";
                 }
             } break;
             default:

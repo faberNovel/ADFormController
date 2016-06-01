@@ -13,6 +13,7 @@
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
+#import "ADFormSwitchTableViewCell.h"
 
 @interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormDirectionManagerDelegate> {
     NSMutableDictionary * _cells;
@@ -148,6 +149,9 @@
     UITableViewCell<ADFormTextInputTableViewCell> * cell = nil;
     if (configuration.cellType == ADFormTextCellTypeLongText) {
         cell = [self _cellWithClass:ADFormTextViewTableViewCell.class
+                       forIndexPath:indexPath];
+    } else if (configuration.cellType == ADFormTextCellTypeSwitch) {
+        cell = [self _cellWithClass:ADFormSwitchTableViewCell.class
                        forIndexPath:indexPath];
     } else {
         cell = [self _cellWithClass:ADFormTextFieldTableViewCell.class
