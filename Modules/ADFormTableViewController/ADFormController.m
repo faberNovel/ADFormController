@@ -16,7 +16,7 @@
 #import "ADFormSwitchTableViewCell.h"
 
 @interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormDirectionManagerDelegate> {
-    NSMutableDictionary * _cells;
+    NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
     ADTextInputAccessoryView * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
 }
@@ -161,11 +161,10 @@
 }
 
 - (UITableViewCell<ADFormTextInputTableViewCell> *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
-    NSInteger key = indexPath.section * 100 + indexPath.row;
-    if (!_cells[@(key)]) {
-        _cells[@(key)] = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    if (!_cells[indexPath]) {
+        _cells[indexPath] = [(UITableViewCell *)[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
-    return _cells[@(key)];
+    return (UITableViewCell <ADFormTextInputTableViewCell> *) _cells[indexPath];
 }
 
 - (UIReturnKeyType)_returnKeyTypeForIndexPath:(NSIndexPath *)indexPath {
