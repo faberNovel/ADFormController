@@ -80,6 +80,8 @@
 		496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormTextFieldTableViewCell.m; path = ADFormTableViewController/ADFormTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		496042F51B9A1B920010B11A /* ADTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextFieldFormatter.h; path = ADFormTableViewController/ADTextFieldFormatter.h; sourceTree = "<group>"; };
 		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
+		497FEDC01D0012F600FCB648 /* ADFormBoolInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormBoolInputTableViewCell.h; path = ADFormTableViewController/ADFormBoolInputTableViewCell.h; sourceTree = "<group>"; };
+		497FEDC11D00189F00FCB648 /* ADFormInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormInputTableViewCell.h; path = ADFormTableViewController/ADFormInputTableViewCell.h; sourceTree = "<group>"; };
 		5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
 		6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Distribution.h; sourceTree = "<group>"; };
 		6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Preproduction.h; sourceTree = "<group>"; };
@@ -140,7 +142,9 @@
 		494008D11C0891CA00E1FD21 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				497FEDC11D00189F00FCB648 /* ADFormInputTableViewCell.h */,
 				494008E01C08BD9000E1FD21 /* ADFormTextInputTableViewCell.h */,
+				497FEDC01D0012F600FCB648 /* ADFormBoolInputTableViewCell.h */,
 				490B37551BCF8227008E0B5A /* ADFormTextViewTableViewCell.h */,
 				490B37561BCF8227008E0B5A /* ADFormTextViewTableViewCell.m */,
 				496042F11B9A1B110010B11A /* ADFormTextFieldTableViewCell.h */,
