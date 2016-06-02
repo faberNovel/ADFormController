@@ -54,6 +54,11 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _formController = [[ADFormController alloc] initWithTableView:self.tableView];
     _formController.delegate = self;
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Print"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(_printValues:)];;
 }
 
 - (UIButton *)passwordButton {
@@ -297,6 +302,11 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2];
     [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)_printValues:(id)sender {
+    BOOL isMarried = [_formController boolValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeSwitch inSection:0]];
+    DDLogInfo(@"Married = %@", isMarried ? @"YES" : @"NO");
 }
 
 @end
