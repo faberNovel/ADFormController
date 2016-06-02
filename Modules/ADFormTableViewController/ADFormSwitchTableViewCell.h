@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADFormTextInputTableViewCell.h"
+#import "ADFormBoolInputTableViewCell.h"
 
-@interface ADFormSwitchTableViewCell : UITableViewCell <ADFormTextInputTableViewCell>
-
-@property (nonatomic, readonly, strong) UISwitch * switchView;
+@interface ADFormSwitchTableViewCell : UITableViewCell <ADFormBoolInputTableViewCell>
 
 @end

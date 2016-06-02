@@ -9,11 +9,10 @@
 #import "ADFormSwitchTableViewCell.h"
 #import "ADFormCellConfiguration.h"
 
-static NSString * const kStringYes = @"YES";
-static NSString * const kStringNo = @"NO";
 static const CGFloat kMargin = 15.f;
 
 @interface ADFormSwitchTableViewCell ()
+@property (nonatomic, readonly, strong) UISwitch * switchView;
 @property (nonatomic, strong) NSMutableArray<NSLayoutConstraint *> * dynamicConstraints;
 @property (nonatomic, strong) UIView * rightView;
 @property (nonatomic, strong) UILabel * leftLabel;
@@ -92,42 +91,22 @@ static const CGFloat kMargin = 15.f;
     [self setNeedsUpdateConstraints];
 }
 
-#pragma mark - ADFormTextInputTableViewCell
+#pragma mark - ADFormBoolInputTableViewCell
 
-- (UIView *)inputAccessoryView {
-    return nil;
+- (void)setBoolContent:(BOOL)boolContent {
+    self.switchView.on = boolContent;
 }
 
-- (void)setInputAccessoryView:(UIView *)inputAccessoryView {/* no inputAccessoryView */}
-
-- (UIReturnKeyType)returnKeyType {
-    return UIReturnKeyDefault;
-}
-
-- (void)setReturnKeyType:(UIReturnKeyType)returnKeyType {/* no returnKey */}
-
-- (NSString *)textContent {
-    return self.switchView.isOn ? kStringYes : kStringNo;
-}
-
-- (void)setTextContent:(NSString *)textContent {
-    self.switchView.on = [textContent isEqualToString:kStringYes];
+- (BOOL)boolContent {
+    return self.switchView.isOn;
 }
 
 - (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
     self.leftLabel.text = configuration.title;
     self.rightView = configuration.rightView;
-
     self.leftLabel.font = configuration.titleFont;
     self.leftLabel.textColor = configuration.titleColor;
-
-    if (configuration.text.length > 0) {
-        [self setTextContent:configuration.text];
-    }
-}
-
-- (void)beginEditing {
-    [self.switchView becomeFirstResponder];
+    self.switchView.on = configuration.boolValue;
 }
 
 #pragma mark - Private
@@ -153,7 +132,7 @@ static const CGFloat kMargin = 15.f;
 }
 
 - (void)_switchValueChanged:(id)sender {
-    [self.delegate textInputTableViewCellValueChanged:self];
+    [self.delegate boolInputTableViewCellDidChangeValue:self];
 }
 
 @end

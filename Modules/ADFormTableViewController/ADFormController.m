@@ -14,8 +14,9 @@
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
 #import "ADFormSwitchTableViewCell.h"
+#import "ADFormBoolInputTableViewCell.h"
 
-@interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormDirectionManagerDelegate> {
+@interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate> {
     NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
     ADTextInputAccessoryView * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
@@ -49,10 +50,16 @@
         accessoryView = [self.delegate formController:self inputAccessoryViewForIndexPath:indexPath];
     }
 
-    UITableViewCell<ADFormTextInputTableViewCell> * cell = [self _cellFromConfiguration:configuration indexPath:indexPath];;
-    cell.delegate = self;
-    cell.inputAccessoryView = accessoryView;
-    cell.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
+    UITableViewCell<ADFormInputTableViewCell> * cell = [self _cellFromConfiguration:configuration indexPath:indexPath];
+    if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
+        id<ADFormTextInputTableViewCell> inputView = (id<ADFormTextInputTableViewCell>)cell;
+        inputView.inputAccessoryView = accessoryView;
+        inputView.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
+        inputView.delegate = self;
+    } else if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
+        id<ADFormBoolInputTableViewCell> inputView = (id<ADFormBoolInputTableViewCell>)cell;
+        inputView.delegate = self;
+    }
     [cell applyConfiguration:configuration];
 
     return cell;
@@ -91,6 +98,23 @@
     if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
         id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
         inputCell.textContent = value;
+    }
+}
+
+- (BOOL)boolValueForIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
+        id<ADFormBoolInputTableViewCell> inputCell = (id<ADFormBoolInputTableViewCell>)cell;
+        return inputCell.boolContent;
+    }
+    return NO;
+}
+
+- (void)setBoolValue:(BOOL)value forIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
+        id<ADFormBoolInputTableViewCell> inputCell = (id<ADFormBoolInputTableViewCell>)cell;
+        inputCell.boolContent = value;
     }
 }
 
@@ -134,6 +158,15 @@
     }
 }
 
+#pragma mark - ADFormBoolInputTableViewCellDelegate
+
+- (void)boolInputTableViewCellDidChangeValue:(UITableViewCell<ADFormBoolInputTableViewCell> *)boolInputTableViewCell {
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:boolInputTableViewCell];
+    if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
+        [self.delegate formController:self valueChangedForIndexPath:indexPath];
+    }
+}
+
 #pragma mark - ADFormDirectionManagerDelegate
 
 - (BOOL)formDirectionManager:(ADFormDirectionManager *)formDirectionManager canEditCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -143,10 +176,10 @@
 
 #pragma mark - Private
 
-- (UITableViewCell<ADFormTextInputTableViewCell> *)_cellFromConfiguration:(ADFormCellConfiguration *)configuration
+- (UITableViewCell<ADFormInputTableViewCell> *)_cellFromConfiguration:(ADFormCellConfiguration *)configuration
                                                                 indexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell<ADFormTextInputTableViewCell> * cell = nil;
+    UITableViewCell<ADFormInputTableViewCell> * cell = nil;
     if (configuration.cellType == ADFormTextCellTypeLongText) {
         cell = [self _cellWithClass:ADFormTextViewTableViewCell.class
                        forIndexPath:indexPath];
@@ -160,11 +193,11 @@
     return cell;
 }
 
-- (UITableViewCell<ADFormTextInputTableViewCell> *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell<ADFormInputTableViewCell> *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
     if (!_cells[indexPath]) {
         _cells[indexPath] = [(UITableViewCell *)[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
-    return (UITableViewCell <ADFormTextInputTableViewCell> *) _cells[indexPath];
+    return (UITableViewCell <ADFormInputTableViewCell> *) _cells[indexPath];
 }
 
 - (UIReturnKeyType)_returnKeyTypeForIndexPath:(NSIndexPath *)indexPath {

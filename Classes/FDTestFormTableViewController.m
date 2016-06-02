@@ -168,6 +168,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             } break;
             case FDRowTypeSwitch: {
                 configuration.cellType = ADFormTextCellTypeSwitch;
+                if (self.isPrefilled) {
+                    configuration.boolValue = YES;
                 }
                 configuration.title = @"Maried";
             } break;
