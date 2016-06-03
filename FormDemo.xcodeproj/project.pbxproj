@@ -26,6 +26,7 @@
 		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
 		496042F41B9A1B110010B11A /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496042F21B9A1B110010B11A /* ADFormTextFieldTableViewCell.m */; };
 		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
+		49DC79001D01D125009DC7B7 /* FDFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DC78FF1D01D125009DC7B7 /* FDFormModel.m */; };
 		6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */; };
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
@@ -82,6 +83,8 @@
 		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
 		497FEDC01D0012F600FCB648 /* ADFormBoolInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormBoolInputTableViewCell.h; path = ADFormTableViewController/ADFormBoolInputTableViewCell.h; sourceTree = "<group>"; };
 		497FEDC11D00189F00FCB648 /* ADFormInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormInputTableViewCell.h; path = ADFormTableViewController/ADFormInputTableViewCell.h; sourceTree = "<group>"; };
+		49DC78FE1D01D125009DC7B7 /* FDFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFormModel.h; sourceTree = "<group>"; };
+		49DC78FF1D01D125009DC7B7 /* FDFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFormModel.m; sourceTree = "<group>"; };
 		5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
 		6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Distribution.h; sourceTree = "<group>"; };
 		6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Preproduction.h; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */,
 				490B37631BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.h */,
 				490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */,
+				49DC78FE1D01D125009DC7B7 /* FDFormModel.h */,
+				49DC78FF1D01D125009DC7B7 /* FDFormModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				9279701F1CFF1C78004008CE /* ADFormSwitchTableViewCell.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
 				490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */,
+				49DC79001D01D125009DC7B7 /* FDFormModel.m in Sources */,
 				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
