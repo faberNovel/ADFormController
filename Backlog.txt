@@ -1,0 +1,20 @@
+h1. Next
+
+- valeur par défault de la config => les mettre certains champs sont nils
+- ne pas passer la config dans la méthode du délégué
+- éviter le god object pour la config, en utilisant le pattern visiteur
+- créer cell avec slider pour tester architecture flexible
+
+h1. Next+1
+
+- externaliser ADFormDirectionManager de manière à prendre en compte les cells extérieurs au framework
+- utiliser les reusable cells au lieu de garder les références à la main (attention aux resign first responder quand la cell est reuse)
+
+h1. Backlog
+
+- gérer les multi lines
+- auto resizing cells
+
+
+
+

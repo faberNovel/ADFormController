@@ -20,7 +20,8 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
     ADFormTextCellTypeDate,
     ADFormTextCellTypePicker,
     ADFormTextCellTypeLongText,
-    ADFormTextCellTypePasswordNumber
+    ADFormTextCellTypePasswordNumber,
+    ADFormTextCellTypeSwitch
 };
 
 @interface ADFormCellConfiguration : NSObject
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * text;
 @property (nonatomic, strong) NSString * placeholder;
+@property (nonatomic) BOOL boolValue; // used for ADFormTextCellTypeSwitch
 @property (nonatomic, strong) UIView * rightView;
 @property (nonatomic) ADFormTextCellType cellType;
 @property (nonatomic, strong) UIFont * titleFont;

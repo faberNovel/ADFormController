@@ -11,6 +11,7 @@
 #import "FDExpirationDateFormPickerDataSource.h"
 #import "FDCreditCardTextFieldFormatter.h"
 #import "ADSimpleFormPickerDataSource.h"    
+#import "FDFormModel.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -19,6 +20,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypePhoneNumber,
     FDRowTypeLongText,
     FDRowTypeDate,
+    FDRowTypeSwitch,
     FDRowTypeCount
 };
 
@@ -38,6 +40,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     ADFormController * _formController;
     BOOL _passwordVisible;
 }
+@property (nonatomic, strong) FDFormModel * formModel;
 @property (nonatomic, strong) UIButton * passwordButton;
 @end
 
@@ -47,12 +50,24 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     return UITableViewStyleGrouped;
 }
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        self.formModel = [[FDFormModel alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _formController = [[ADFormController alloc] initWithTableView:self.tableView];
     _formController.delegate = self;
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Print"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(_printValues:)];;
 }
 
 - (UIButton *)passwordButton {
@@ -66,6 +81,21 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
         [_passwordButton sizeToFit];
     }
     return _passwordButton;
+}
+
+- (void)setPrefilled:(BOOL)prefilled {
+    _prefilled = prefilled;
+    if (_prefilled) {
+        self.formModel.gender = @"Male";
+        self.formModel.name = @"Georges";
+        self.formModel.email = @"toto.titi@gmail.com";
+        self.formModel.phone = @"0612131415";
+        self.formModel.summary = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.";
+        self.formModel.married = YES;
+        self.formModel.birthDate = [NSDate date];
+        self.formModel.creditCard = @"5131423412231223";
+        self.formModel.expiration = @"04/25";
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -107,9 +137,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.placeholder = @"Gender";
                 configuration.cellType = ADFormTextCellTypePicker;
                 configuration.formPickerDataSource = [[ADSimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
-                if (self.isPrefilled) {
-                    configuration.text = @"Male";
-                }
+                configuration.text = self.formModel.gender;
                 if (self.showTitles) {
                     configuration.title = @"Gender";
                 }
@@ -117,9 +145,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             case FDRowTypeName: {
                 configuration.placeholder = @"Name";
                 configuration.cellType = ADFormTextCellTypeName;
-                if (self.isPrefilled) {
-                    configuration.text = @"Georges";
-                }
+                configuration.text = self.formModel.name;
                 if (self.showTitles) {
                     configuration.title = @"Name";
                 }
@@ -127,9 +153,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             case FDRowTypeEmail: {
                 configuration.placeholder = @"Email";
                 configuration.cellType = ADFormTextCellTypeEmail;
-                if (self.isPrefilled) {
-                    configuration.text = @"toto.titi@gmail.com";
-                }
+                configuration.text = self.formModel.email;
                 if (self.showTitles) {
                     configuration.title = @"Email";
                 }
@@ -137,9 +161,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             case FDRowTypePhoneNumber: {
                 configuration.placeholder = @"Phone";
                 configuration.cellType = ADFormTextCellTypePhone;
-                if (self.isPrefilled) {
-                    configuration.text = @"0612131415";
-                }
+                configuration.text = self.formModel.phone;
                 if (self.showTitles) {
                     configuration.title = @"Phone";
                 }
@@ -147,9 +169,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             case FDRowTypeLongText: {
                 configuration.placeholder = @"Long text";
                 configuration.cellType = ADFormTextCellTypeLongText;
-                if (self.isPrefilled) {
-                    configuration.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.";
-                }
+                configuration.text = self.formModel.summary;
                 if (self.showTitles) {
                     configuration.title = @"Long text";
                 }
@@ -158,12 +178,15 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.placeholder = @"Date";
                 configuration.cellType = ADFormTextCellTypeDate;
                 configuration.dateFormatter = [self.class _dateFormatter];
-                if (self.isPrefilled) {
-                    configuration.text = @"04/09/1990";
-                }
+                configuration.text = [[self.class _dateFormatter] stringFromDate:self.formModel.birthDate];
                 if (self.showTitles) {
                     configuration.title = @"Date";
                 }
+            } break;
+            case FDRowTypeSwitch: {
+                configuration.cellType = ADFormTextCellTypeSwitch;
+                configuration.boolValue = self.formModel.married;
+                configuration.title = @"Maried";
             } break;
             default:
                 break;
@@ -174,9 +197,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.placeholder = @"Credit card";
                 configuration.cellType = ADFormTextCellTypeNumber;
                 configuration.textFieldFormatter = [FDCreditCardTextFieldFormatter new];
-                if (self.isPrefilled) {
-                    configuration.text = @"5131423412231223";
-                }
+                configuration.text = self.formModel.creditCard;
                 if (self.showTitles) {
                     configuration.title = @"Credit card";
                 }
@@ -185,9 +206,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.placeholder = @"Expiration Date";
                 configuration.cellType = ADFormTextCellTypePicker;
                 configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
-                if (self.isPrefilled) {
-                    configuration.text = @"04/25";
-                }
+                configuration.text = self.formModel.expiration;
                 if (self.showTitles) {
                     configuration.title = @"Expiration date";
                 }
@@ -233,6 +252,45 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
         return toolbar;
     }
     return formController.defaultInputAccessoryView;
+}
+
+- (void)formController:(ADFormController *)formController valueChangedForIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case FDRowTypeGender: {
+                self.formModel.gender = [formController stringValueForIndexPath:indexPath];
+            } break;
+            case FDRowTypeName: {
+                self.formModel.name = [formController stringValueForIndexPath:indexPath];
+            } break;
+            case FDRowTypeEmail: {
+                self.formModel.email = [formController stringValueForIndexPath:indexPath];
+            } break;
+            case FDRowTypePhoneNumber: {
+                self.formModel.phone = [formController stringValueForIndexPath:indexPath];
+            } break;
+            case FDRowTypeLongText: {
+                self.formModel.summary = [formController stringValueForIndexPath:indexPath];
+            } break;
+            case FDRowTypeDate: {
+                self.formModel.birthDate = [formController dateValueForIndexPath:indexPath];
+            } break;
+            case FDRowTypeSwitch: {
+                self.formModel.married = [formController boolValueForIndexPath:indexPath];
+            } break;
+            default:
+                break;
+        }
+    } else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case FDCreditCardRowTypeNumber: {
+                self.formModel.creditCard = [formController stringValueForIndexPath:indexPath];
+            } break;
+            case FDCreditCardRowTypeExpirationDate: {
+                self.formModel.expiration = [formController stringValueForIndexPath:indexPath];
+            } break;
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -289,6 +347,11 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2];
     [self.tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)_printValues:(id)sender {
+    BOOL isMarried = [_formController boolValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeSwitch inSection:0]];
+    DDLogInfo(@"Married = %@", isMarried ? @"YES" : @"NO");
 }
 
 @end
