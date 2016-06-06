@@ -42,7 +42,3 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 @property (nonatomic, strong) id<ADFormPickerDataSource> formPickerDataSource;
 
 @end
-
-@interface ADFormCellConfiguration (Default)
-+ (instancetype)defaultConfiguration;
-@end

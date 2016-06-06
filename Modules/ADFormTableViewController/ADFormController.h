@@ -13,9 +13,8 @@
 @class ADFormController;
 @protocol ADFormControllerDelegate <NSObject>
 
-- (void)formController:(ADFormController *)formController
-    applyConfiguration:(ADFormCellConfiguration *)configuration
-          forIndexPath:(NSIndexPath *)indexPath;
+- (ADFormCellConfiguration *)configurationForFormController:(ADFormController *)formController
+                                                atIndexPath:(NSIndexPath *)indexPath;
 
 @optional
 - (UIView *)formController:(ADFormController *)formController inputAccessoryViewForIndexPath:(NSIndexPath *)indexPath;

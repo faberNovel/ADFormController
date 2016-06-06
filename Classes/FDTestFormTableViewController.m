@@ -127,10 +127,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 
 #pragma mark - ADFormControllerDelegate
 
-- (void)formController:(ADFormController *)formController
-    applyConfiguration:(ADFormCellConfiguration *)configuration
-          forIndexPath:(NSIndexPath *)indexPath {
-
+- (ADFormCellConfiguration *)configurationForFormController:(ADFormController *)formController
+                                                atIndexPath:(NSIndexPath *)indexPath {
+    ADFormCellConfiguration * configuration = [[ADFormCellConfiguration alloc] init];
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case FDRowTypeGender: {
@@ -239,6 +238,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             } break;
         }
     }
+    return configuration;
 }
 
 - (UIView *)formController:(ADFormController *)formController inputAccessoryViewForIndexPath:(NSIndexPath *)indexPath {

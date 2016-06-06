@@ -39,10 +39,9 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ADFormCellConfiguration * configuration = [ADFormCellConfiguration defaultConfiguration];
-
-    if ([self.delegate respondsToSelector:@selector(formController:applyConfiguration:forIndexPath:)]) {
-        [self.delegate formController:self applyConfiguration:configuration forIndexPath:indexPath];
+    ADFormCellConfiguration * configuration = nil;
+    if ([self.delegate respondsToSelector:@selector(configurationForFormController:atIndexPath:)]) {
+        configuration = [self.delegate configurationForFormController:self atIndexPath:indexPath];
     }
 
     UIView * accessoryView = self.defaultInputAccessoryView;
@@ -120,11 +119,10 @@
 
 - (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath {
     ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
-    if ([self.delegate respondsToSelector:@selector(formController:applyConfiguration:forIndexPath:)]) {
-        [self.delegate formController:self applyConfiguration:configuration forIndexPath:indexPath];
+    ADFormCellConfiguration * configuration = nil;
+    if ([self.delegate respondsToSelector:@selector(configurationForFormController:atIndexPath:)]) {
+        configuration = [self.delegate configurationForFormController:self atIndexPath:indexPath];
     }
-    
     if (cell && configuration.cellType == ADFormTextCellTypeDate) {
         return [configuration.dateFormatter dateFromString:cell.textField.text];
     }
