@@ -15,6 +15,8 @@
 #import "UIView+Responder.h"
 #import "ADFormSwitchTableViewCell.h"
 #import "ADFormBoolInputTableViewCell.h"
+#import "ADFormCellBoolConfiguration.h"
+#import "ADFormCellTextConfiguration.h"
 
 @interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate> {
     NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
@@ -43,25 +45,7 @@
     if ([self.delegate respondsToSelector:@selector(configurationForFormController:atIndexPath:)]) {
         configuration = [self.delegate configurationForFormController:self atIndexPath:indexPath];
     }
-
-    UIView * accessoryView = self.defaultInputAccessoryView;
-    if ([self.delegate respondsToSelector:@selector(formController:inputAccessoryViewForIndexPath:)]) {
-        accessoryView = [self.delegate formController:self inputAccessoryViewForIndexPath:indexPath];
-    }
-
-    UITableViewCell<ADFormInputTableViewCell> * cell = [self _cellFromConfiguration:configuration indexPath:indexPath];
-    if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
-        id<ADFormTextInputTableViewCell> inputView = (id<ADFormTextInputTableViewCell>)cell;
-        inputView.inputAccessoryView = accessoryView;
-        inputView.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
-        inputView.delegate = self;
-    } else if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
-        id<ADFormBoolInputTableViewCell> inputView = (id<ADFormBoolInputTableViewCell>)cell;
-        inputView.delegate = self;
-    }
-    [cell applyConfiguration:configuration];
-
-    return cell;
+    return [self _cellFromConfiguration:configuration indexPath:indexPath];
 }
 
 #pragma mark - Getter
@@ -124,7 +108,7 @@
         configuration = [self.delegate configurationForFormController:self atIndexPath:indexPath];
     }
     if (cell && configuration.cellType == ADFormTextCellTypeDate) {
-        return [configuration.dateFormatter dateFromString:cell.textField.text];
+        return [((ADFormCellTextConfiguration *)configuration).dateFormatter dateFromString:cell.textField.text];
     }
     return nil;
 }
@@ -174,28 +158,39 @@
 
 #pragma mark - Private
 
-- (UITableViewCell<ADFormInputTableViewCell> *)_cellFromConfiguration:(ADFormCellConfiguration *)configuration
-                                                                indexPath:(NSIndexPath *)indexPath {
-
-    UITableViewCell<ADFormInputTableViewCell> * cell = nil;
-    if (configuration.cellType == ADFormTextCellTypeLongText) {
-        cell = [self _cellWithClass:ADFormTextViewTableViewCell.class
-                       forIndexPath:indexPath];
-    } else if (configuration.cellType == ADFormTextCellTypeSwitch) {
-        cell = [self _cellWithClass:ADFormSwitchTableViewCell.class
-                       forIndexPath:indexPath];
-    } else {
-        cell = [self _cellWithClass:ADFormTextFieldTableViewCell.class
-                       forIndexPath:indexPath];
+- (UITableViewCell *)_cellFromConfiguration:(ADFormCellConfiguration *)configuration
+                                  indexPath:(NSIndexPath *)indexPath {
+    if (configuration.cellType == ADFormTextCellTypeSwitch && [configuration isKindOfClass:ADFormCellBoolConfiguration.class]) {
+        ADFormSwitchTableViewCell * cell = (ADFormSwitchTableViewCell *)[self _cellWithClass:ADFormSwitchTableViewCell.class forIndexPath:indexPath];
+        cell.delegate = self;
+        [cell applyConfiguration:(ADFormCellBoolConfiguration *)configuration];
+        return cell;
     }
+
+    UITableViewCell<ADFormTextInputTableViewCell> * cell = nil;
+    if (configuration.cellType == ADFormTextCellTypeLongText && [configuration isKindOfClass:ADFormCellTextConfiguration.class]) {
+        cell = (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class forIndexPath:indexPath];
+    } else {
+        cell = (ADFormTextFieldTableViewCell *)[self _cellWithClass:ADFormTextFieldTableViewCell.class forIndexPath:indexPath];
+    }
+
+    [cell applyConfiguration:(ADFormCellTextConfiguration *)configuration];
+
+    UIView * accessoryView = self.defaultInputAccessoryView;
+    if ([self.delegate respondsToSelector:@selector(formController:inputAccessoryViewForIndexPath:)]) {
+        accessoryView = [self.delegate formController:self inputAccessoryViewForIndexPath:indexPath];
+    }
+    cell.inputAccessoryView = accessoryView;
+    cell.returnKeyType = [self _returnKeyTypeForIndexPath:indexPath];
+    cell.delegate = self;
     return cell;
 }
 
-- (UITableViewCell<ADFormInputTableViewCell> *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
     if (!_cells[indexPath]) {
         _cells[indexPath] = [(UITableViewCell *)[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
-    return (UITableViewCell <ADFormInputTableViewCell> *) _cells[indexPath];
+    return (UITableViewCell*) _cells[indexPath];
 }
 
 - (UIReturnKeyType)_returnKeyTypeForIndexPath:(NSIndexPath *)indexPath {

@@ -7,7 +7,7 @@
 //
 
 #import "ADFormSwitchTableViewCell.h"
-#import "ADFormCellConfiguration.h"
+#import "ADFormCellBoolConfiguration.h"
 
 static const CGFloat kMargin = 15.f;
 
@@ -101,12 +101,13 @@ static const CGFloat kMargin = 15.f;
     return self.switchView.isOn;
 }
 
-- (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
+- (void)applyConfiguration:(ADFormCellBoolConfiguration *)configuration {
     self.leftLabel.text = configuration.title;
     self.rightView = configuration.rightView;
     self.leftLabel.font = configuration.titleFont;
     self.leftLabel.textColor = configuration.titleColor;
     self.switchView.on = configuration.boolValue;
+    self.switchView.onTintColor = configuration.onTintColor;
 }
 
 #pragma mark - Private

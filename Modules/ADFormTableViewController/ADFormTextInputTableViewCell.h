@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormInputTableViewCell.h"
+
+@class ADFormCellTextConfiguration;
 
 @protocol ADFormTextInputTableViewCellDelegate;
 
-@protocol ADFormTextInputTableViewCell <ADFormInputTableViewCell>
+@protocol ADFormTextInputTableViewCell
 
 @property (nonatomic, weak) id<ADFormTextInputTableViewCellDelegate> delegate;
 @property (nonatomic, strong) UIView * inputAccessoryView;
@@ -19,6 +20,8 @@
 @property (nonatomic) NSString * textContent;
 
 - (void)beginEditing;
+
+- (void)applyConfiguration:(ADFormCellTextConfiguration *)configuration;
 
 @end
 

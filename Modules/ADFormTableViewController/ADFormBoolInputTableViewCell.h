@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormInputTableViewCell.h"
+
+@class ADFormCellBoolConfiguration;
 
 @protocol ADFormBoolInputTableViewCellDelegate;
 
-@protocol ADFormBoolInputTableViewCell <ADFormInputTableViewCell>
+@protocol ADFormBoolInputTableViewCell
 
 @property (nonatomic, weak) id<ADFormBoolInputTableViewCellDelegate> delegate;
 @property (nonatomic) BOOL boolContent;
+
+- (void)applyConfiguration:(ADFormCellBoolConfiguration *)configuration;
 
 @end
 
