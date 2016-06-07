@@ -19,4 +19,8 @@
     return self;
 }
 
+- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 @end

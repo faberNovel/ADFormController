@@ -90,6 +90,7 @@
 		49DC791E1D055ED7009DC7B7 /* ADFormCellBoolConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormCellBoolConfiguration.m; path = ADFormTableViewController/ADFormCellBoolConfiguration.m; sourceTree = "<group>"; };
 		49DC79201D05666D009DC7B7 /* ADFormCellConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormCellConfiguration.h; path = ADFormTableViewController/ADFormCellConfiguration.h; sourceTree = "<group>"; };
 		49DC79211D05666D009DC7B7 /* ADFormCellConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADFormCellConfiguration.m; path = ADFormTableViewController/ADFormCellConfiguration.m; sourceTree = "<group>"; };
+		49F7C7D51D06B5BE00086054 /* ADFormCellConfigurable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADFormCellConfigurable.h; path = ADFormTableViewController/ADFormCellConfigurable.h; sourceTree = "<group>"; };
 		5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
 		6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Distribution.h; sourceTree = "<group>"; };
 		6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Preproduction.h; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 		49DC79231D056672009DC7B7 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				49F7C7D51D06B5BE00086054 /* ADFormCellConfigurable.h */,
 				49DC79201D05666D009DC7B7 /* ADFormCellConfiguration.h */,
 				49DC79211D05666D009DC7B7 /* ADFormCellConfiguration.m */,
 				490B37531BCF8227008E0B5A /* ADFormCellTextConfiguration.h */,

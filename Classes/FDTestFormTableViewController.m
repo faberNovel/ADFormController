@@ -197,7 +197,6 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
             } break;
             case FDRowTypeSwitch: {
                 ADFormCellBoolConfiguration * configuration = [[ADFormCellBoolConfiguration alloc] init];
-                configuration.cellType = ADFormTextCellTypeSwitch;
                 configuration.boolValue = self.formModel.married;
                 configuration.title = @"Maried";
                 return configuration;

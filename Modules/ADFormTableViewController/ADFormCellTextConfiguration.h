@@ -11,8 +11,22 @@
 #import "ADTextFieldFormatter.h"
 #import "ADFormCellConfiguration.h"
 
+typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
+    ADFormTextCellTypeEmail,
+    ADFormTextCellTypePassword,
+    ADFormTextCellTypeName,
+    ADFormTextCellTypePhone,
+    ADFormTextCellTypeText,
+    ADFormTextCellTypeNumber,
+    ADFormTextCellTypeDate,
+    ADFormTextCellTypePicker,
+    ADFormTextCellTypeLongText,
+    ADFormTextCellTypePasswordNumber,
+};
+
 @interface ADFormCellTextConfiguration : ADFormCellConfiguration
 
+@property (nonatomic) ADFormTextCellType cellType;
 @property (nonatomic, strong) NSString * text;
 @property (nonatomic, strong) UIFont * textFont;
 @property (nonatomic, strong) UIColor * textColor;

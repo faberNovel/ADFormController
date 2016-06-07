@@ -7,28 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
-    ADFormTextCellTypeEmail,
-    ADFormTextCellTypePassword,
-    ADFormTextCellTypeName,
-    ADFormTextCellTypePhone,
-    ADFormTextCellTypeText,
-    ADFormTextCellTypeNumber,
-    ADFormTextCellTypeDate,
-    ADFormTextCellTypePicker,
-    ADFormTextCellTypeLongText,
-    ADFormTextCellTypePasswordNumber,
-    ADFormTextCellTypeSwitch
-};
+#import "ADFormCellConfigurable.h"
 
 @interface ADFormCellConfiguration : NSObject
 
 @property (nonatomic, strong) NSString * title;
-@property (nonatomic) ADFormTextCellType cellType;
 @property (nonatomic, strong) UIFont * titleFont;
 @property (nonatomic, strong) UIColor * titleColor;
 @property (nonatomic, strong) UIColor * tintColor;
 @property (nonatomic, strong) UIView * rightView;
+
+- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath;
 
 @end

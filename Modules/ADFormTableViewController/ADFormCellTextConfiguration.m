@@ -18,4 +18,8 @@
     return self;
 }
 
+- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
+    return [configurable textInputCellWithConfiguration:self atIndexPath:indexPath];
+}
+
 @end

@@ -10,4 +10,8 @@
 
 @implementation ADFormCellBoolConfiguration
 
+- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
+    return [configurable boolInputCellWithConfiguration:self atIndexPath:indexPath];
+}
+
 @end
