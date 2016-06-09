@@ -1,0 +1,15 @@
+h1. Next
+
+- validation d'input
+- externaliser ADFormDirectionManager de manière à prendre en compte les cells extérieurs au framework
+- utiliser les reusable cells au lieu de garder les références à la main (attention aux resign first responder quand la cell est reuse)
+
+h1. Backlog
+
+- créer cell avec slider (utile ?)
+- gérer les multi lines
+- auto resizing cells
+
+
+
+
