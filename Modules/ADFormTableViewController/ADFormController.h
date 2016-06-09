@@ -37,13 +37,11 @@
  * Retrieve text value in textfield at indexPath
  */
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath;
-- (void)setStringValue:(NSString *)value forIndexPath:(NSIndexPath *)indexPath;
 
 /*
  * Retrieve bool value in switch at indexPath
  */
 - (BOOL)boolValueForIndexPath:(NSIndexPath *)indexPath;
-- (void)setBoolValue:(BOOL)value forIndexPath:(NSIndexPath *)indexPath;
 
 /*
  * Retrieve date value in textfield at indexPath

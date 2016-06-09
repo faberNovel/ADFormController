@@ -77,14 +77,6 @@
     return nil;
 }
 
-- (void)setStringValue:(NSString *)value forIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
-        id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
-        inputCell.textContent = value;
-    }
-}
-
 - (BOOL)boolValueForIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
@@ -92,14 +84,6 @@
         return inputCell.boolContent;
     }
     return NO;
-}
-
-- (void)setBoolValue:(BOOL)value forIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
-        id<ADFormBoolInputTableViewCell> inputCell = (id<ADFormBoolInputTableViewCell>)cell;
-        inputCell.boolContent = value;
-    }
 }
 
 - (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath {
