@@ -12,7 +12,6 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.tintColor = [UIColor blackColor];
         self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
         self.titleColor = [UIColor blackColor];
     }
