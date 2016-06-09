@@ -36,6 +36,7 @@ static const CGFloat kMargin = 15.f;
 
         _leftLabel = [[UILabel alloc] init];
         _leftLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _leftLabel.numberOfLines = 0;
         [self.contentView addSubview:_leftLabel];
 
         self.separatorInset = UIEdgeInsetsMake(0, kMargin, 0, 0);
