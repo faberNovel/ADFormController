@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'ADFormTableViewController'
+  spec.name         = 'ADFormController'
   spec.version      = '1.0.0'
   spec.authors      = 'Applidium'
   spec.license      = 'none'
@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.platform     = 'ios', '7.0'
   spec.license      = { :type => 'Commercial', :text => 'Created and licensed by Applidium. Copyright 2014 Applidium. All rights reserved.' }
   spec.source       = { :git => 'ssh://git@gerrit.applidium.net:29418/ADFormTableViewController_iOS', :tag => "v#{spec.version}" }
-  spec.source_files = 'Modules/ADFormTableViewController/*.{h,m}'
+  spec.source_files = 'Modules/ADFormController/*.{h,m}'
   spec.resources = 'Ressources/Defaults/InputAccessoryView.xcassets'
   spec.framework    = 'Foundation', 'UIKit'
   spec.requires_arc = true
