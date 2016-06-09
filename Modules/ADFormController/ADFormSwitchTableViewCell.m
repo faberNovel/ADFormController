@@ -109,6 +109,7 @@ static const CGFloat kMargin = 15.f;
     self.leftLabel.textColor = configuration.titleColor;
     self.switchView.on = configuration.boolValue;
     self.switchView.onTintColor = configuration.onTintColor;
+    self.switchView.tintColor = configuration.tintColor;
 }
 
 #pragma mark - Private
