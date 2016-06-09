@@ -199,6 +199,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 ADFormCellBoolConfiguration * configuration = [[ADFormCellBoolConfiguration alloc] init];
                 configuration.boolValue = self.formModel.married;
                 configuration.title = @"Maried";
+                configuration.onTintColor = [UIColor greenColor];
+                configuration.tintColor = [UIColor redColor];
                 return configuration;
             } break;
             default:

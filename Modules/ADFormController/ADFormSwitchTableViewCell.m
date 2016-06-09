@@ -110,6 +110,9 @@ static const CGFloat kMargin = 15.f;
     self.switchView.on = configuration.boolValue;
     self.switchView.onTintColor = configuration.onTintColor;
     self.switchView.tintColor = configuration.tintColor;
+    //hack to have a nice background color for off position
+    self.switchView.layer.cornerRadius = 16.0f;
+    self.switchView.backgroundColor = configuration.tintColor;
 }
 
 #pragma mark - Private
