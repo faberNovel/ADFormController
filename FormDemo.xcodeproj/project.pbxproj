@@ -194,7 +194,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		496042EE1B9A1AFE0010B11A /* ADFormTableViewController */ = {
+		496042EE1B9A1AFE0010B11A /* ADFormController */ = {
 			isa = PBXGroup;
 			children = (
 				494008D41C08930C00E1FD21 /* ADFormController.h */,
@@ -204,7 +204,7 @@
 				494008D31C0891F600E1FD21 /* Model */,
 				494008D01C0891BF00E1FD21 /* Category */,
 			);
-			name = ADFormTableViewController;
+			name = ADFormController;
 			sourceTree = "<group>";
 		};
 		497C97981B9AC4F5002175AC /* Model */ = {
@@ -337,7 +337,7 @@
 		7AFC5ED1155AA37F009D92A7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				496042EE1B9A1AFE0010B11A /* ADFormTableViewController */,
+				496042EE1B9A1AFE0010B11A /* ADFormController */,
 				6FE3EFE81A6D3A8B007A4AD5 /* ADTargetSettings */,
 				7AFC5ED2155AA37F009D92A7 /* ADVersionInfo */,
 			);
