@@ -1,8 +1,8 @@
 //
 //  ADFormCellConfiguration.m
-//  Nexity
+//  FormDemo
 //
-//  Created by Pierre Felgines on 13/10/2015.
+//  Created by Pierre Felgines on 06/06/16.
 //
 //
 
@@ -10,17 +10,17 @@
 
 @implementation ADFormCellConfiguration
 
-@end
+- (instancetype)init {
+    if (self = [super init]) {
+        self.tintColor = [UIColor blackColor];
+        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+        self.titleColor = [UIColor blackColor];
+    }
+    return self;
+}
 
-@implementation ADFormCellConfiguration (Default)
-
-+ (instancetype)defaultConfiguration {
-    ADFormCellConfiguration * configuration = [ADFormCellConfiguration new];
-    configuration.textColor = [UIColor blackColor];
-    configuration.tintColor = [UIColor blackColor];
-    configuration.textFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-    configuration.titleFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-    return configuration;
+- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 @end

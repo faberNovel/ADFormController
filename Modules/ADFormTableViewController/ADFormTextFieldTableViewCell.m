@@ -9,7 +9,7 @@
 #import "ADFormTextFieldTableViewCell.h"
 #import "ADTextFieldFormatter.h"
 #import "ADTextField.h"
-#import "ADFormCellConfiguration.h"
+#import "ADFormCellTextConfiguration.h"
 #import "ADDatePickerTextFieldBinding.h"
 #import "ADPickerViewTextFieldBinding.h"
 
@@ -213,7 +213,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 #pragma mark - ADFormTextInputTableViewCell
 
-- (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
+- (void)applyConfiguration:(ADFormCellTextConfiguration *)configuration {
     self.textField.placeholder = configuration.placeholder;
     self.leftLabel.text = configuration.title;
     self.cellType = configuration.cellType;

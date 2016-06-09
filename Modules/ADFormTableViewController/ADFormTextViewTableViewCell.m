@@ -8,7 +8,7 @@
 
 #import "ADFormTextViewTableViewCell.h"
 #import "ADPlaceholderTextView.h"
-#import "ADFormCellConfiguration.h"
+#import "ADFormCellTextConfiguration.h"
 
 @interface ADFormTextViewTableViewCell () <UITextViewDelegate> {
     UILabel * _titleLabel;
@@ -109,7 +109,7 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
 
 #pragma mark - ADFormTextInputTableViewCell
 
-- (void)applyConfiguration:(ADFormCellConfiguration *)configuration {
+- (void)applyConfiguration:(ADFormCellTextConfiguration *)configuration {
     _titleLabel.text = configuration.title;
 
     _titleLabel.font = configuration.titleFont;

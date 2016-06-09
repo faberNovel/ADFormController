@@ -1,48 +1,22 @@
 //
 //  ADFormCellConfiguration.h
-//  Nexity
+//  FormDemo
 //
-//  Created by Pierre Felgines on 13/10/2015.
+//  Created by Pierre Felgines on 06/06/16.
 //
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormPickerDataSource.h"
-#import "ADTextFieldFormatter.h"
-
-typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
-    ADFormTextCellTypeEmail,
-    ADFormTextCellTypePassword,
-    ADFormTextCellTypeName,
-    ADFormTextCellTypePhone,
-    ADFormTextCellTypeText,
-    ADFormTextCellTypeNumber,
-    ADFormTextCellTypeDate,
-    ADFormTextCellTypePicker,
-    ADFormTextCellTypeLongText,
-    ADFormTextCellTypePasswordNumber,
-    ADFormTextCellTypeSwitch
-};
+#import "ADFormCellConfigurable.h"
 
 @interface ADFormCellConfiguration : NSObject
 
 @property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * text;
-@property (nonatomic, strong) NSString * placeholder;
-@property (nonatomic) BOOL boolValue; // used for ADFormTextCellTypeSwitch
-@property (nonatomic, strong) UIView * rightView;
-@property (nonatomic) ADFormTextCellType cellType;
 @property (nonatomic, strong) UIFont * titleFont;
-@property (nonatomic, strong) UIFont * textFont;
 @property (nonatomic, strong) UIColor * titleColor;
-@property (nonatomic, strong) UIColor * textColor;
 @property (nonatomic, strong) UIColor * tintColor;
-@property (nonatomic, strong) id<ADTextFieldFormatter> textFieldFormatter;
-@property (nonatomic, strong) NSDateFormatter * dateFormatter;
-@property (nonatomic, strong) id<ADFormPickerDataSource> formPickerDataSource;
+@property (nonatomic, strong) UIView * rightView;
 
-@end
+- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath;
 
-@interface ADFormCellConfiguration (Default)
-+ (instancetype)defaultConfiguration;
 @end
