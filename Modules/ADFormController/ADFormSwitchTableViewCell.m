@@ -36,6 +36,7 @@ static const CGFloat kMargin = 15.f;
 
         _leftLabel = [[UILabel alloc] init];
         _leftLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _leftLabel.numberOfLines = 0;
         [self.contentView addSubview:_leftLabel];
 
         self.separatorInset = UIEdgeInsetsMake(0, kMargin, 0, 0);
@@ -108,6 +109,10 @@ static const CGFloat kMargin = 15.f;
     self.leftLabel.textColor = configuration.titleColor;
     self.switchView.on = configuration.boolValue;
     self.switchView.onTintColor = configuration.onTintColor;
+    self.switchView.tintColor = configuration.tintColor;
+    //hack to have a nice background color for off position
+    self.switchView.layer.cornerRadius = 16.0f;
+    self.switchView.backgroundColor = configuration.tintColor;
 }
 
 #pragma mark - Private
