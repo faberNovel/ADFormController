@@ -48,8 +48,6 @@ static const CGFloat kMargin = 15.f;
 }
 
 - (void)updateConstraints {
-    [super updateConstraints];
-
     [self.contentView removeConstraints:_dynamicConstraints];
     [_dynamicConstraints removeAllObjects];
 
@@ -76,6 +74,7 @@ static const CGFloat kMargin = 15.f;
     }
 
     [self.contentView addConstraints:_dynamicConstraints];
+    [super updateConstraints];
 }
 
 - (UIEdgeInsets)layoutMargins {
@@ -118,6 +117,9 @@ static const CGFloat kMargin = 15.f;
 #pragma mark - Private
 
 - (void)_setupStaticConstraints {
+    [_switchView setContentCompressionResistancePriority:UILayoutPriorityRequired
+                                            forAxis:UILayoutConstraintAxisHorizontal];
+
     NSDictionary * views = NSDictionaryOfVariableBindings(_switchView, _leftLabel);
     NSDictionary * metrics = @{@"margin" : @(kMargin)};
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
