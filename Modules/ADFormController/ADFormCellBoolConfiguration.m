@@ -10,6 +10,13 @@
 
 @implementation ADFormCellBoolConfiguration
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.switchZoom = 1.f;
+    }
+    return self;
+}
+
 - (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
     return [configurable boolInputCellWithConfiguration:self atIndexPath:indexPath];
 }

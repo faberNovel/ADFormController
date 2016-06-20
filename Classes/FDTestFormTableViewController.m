@@ -207,6 +207,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.title = @"Maried";
                 configuration.onTintColor = [UIColor greenColor];
                 configuration.tintColor = [UIColor redColor];
+                configuration.switchZoom = 0.65f;
                 return configuration;
             } break;
             case FDRowTypeNoInputAccessory: {

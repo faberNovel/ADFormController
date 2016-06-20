@@ -112,6 +112,7 @@ static const CGFloat kMargin = 15.f;
     //hack to have a nice background color for off position
     self.switchView.layer.cornerRadius = 16.0f;
     self.switchView.backgroundColor = configuration.tintColor;
+    self.switchView.transform = CGAffineTransformMakeScale(configuration.switchZoom, configuration.switchZoom);
 }
 
 #pragma mark - Private

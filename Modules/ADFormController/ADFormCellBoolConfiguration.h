@@ -12,4 +12,5 @@
 @interface ADFormCellBoolConfiguration : ADFormCellConfiguration
 @property (nonatomic) BOOL boolValue;
 @property (nonatomic, strong) UIColor * onTintColor;
+@property (nonatomic) CGFloat switchZoom;
 @end
