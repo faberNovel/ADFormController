@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeLongText,
     FDRowTypeDate,
     FDRowTypeSwitch,
+    FDRowTypeNoInputAccessory,
     FDRowTypeCount
 };
 
@@ -203,6 +204,15 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.tintColor = [UIColor redColor];
                 return configuration;
             } break;
+            case FDRowTypeNoInputAccessory: {
+                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                configuration.placeholder = @"Useless row with no input accessory";
+                configuration.cellType = ADFormTextCellTypeName;
+                if (self.showTitles) {
+                    configuration.title = @"No accessory here";
+                }
+                return configuration;
+            } break;
             default:
                 break;
         }
@@ -274,6 +284,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                                                                           action:@selector(_checkPassword:)];
         toolbar.items = @[ barButtonItem ];
         return toolbar;
+    } else if (indexPath.section == 0 && indexPath.row == FDRowTypeNoInputAccessory) {
+        return nil;
     }
     return formController.defaultInputAccessoryView;
 }
