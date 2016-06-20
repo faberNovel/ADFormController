@@ -6,9 +6,9 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "ADNavigableButtons.h"
 
-@interface ADTextInputAccessoryView : UIToolbar
+@interface ADTextInputAccessoryView : UIToolbar<ADNavigableButtons>
 
 @property (nonatomic, strong) UIBarButtonItem * nextBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem * previousBarButtonItem;

@@ -89,8 +89,8 @@
 		49F7C82C1D096CF900086054 /* ADTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTextField.h; sourceTree = "<group>"; };
 		49F7C82D1D096CF900086054 /* ADTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTextField.m; sourceTree = "<group>"; };
 		49F7C82E1D096CF900086054 /* ADTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTextFieldFormatter.h; sourceTree = "<group>"; };
-		49F7C82F1D096CF900086054 /* ADTextInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTextInputAccessoryView.h; sourceTree = "<group>"; };
-		49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTextInputAccessoryView.m; sourceTree = "<group>"; };
+		49F7C82F1D096CF900086054 /* ADTextInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextInputAccessoryView.h; path = ADFormController/ADTextInputAccessoryView.h; sourceTree = "<group>"; };
+		49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTextInputAccessoryView.m; path = ADFormController/ADTextInputAccessoryView.m; sourceTree = "<group>"; };
 		49F7C8311D096CF900086054 /* UIView+Traverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Traverse.h"; sourceTree = "<group>"; };
 		49F7C8321D096CF900086054 /* UIView+Traverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Traverse.m"; sourceTree = "<group>"; };
 		5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +110,7 @@
 		7A6BEEFB153700CF0075E2A7 /* FormDemo_Production.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Production.h; sourceTree = "<group>"; };
 		7ABC1627153612960039E546 /* FormDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDemo.h; sourceTree = "<group>"; };
 		7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVersionInfo.m; sourceTree = "<group>"; };
+		924034551D18284100998373 /* ADNavigableButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNavigableButtons.h; path = ADFormController/ADNavigableButtons.h; sourceTree = "<group>"; };
 		9E13BE430E290E650250C8DB /* Pods-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 			children = (
 				49F7C81A1D096CF900086054 /* ADFormController.h */,
 				49F7C81B1D096CF900086054 /* ADFormController.m */,
+				924034541D18278D00998373 /* Accessory View */,
 				49F7C8421D096D0100086054 /* Cells */,
 				49F7C8431D096D0900086054 /* Custom View */,
 				49F7C8451D096D1900086054 /* Model */,
@@ -207,8 +209,6 @@
 				49F7C8291D096CF900086054 /* ADPlaceholderTextView.m */,
 				49F7C82C1D096CF900086054 /* ADTextField.h */,
 				49F7C82D1D096CF900086054 /* ADTextField.m */,
-				49F7C82F1D096CF900086054 /* ADTextInputAccessoryView.h */,
-				49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */,
 			);
 			name = "Custom View";
 			sourceTree = "<group>";
@@ -350,6 +350,17 @@
 				7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */,
 			);
 			path = ADVersionInfo;
+			sourceTree = "<group>";
+		};
+		924034541D18278D00998373 /* Accessory View */ = {
+			isa = PBXGroup;
+			children = (
+				924034551D18284100998373 /* ADNavigableButtons.h */,
+				49F7C82F1D096CF900086054 /* ADTextInputAccessoryView.h */,
+				49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */,
+			);
+			name = "Accessory View";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		EB27F1D28218EBD841B2BFE5 /* Pods */ = {
