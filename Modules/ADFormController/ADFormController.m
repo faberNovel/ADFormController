@@ -21,7 +21,7 @@
 
 @interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate, ADFormCellConfigurable> {
     NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
-    ADTextInputAccessoryView * _defaultInputAccessoryView;
+    UIView<ADNavigableButtons> * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
 }
 @property (nonatomic, weak) UITableView * tableView;
@@ -35,6 +35,7 @@
         _cells = [NSMutableDictionary dictionary];
         _formDirectionManager = [[ADFormDirectionManager alloc] initWithTableView:self.tableView];
         _formDirectionManager.delegate = self;
+        [self _setupDefaultInputAccessoryView];
     }
     return self;
 }
@@ -49,21 +50,11 @@
     return [configuration visit:self atIndexPath:indexPath];
 }
 
-#pragma mark - Getter
+#pragma mark - Getter/Setter
 
-- (UIView *)defaultInputAccessoryView {
-    if (!_defaultInputAccessoryView) {
-        ADTextInputAccessoryView * textInputAccessoryView = [[ADTextInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
-
-        textInputAccessoryView.nextBarButtonItem.target = self;
-        textInputAccessoryView.nextBarButtonItem.action = @selector(_next:);
-
-        textInputAccessoryView.previousBarButtonItem.target = self;
-        textInputAccessoryView.previousBarButtonItem.action = @selector(_previous:);
-
-        _defaultInputAccessoryView = textInputAccessoryView;
-    }
-    return _defaultInputAccessoryView;
+- (void)setDefaultInputAccessoryView:(UIView<ADNavigableButtons> *)defaultInputAccessoryView {
+    _defaultInputAccessoryView = defaultInputAccessoryView;
+    [self _addMovingSelectorsToInputAccessoryView:defaultInputAccessoryView];
 }
 
 #pragma mark - Methods
@@ -172,6 +163,19 @@
 }
 
 #pragma mark - Private
+
+- (void)_setupDefaultInputAccessoryView {
+    ADTextInputAccessoryView * textInputAccessoryView = [[ADTextInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
+    self.defaultInputAccessoryView = textInputAccessoryView;
+}
+
+- (void)_addMovingSelectorsToInputAccessoryView:(UIView<ADNavigableButtons> *)inputAccessoryView {
+    inputAccessoryView.nextBarButtonItem.target = self;
+    inputAccessoryView.nextBarButtonItem.action = @selector(_next:);
+
+    inputAccessoryView.previousBarButtonItem.target = self;
+    inputAccessoryView.previousBarButtonItem.action = @selector(_previous:);
+}
 
 - (UITableViewCell *)_cellWithClass:(Class)cellClass forIndexPath:(NSIndexPath *)indexPath {
     if (!_cells[indexPath]) {

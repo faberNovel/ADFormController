@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ADFormCellConfiguration.h"
+#import "ADNavigableButtons.h"
 
 @class ADFormController;
 @protocol ADFormControllerDelegate <NSObject>
@@ -27,7 +28,7 @@
 
 @property (nonatomic, weak) id<ADFormControllerDelegate> delegate;
 
-@property (nonatomic, readonly) UIView * defaultInputAccessoryView; // To customize, use delegate method
+@property (nonatomic, strong) UIView<ADNavigableButtons> * defaultInputAccessoryView; //Not called if -formController: inputAccessoryViewForIndexPath: is implemented in delegate
 
 - (instancetype)initWithTableView:(UITableView *)tableView;
 
