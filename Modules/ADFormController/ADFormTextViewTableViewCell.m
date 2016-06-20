@@ -21,6 +21,7 @@
 @implementation ADFormTextViewTableViewCell
 
 @synthesize delegate = _delegate;
+@synthesize inputAccessoryView = _inputAccessoryView;
 
 static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
 
@@ -135,14 +136,6 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
 
 - (void)setTextContent:(NSString *)textContent {
     _placeholderTextView.text = textContent;
-}
-
-- (void)setInputAccessoryView:(UIView *)inputAccessoryView {
-    _placeholderTextView.inputAccessoryView = inputAccessoryView;
-}
-
-- (UIView *)inputAccessoryView {
-    return _placeholderTextView.inputAccessoryView;
 }
 
 - (void)setReturnKeyType:(UIReturnKeyType)returnKeyType {
