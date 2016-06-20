@@ -12,5 +12,6 @@
 
 @property (nonatomic, getter=isPrefilled) BOOL prefilled;
 @property (nonatomic) BOOL showTitles;
+@property (nonatomic) BOOL customAccessoryView;
 
 @end

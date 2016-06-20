@@ -26,7 +26,7 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,6 +41,9 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
         } break;
         case 2: {
             cell.textLabel.text = @"With Title";
+        } break;
+        case 3: {
+            cell.textLabel.text = @"Custom default input accessory";
         } break;
     }
     return cell;
@@ -61,6 +64,9 @@ static NSString * sCellIdentifier = @"sCellIdentifier";
         case 2: {
             mainFormTableViewController.showTitles = YES;
             mainFormTableViewController.title = @"With Title";
+        } break;
+        case 3: {
+            mainFormTableViewController.customAccessoryView = YES;
         } break;
     }
     [self.navigationController pushViewController:mainFormTableViewController animated:YES];

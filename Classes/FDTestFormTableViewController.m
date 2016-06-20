@@ -14,6 +14,7 @@
 #import "FDFormModel.h"
 #import "ADFormCellTextConfiguration.h"
 #import "ADFormCellBoolConfiguration.h"
+#import "FDEnglishAccessoryToolbar.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -70,7 +71,11 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Print"
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
-                                                                             action:@selector(_printValues:)];;
+                                                                             action:@selector(_printValues:)];
+
+    if (self.customAccessoryView) {
+        _formController.defaultInputAccessoryView = [[FDEnglishAccessoryToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 64.0f)];
+    }
 }
 
 - (UIButton *)passwordButton {
