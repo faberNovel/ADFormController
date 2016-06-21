@@ -14,6 +14,7 @@
 #import "FDFormModel.h"
 #import "ADFormCellTextConfiguration.h"
 #import "ADFormCellBoolConfiguration.h"
+#import "FDEnglishAccessoryToolbar.h"
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeLongText,
     FDRowTypeDate,
     FDRowTypeSwitch,
+    FDRowTypeNoInputAccessory,
     FDRowTypeCount
 };
 
@@ -69,7 +71,11 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Print"
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
-                                                                             action:@selector(_printValues:)];;
+                                                                             action:@selector(_printValues:)];
+
+    if (self.customAccessoryView) {
+        _formController.defaultInputAccessoryView = [[FDEnglishAccessoryToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 64.0f)];
+    }
 }
 
 - (UIButton *)passwordButton {
@@ -201,6 +207,16 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 configuration.title = @"Maried";
                 configuration.onTintColor = [UIColor greenColor];
                 configuration.tintColor = [UIColor redColor];
+                configuration.switchZoom = 0.65f;
+                return configuration;
+            } break;
+            case FDRowTypeNoInputAccessory: {
+                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                configuration.placeholder = @"Useless row with no input accessory";
+                configuration.cellType = ADFormTextCellTypeName;
+                if (self.showTitles) {
+                    configuration.title = @"No accessory here";
+                }
                 return configuration;
             } break;
             default:
@@ -274,6 +290,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                                                                           action:@selector(_checkPassword:)];
         toolbar.items = @[ barButtonItem ];
         return toolbar;
+    } else if (indexPath.section == 0 && indexPath.row == FDRowTypeNoInputAccessory) {
+        return nil;
     }
     return formController.defaultInputAccessoryView;
 }

@@ -32,6 +32,7 @@
 @implementation ADFormTextFieldTableViewCell
 
 @synthesize delegate = _delegate;
+@synthesize inputAccessoryView = _inputAccessoryView;
 
 static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
@@ -244,14 +245,6 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (void)setTextContent:(NSString *)textContent {
     _textField.text = textContent;
-}
-
-- (void)setInputAccessoryView:(UIView *)inputAccessoryView {
-    _textField.inputAccessoryView = inputAccessoryView;
-}
-
-- (UIView *)inputAccessoryView {
-    return _textField.inputAccessoryView;
 }
 
 - (void)setReturnKeyType:(UIReturnKeyType)returnKeyType {
