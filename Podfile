@@ -11,6 +11,7 @@ target 'FormDemo' do
   pod 'Alamofire', '~> 3.0'
   pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
   pod 'Watchdog', '~> 1.0'
+  pod 'ADFormController', :path => './'
 end
 
 target 'FormDemoTests' do

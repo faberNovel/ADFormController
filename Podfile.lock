@@ -1,6 +1,9 @@
 PODS:
   - ADDynamicLogLevel (1.1.1):
     - CocoaLumberjack (~> 2.0)
+  - ADFormController (1.2.2):
+    - ADKeyboardManager (~> 2.0)
+  - ADKeyboardManager (2.0.3)
   - Alamofire (3.4.1)
   - CocoaLumberjack (2.3.0):
     - CocoaLumberjack/Default (= 2.3.0)
@@ -29,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - ADDynamicLogLevel (~> 1.1)
+  - ADFormController (from `./`)
   - Alamofire (~> 3.0)
   - CocoaLumberjack/Swift (~> 2.0)
   - FBSnapshotTestCase (~> 2.1)
@@ -39,8 +43,14 @@ DEPENDENCIES:
   - Quick (~> 0.9)
   - Watchdog (~> 1.0)
 
+EXTERNAL SOURCES:
+  ADFormController:
+    :path: "./"
+
 SPEC CHECKSUMS:
   ADDynamicLogLevel: f5a853a09f4c71ab57af7d7e7b4c5c967a93537f
+  ADFormController: 739bdc885660fb6a672784f1f7531b7ac2a7cc0b
+  ADKeyboardManager: 79e352e91536a20daffca61337e143a7a5025512
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   FBSnapshotTestCase: 432afd8d059ccef7f207225894840a03fbcf7474
@@ -51,6 +61,6 @@ SPEC CHECKSUMS:
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Watchdog: 61e39a5ba9296e3517b2489edc2d67901b944044
 
-PODFILE CHECKSUM: ae3e11ce52fde44950cb1ab5535f8641815fb916
+PODFILE CHECKSUM: bf0122bdd54268ecd8efb327d7b078ed81cb2f2e
 
 COCOAPODS: 1.0.1
