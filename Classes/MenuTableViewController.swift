@@ -43,5 +43,8 @@ class MenuTableViewController: TableViewController {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //TODO: (Samuel Gallet) 04/07/2016 Push form
+        let testFormViewController = TestFormViewController()
+        testFormViewController.title = "Empty"
+        navigationController?.pushViewController(testFormViewController, animated: true)
     }
 }
