@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CA91DB41D2A84C000D1B5D8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */; };
 		1EB7042B108C1E9E8CE74DCE /* Pods_FormDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08411AEAF625777CD0D6A123 /* Pods_FormDemo.framework */; };
 		47E17214F9A4009CF12359D7 /* Pods_FormDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_FormDemoTests.framework */; };
 		49B1F7811CE4B3DB00A29BFE /* FormDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1F7801CE4B3DB00A29BFE /* FormDemoTests.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		08411AEAF625777CD0D6A123 /* Pods_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		147C172E570244B76E9A8609 /* Pods-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
 		32D3D6308F00B6B8059A24E8 /* Pods-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
 		4131DA2D9333046F6E9F313E /* Pods-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */,
+				0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				57E1CD4D1C8890CA00A7DFFB /* Fonts.swift in Sources */,
 				49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */,
 				49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */,
+				0CA91DB41D2A84C000D1B5D8 /* TableViewController.swift in Sources */,
 				57E1CD491C884F8900A7DFFB /* AppDelegate.swift in Sources */,
 				57E1CD4B1C8852FC00A7DFFB /* Color.swift in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
