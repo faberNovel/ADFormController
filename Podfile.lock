@@ -1,26 +1,56 @@
 PODS:
   - ADDynamicLogLevel (1.1.1):
     - CocoaLumberjack (~> 2.0)
-  - ADKeyboardManager (2.0.3)
-  - CocoaLumberjack (2.2.0):
-    - CocoaLumberjack/Default (= 2.2.0)
-    - CocoaLumberjack/Extensions (= 2.2.0)
-  - CocoaLumberjack/Core (2.2.0)
-  - CocoaLumberjack/Default (2.2.0):
+  - Alamofire (3.4.1)
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.2.0):
+  - CocoaLumberjack/Extensions (2.3.0):
     - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (2.3.0):
+    - CocoaLumberjack/Extensions
+  - FBSnapshotTestCase (2.1.1):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.1)
+  - FBSnapshotTestCase/Core (2.1.1)
+  - FBSnapshotTestCase/SwiftSupport (2.1.1):
+    - FBSnapshotTestCase/Core
+  - HockeySDK/CrashOnlyLib (3.8.6)
+  - Nimble (4.1.0)
+  - Nimble-Snapshots (4.1.0):
+    - FBSnapshotTestCase (~> 2.0)
+    - Nimble
+    - Quick
+  - OCMock (3.3.1)
+  - Quick (0.9.2)
+  - Watchdog (1.1)
 
 DEPENDENCIES:
-  - ADDynamicLogLevel (~> 1.1.0)
-  - ADKeyboardManager (~> 2.0.0)
-  - CocoaLumberjack (~> 2.2.0)
+  - ADDynamicLogLevel (~> 1.1)
+  - Alamofire (~> 3.0)
+  - CocoaLumberjack/Swift (~> 2.0)
+  - FBSnapshotTestCase (~> 2.1)
+  - HockeySDK/CrashOnlyLib (~> 3.8)
+  - Nimble (~> 4.0)
+  - Nimble-Snapshots (~> 4.1)
+  - OCMock (~> 3.3)
+  - Quick (~> 0.9)
+  - Watchdog (~> 1.0)
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: f5a853a09f4c71ab57af7d7e7b4c5c967a93537f
-  ADKeyboardManager: 79e352e91536a20daffca61337e143a7a5025512
-  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  FBSnapshotTestCase: 432afd8d059ccef7f207225894840a03fbcf7474
+  HockeySDK: ab68303eec6680f6b539de65d747742dd276e934
+  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  Nimble-Snapshots: 2da4d2ec829b458d6886c06812c52493fce284c9
+  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
+  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  Watchdog: 61e39a5ba9296e3517b2489edc2d67901b944044
 
-PODFILE CHECKSUM: c7da4188f3db7bde69259b124e991f79ec820df4
+PODFILE CHECKSUM: ae3e11ce52fde44950cb1ab5535f8641815fb916
 
 COCOAPODS: 1.0.1
