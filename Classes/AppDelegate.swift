@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        window?.rootViewController = SharedViewController()
+        window?.rootViewController = UINavigationController(rootViewController: MenuTableViewController())
         window?.makeKeyAndVisible()
         return true
     }
