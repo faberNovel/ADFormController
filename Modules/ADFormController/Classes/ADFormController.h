@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ADFormCellConfiguration.h"
-#import "ADNavigableButtons.h"
 
 @class ADFormController;
+@protocol NavigableButtons;
+
 @protocol ADFormControllerDelegate <NSObject>
 
 - (nullable ADFormCellConfiguration *)configurationForFormController:(nonnull ADFormController *)formController
@@ -28,7 +29,7 @@
 
 @property (nonatomic, weak, nullable) id<ADFormControllerDelegate> delegate;
 
-@property (nonatomic, strong, nonnull) UIView<ADNavigableButtons> * defaultInputAccessoryView; //Not called if -formController: inputAccessoryViewForIndexPath: is implemented in delegate
+@property (nonatomic, strong, nonnull) UIView<NavigableButtons> * defaultInputAccessoryView; //Not called if -formController: inputAccessoryViewForIndexPath: is implemented in delegate
 
 - (nonnull instancetype)initWithTableView:(nonnull UITableView *)tableView;
 

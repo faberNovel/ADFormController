@@ -9,10 +9,7 @@
 import UIKit
 import ADFormController
 
-class EnglishAccessoryToolbar: UIToolbar, ADNavigableButtons {
-
-    private var nextButton : UIBarButtonItem = UIBarButtonItem(title: "next", style: .Plain, target: nil, action: nil)
-    private var backButton : UIBarButtonItem = UIBarButtonItem(title: "back", style: .Plain, target: nil, action: nil)
+class EnglishAccessoryToolbar: UIToolbar, NavigableButtons {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,18 +22,13 @@ class EnglishAccessoryToolbar: UIToolbar, ADNavigableButtons {
     }
 
     // MARK: ADnavigableButtons
-    func nextBarButtonItem() -> UIBarButtonItem! {
-        return nextButton
-    }
-
-    func previousBarButtonItem() -> UIBarButtonItem! {
-        return backButton
-    }
+    private(set) var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "next", style: .Plain, target: nil, action: nil)
+    private(set) var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "prev", style: .Plain, target: nil, action: nil)
 
     //TODO: (Samuel Gallet) 05/07/2016 Private
     private func initComponents() {
         self.tintColor = UIColor.blackColor()
         let flexibleItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        self.items = [backButton, flexibleItem, nextButton]
+        self.items = [previousBarButtonItem, flexibleItem, nextBarButtonItem]
     }
 }

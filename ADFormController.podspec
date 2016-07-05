@@ -8,8 +8,8 @@ Pod::Spec.new do |spec|
   spec.platform     = 'ios', '7.0'
   spec.license      = { :type => 'Commercial', :text => 'Created and licensed by Applidium. Copyright 2014 Applidium. All rights reserved.' }
   spec.source       = { :git => 'ssh://git@gerrit.applidium.net:29418/ADFormController', :tag => "v#{spec.version}" }
-  spec.source_files = 'Modules/ADFormController/*.{h,m}'
-  spec.resources = 'Ressources/Defaults/InputAccessoryView.xcassets'
+  spec.source_files = 'Modules/ADFormController/Classes/*.{h,m,swift}'
+  spec.resource_bundle = {'ADFormController' => 'Modules/ADFormController/Ressources/InputAccessoryView.xcassets'}
   spec.framework    = 'Foundation', 'UIKit'
   spec.requires_arc = true
   spec.dependency 'ADKeyboardManager', '~> 2.0'

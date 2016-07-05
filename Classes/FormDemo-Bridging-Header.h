@@ -4,3 +4,4 @@
 
 #import "ADTargetSettings.h"
 #import "ADFileLoggerFormatter.h"
+#import <ADFormController/ADFormController.h>

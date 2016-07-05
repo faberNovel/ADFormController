@@ -49,7 +49,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: f5a853a09f4c71ab57af7d7e7b4c5c967a93537f
-  ADFormController: 739bdc885660fb6a672784f1f7531b7ac2a7cc0b
+  ADFormController: aa020a3fbdcc7e84d229cdcd1dc42e0b9e96df82
   ADKeyboardManager: 79e352e91536a20daffca61337e143a7a5025512
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15

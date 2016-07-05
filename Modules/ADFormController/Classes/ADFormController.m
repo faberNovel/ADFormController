@@ -9,7 +9,6 @@
 #import "ADFormController.h"
 #import "ADFormTextViewTableViewCell.h"
 #import "ADFormTextFieldTableViewCell.h"
-#import "ADTextInputAccessoryView.h"
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
@@ -19,9 +18,11 @@
 #import "ADFormCellTextConfiguration.h"
 #import "ADFormCellConfigurable.h"
 
+#import <ADFormController/ADFormController-Swift.h>
+
 @interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate, ADFormCellConfigurable> {
     NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
-    UIView<ADNavigableButtons> * _defaultInputAccessoryView;
+    UIView<NavigableButtons> * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
 }
 @property (nonatomic, weak) UITableView * tableView;
@@ -52,7 +53,7 @@
 
 #pragma mark - Getter/Setter
 
-- (void)setDefaultInputAccessoryView:(UIView<ADNavigableButtons> *)defaultInputAccessoryView {
+- (void)setDefaultInputAccessoryView:(UIView<NavigableButtons> *)defaultInputAccessoryView {
     _defaultInputAccessoryView = defaultInputAccessoryView;
     [self _addMovingSelectorsToInputAccessoryView:defaultInputAccessoryView];
 }
@@ -165,11 +166,11 @@
 #pragma mark - Private
 
 - (void)_setupDefaultInputAccessoryView {
-    ADTextInputAccessoryView * textInputAccessoryView = [[ADTextInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
+    TextInputAccessoryView * textInputAccessoryView = [[TextInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
     self.defaultInputAccessoryView = textInputAccessoryView;
 }
 
-- (void)_addMovingSelectorsToInputAccessoryView:(UIView<ADNavigableButtons> *)inputAccessoryView {
+- (void)_addMovingSelectorsToInputAccessoryView:(UIView<NavigableButtons> *)inputAccessoryView {
     inputAccessoryView.nextBarButtonItem.target = self;
     inputAccessoryView.nextBarButtonItem.action = @selector(_next:);
 
