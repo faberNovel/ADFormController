@@ -144,7 +144,7 @@ extension CreditCardRowType: RowConfigurable {
             let configuration = ADFormCellTextConfiguration();
             configuration.placeholder = "Expiration Date"
             configuration.cellType = .Picker
-            //TODO: (Samuel Gallet) 04/07/2016 Set picker
+            configuration.formPickerDataSource = ExpirationDatePickerDataSource()
             configuration.text = model.expiration;
             if showTitle {
                 configuration.title = "Expiration Date"
