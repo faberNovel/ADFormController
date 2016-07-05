@@ -55,6 +55,9 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Print", style: .Plain, target: self, action: #selector(TestFormViewController.printValue))
 
         passwordButton.addTarget(self, action: #selector(TestFormViewController.togglePassword), forControlEvents: .TouchUpInside)
+        if shouldSetCustomAccessoryView {
+            formController.defaultInputAccessoryView = EnglishAccessoryToolbar(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 64.0))
+        }
     }
 
     // MARK: UITableViewDataSource
