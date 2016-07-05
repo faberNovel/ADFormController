@@ -39,7 +39,7 @@ extension RowType: RowConfigurable {
             let configuration = ADFormCellTextConfiguration();
             configuration.placeholder = "Gender"
             configuration.cellType = .Picker
-            configuration.formPickerDataSource = ADSimpleFormPickerDataSource(options: ["Male", "Female"])
+            configuration.formPickerDataSource = SimpleFormPickerDataSource(options: ["Male", "Female"])
             configuration.text = model.gender;
             if showTitle {
                 configuration.title = "Gender"

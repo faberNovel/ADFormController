@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormPickerDataSource.h"
+
+@protocol FormPickerDataSource;
 
 @interface ADPickerViewTextFieldBinding : NSObject
 
 @property (nonatomic, strong, readonly) UIPickerView * pickerView;
-@property (nonatomic, strong) id<ADFormPickerDataSource> formPickerDataSource;
+@property (nonatomic, strong) id<FormPickerDataSource> formPickerDataSource;
 
 - (instancetype)initWithTextField:(UITextField *)textField;
 - (void)startEditing;

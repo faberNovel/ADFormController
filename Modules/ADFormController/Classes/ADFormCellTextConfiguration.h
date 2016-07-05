@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormPickerDataSource.h"
 #import "ADTextFieldFormatter.h"
 #import "ADFormCellConfiguration.h"
 
@@ -24,6 +23,8 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
     ADFormTextCellTypePasswordNumber,
 };
 
+@protocol FormPickerDataSource;
+
 @interface ADFormCellTextConfiguration : ADFormCellConfiguration
 
 @property (nonatomic) ADFormTextCellType cellType;
@@ -33,6 +34,5 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 @property (nonatomic, strong, nonnull) NSString * placeholder;
 @property (nonatomic, strong, nullable) id<ADTextFieldFormatter> textFieldFormatter;
 @property (nonatomic, strong, nullable) NSDateFormatter * dateFormatter;
-@property (nonatomic, strong, nullable) id<ADFormPickerDataSource> formPickerDataSource;
-
+@property (nonatomic, strong, nullable) id<FormPickerDataSource> formPickerDataSource;
 @end

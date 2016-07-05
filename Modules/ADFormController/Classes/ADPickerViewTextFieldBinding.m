@@ -8,6 +8,8 @@
 
 #import "ADPickerViewTextFieldBinding.h"
 
+#import <ADFormController/ADFormController-Swift.h>
+
 @interface ADPickerViewTextFieldBinding () <UIPickerViewDataSource, UIPickerViewDelegate> {
     UITextField * _textField;
 }
@@ -49,13 +51,13 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [[_formPickerDataSource optionsForComponent:component] count];
+    return [[_formPickerDataSource componentOptions:component] count];
 }
 
 #pragma mark - UIPickerViewDelegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [_formPickerDataSource optionsForComponent:component][row];
+    return [_formPickerDataSource componentOptions:component][row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

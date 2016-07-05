@@ -43,30 +43,27 @@ private enum ExpirationDateComponent: Int {
     }()
 }
 
-class ExpirationDatePickerDataSource: NSObject, ADFormPickerDataSource {
+class ExpirationDatePickerDataSource: NSObject, FormPickerDataSource {
 
     // MARK: ADFormPickerDataSource
-    @objc func numberOfComponents() -> Int {
-        return ExpirationDateComponent.count
+    let numberOfComponents: Int = ExpirationDateComponent.count
+
+    func componentOptions(component: Int) -> [String] {
+        guard let options = ExpirationDateComponent(rawValue: component)?.componentoptions() else {
+            return []
+        }
+        return options
     }
 
-    @objc func optionsForComponent(component: Int) -> [AnyObject]! {
-        return ExpirationDateComponent(rawValue: component)?.componentoptions()
-    }
-
-    @objc func stringFromSelectedIndexes(indexes: [AnyObject]!) -> String! {
-        guard let yearIndex = (indexes[ExpirationDateComponent.ExpiractionDateComponentYear.rawValue] as? NSNumber).flatMap({Int($0)}) else {
-            return ""
-        }
-        guard let monthIndex = (indexes[ExpirationDateComponent.ExpirationDateComponentMonth.rawValue] as? NSNumber).flatMap({Int($0)}) else {
-            return ""
-        }
+    func stringFromSelectedIndexes(indexes: [Int]) -> String {
+        let yearIndex = indexes[ExpirationDateComponent.ExpiractionDateComponentYear.rawValue]
+        let monthIndex = indexes[ExpirationDateComponent.ExpirationDateComponentMonth.rawValue]
         let yearString = ExpirationDateComponent.years[yearIndex]
         let monthFormatedString = String.init(format: "%02d", (monthIndex + 1))
         return monthFormatedString + "/\(yearString.substringFromIndex(yearString.startIndex.advancedBy(2)))"
     }
 
-    @objc func selectedIndexesFromString(string: String!) -> [AnyObject]! {
+    func selectedIndexesFromString(string: String) -> [Int] {
         let monthString = string.substringToIndex(string.startIndex.advancedBy(2))
         guard let monthIndex = Int(monthString) else {
             return []
