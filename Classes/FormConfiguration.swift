@@ -134,7 +134,7 @@ extension CreditCardRowType: RowConfigurable {
             let configuration = ADFormCellTextConfiguration();
             configuration.placeholder = "Credit card"
             configuration.cellType = .Number
-            //TODO: (Samuel Gallet) 04/07/2016 Set formatter
+            configuration.textFieldFormatter = CreditCardTextFieldFormatter()
             configuration.text = model.creditCard;
             if showTitle {
                 configuration.title = "Credit card"
