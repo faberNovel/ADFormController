@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADFormBoolInputTableViewCell.h"
 
-@interface ADFormSwitchTableViewCell : UITableViewCell <ADFormBoolInputTableViewCell>
+@protocol FormBoolInputTableViewCell, FormBoolInputTableViewCellDelegate;
 
+@interface ADFormSwitchTableViewCell : UITableViewCell <FormBoolInputTableViewCell>
+@property (nonatomic, weak) id <FormBoolInputTableViewCellDelegate> delegate;
 @end

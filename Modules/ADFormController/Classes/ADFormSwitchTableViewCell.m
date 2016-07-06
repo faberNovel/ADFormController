@@ -9,6 +9,8 @@
 #import "ADFormSwitchTableViewCell.h"
 #import "ADFormCellBoolConfiguration.h"
 
+#import <ADFormController/ADFormController-Swift.h>
+
 static const CGFloat kMargin = 15.f;
 
 @interface ADFormSwitchTableViewCell ()
@@ -16,14 +18,11 @@ static const CGFloat kMargin = 15.f;
 @property (nonatomic, strong) NSMutableArray<NSLayoutConstraint *> * dynamicConstraints;
 @property (nonatomic, strong) UIView * rightView;
 @property (nonatomic, strong) UILabel * leftLabel;
-
 - (void)_switchValueChanged:(id)sender;
 - (void)_setupStaticConstraints;
 @end
 
 @implementation ADFormSwitchTableViewCell
-
-@synthesize delegate;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

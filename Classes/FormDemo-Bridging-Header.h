@@ -5,3 +5,5 @@
 #import "ADTargetSettings.h"
 #import "ADFileLoggerFormatter.h"
 #import <ADFormController/ADFormController.h>
+#import <ADFormController/ADFormCellTextConfiguration.h>
+#import <ADFormController/ADFormCellBoolConfiguration.h>

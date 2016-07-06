@@ -13,14 +13,13 @@
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
 #import "ADFormSwitchTableViewCell.h"
-#import "ADFormBoolInputTableViewCell.h"
 #import "ADFormCellBoolConfiguration.h"
 #import "ADFormCellTextConfiguration.h"
 #import "ADFormCellConfigurable.h"
 
 #import <ADFormController/ADFormController-Swift.h>
 
-@interface ADFormController () <ADFormTextInputTableViewCellDelegate, ADFormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate, ADFormCellConfigurable> {
+@interface ADFormController () <FormTextInputTableViewCellDelegate, FormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate, ADFormCellConfigurable> {
     NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
     UIView<NavigableButtons> * _defaultInputAccessoryView;
     ADFormDirectionManager * _formDirectionManager;
@@ -62,8 +61,8 @@
 
 - (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
-        id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
+    if ([cell conformsToProtocol:@protocol(FormTextInputTableViewCell)]) {
+        id<FormTextInputTableViewCell> inputCell = (id<FormTextInputTableViewCell>)cell;
         return [inputCell textContent];
     }
     return nil;
@@ -71,8 +70,8 @@
 
 - (BOOL)boolValueForIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if ([cell conformsToProtocol:@protocol(ADFormBoolInputTableViewCell)]) {
-        id<ADFormBoolInputTableViewCell> inputCell = (id<ADFormBoolInputTableViewCell>)cell;
+    if ([cell conformsToProtocol:@protocol(FormBoolInputTableViewCell)]) {
+        id<FormBoolInputTableViewCell> inputCell = (id<FormBoolInputTableViewCell>)cell;
         return inputCell.boolContent;
     }
     return NO;
@@ -92,11 +91,11 @@
 
 #pragma mark - ADFormTextInputTableViewCellDelegate
 
-- (void)textInputTableViewCellDidBeginEditing:(id<ADFormTextInputTableViewCell>)textInputTableViewCell {
+- (void)textInputTableViewCellDidBeginEditing:(id<FormTextInputTableViewCell>)textInputTableViewCell {
     [self _updateInputAccessoryView];
 }
 
-- (BOOL)textInputTableViewCellShouldReturn:(UITableViewCell<ADFormTextInputTableViewCell> *)textInputTableViewCell {
+- (BOOL)textInputTableViewCellShouldReturn:(UITableViewCell<FormTextInputTableViewCell> *)textInputTableViewCell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:textInputTableViewCell];
     if ([_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath]) {
         [self _moveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath];
@@ -110,7 +109,7 @@
     return YES;
 }
 
-- (void)textInputTableViewCellValueChanged:(UITableViewCell<ADFormTextInputTableViewCell> *)textInputTableViewCell {
+- (void)textInputTableViewCellValueChanged:(UITableViewCell<FormTextInputTableViewCell> *)textInputTableViewCell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:textInputTableViewCell];
     if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
         [self.delegate formController:self valueChangedForIndexPath:indexPath];
@@ -119,7 +118,7 @@
 
 #pragma mark - ADFormBoolInputTableViewCellDelegate
 
-- (void)boolInputTableViewCellDidChangeValue:(UITableViewCell<ADFormBoolInputTableViewCell> *)boolInputTableViewCell {
+- (void)boolInputTableViewCellDidChangeValue:(UITableViewCell<FormBoolInputTableViewCell> *)boolInputTableViewCell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:boolInputTableViewCell];
     if (indexPath && [self.delegate respondsToSelector:@selector(formController:valueChangedForIndexPath:)]) {
         [self.delegate formController:self valueChangedForIndexPath:indexPath];
@@ -130,12 +129,12 @@
 
 - (BOOL)formDirectionManager:(ADFormDirectionManager *)formDirectionManager canEditCellAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    return [cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)];
+    return [cell conformsToProtocol:@protocol(FormTextInputTableViewCell)];
 }
 
 #pragma mark - ADFormCellConfigurable
 
-- (UITableViewCell<ADFormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(ADFormCellBoolConfiguration *)configuration
+- (UITableViewCell<FormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(ADFormCellBoolConfiguration *)configuration
                                                                       atIndexPath:(NSIndexPath *)indexPath {
     ADFormSwitchTableViewCell * cell = (ADFormSwitchTableViewCell *)[self _cellWithClass:ADFormSwitchTableViewCell.class forIndexPath:indexPath];
     cell.delegate = self;
@@ -143,9 +142,9 @@
     return cell;
 }
 
-- (UITableViewCell<ADFormTextInputTableViewCell> *)textInputCellWithConfiguration:(ADFormCellTextConfiguration *)configuration
+- (UITableViewCell<FormTextInputTableViewCell> *)textInputCellWithConfiguration:(ADFormCellTextConfiguration *)configuration
                                                                       atIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell<ADFormTextInputTableViewCell> * cell = nil;
+    UITableViewCell<FormTextInputTableViewCell> * cell = nil;
     if (configuration.cellType == ADFormTextCellTypeLongText) {
         cell = (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class forIndexPath:indexPath];
     } else {
@@ -226,8 +225,8 @@
     NSIndexPath * nextIndexPath = [_formDirectionManager indexPathForDirection:direction andBaseIndexPath:indexPath];
     if (nextIndexPath) {
         UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
-        if ([cell conformsToProtocol:@protocol(ADFormTextInputTableViewCell)]) {
-            id<ADFormTextInputTableViewCell> inputCell = (id<ADFormTextInputTableViewCell>)cell;
+        if ([cell conformsToProtocol:@protocol(FormTextInputTableViewCell)]) {
+            id<FormTextInputTableViewCell> inputCell = (id<FormTextInputTableViewCell>)cell;
             [inputCell beginEditing];
         }
     }

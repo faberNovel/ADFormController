@@ -22,15 +22,11 @@
 @property (nonatomic) ADFormTextCellType cellType;
 @property (nonatomic, strong) UIView * rightView;
 @property (nonatomic, strong) UILabel * leftLabel;
-
 - (IBAction)_textChanged:(UITextField *)textField;
 
 @end
 
 @implementation ADFormTextFieldTableViewCell
-
-@synthesize delegate = _delegate;
-@synthesize inputAccessoryView = _inputAccessoryView;
 
 static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
@@ -191,9 +187,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
             break; // no op
     }
 
-    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellDidBeginEditing:)]) {
-        [self.delegate textInputTableViewCellDidBeginEditing:self];
-    }
+    [self.delegate textInputTableViewCellDidBeginEditing:self];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -204,10 +198,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellShouldReturn:)]) {
-        return [self.delegate textInputTableViewCellShouldReturn:self];
-    }
-    return YES;
+    return [self.delegate textInputTableViewCellShouldReturn:self];
 }
 
 #pragma mark - ADFormTextInputTableViewCell
@@ -257,9 +248,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
 
 - (IBAction)_textChanged:(UITextField *)textField {
     [_textFieldFormatter textFieldValueChanged:textField];
-    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellValueChanged:)]) {
-        [self.delegate textInputTableViewCellValueChanged:self];
-    }
+    [self.delegate textInputTableViewCellValueChanged:self];
 }
 
 @end

@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormBoolInputTableViewCell.h"
-#import "ADFormTextInputTableViewCell.h"
+
+@protocol FormBoolInputTableViewCell, FormTextInputTableViewCell;
 
 @class ADFormCellBoolConfiguration, ADFormCellTextConfiguration;
 
 @protocol ADFormCellConfigurable <NSObject>
-- (nonnull UITableViewCell<ADFormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(nonnull ADFormCellBoolConfiguration *)configuration
+- (nonnull UITableViewCell<FormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(nonnull ADFormCellBoolConfiguration *)configuration
                                                                       atIndexPath:(nonnull NSIndexPath *)indexPath;
 
-- (nonnull UITableViewCell<ADFormTextInputTableViewCell> *)textInputCellWithConfiguration:(nonnull ADFormCellTextConfiguration *)configuration
+- (nonnull UITableViewCell<FormTextInputTableViewCell> *)textInputCellWithConfiguration:(nonnull ADFormCellTextConfiguration *)configuration
                                                                       atIndexPath:(nonnull NSIndexPath *)indexPath;
 @end

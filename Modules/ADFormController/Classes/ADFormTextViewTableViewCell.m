@@ -16,13 +16,9 @@
     NSMutableArray * _dynamicConstraints;
     PlaceholderTextView * _placeholderTextView;
 }
-
 @end
 
 @implementation ADFormTextViewTableViewCell
-
-@synthesize delegate = _delegate;
-@synthesize inputAccessoryView = _inputAccessoryView;
 
 static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
 
@@ -98,15 +94,11 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellDidBeginEditing:)]) {
-        [self.delegate textInputTableViewCellDidBeginEditing:self];
-    }
+    [self.delegate textInputTableViewCellDidBeginEditing:self];
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    if ([self.delegate respondsToSelector:@selector(textInputTableViewCellValueChanged:)]) {
-        [self.delegate textInputTableViewCellValueChanged:self];
-    }
+    [self.delegate textInputTableViewCellValueChanged:self];
 }
 
 #pragma mark - ADFormTextInputTableViewCell

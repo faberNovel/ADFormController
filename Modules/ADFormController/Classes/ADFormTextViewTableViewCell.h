@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADFormTextInputTableViewCell.h"
 
-@interface ADFormTextViewTableViewCell : UITableViewCell <ADFormTextInputTableViewCell>
+@protocol FormTextInputTableViewCell, FormTextInputTableViewCellDelegate;
+
+@interface ADFormTextViewTableViewCell : UITableViewCell <FormTextInputTableViewCell>
 
 @property (nonatomic, readonly, strong) UITextView * textView;
+@property (nonatomic, weak) id <FormTextInputTableViewCellDelegate> delegate;
+@property (nonatomic, strong) UIView * inputAccessoryView;
 
 @end
