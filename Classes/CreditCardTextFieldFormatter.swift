@@ -9,12 +9,13 @@
 import UIKit
 import ADFormController
 
-class CreditCardTextFieldFormatter: NSObject, ADTextFieldFormatter {
+
+class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
     private var previousTextFieldContent: String?
     private var previousSelectionRange: UITextRange?
 
     // MARK: ADTextFieldFormatter
-    @objc func textFieldValueChanged(textField: UITextField!) {
+    @objc func textFieldValueChanged(textField: UITextField) {
         reformAsCardNumber(textField)
     }
 

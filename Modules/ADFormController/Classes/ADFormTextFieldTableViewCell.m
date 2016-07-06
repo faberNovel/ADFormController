@@ -7,7 +7,6 @@
 //
 
 #import "ADFormTextFieldTableViewCell.h"
-#import "ADTextFieldFormatter.h"
 #import "ADFormCellTextConfiguration.h"
 #import "ADPickerViewTextFieldBinding.h"
 
@@ -15,7 +14,7 @@
 
 @interface ADFormTextFieldTableViewCell () <UITextFieldDelegate> {
     NSMutableArray * _dynamicConstraints;
-    id<ADTextFieldFormatter> _textFieldFormatter;
+    id<TextFieldFormatter> _textFieldFormatter;
     FormTextField * _textField;
     DatePickerTextFieldBinging * _datePickerBinding;
     ADPickerViewTextFieldBinding * _pickerViewBinding;
