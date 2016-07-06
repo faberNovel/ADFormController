@@ -7,13 +7,14 @@
 //
 
 #import "ADFormTextViewTableViewCell.h"
-#import "ADPlaceholderTextView.h"
 #import "ADFormCellTextConfiguration.h"
+
+#import <ADFormController/ADFormController-Swift.h>
 
 @interface ADFormTextViewTableViewCell () <UITextViewDelegate> {
     UILabel * _titleLabel;
     NSMutableArray * _dynamicConstraints;
-    ADPlaceholderTextView * _placeholderTextView;
+    PlaceholderTextView * _placeholderTextView;
 }
 
 @end
@@ -33,7 +34,7 @@ static NSString * kTitleLabelKeyPath = @"_titleLabel.text";
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        _placeholderTextView = [[ADPlaceholderTextView alloc] init];
+        _placeholderTextView = [[PlaceholderTextView alloc] init];
         _placeholderTextView.delegate = self;
         _placeholderTextView.textContainerInset = UIEdgeInsetsZero;
         _placeholderTextView.textContainer.lineFragmentPadding = 0;
