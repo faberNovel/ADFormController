@@ -8,7 +8,6 @@
 
 #import "ADFormTextFieldTableViewCell.h"
 #import "ADFormCellTextConfiguration.h"
-#import "ADPickerViewTextFieldBinding.h"
 
 #import <ADFormController/ADFormController-Swift.h>
 
@@ -17,7 +16,7 @@
     id<TextFieldFormatter> _textFieldFormatter;
     FormTextField * _textField;
     DatePickerTextFieldBinging * _datePickerBinding;
-    ADPickerViewTextFieldBinding * _pickerViewBinding;
+    PickerViewTextFieldBinding * _pickerViewBinding;
 }
 
 @property (nonatomic) ADFormTextCellType cellType;
@@ -65,7 +64,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
         [self addObserver:self forKeyPath:kLeftLabelKeyPath options:NSKeyValueObservingOptionNew context:NULL];
 
         _datePickerBinding = [[DatePickerTextFieldBinging alloc] initWithTextField:self.textField];
-        _pickerViewBinding = [[ADPickerViewTextFieldBinding alloc] initWithTextField:self.textField];
+        _pickerViewBinding = [[PickerViewTextFieldBinding alloc] initWithTextField:self.textField];
     }
     return self;
 }
