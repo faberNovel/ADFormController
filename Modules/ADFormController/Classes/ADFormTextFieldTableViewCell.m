@@ -8,15 +8,16 @@
 
 #import "ADFormTextFieldTableViewCell.h"
 #import "ADTextFieldFormatter.h"
-#import "ADTextField.h"
 #import "ADFormCellTextConfiguration.h"
 #import "ADDatePickerTextFieldBinding.h"
 #import "ADPickerViewTextFieldBinding.h"
 
+#import <ADFormController/ADFormController-Swift.h>
+
 @interface ADFormTextFieldTableViewCell () <UITextFieldDelegate> {
     NSMutableArray * _dynamicConstraints;
     id<ADTextFieldFormatter> _textFieldFormatter;
-    ADTextField * _textField;
+    FormTextField * _textField;
     ADDatePickerTextFieldBinding * _datePickerBinding;
     ADPickerViewTextFieldBinding * _pickerViewBinding;
 }
@@ -44,7 +45,7 @@ static NSString * kLeftLabelKeyPath = @"_leftLabel.text";
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        _textField = [[ADTextField alloc] init];
+        _textField = [[FormTextField alloc] init];
         _textField.delegate = self;
         _textField.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:_textField];
