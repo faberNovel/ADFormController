@@ -7,7 +7,6 @@
 //
 
 #import "ADFormController.h"
-#import "ADFormTextViewTableViewCell.h"
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
@@ -144,7 +143,7 @@
                                                                       atIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell<FormTextInputTableViewCell> * cell = nil;
     if (configuration.cellType == ADFormTextCellTypeLongText) {
-        cell = (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class forIndexPath:indexPath];
+        cell = (FormTextViewTableViewCell *)[self _cellWithClass:FormTextViewTableViewCell.class forIndexPath:indexPath];
     } else {
         cell = (FormTextFieldTableViewCell *)[self _cellWithClass:FormTextFieldTableViewCell.class forIndexPath:indexPath];
     }
