@@ -25,7 +25,7 @@ class FormModel {
         email = "toto.titi@gmail.com"
         phone = "0612131415"
         summary = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui."
-        married = false
+        married = true
         birthDate = NSDate()
         creditCard = "5131423412231223"
         expiration = "04/25"

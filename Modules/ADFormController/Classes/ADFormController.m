@@ -12,7 +12,6 @@
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
-#import "ADFormSwitchTableViewCell.h"
 #import "ADFormCellBoolConfiguration.h"
 #import "ADFormCellTextConfiguration.h"
 #import "ADFormCellConfigurable.h"
@@ -136,7 +135,7 @@
 
 - (UITableViewCell<FormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(ADFormCellBoolConfiguration *)configuration
                                                                       atIndexPath:(NSIndexPath *)indexPath {
-    ADFormSwitchTableViewCell * cell = (ADFormSwitchTableViewCell *)[self _cellWithClass:ADFormSwitchTableViewCell.class forIndexPath:indexPath];
+    FormSwitchTableViewCell * cell = (FormSwitchTableViewCell *)[self _cellWithClass:FormSwitchTableViewCell.class forIndexPath:indexPath];
     cell.delegate = self;
     [cell applyConfiguration:(ADFormCellBoolConfiguration *)configuration];
     return cell;
