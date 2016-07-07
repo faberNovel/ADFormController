@@ -12,7 +12,7 @@ import ADFormController
 protocol RowConfigurable {
     var title: String { get }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView) -> ADFormCellConfiguration?
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration?
 }
 
 enum RowType: Int {
@@ -33,7 +33,16 @@ extension RowType: RowConfigurable {
         return "Profile"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView) -> ADFormCellConfiguration? {
+    var rowHeight: Float {
+        switch self {
+        case .RowTypeLongText:
+            return 100.0
+        default:
+            return 44.0
+        }
+    }
+
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration? {
         switch self {
         case RowTypeGender:
             let configuration = ADFormCellTextConfiguration();
@@ -128,7 +137,7 @@ extension CreditCardRowType: RowConfigurable {
         return "Credit card"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView) -> ADFormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration? {
         switch self {
         case CreditCardRowTypeNumber:
             let configuration = ADFormCellTextConfiguration();
@@ -166,12 +175,14 @@ extension PassworkRowType: RowConfigurable {
         return "Password"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView) -> ADFormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration? {
         switch self {
         case PasswordRowTypeNewPassword:
             let configuration = ADFormCellTextConfiguration();
             configuration.placeholder = "New password"
-            configuration.cellType = .Number
+            if !passwordVisible {
+                configuration.cellType = .Password
+            }
             if showTitle {
                 configuration.title = "New password"
             }
@@ -183,7 +194,7 @@ extension PassworkRowType: RowConfigurable {
         case PasswordRowTypeNewPasswordConfirmation:
             let configuration = ADFormCellTextConfiguration();
             configuration.placeholder = "Confirmation"
-            configuration.cellType = .Number
+            configuration.cellType = .Password
             if showTitle {
                 configuration.title = "Confirmation"
             }

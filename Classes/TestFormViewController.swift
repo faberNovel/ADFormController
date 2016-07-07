@@ -93,10 +93,76 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
         return rowConfigurableAtIndexPath(NSIndexPath(forRow: 0, inSection: section))?.title
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            guard let rowType = RowType(rawValue: indexPath.row) else {
+                return 44.0
+            }
+            return CGFloat(rowType.rowHeight)
+        default:
+            return 44.0
+        }
+
+    }
+
     // MARK: ADFormControllerDelegate
 
     func configurationForFormController(formController: ADFormController, atIndexPath indexPath: NSIndexPath) -> ADFormCellConfiguration? {
-        return rowConfigurableAtIndexPath(indexPath)?.formCellConfiguration(showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton)
+        return rowConfigurableAtIndexPath(indexPath)?.formCellConfiguration(showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible)
+    }
+
+    func formController(formController: ADFormController, inputAccessoryViewForIndexPath indexPath: NSIndexPath) -> UIView {
+        switch indexPath {
+        case let confirmationIndexPath where (confirmationIndexPath.section == 2 && confirmationIndexPath.row == PassworkRowType.PasswordRowTypeNewPasswordConfirmation.rawValue):
+            let toolBar = UIToolbar(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 44.0))
+            let barButton = UIBarButtonItem(title: "Check passwork", style: .Plain, target: self, action: #selector(TestFormViewController.checkPasswork(_:)))
+            toolBar.items = [barButton]
+            return toolBar
+        case let noInputIndexPath where (noInputIndexPath.section == 0 && noInputIndexPath.row == RowType.RowTypeNoInputAccessory.rawValue):
+            return UIView() //TODO: (Samuel Gallet) 07/07/2016 Change the return type of this function to allow nil return
+        default:
+            return formController.defaultInputAccessoryView
+        }
+    }
+
+    func formController(formController: ADFormController, valueChangedForIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 0:
+            guard let rowType = RowType(rawValue: indexPath.row) else {
+                return
+            }
+            switch (rowType) {
+            case .RowTypeGender:
+                formModel.gender = formController.stringValueForIndexPath(indexPath)
+            case .RowTypeName:
+                formModel.name = formController.stringValueForIndexPath(indexPath)
+            case .RowTypeEmail:
+                formModel.email = formController.stringValueForIndexPath(indexPath)
+            case .RowTypePhoneNumber:
+                formModel.phone = formController.stringValueForIndexPath(indexPath)
+            case .RowTypeLongText:
+                formModel.summary = formController.stringValueForIndexPath(indexPath)
+            case .RowTypeDate:
+                self.formModel.birthDate = formController.dateValueForIndexPath(indexPath)
+            case .RowTypeSwitch:
+                self.formModel.married = formController.boolValueForIndexPath(indexPath)
+            default:
+                break;
+            }
+        case 1:
+            guard let rowType = CreditCardRowType(rawValue: indexPath.row) else {
+                return
+            }
+            switch (rowType) {
+            case .CreditCardRowTypeNumber:
+                formModel.creditCard = formController.stringValueForIndexPath(indexPath)
+            case .CreditCardRowTypeExpirationDate:
+                formModel.expiration = formController.stringValueForIndexPath(indexPath)
+            }
+        default:
+            return
+        }
     }
 
     // MARK: Private
@@ -124,6 +190,16 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
             return PassworkRowType(rawValue: indexPath.row)
         default:
             return nil;
+        }
+    }
+
+    @objc private func checkPasswork(sender: UIToolbar) {
+        let newPassword = formController.stringValueForIndexPath(NSIndexPath(forRow: PassworkRowType.PasswordRowTypeNewPassword.rawValue, inSection: 2))
+        let confirmation = formController.stringValueForIndexPath(NSIndexPath(forRow: PassworkRowType.PasswordRowTypeNewPasswordConfirmation.rawValue, inSection: 2))
+        if newPassword == confirmation {
+            print("Same password \\o/")
+        } else {
+            print("/!\\ Password error")
         }
     }
 }
