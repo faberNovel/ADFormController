@@ -8,7 +8,6 @@
 
 #import "ADFormController.h"
 #import "ADFormTextViewTableViewCell.h"
-#import "ADFormTextFieldTableViewCell.h"
 #import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
@@ -77,7 +76,7 @@
 }
 
 - (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath {
-    ADFormTextFieldTableViewCell * cell = (ADFormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    FormTextFieldTableViewCell * cell = (FormTextFieldTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     ADFormCellConfiguration * configuration = nil;
     if ([self.delegate respondsToSelector:@selector(configurationForFormController:atIndexPath:)]) {
         configuration = [self.delegate configurationForFormController:self atIndexPath:indexPath];
@@ -147,7 +146,7 @@
     if (configuration.cellType == ADFormTextCellTypeLongText) {
         cell = (ADFormTextViewTableViewCell *)[self _cellWithClass:ADFormTextViewTableViewCell.class forIndexPath:indexPath];
     } else {
-        cell = (ADFormTextFieldTableViewCell *)[self _cellWithClass:ADFormTextFieldTableViewCell.class forIndexPath:indexPath];
+        cell = (FormTextFieldTableViewCell *)[self _cellWithClass:FormTextFieldTableViewCell.class forIndexPath:indexPath];
     }
     cell.delegate = self;
     [cell applyConfiguration:configuration];

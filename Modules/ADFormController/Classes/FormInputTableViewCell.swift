@@ -12,7 +12,7 @@ import UIKit
     weak var delegate: FormTextInputTableViewCellDelegate? { get set }
     var inputAccessoryView: UIView? { get set }
     var returnKeyType: UIReturnKeyType { get set }
-    var textContent: String { get set }
+    var textContent: String? { get set }
 
     func beginEditing()
     func applyConfiguration(configuration: ADFormCellTextConfiguration)
