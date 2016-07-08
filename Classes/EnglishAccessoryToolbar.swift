@@ -9,7 +9,7 @@
 import UIKit
 import ADFormController
 
-class EnglishAccessoryToolbar: UIToolbar, NavigableButtons {
+class EnglishAccessoryToolbar: UIToolbar, NavigableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +19,11 @@ class EnglishAccessoryToolbar: UIToolbar, NavigableButtons {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initComponents()
+    }
+
+    // MARK: mark NavigableView
+    var view: UIView {
+        return self
     }
 
     // MARK: ADnavigableButtons

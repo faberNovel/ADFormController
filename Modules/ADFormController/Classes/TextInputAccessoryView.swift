@@ -13,12 +13,21 @@ import UIKit
     var previousBarButtonItem : UIBarButtonItem { get }
 }
 
+@objc public protocol NavigableView : NavigableButtons {
+    var view: UIView { get }
+}
+
 //TODO: (Samuel Gallet) 05/07/2016  remove @objc and public
-@objc public class TextInputAccessoryView: UIToolbar, NavigableButtons {
+@objc public class TextInputAccessoryView: UIToolbar, NavigableView {
 
     // MARK: NavigableButtons
     private(set) public var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDNextIcon"), style: .Plain, target: nil, action: nil)
     private(set) public var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDPreviousIcon"), style: .Plain, target: nil, action: nil)
+
+    // MARK: NavigableView
+    public var view: UIView {
+        return self
+    }
 
     // MARK: UIView
     override init(frame: CGRect) {
