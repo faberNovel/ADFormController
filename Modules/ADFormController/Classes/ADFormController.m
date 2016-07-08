@@ -7,7 +7,6 @@
 //
 
 #import "ADFormController.h"
-#import "ADFormDirectionManager.h"
 #import "UIView+Traverse.h"
 #import "UIView+Responder.h"
 #import "ADFormCellBoolConfiguration.h"
@@ -16,10 +15,10 @@
 
 #import <ADFormController/ADFormController-Swift.h>
 
-@interface ADFormController () <FormTextInputTableViewCellDelegate, FormBoolInputTableViewCellDelegate, ADFormDirectionManagerDelegate, ADFormCellConfigurable> {
+@interface ADFormController () <FormTextInputTableViewCellDelegate, FormBoolInputTableViewCellDelegate, FormDirectionManagerDelegate, ADFormCellConfigurable> {
     NSMutableDictionary<NSIndexPath *, UITableViewCell *> * _cells;
     UIView<NavigableButtons> * _defaultInputAccessoryView;
-    ADFormDirectionManager * _formDirectionManager;
+    FormDirectionManager * _formDirectionManager;
 }
 @property (nonatomic, weak) UITableView * tableView;
 @end
@@ -30,7 +29,7 @@
     if (self = [super init]) {
         _tableView = tableView;
         _cells = [NSMutableDictionary dictionary];
-        _formDirectionManager = [[ADFormDirectionManager alloc] initWithTableView:self.tableView];
+        _formDirectionManager = [[FormDirectionManager alloc] initWithTableView:self.tableView];
         _formDirectionManager.delegate = self;
         [self _setupDefaultInputAccessoryView];
     }
@@ -94,8 +93,8 @@
 
 - (BOOL)textInputTableViewCellShouldReturn:(UITableViewCell<FormTextInputTableViewCell> *)textInputTableViewCell {
     NSIndexPath * indexPath = [self.tableView indexPathForCell:textInputTableViewCell];
-    if ([_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath]) {
-        [self _moveToDirection:ADAccessoryViewDirectionNext fromIndexPath:indexPath];
+    if ([_formDirectionManager canMoveToDirection:AccessoryViewDirectionNext fromIndexPath:indexPath]) {
+        [self _moveToDirection:AccessoryViewDirectionNext fromIndexPath:indexPath];
         return NO;
     }
 
@@ -122,9 +121,9 @@
     }
 }
 
-#pragma mark - ADFormDirectionManagerDelegate
+#pragma mark - FormDirectionManagerDelegate
 
-- (BOOL)formDirectionManager:(ADFormDirectionManager *)formDirectionManager canEditCellAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)formDirectionManager:(FormDirectionManager *)formDirectionManager canEditCellAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
     return [cell conformsToProtocol:@protocol(FormTextInputTableViewCell)];
 }
@@ -206,19 +205,19 @@
 }
 
 - (void)_next:(id)sender {
-    [self _moveToDirection:ADAccessoryViewDirectionNext];
+    [self _moveToDirection:AccessoryViewDirectionNext];
 }
 
 - (void)_previous:(id)sender {
-    [self _moveToDirection:ADAccessoryViewDirectionPrevious];
+    [self _moveToDirection:AccessoryViewDirectionPrevious];
 }
 
-- (void)_moveToDirection:(ADAccessoryViewDirection)direction {
+- (void)_moveToDirection:(AccessoryViewDirection)direction {
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     [self _moveToDirection:direction fromIndexPath:currentIndexPath];
 }
 
-- (void)_moveToDirection:(ADAccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
+- (void)_moveToDirection:(AccessoryViewDirection)direction fromIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath * nextIndexPath = [_formDirectionManager indexPathForDirection:direction andBaseIndexPath:indexPath];
     if (nextIndexPath) {
         UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
@@ -232,8 +231,8 @@
 - (void)_updateInputAccessoryView {
     NSIndexPath * currentIndexPath = [self _indexPathForFirstResponder];
     if (currentIndexPath) {
-        _defaultInputAccessoryView.nextBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionNext fromIndexPath:currentIndexPath];
-        _defaultInputAccessoryView.previousBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:ADAccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
+        _defaultInputAccessoryView.nextBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:AccessoryViewDirectionNext fromIndexPath:currentIndexPath];
+        _defaultInputAccessoryView.previousBarButtonItem.enabled = [_formDirectionManager canMoveToDirection:AccessoryViewDirectionPrevious fromIndexPath:currentIndexPath];
     }
 }
 
