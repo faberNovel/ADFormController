@@ -73,7 +73,7 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
         case 1:
             return CreditCardRowType.count
         case 2:
-            return PassworkRowType.count
+            return PasswordRowType.count
         default:
             return 0
         }
@@ -114,7 +114,7 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
 
     func formController(formController: ADFormController, inputAccessoryViewForIndexPath indexPath: NSIndexPath) -> UIView {
         switch indexPath {
-        case let confirmationIndexPath where (confirmationIndexPath.section == 2 && confirmationIndexPath.row == PassworkRowType.PasswordRowTypeNewPasswordConfirmation.rawValue):
+        case let confirmationIndexPath where (confirmationIndexPath.section == 2 && confirmationIndexPath.row == PasswordRowType.PasswordRowTypeNewPasswordConfirmation.rawValue):
             let toolBar = UIToolbar(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 44.0))
             let barButton = UIBarButtonItem(title: "Check passwork", style: .Plain, target: self, action: #selector(TestFormViewController.checkPasswork(_:)))
             toolBar.items = [barButton]
@@ -176,7 +176,7 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
         let title = passwordVisible ? "Hide" : "Show"
         passwordButton.setTitle(title, forState: .Normal)
 
-        let indexPath = NSIndexPath(forRow: PassworkRowType.PasswordRowTypeNewPassword.rawValue, inSection: 2)
+        let indexPath = NSIndexPath(forRow: PasswordRowType.PasswordRowTypeNewPassword.rawValue, inSection: 2)
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
     }
 
@@ -187,15 +187,15 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
         case 1:
             return CreditCardRowType(rawValue: indexPath.row)
         case 2:
-            return PassworkRowType(rawValue: indexPath.row)
+            return PasswordRowType(rawValue: indexPath.row)
         default:
             return nil;
         }
     }
 
     @objc private func checkPasswork(sender: UIToolbar) {
-        let newPassword = formController.stringValueForIndexPath(NSIndexPath(forRow: PassworkRowType.PasswordRowTypeNewPassword.rawValue, inSection: 2))
-        let confirmation = formController.stringValueForIndexPath(NSIndexPath(forRow: PassworkRowType.PasswordRowTypeNewPasswordConfirmation.rawValue, inSection: 2))
+        let newPassword = formController.stringValueForIndexPath(NSIndexPath(forRow: PasswordRowType.PasswordRowTypeNewPassword.rawValue, inSection: 2))
+        let confirmation = formController.stringValueForIndexPath(NSIndexPath(forRow: PasswordRowType.PasswordRowTypeNewPasswordConfirmation.rawValue, inSection: 2))
         if newPassword == confirmation {
             print("Same password \\o/")
         } else {

@@ -163,14 +163,14 @@ extension CreditCardRowType: RowConfigurable {
     }
 }
 
-enum PassworkRowType: Int {
+enum PasswordRowType: Int {
     case PasswordRowTypeNewPassword
     case PasswordRowTypeNewPasswordConfirmation
 
-    static var count: Int { return PassworkRowType.PasswordRowTypeNewPasswordConfirmation.hashValue + 1}
+    static var count: Int { return PasswordRowType.PasswordRowTypeNewPasswordConfirmation.hashValue + 1}
 }
 
-extension PassworkRowType: RowConfigurable {
+extension PasswordRowType: RowConfigurable {
     var title: String {
         return "Password"
     }
