@@ -10,6 +10,7 @@ import HockeySDK
 import UIKit
 import Watchdog
 
+let useObjcProject: Bool = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate {
@@ -25,7 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        window?.rootViewController = UINavigationController(rootViewController: MenuTableViewController())
+
+        if useObjcProject {
+            window?.rootViewController = UINavigationController(rootViewController: FDMenuTableViewController())
+        } else {
+            window?.rootViewController = UINavigationController(rootViewController: MenuTableViewController())
+        }
+
         window?.makeKeyAndVisible()
         return true
     }
