@@ -13,9 +13,9 @@
 @class ADFormCellBoolConfiguration, ADFormCellTextConfiguration;
 
 @protocol ADFormCellConfigurable <NSObject>
-- (UITableViewCell<ADFormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(ADFormCellBoolConfiguration *)configuration
-                                                                      atIndexPath:(NSIndexPath *)indexPath;
+- (nonnull UITableViewCell<ADFormBoolInputTableViewCell> *)boolInputCellWithConfiguration:(nonnull ADFormCellBoolConfiguration *)configuration
+                                                                      atIndexPath:(nonnull NSIndexPath *)indexPath;
 
-- (UITableViewCell<ADFormTextInputTableViewCell> *)textInputCellWithConfiguration:(ADFormCellTextConfiguration *)configuration
-                                                                      atIndexPath:(NSIndexPath *)indexPath;
+- (nonnull UITableViewCell<ADFormTextInputTableViewCell> *)textInputCellWithConfiguration:(nonnull ADFormCellTextConfiguration *)configuration
+                                                                      atIndexPath:(nonnull NSIndexPath *)indexPath;
 @end
