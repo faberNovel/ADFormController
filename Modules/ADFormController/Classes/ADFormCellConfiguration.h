@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormCellConfigurable.h"
+
+@protocol FormCellConfigurable;
 
 @interface ADFormCellConfiguration : NSObject
 
@@ -17,6 +18,6 @@
 @property (nonatomic, strong, nullable) UIColor * tintColor;
 @property (nonatomic, strong, nullable) UIView * rightView;
 
-- (nonnull UITableViewCell *)visit:(nonnull id<ADFormCellConfigurable>)configurable atIndexPath:(nonnull NSIndexPath *)indexPath;
+- (nonnull UITableViewCell *)visit:(nonnull id<FormCellConfigurable>)configurable atIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @end

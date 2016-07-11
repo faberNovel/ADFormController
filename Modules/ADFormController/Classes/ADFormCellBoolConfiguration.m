@@ -7,6 +7,8 @@
 //
 
 #import "ADFormCellBoolConfiguration.h"
+#import <ADFormController/ADFormController-Swift.h>
+
 
 @implementation ADFormCellBoolConfiguration
 
@@ -17,7 +19,7 @@
     return self;
 }
 
-- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)visit:(id<FormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
     return [configurable boolInputCellWithConfiguration:self atIndexPath:indexPath];
 }
 

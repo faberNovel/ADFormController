@@ -7,6 +7,7 @@
 //
 
 #import "ADFormCellTextConfiguration.h"
+#import <ADFormController/ADFormController-Swift.h>
 
 @implementation ADFormCellTextConfiguration
 
@@ -19,7 +20,7 @@
     return self;
 }
 
-- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)visit:(id<FormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath {
     return [configurable textInputCellWithConfiguration:self atIndexPath:indexPath];
 }
 

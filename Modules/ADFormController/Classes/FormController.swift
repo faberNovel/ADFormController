@@ -63,7 +63,7 @@ private extension FormInput {
     optional func formControllerAction(formController: FormController)
 }
 
-@objc public class FormController: NSObject , FormBoolInputTableViewCellDelegate, FormTextInputTableViewCellDelegate, FormDirectionManagerDelegate, ADFormCellConfigurable {
+@objc public class FormController: NSObject , FormBoolInputTableViewCellDelegate, FormTextInputTableViewCellDelegate, FormDirectionManagerDelegate, FormCellConfigurable {
     public weak var delegate: FormControllerDelegate?
     public var defaultAccessoryView: NavigableView {
         didSet {
