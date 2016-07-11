@@ -10,9 +10,9 @@ import UIKit
 import ADKeyboardManager
 
 private enum FormInput {
-    case Bool(ADFormCellBoolConfiguration)
-    case ShortText(ADFormCellTextConfiguration)
-    case LongText(ADFormCellTextConfiguration)
+    case Bool(FormCellBoolConfiguration)
+    case ShortText(FormCellTextConfiguration)
+    case LongText(FormCellTextConfiguration)
 }
 
 private extension FormInput {
@@ -57,7 +57,7 @@ private extension FormInput {
 }
 
 @objc public protocol FormControllerDelegate {
-    func configurationForFormController(formController: FormController, atIndexPath indexPath: NSIndexPath) -> ADFormCellConfiguration?
+    func configurationForFormController(formController: FormController, atIndexPath indexPath: NSIndexPath) -> FormCellConfiguration?
     optional func formController(formController: FormController, inputAccessoryViewAtIndexPath indexPath: NSIndexPath) -> UIView
     optional func formController(formController: FormController, valueChangedForIndexPath indexPath: NSIndexPath)
     optional func formControllerAction(formController: FormController)
@@ -107,7 +107,7 @@ private extension FormInput {
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? FormTextFieldTableViewCell else {
             return nil
         }
-        guard let configuration = delegate?.configurationForFormController(self, atIndexPath: indexPath) as? ADFormCellTextConfiguration else {
+        guard let configuration = delegate?.configurationForFormController(self, atIndexPath: indexPath) as? FormCellTextConfiguration else {
             return nil
         }
         return cell.textField.text.flatMap {
@@ -123,14 +123,14 @@ private extension FormInput {
     }
 
     // MARK: FormCellConfigurable
-    public func boolInputCellWithConfiguration(configuration: ADFormCellBoolConfiguration, atIndexPath indexPath:NSIndexPath) -> UITableViewCell {
+    public func boolInputCellWithConfiguration(configuration: FormCellBoolConfiguration, atIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         return FormInput.Bool(configuration).buildCell(cells[indexPath],
                                                        accessoryView: defaultAccessoryView.view,
                                                        returnKeyType: returnKeyTypeAtIndexPath(indexPath),
                                                        formController: self)
     }
 
-    public func textInputCellWithConfiguration(configuration: ADFormCellTextConfiguration, atIndexPath indexPath:NSIndexPath) -> UITableViewCell {
+    public func textInputCellWithConfiguration(configuration: FormCellTextConfiguration, atIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         var accessoryView = delegate?.formController?(self, inputAccessoryViewAtIndexPath: indexPath)
         if accessoryView == nil {
             accessoryView = defaultAccessoryView.view

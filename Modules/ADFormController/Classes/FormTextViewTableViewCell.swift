@@ -126,7 +126,7 @@ private struct Constants {
         textView.becomeFirstResponder()
     }
 
-    public func applyConfiguration(configuration: ADFormCellTextConfiguration) {
+    public func applyConfiguration(configuration: FormCellTextConfiguration) {
         titleLabel.text = configuration.title
 
         titleLabel.font = configuration.titleFont

@@ -12,7 +12,7 @@ import ADFormController
 protocol RowConfigurable {
     var title: String { get }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration?
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration?
 }
 
 enum RowType: Int {
@@ -42,10 +42,10 @@ extension RowType: RowConfigurable {
         }
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration? {
         switch self {
         case RowTypeGender:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Gender"
             configuration.cellType = .Picker
             configuration.formPickerDataSource = SimpleFormPickerDataSource(options: ["Male", "Female"])
@@ -55,7 +55,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypeName:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Name"
             configuration.cellType = .Name
             configuration.text = model.name;
@@ -64,7 +64,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypeEmail:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Email"
             configuration.cellType = .Email
             configuration.text = model.email;
@@ -73,7 +73,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypePhoneNumber:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Phone"
             configuration.cellType = .Phone
             configuration.text = model.phone;
@@ -82,7 +82,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypeLongText:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Long text"
             configuration.cellType = .LongText
             configuration.text = model.summary;
@@ -91,7 +91,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypeDate:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Date"
             configuration.cellType = .Date
             configuration.dateFormatter = TestFormViewController.dateFormatter
@@ -103,7 +103,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypeSwitch:
-            let configuration = ADFormCellBoolConfiguration();
+            let configuration = FormCellBoolConfiguration();
             configuration.title = "Maried"
             configuration.onTintColor = UIColor.greenColor()
             configuration.tintColor = UIColor.redColor()
@@ -114,7 +114,7 @@ extension RowType: RowConfigurable {
             }
             return configuration
         case RowTypeNoInputAccessory:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Useless row with no input accessory"
             configuration.cellType = .Name
             if showTitle {
@@ -137,10 +137,10 @@ extension CreditCardRowType: RowConfigurable {
         return "Credit card"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration? {
         switch self {
         case CreditCardRowTypeNumber:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Credit card"
             configuration.cellType = .Number
             configuration.textFieldFormatter = CreditCardTextFieldFormatter()
@@ -150,7 +150,7 @@ extension CreditCardRowType: RowConfigurable {
             }
             return configuration
         case CreditCardRowTypeExpirationDate:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Expiration Date"
             configuration.cellType = .Picker
             configuration.formPickerDataSource = ExpirationDatePickerDataSource()
@@ -175,10 +175,10 @@ extension PasswordRowType: RowConfigurable {
         return "Password"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> ADFormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration? {
         switch self {
         case PasswordRowTypeNewPassword:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "New password"
             if !passwordVisible {
                 configuration.cellType = .Password
@@ -192,7 +192,7 @@ extension PasswordRowType: RowConfigurable {
             configuration.rightView = accessoryView
             return configuration
         case PasswordRowTypeNewPasswordConfirmation:
-            let configuration = ADFormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Confirmation"
             configuration.cellType = .Password
             if showTitle {

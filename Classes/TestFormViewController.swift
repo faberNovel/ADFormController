@@ -108,7 +108,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
 
     // MARK: FormControllerDelegate
 
-    func configurationForFormController(formController: FormController, atIndexPath indexPath: NSIndexPath) -> ADFormCellConfiguration? {
+    func configurationForFormController(formController: FormController, atIndexPath indexPath: NSIndexPath) -> FormCellConfiguration? {
         return rowConfigurableAtIndexPath(indexPath)?.formCellConfiguration(showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible)
     }
 

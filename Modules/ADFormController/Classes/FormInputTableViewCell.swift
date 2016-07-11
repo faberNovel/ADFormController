@@ -15,7 +15,7 @@ import UIKit
     var textContent: String? { get set }
 
     func beginEditing()
-    func applyConfiguration(configuration: ADFormCellTextConfiguration)
+    func applyConfiguration(configuration: FormCellTextConfiguration)
 }
 
 @objc public protocol FormTextInputTableViewCellDelegate {
@@ -29,7 +29,7 @@ import UIKit
     weak var delegate: FormBoolInputTableViewCellDelegate? { get set }
     var boolContent: Bool { get set }
 
-    func applyConfiguration(configuration: ADFormCellBoolConfiguration)
+    func applyConfiguration(configuration: FormCellBoolConfiguration)
 }
 
 @objc public protocol FormBoolInputTableViewCellDelegate {

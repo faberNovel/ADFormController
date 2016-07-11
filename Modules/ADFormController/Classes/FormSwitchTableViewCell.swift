@@ -91,7 +91,7 @@ import UIKit
         }
     }
 
-    public func applyConfiguration(configuration: ADFormCellBoolConfiguration) {
+    public func applyConfiguration(configuration: FormCellBoolConfiguration) {
         rightView = configuration.rightView
         leftLabel.text = configuration.title
         leftLabel.font = configuration.titleFont
@@ -101,8 +101,8 @@ import UIKit
         //hack to have a nice background color for off position
         switchView.layer.cornerRadius = 16.0
         switchView.backgroundColor = configuration.tintColor
-        let scale = CGAffineTransformMakeScale(configuration.switchZoom, configuration.switchZoom);
-        let clipToRightTransform = CGAffineTransformMakeTranslation(CGRectGetWidth(switchView.frame) * (1.0 - configuration.switchZoom) / 2.0, 0.0);
+        let scale = CGAffineTransformMakeScale(CGFloat(configuration.switchZoom), CGFloat(configuration.switchZoom));
+        let clipToRightTransform = CGAffineTransformMakeTranslation(CGFloat(CGRectGetWidth(switchView.frame)) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, 0.0);
         self.switchView.transform = CGAffineTransformConcat(scale, clipToRightTransform);
     }
 

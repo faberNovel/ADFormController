@@ -48,7 +48,7 @@ private struct Constants {
         return PickerViewTextFieldBinding(textField: self.textField)
     } ()
     private var dynamicConstraints: [NSLayoutConstraint] = []
-    private var cellType : ADFormTextCellType = .Email {
+    private var cellType: FormTextCellType = .Email {
         didSet {
             textField.secureTextEntry = false
             switch self.cellType {
@@ -229,7 +229,7 @@ private struct Constants {
         textField.becomeFirstResponder()
     }
 
-    public func applyConfiguration(configuration: ADFormCellTextConfiguration) {
+    public func applyConfiguration(configuration: FormCellTextConfiguration) {
         textField.placeholder = configuration.placeholder
         leftLabel.text = configuration.title;
         cellType = configuration.cellType
