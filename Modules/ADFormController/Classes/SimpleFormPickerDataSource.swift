@@ -11,7 +11,7 @@ import Foundation
 @objc public class SimpleFormPickerDataSource: NSObject, FormPickerDataSource {
     private var options: [String]
 
-    public init(options: [String]) {
+    public required init(options: [String]) {
         self.options = options
     }
 

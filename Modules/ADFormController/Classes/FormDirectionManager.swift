@@ -9,17 +9,17 @@
 import UIKit
 
 //TODO: (Samuel Gallet) 08/07/2016 Associate indexPath to enum
-@objc public enum AccessoryViewDirection: Int {
+enum AccessoryViewDirection: Int {
     case Previous
     case Next
 }
 
-@objc public protocol FormDirectionManagerDelegate {
+protocol FormDirectionManagerDelegate: class {
     func formDirectionManager(formDirectionManager: FormDirectionManager, canEditCellAtIndexPath indexPath: NSIndexPath) -> Bool
 }
 
-@objc public class FormDirectionManager : NSObject {
-    public weak var delegate: FormDirectionManagerDelegate?
+class FormDirectionManager : NSObject {
+    weak var delegate: FormDirectionManagerDelegate?
     private unowned var tableView: UITableView
     private var lastTableViewIndexPath: NSIndexPath? {
         let lastSection = tableView.numberOfSections - 1
@@ -36,19 +36,19 @@ import UIKit
     }
 
     // MARK: LifeCycle
-    public init(tableView: UITableView) {
+    init(tableView: UITableView) {
         self.tableView = tableView
         super.init()
     }
 
     // MARK: FormDirectionManager
-    public func indexPathForDirection(direction: AccessoryViewDirection, andBaseIndexPath baseIndexPath: NSIndexPath?) -> NSIndexPath? {
+    func indexPathForDirection(direction: AccessoryViewDirection, andBaseIndexPath baseIndexPath: NSIndexPath?) -> NSIndexPath? {
         return baseIndexPath.flatMap {
             return nextIndexPathForDirection(direction, fromIndexPath: $0)
         }
     }
 
-    public func canMoveToDirection(direction: AccessoryViewDirection, fromIndexPath indexPath: NSIndexPath) -> Bool {
+    func canMoveToDirection(direction: AccessoryViewDirection, fromIndexPath indexPath: NSIndexPath) -> Bool {
         return nextIndexPathForDirection(direction, fromIndexPath: indexPath) != nil
     }
 

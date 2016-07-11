@@ -8,19 +8,19 @@
 
 import UIKit
 
-@objc public class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    public let pickerView : UIPickerView = UIPickerView()
-    public var formPickerDataSource : FormPickerDataSource?
+class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+    let pickerView : UIPickerView = UIPickerView()
+    var formPickerDataSource : FormPickerDataSource?
     private var textField : UITextField
 
-    public init(textField: UITextField) {
+    init(textField: UITextField) {
         self.textField = textField
         super.init()
         pickerView.delegate = self
         pickerView.dataSource = self
     }
 
-    public func startEditing() {
+    func startEditing() {
         guard let text = textField.text else {
             return
         }
@@ -40,14 +40,14 @@ import UIKit
 
     // MARK: UIPickerViewDataSource
 
-    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         guard let dataSource = formPickerDataSource else {
             return 0
         }
         return dataSource.numberOfComponents
     }
 
-    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         guard let dataSource = formPickerDataSource else {
             return 0
         }
@@ -56,14 +56,14 @@ import UIKit
 
     // MARK: UIPickerViewDelegate
 
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let dataSource = formPickerDataSource else {
             return ""
         }
         return dataSource.componentOptions(component)[row]
     }
 
-    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let dataSource = formPickerDataSource else {
             return
         }

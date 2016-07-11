@@ -8,50 +8,50 @@
 
 import UIKit
 
-@objc public class PlaceholderTextView : UITextView {
-    public var placeholder: String = "" {
+class PlaceholderTextView: UITextView {
+    var placeholder: String = "" {
         didSet {
             setNeedsDisplay()
         }
     }
-    public var placeholderColor: UIColor = UIColor.init(red: (199.0/255.0), green: (199.0/255.0), blue: (205.0/255.0), alpha: 1.0) {
+    var placeholderColor: UIColor = UIColor.init(red: (199.0/255.0), green: (199.0/255.0), blue: (205.0/255.0), alpha: 1.0) {
         didSet {
             setNeedsDisplay()
         }
     }
 
     // MARK: UITextView
-    public override var text: String! {
+    override var text: String! {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    public override var attributedText: NSAttributedString! {
+    override var attributedText: NSAttributedString! {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    public override var contentInset: UIEdgeInsets {
+    override var contentInset: UIEdgeInsets {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    public override var font: UIFont? {
+    override var font: UIFont? {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    public override var textAlignment: NSTextAlignment {
+    override var textAlignment: NSTextAlignment {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    public override func insertText(text: String) {
+    override func insertText(text: String) {
         super.insertText(text)
         setNeedsDisplay()
     }
@@ -65,11 +65,11 @@ import UIKit
                                                          object: nil)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    public override func drawRect(rect: CGRect) {
+    override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         guard text.isEmpty && !placeholder.isEmpty else {
             return

@@ -8,8 +8,8 @@
 
 import UIKit
 
-public extension UIView {
-    public func superViewFromClass<T: UIView>() -> T? {
+extension UIView {
+    func superViewFromClass<T: UIView>() -> T? {
         var view: UIView = self
         guard let castedView = view as? T else {
             return view.superview.flatMap {
@@ -19,7 +19,7 @@ public extension UIView {
         return castedView
     }
 
-    public func findFirstResponder() -> UIView? {
+    func findFirstResponder() -> UIView? {
         if isFirstResponder() {
             return self
         }

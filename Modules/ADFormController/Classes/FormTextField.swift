@@ -8,11 +8,11 @@
 
 import UIKit
 
-@objc public class FormTextField : UITextField {
+class FormTextField : UITextField {
     public var disablePasteAction : Bool = false
 
     // MARK: UITextField
-    public override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         if action == #selector(UITextField.paste(_:)) && disablePasteAction {
             return false
         }

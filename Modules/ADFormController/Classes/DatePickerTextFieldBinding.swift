@@ -8,19 +8,19 @@
 
 import UIKit
 
-@objc public class DatePickerTextFieldBinging: NSObject {
-    public let datePicker : UIDatePicker = UIDatePicker()
-    public var dateFormatter : NSDateFormatter?
+class DatePickerTextFieldBinging: NSObject {
+    let datePicker : UIDatePicker = UIDatePicker()
+    var dateFormatter : NSDateFormatter?
     private var textField : UITextField
 
-    public init(textField: UITextField) {
+    init(textField: UITextField) {
         self.textField = textField
         super.init()
         datePicker.datePickerMode = .Date
         datePicker.addTarget(self, action: #selector(DatePickerTextFieldBinging.dateChanged(_:)), forControlEvents: .ValueChanged)
     }
 
-    public func startEditing() {
+    func startEditing() {
         if textField.text?.characters.count == 0 {
             dateChanged(datePicker)
             return

@@ -144,7 +144,7 @@ private extension FormInput {
 
     // MARK: FormBoolInputTableViewCellDelegate
 
-    public func boolInputTableViewCellDidChangeValue(cell: FormBoolInputTableViewCell) {
+    func boolInputTableViewCellDidChangeValue(cell: FormBoolInputTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(cell as! UITableViewCell) else {
             return
         }
@@ -153,18 +153,18 @@ private extension FormInput {
 
     // MARK: FormTextInputTableViewCellDelegate
 
-    public func textInputTableViewCellValueChanged(cell: FormTextInputTableViewCell) {
+    func textInputTableViewCellValueChanged(cell: FormTextInputTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(cell as! UITableViewCell) else {
             return
         }
         delegate?.formController?(self, valueChangedForIndexPath: indexPath)
     }
 
-    public func textInputTableViewCellDidBeginEditing(cell: FormTextInputTableViewCell) {
+    func textInputTableViewCellDidBeginEditing(cell: FormTextInputTableViewCell) {
         updateInputAccessoryView()
     }
 
-    public func textInputTableViewCellShouldReturn(cell: FormTextInputTableViewCell) -> Bool {
+    func textInputTableViewCellShouldReturn(cell: FormTextInputTableViewCell) -> Bool {
         guard let indexPath = tableView.indexPathForCell(cell as! UITableViewCell) else {
             return false
         }
@@ -178,7 +178,7 @@ private extension FormInput {
 
     // MARK: FormDirectionManagerDelegate
 
-    public func formDirectionManager(formDirectionManager: FormDirectionManager, canEditCellAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func formDirectionManager(formDirectionManager: FormDirectionManager, canEditCellAtIndexPath indexPath: NSIndexPath) -> Bool {
         return tableView.cellForRowAtIndexPath(indexPath) is FormTextFieldTableViewCell
     }
 

@@ -17,15 +17,14 @@ import UIKit
     var view: UIView { get }
 }
 
-//TODO: (Samuel Gallet) 05/07/2016  remove @objc and public
-@objc public class TextInputAccessoryView: UIToolbar, NavigableView {
+class TextInputAccessoryView: UIToolbar, NavigableView {
 
     // MARK: NavigableButtons
-    private(set) public var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDNextIcon"), style: .Plain, target: nil, action: nil)
-    private(set) public var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDPreviousIcon"), style: .Plain, target: nil, action: nil)
+    private(set) var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDNextIcon"), style: .Plain, target: nil, action: nil)
+    private(set) var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDPreviousIcon"), style: .Plain, target: nil, action: nil)
 
     // MARK: NavigableView
-    public var view: UIView {
+    var view: UIView {
         return self
     }
 
@@ -35,7 +34,7 @@ import UIKit
         initComponents()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initComponents()
     }

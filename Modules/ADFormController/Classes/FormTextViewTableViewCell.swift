@@ -12,8 +12,8 @@ private struct Constants {
     static let titleLabelKeyPath: String = "titleLabel.text"
 }
 
-@objc public class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
-    public let textView: UITextView = {
+class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
+    let textView: UITextView = {
         let placeholderTextView = PlaceholderTextView()
         placeholderTextView.textContainerInset = UIEdgeInsetsZero;
         placeholderTextView.textContainer.lineFragmentPadding = 0;
@@ -33,7 +33,7 @@ private struct Constants {
         removeObserver(self, forKeyPath: Constants.titleLabelKeyPath)
     }
 
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == Constants.titleLabelKeyPath {
             self .setNeedsUpdateConstraints()
         }
@@ -58,11 +58,11 @@ private struct Constants {
 
     // MARK: UIView
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    public override func updateConstraints() {
+    override func updateConstraints() {
         contentView.removeConstraints(dynamicConstraints)
         dynamicConstraints.removeAll()
 
@@ -83,17 +83,17 @@ private struct Constants {
 
     // MARK: UITextViewdelegate
 
-    public func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(textView: UITextView) {
         delegate?.textInputTableViewCellDidBeginEditing(self)
     }
 
-    public func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(textView: UITextView) {
         delegate?.textInputTableViewCellValueChanged(self)
     }
 
     // MARK: FormTextInputTableViewCell
-    public weak var delegate: FormTextInputTableViewCellDelegate?
-    public var textContent: String? {
+    weak var delegate: FormTextInputTableViewCellDelegate?
+    var textContent: String? {
         get {
             return textView.text
         }
@@ -105,7 +105,7 @@ private struct Constants {
         }
     }
     private var _inputAccessoryView: UIView?
-    override public var inputAccessoryView: UIView? {
+    override var inputAccessoryView: UIView? {
         get {
             return _inputAccessoryView
         }
@@ -113,7 +113,7 @@ private struct Constants {
             _inputAccessoryView = newValue
         }
     }
-    public var returnKeyType: UIReturnKeyType {
+    var returnKeyType: UIReturnKeyType {
         get {
             return textView.returnKeyType
         }
@@ -122,11 +122,11 @@ private struct Constants {
         }
     }
 
-    public func beginEditing() {
+    func beginEditing() {
         textView.becomeFirstResponder()
     }
 
-    public func applyConfiguration(configuration: FormCellTextConfiguration) {
+    func applyConfiguration(configuration: FormCellTextConfiguration) {
         titleLabel.text = configuration.title
 
         titleLabel.font = configuration.titleFont

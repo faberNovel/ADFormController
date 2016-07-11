@@ -12,8 +12,8 @@ private struct Constants {
     static let leftLabelKeyPath: String = "leftLabel.text"
 }
 
-@objc public class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
-    public let textField: FormTextField = {
+class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
+    let textField: FormTextField = {
         let textField = FormTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -86,7 +86,7 @@ private struct Constants {
     }
 
     // MARK: UIView
-    public override func updateConstraints() {
+    override func updateConstraints() {
         self.contentView.removeConstraints(dynamicConstraints)
         dynamicConstraints.removeAll()
         var views = [
@@ -135,7 +135,7 @@ private struct Constants {
 
     // MARK: UITableViewCell
 
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None
         textField.delegate = self
@@ -151,13 +151,13 @@ private struct Constants {
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[textField]|", options: .AlignAllLeft, metrics: nil, views: views))
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
 
     // MARK: NSObject
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == Constants.leftLabelKeyPath {
             textField.textAlignment = textLabel?.text?.characters.count == 0 ? .Right : .Left
             setNeedsUpdateConstraints()
@@ -169,7 +169,7 @@ private struct Constants {
     }
 
     // MARK: UITextfieldDelegate
-    public func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(textField: UITextField) {
         switch cellType {
         case .Date:
             datePickerBinding.startEditing()
@@ -181,14 +181,14 @@ private struct Constants {
         delegate?.textInputTableViewCellDidBeginEditing(self)
     }
 
-    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         guard let formatter = textFieldFormatter else {
             return true
         }
         return formatter.textField(textField, shouldChangeCharactersInRange: range, replacementString: string)
     }
 
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         guard let delegate = delegate else {
             return true
         }
@@ -196,11 +196,11 @@ private struct Constants {
     }
 
     // MARK: FormTextInputTableViewCell
-    public weak var delegate: FormTextInputTableViewCellDelegate?
+    weak var delegate: FormTextInputTableViewCellDelegate?
     private var _inputAccessoryView: UIView?
     // The FormTextInputTableViewCell require inputAccessoryView to be read write. However inputAccessoryView is read only in UITableViewCell
-    // So we need to pass through an other var to make it read write
-    override public var inputAccessoryView: UIView? {
+    // So we need to pass through an other var to make it read writeu
+    override var inputAccessoryView: UIView? {
         get {
             return _inputAccessoryView
         }
@@ -208,7 +208,7 @@ private struct Constants {
             _inputAccessoryView = newValue
         }
     }
-    public var returnKeyType: UIReturnKeyType {
+    var returnKeyType: UIReturnKeyType {
         get {
             return textField.returnKeyType
         }
@@ -216,7 +216,7 @@ private struct Constants {
             textField.returnKeyType = newValue
         }
     }
-    public var textContent: String? {
+    var textContent: String? {
         get {
             return textField.text
         }
@@ -225,11 +225,11 @@ private struct Constants {
         }
     }
 
-    public func beginEditing() {
+    func beginEditing() {
         textField.becomeFirstResponder()
     }
 
-    public func applyConfiguration(configuration: FormCellTextConfiguration) {
+    func applyConfiguration(configuration: FormCellTextConfiguration) {
         textField.placeholder = configuration.placeholder
         leftLabel.text = configuration.title;
         cellType = configuration.cellType

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
+class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
     let switchView: UISwitch = {
         let switchView = UISwitch()
         switchView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ import UIKit
     let margin = 15.0
 
     // MARK: UIView
-    public override func updateConstraints() {
+    override func updateConstraints() {
         contentView.removeConstraints(dynamicConstraints)
         dynamicConstraints.removeAll()
         if let rightView = rightView {
@@ -76,13 +76,13 @@ import UIKit
         separatorInset = UIEdgeInsetsMake(0, CGFloat(margin) as CGFloat, 0, 0)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     // MARK: FormBoolInputTableViewCell
-    public weak var delegate: FormBoolInputTableViewCellDelegate?
-    public var boolContent: Bool {
+    weak var delegate: FormBoolInputTableViewCellDelegate?
+    var boolContent: Bool {
         get {
             return switchView.on
         }
@@ -91,7 +91,7 @@ import UIKit
         }
     }
 
-    public func applyConfiguration(configuration: FormCellBoolConfiguration) {
+    func applyConfiguration(configuration: FormCellBoolConfiguration) {
         rightView = configuration.rightView
         leftLabel.text = configuration.title
         leftLabel.font = configuration.titleFont

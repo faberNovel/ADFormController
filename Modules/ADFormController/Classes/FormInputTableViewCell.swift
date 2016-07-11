@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol FormTextInputTableViewCell {
+protocol FormTextInputTableViewCell {
     weak var delegate: FormTextInputTableViewCellDelegate? { get set }
     var inputAccessoryView: UIView? { get set }
     var returnKeyType: UIReturnKeyType { get set }
@@ -18,20 +18,20 @@ import UIKit
     func applyConfiguration(configuration: FormCellTextConfiguration)
 }
 
-@objc public protocol FormTextInputTableViewCellDelegate {
+protocol FormTextInputTableViewCellDelegate: class {
     func textInputTableViewCellDidBeginEditing(cell: FormTextInputTableViewCell)
     func textInputTableViewCellShouldReturn(cell: FormTextInputTableViewCell) -> Bool
     func textInputTableViewCellValueChanged(cell: FormTextInputTableViewCell)
 }
 
 
-@objc public protocol FormBoolInputTableViewCell {
+protocol FormBoolInputTableViewCell {
     weak var delegate: FormBoolInputTableViewCellDelegate? { get set }
     var boolContent: Bool { get set }
 
     func applyConfiguration(configuration: FormCellBoolConfiguration)
 }
 
-@objc public protocol FormBoolInputTableViewCellDelegate {
+protocol FormBoolInputTableViewCellDelegate: class {
     func boolInputTableViewCellDidChangeValue(cell: FormBoolInputTableViewCell)
 }
