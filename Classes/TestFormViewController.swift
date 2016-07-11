@@ -9,7 +9,7 @@
 import UIKit
 import ADFormController
 
-class TestFormViewController : TableViewController, ADFormControllerDelegate {
+class TestFormViewController : TableViewController, FormControllerDelegate {
     var prefilled = false {
         didSet {
             if prefilled {
@@ -30,8 +30,8 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
     }()
 
     private var formModel = FormModel()
-    lazy private var formController : ADFormController = {
-        let formController = ADFormController(tableView: self.tableView)
+    lazy private var formController : FormController = {
+        let formController = FormController(tableView: self.tableView)
         formController.delegate = self
         return formController
     }()
@@ -56,7 +56,7 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
 
         passwordButton.addTarget(self, action: #selector(TestFormViewController.togglePassword), forControlEvents: .TouchUpInside)
         if shouldSetCustomAccessoryView {
-            formController.defaultInputAccessoryView = EnglishAccessoryToolbar(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 64.0))
+            formController.defaultAccessoryView = EnglishAccessoryToolbar(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 64.0))
         }
     }
 
@@ -106,13 +106,13 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
 
     }
 
-    // MARK: ADFormControllerDelegate
+    // MARK: FormControllerDelegate
 
-    func configurationForFormController(formController: ADFormController, atIndexPath indexPath: NSIndexPath) -> ADFormCellConfiguration? {
+    func configurationForFormController(formController: FormController, atIndexPath indexPath: NSIndexPath) -> ADFormCellConfiguration? {
         return rowConfigurableAtIndexPath(indexPath)?.formCellConfiguration(showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible)
     }
 
-    func formController(formController: ADFormController, inputAccessoryViewForIndexPath indexPath: NSIndexPath) -> UIView {
+    func formController(formController: FormController, inputAccessoryViewForIndexPath indexPath: NSIndexPath) -> UIView {
         switch indexPath {
         case let confirmationIndexPath where (confirmationIndexPath.section == 2 && confirmationIndexPath.row == PasswordRowType.PasswordRowTypeNewPasswordConfirmation.rawValue):
             let toolBar = UIToolbar(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 44.0))
@@ -122,11 +122,11 @@ class TestFormViewController : TableViewController, ADFormControllerDelegate {
         case let noInputIndexPath where (noInputIndexPath.section == 0 && noInputIndexPath.row == RowType.RowTypeNoInputAccessory.rawValue):
             return UIView() //TODO: (Samuel Gallet) 07/07/2016 Change the return type of this function to allow nil return
         default:
-            return formController.defaultInputAccessoryView
+            return formController.defaultAccessoryView.view
         }
     }
 
-    func formController(formController: ADFormController, valueChangedForIndexPath indexPath: NSIndexPath) {
+    func formController(formController: FormController, valueChangedForIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 0:
             guard let rowType = RowType(rawValue: indexPath.row) else {
