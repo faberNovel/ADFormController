@@ -131,13 +131,10 @@ private extension FormInput {
     }
 
     public func textInputCellWithConfiguration(configuration: FormCellTextConfiguration, atIndexPath indexPath:NSIndexPath) -> UITableViewCell {
-        var accessoryView = delegate?.formController?(self, inputAccessoryViewAtIndexPath: indexPath)
-        if accessoryView == nil {
-            accessoryView = defaultAccessoryView.view
-        }
+        let accessoryView = delegate?.formController?(self, inputAccessoryViewAtIndexPath: indexPath) ?? defaultAccessoryView.view
         let input = (configuration.cellType == .LongText) ? FormInput.LongText(configuration) : FormInput.ShortText(configuration)
         return input.buildCell(cells[indexPath],
-                               accessoryView: accessoryView!,
+                               accessoryView: accessoryView,
                                returnKeyType: returnKeyTypeAtIndexPath(indexPath),
                                formController: self)
     }
