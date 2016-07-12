@@ -437,14 +437,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "FormDemo" */;
 			buildPhases = (
-				596E6066ABDC90DAA8704A53 /* 📦 Check Pods Manifest.lock */,
+				596E6066ABDC90DAA8704A53 /* [CP] Check Pods Manifest.lock */,
 				7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */,
 				7A0EC64B1535D8ED00E5F54A /* Sources */,
 				7A0EC64C1535D8ED00E5F54A /* Frameworks */,
 				7A0EC64D1535D8ED00E5F54A /* Resources */,
 				6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */,
-				D9D66D3E2697370B6248B2D0 /* 📦 Embed Pods Frameworks */,
-				A97B9FEE092CD014E5AF2053 /* 📦 Copy Pods Resources */,
+				D9D66D3E2697370B6248B2D0 /* [CP] Embed Pods Frameworks */,
+				A97B9FEE092CD014E5AF2053 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -494,14 +494,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		596E6066ABDC90DAA8704A53 /* 📦 Check Pods Manifest.lock */ = {
+		596E6066ABDC90DAA8704A53 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,14 +539,14 @@
 			shellScript = "GIT_COMMIT=`git rev-parse --short HEAD`\nGIT_BRANCH=`git symbolic-ref HEAD`\nGIT_STATUS=`git status --porcelain -z`\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitCommit\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitBranch\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitStatus\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\nif [ -n \"$GIT_COMMIT\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitCommit string \\\"${GIT_COMMIT}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_BRANCH\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitBranch string \\\"${GIT_BRANCH}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_STATUS\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitStatus string \\\"${GIT_STATUS}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi";
 			showEnvVarsInLog = 0;
 		};
-		A97B9FEE092CD014E5AF2053 /* 📦 Copy Pods Resources */ = {
+		A97B9FEE092CD014E5AF2053 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,14 +554,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9D66D3E2697370B6248B2D0 /* 📦 Embed Pods Frameworks */ = {
+		D9D66D3E2697370B6248B2D0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

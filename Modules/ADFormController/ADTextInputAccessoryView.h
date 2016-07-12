@@ -10,7 +10,7 @@
 
 @interface ADTextInputAccessoryView : UIToolbar<ADNavigableButtons>
 
-@property (nonatomic, strong) UIBarButtonItem * nextBarButtonItem;
-@property (nonatomic, strong) UIBarButtonItem * previousBarButtonItem;
+@property (nonatomic, strong, nonnull) UIBarButtonItem * nextBarButtonItem;
+@property (nonatomic, strong, nonnull) UIBarButtonItem * previousBarButtonItem;
 
 @end

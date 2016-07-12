@@ -10,7 +10,7 @@
 
 @protocol ADFormPickerDataSource <NSObject>
 - (NSInteger)numberOfComponents;
-- (NSArray *)optionsForComponent:(NSInteger)component;
-- (NSString *)stringFromSelectedIndexes:(NSArray *)indexes;
-- (NSArray *)selectedIndexesFromString:(NSString *)string;
+- (nonnull NSArray *)optionsForComponent:(NSInteger)component;
+- (nonnull NSString *)stringFromSelectedIndexes:(nonnull NSArray *)indexes;
+- (nonnull NSArray *)selectedIndexesFromString:(nonnull NSString *)string;
 @end

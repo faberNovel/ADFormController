@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol ADTextFieldFormatter <NSObject>
-- (void)textFieldValueChanged:(UITextField *)textField;
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+- (void)textFieldValueChanged:(nonnull UITextField *)textField;
+- (BOOL)textField:(nonnull UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(nonnull NSString *)string;
 @end
 

@@ -11,6 +11,6 @@
 
 @interface ADSimpleFormPickerDataSource : NSObject <ADFormPickerDataSource>
 
-- (instancetype)initWithOptions:(NSArray<NSString *> *)options;
+- (nonnull instancetype)initWithOptions:(nonnull NSArray<NSString *> *)options;
 
 @end

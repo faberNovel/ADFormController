@@ -14,39 +14,39 @@
 @class ADFormController;
 @protocol ADFormControllerDelegate <NSObject>
 
-- (ADFormCellConfiguration *)configurationForFormController:(ADFormController *)formController
-                                                atIndexPath:(NSIndexPath *)indexPath;
+- (nullable ADFormCellConfiguration *)configurationForFormController:(nonnull ADFormController *)formController
+                                                atIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @optional
-- (UIView *)formController:(ADFormController *)formController inputAccessoryViewForIndexPath:(NSIndexPath *)indexPath;
-- (void)formController:(ADFormController *)formController valueChangedForIndexPath:(NSIndexPath *)indexPath;
-- (void)formControllerAction:(ADFormController *)formController;
+- (nonnull UIView *)formController:(nonnull ADFormController *)formController inputAccessoryViewForIndexPath:(nonnull NSIndexPath *)indexPath;
+- (void)formController:(nonnull ADFormController *)formController valueChangedForIndexPath:(nonnull NSIndexPath *)indexPath;
+- (void)formControllerAction:(nonnull ADFormController *)formController;
 
 @end
 
 @interface ADFormController : NSObject
 
-@property (nonatomic, weak) id<ADFormControllerDelegate> delegate;
+@property (nonatomic, weak, nullable) id<ADFormControllerDelegate> delegate;
 
-@property (nonatomic, strong) UIView<ADNavigableButtons> * defaultInputAccessoryView; //Not called if -formController: inputAccessoryViewForIndexPath: is implemented in delegate
+@property (nonatomic, strong, nonnull) UIView<ADNavigableButtons> * defaultInputAccessoryView; //Not called if -formController: inputAccessoryViewForIndexPath: is implemented in delegate
 
-- (instancetype)initWithTableView:(UITableView *)tableView;
+- (nonnull instancetype)initWithTableView:(nonnull UITableView *)tableView;
 
-- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (nonnull UITableViewCell *)cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath;
 
 /*
  * Retrieve text value in textfield at indexPath
  */
-- (NSString *)stringValueForIndexPath:(NSIndexPath *)indexPath;
+- (nonnull NSString *)stringValueForIndexPath:(nonnull NSIndexPath *)indexPath;
 
 /*
  * Retrieve bool value in switch at indexPath
  */
-- (BOOL)boolValueForIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)boolValueForIndexPath:(nonnull NSIndexPath *)indexPath;
 
 /*
  * Retrieve date value in textfield at indexPath
  */
-- (NSDate *)dateValueForIndexPath:(NSIndexPath *)indexPath;
+- (nullable NSDate *)dateValueForIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @end

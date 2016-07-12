@@ -27,12 +27,12 @@ typedef NS_ENUM(NSUInteger, ADFormTextCellType) {
 @interface ADFormCellTextConfiguration : ADFormCellConfiguration
 
 @property (nonatomic) ADFormTextCellType cellType;
-@property (nonatomic, strong) NSString * text;
-@property (nonatomic, strong) UIFont * textFont;
-@property (nonatomic, strong) UIColor * textColor;
-@property (nonatomic, strong) NSString * placeholder;
-@property (nonatomic, strong) id<ADTextFieldFormatter> textFieldFormatter;
-@property (nonatomic, strong) NSDateFormatter * dateFormatter;
-@property (nonatomic, strong) id<ADFormPickerDataSource> formPickerDataSource;
+@property (nonatomic, strong, nonnull) NSString * text;
+@property (nonatomic, strong, nullable) UIFont * textFont;
+@property (nonatomic, strong, nonnull) UIColor * textColor;
+@property (nonatomic, strong, nonnull) NSString * placeholder;
+@property (nonatomic, strong, nullable) id<ADTextFieldFormatter> textFieldFormatter;
+@property (nonatomic, strong, nullable) NSDateFormatter * dateFormatter;
+@property (nonatomic, strong, nullable) id<ADFormPickerDataSource> formPickerDataSource;
 
 @end

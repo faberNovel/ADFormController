@@ -11,12 +11,12 @@
 
 @interface ADFormCellConfiguration : NSObject
 
-@property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) UIFont * titleFont;
-@property (nonatomic, strong) UIColor * titleColor;
-@property (nonatomic, strong) UIColor * tintColor;
-@property (nonatomic, strong) UIView * rightView;
+@property (nonatomic, strong, nonnull) NSString * title;
+@property (nonatomic, strong, nullable) UIFont * titleFont;
+@property (nonatomic, strong, nonnull) UIColor * titleColor;
+@property (nonatomic, strong, nullable) UIColor * tintColor;
+@property (nonatomic, strong, nullable) UIView * rightView;
 
-- (UITableViewCell *)visit:(id<ADFormCellConfigurable>)configurable atIndexPath:(NSIndexPath *)indexPath;
+- (nonnull UITableViewCell *)visit:(nonnull id<ADFormCellConfigurable>)configurable atIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @end
