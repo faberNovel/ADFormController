@@ -66,6 +66,9 @@ class FormDirectionManager : NSObject {
             return nil
         }
         guard let unwrappedDelegate = delegate where unwrappedDelegate.formDirectionManager(self, canEditCellAtIndexPath: unwrappedIndexPath) else {
+            if delegate == nil {
+                return unwrappedIndexPath
+            }
             return nextIndexPathForDirection(direction, fromIndexPath: unwrappedIndexPath)
         }
         return unwrappedIndexPath
@@ -114,7 +117,7 @@ private extension NSIndexPath {
             guard newSection >= 0 else {
                 return nil
             }
-            return NSIndexPath(forRow: 0, inSection: newSection)
+            return NSIndexPath(forRow: tableView.numberOfRowsInSection(newSection) - 1, inSection: newSection)
         }
         return NSIndexPath(forRow: prevRowIndex, inSection: section)
     }
