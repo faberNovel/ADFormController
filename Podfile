@@ -7,19 +7,24 @@ use_frameworks!
 pod 'CocoaLumberjack/Swift', '~>  2.0', :inhibit_warnings => true
 pod 'ADDynamicLogLevel', '~>  1.1', :inhibit_warnings => true
 
-target 'FormDemo' do
-  pod 'Alamofire', '~> 3.0'
-  pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
-  pod 'Watchdog', '~> 1.0'
-  pod 'ADFormController', :path => './'
-end
+abstract_target 'Form' do
 
-target 'FormDemoTests' do
-  pod 'Quick', '~> 0.9'
-  pod 'Nimble', '~> 4.0'
-  pod 'Nimble-Snapshots', '~> 4.1'
-  pod 'OCMock', '~> 3.3'
-  pod 'FBSnapshotTestCase', '~> 2.1'
+  pod 'ADFormController', :path => './'
+
+  target 'FormDemo' do
+    pod 'Alamofire', '~> 3.0'
+    pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
+    pod 'Watchdog', '~> 1.0'
+  end
+
+  target 'FormDemoTests' do
+    pod 'Quick', '~> 0.9'
+    pod 'Nimble', '~> 4.0'
+    pod 'Nimble-Snapshots', '~> 4.1'
+    pod 'OCMock', '~> 3.3'
+    pod 'FBSnapshotTestCase', '~> 2.1'
+  end
+
 end
 
 post_install do |installer|

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C2010D11D2BF58F003051E4 /* RegistrableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2010D01D2BF58F003051E4 /* RegistrableView.swift */; };
+		0C3F9EFB1D34E131000260C6 /* FormDirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F9EFA1D34E131000260C6 /* FormDirectionManager.swift */; };
 		0C57B22A1D2BA878002BEB04 /* EnglishAccessoryToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57B2291D2BA878002BEB04 /* EnglishAccessoryToolbar.swift */; };
 		0CA91DB41D2A84C000D1B5D8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */; };
 		0CA91DB61D2A852C00D1B5D8 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB51D2A852C00D1B5D8 /* MenuTableViewController.swift */; };
@@ -20,6 +21,7 @@
 		0CB780011D33D1C1001126EC /* FDTestFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77FFC1D33D1C1001126EC /* FDTestFormTableViewController.m */; };
 		0CB780051D33D2EB001126EC /* FDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB780041D33D2EB001126EC /* FDTableViewController.m */; };
 		0CB780081D33D332001126EC /* FDFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB780071D33D332001126EC /* FDFormModel.m */; };
+		0CB9ABFC1D34D9940037AE19 /* FormDirectionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9ABFB1D34D9940037AE19 /* FormDirectionManagerTests.swift */; };
 		0CD1AD3C1D2AA2DD00879301 /* FormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1AD3B1D2AA2DD00879301 /* FormConfiguration.swift */; };
 		0CD1AD3E1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1AD3D1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift */; };
 		0CD1AD401D2B95CF00879301 /* ExpirationDatePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1AD3F1D2B95CF00879301 /* ExpirationDatePickerDataSource.swift */; };
@@ -40,6 +42,8 @@
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
 		9F47452435E34FC1BE2FF807 /* Pods_FormDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4943719060043B9EC0857CF8 /* Pods_FormDemo.framework */; };
+		E5B054FB69487B6E61BF28A6 /* Pods_Form_FormDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BC998685BDB1D188AC93E8 /* Pods_Form_FormDemo.framework */; };
+		F6539B9636ACC3C7369C6057 /* Pods_Form_FormDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44DE2507EC64C19986269BB /* Pods_Form_FormDemoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,7 @@
 /* Begin PBXFileReference section */
 		00B833839386FBAEA590CFF9 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
 		0C2010D01D2BF58F003051E4 /* RegistrableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrableView.swift; sourceTree = "<group>"; };
+		0C3F9EFA1D34E131000260C6 /* FormDirectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormDirectionManager.swift; path = Modules/ADFormController/Classes/FormDirectionManager.swift; sourceTree = SOURCE_ROOT; };
 		0C57B2291D2BA878002BEB04 /* EnglishAccessoryToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishAccessoryToolbar.swift; sourceTree = "<group>"; };
 		0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0CA91DB51D2A852C00D1B5D8 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -75,10 +80,14 @@
 		0CB780041D33D2EB001126EC /* FDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTableViewController.m; sourceTree = "<group>"; };
 		0CB780061D33D332001126EC /* FDFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFormModel.h; sourceTree = "<group>"; };
 		0CB780071D33D332001126EC /* FDFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFormModel.m; sourceTree = "<group>"; };
+		0CB9ABFB1D34D9940037AE19 /* FormDirectionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDirectionManagerTests.swift; sourceTree = "<group>"; };
 		0CD1AD3B1D2AA2DD00879301 /* FormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormConfiguration.swift; sourceTree = "<group>"; };
 		0CD1AD3D1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTextFieldFormatter.swift; sourceTree = "<group>"; };
 		0CD1AD3F1D2B95CF00879301 /* ExpirationDatePickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerDataSource.swift; sourceTree = "<group>"; };
 		2580D84D46980EF950BF7775 /* Pods-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
+		26BC998685BDB1D188AC93E8 /* Pods_Form_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BAD23C5D0535D40387BA486 /* Pods-Form-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
+		436D6AFCC5437EB0274119D3 /* Pods-Form-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
 		4943719060043B9EC0857CF8 /* Pods_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1F77E1CE4B3DB00A29BFE /* FormDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1F7801CE4B3DB00A29BFE /* FormDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDemoTests.swift; sourceTree = "<group>"; };
@@ -87,6 +96,7 @@
 		49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileLoggerFormatter.h; sourceTree = "<group>"; };
 		49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileLoggerFormatter.m; sourceTree = "<group>"; };
 		4A58C23989AC0934C5373EF4 /* Pods_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5721AFF15849D67EFB2D4975 /* Pods-Form-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
 		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +106,7 @@
 		57E1CD4C1C8890CA00A7DFFB /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		57F7ECC31BB0042D0095AEEC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		57F7ECC51BB004500095AEEC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		5F9EEB593281B9AA003F7847 /* Pods-Form-FormDemoTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		6FE3EFE91A6D3ABA007A4AD5 /* ADTargetSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTargetSettings.h; sourceTree = "<group>"; };
 		6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTargetSettings.m; sourceTree = "<group>"; };
 		7A0EC64F1535D8ED00E5F54A /* AD Stubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AD Stubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,10 +115,15 @@
 		7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A189F921535FD5C00A22149 /* FormDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FormDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		85B3C49F7BFE4C4A611F4184 /* Pods-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
+		8723B8D5F983C7CBB4FBAA70 /* Pods-Form-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
 		906EF856C04E9FCFD734F058 /* Pods-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		965D13DB193DE3DF3E1B4BA0 /* Pods-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
+		A2962B54A4EDA63BFA8B93FB /* Pods-Form-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
+		B4DEE50D4FA42E65690A55C0 /* Pods-Form-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
 		C6C95CE168A5A99547168530 /* Pods-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
+		D0A77A50F980EA13702305C5 /* Pods-Form-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
 		D858C324C04CD988B0D32E14 /* Pods-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
+		E44DE2507EC64C19986269BB /* Pods_Form_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B4829750BBDFD3A2508EDA /* Pods-FormDemoTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
@@ -128,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AB1A7CA0E47969926CBA31 /* Pods_FormDemoTests.framework in Frameworks */,
+				F6539B9636ACC3C7369C6057 /* Pods_Form_FormDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,12 +156,21 @@
 				7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */,
 				7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */,
 				9F47452435E34FC1BE2FF807 /* Pods_FormDemo.framework in Frameworks */,
+				E5B054FB69487B6E61BF28A6 /* Pods_Form_FormDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3F9EF91D34E105000260C6 /* FormControllerClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F9EFA1D34E131000260C6 /* FormDirectionManager.swift */,
+			);
+			name = FormControllerClasses;
+			sourceTree = "<group>";
+		};
 		0CB77FF21D33D1AA001126EC /* Objective-c Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +228,14 @@
 				F7B4829750BBDFD3A2508EDA /* Pods-FormDemoTests.preproduction.xcconfig */,
 				D858C324C04CD988B0D32E14 /* Pods-FormDemoTests.production.xcconfig */,
 				85B3C49F7BFE4C4A611F4184 /* Pods-FormDemoTests.distribution.xcconfig */,
+				8723B8D5F983C7CBB4FBAA70 /* Pods-Form-FormDemo.stubs.xcconfig */,
+				D0A77A50F980EA13702305C5 /* Pods-Form-FormDemo.preproduction.xcconfig */,
+				5721AFF15849D67EFB2D4975 /* Pods-Form-FormDemo.production.xcconfig */,
+				436D6AFCC5437EB0274119D3 /* Pods-Form-FormDemo.distribution.xcconfig */,
+				2BAD23C5D0535D40387BA486 /* Pods-Form-FormDemoTests.stubs.xcconfig */,
+				5F9EEB593281B9AA003F7847 /* Pods-Form-FormDemoTests.preproduction.xcconfig */,
+				B4DEE50D4FA42E65690A55C0 /* Pods-Form-FormDemoTests.production.xcconfig */,
+				A2962B54A4EDA63BFA8B93FB /* Pods-Form-FormDemoTests.distribution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -209,8 +243,10 @@
 		49B1F77F1CE4B3DB00A29BFE /* FormDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				0C3F9EF91D34E105000260C6 /* FormControllerClasses */,
 				49B1F7801CE4B3DB00A29BFE /* FormDemoTests.swift */,
 				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
+				0CB9ABFB1D34D9940037AE19 /* FormDirectionManagerTests.swift */,
 			);
 			path = FormDemoTests;
 			sourceTree = "<group>";
@@ -314,6 +350,8 @@
 				7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */,
 				4943719060043B9EC0857CF8 /* Pods_FormDemo.framework */,
 				4A58C23989AC0934C5373EF4 /* Pods_FormDemoTests.framework */,
+				26BC998685BDB1D188AC93E8 /* Pods_Form_FormDemo.framework */,
+				E44DE2507EC64C19986269BB /* Pods_Form_FormDemoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -572,7 +610,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */ = {
@@ -617,7 +655,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CECB1C1E7B071D6D281D3BC0 /* [CP] Check Pods Manifest.lock */ = {
@@ -647,7 +685,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F54137C79E310D050E5C1F2B /* [CP] Copy Pods Resources */ = {
@@ -662,7 +700,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -673,6 +711,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B1F7811CE4B3DB00A29BFE /* FormDemoTests.swift in Sources */,
+				0CB9ABFC1D34D9940037AE19 /* FormDirectionManagerTests.swift in Sources */,
+				0C3F9EFB1D34E131000260C6 /* FormDirectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +759,7 @@
 /* Begin XCBuildConfiguration section */
 		49B1F7851CE4B3DB00A29BFE /* Stubs */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 906EF856C04E9FCFD734F058 /* Pods-FormDemoTests.stubs.xcconfig */;
+			baseConfigurationReference = 2BAD23C5D0535D40387BA486 /* Pods-Form-FormDemoTests.stubs.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -771,7 +811,7 @@
 		};
 		49B1F7861CE4B3DB00A29BFE /* Preproduction */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7B4829750BBDFD3A2508EDA /* Pods-FormDemoTests.preproduction.xcconfig */;
+			baseConfigurationReference = 5F9EEB593281B9AA003F7847 /* Pods-Form-FormDemoTests.preproduction.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -816,7 +856,7 @@
 		};
 		49B1F7871CE4B3DB00A29BFE /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D858C324C04CD988B0D32E14 /* Pods-FormDemoTests.production.xcconfig */;
+			baseConfigurationReference = B4DEE50D4FA42E65690A55C0 /* Pods-Form-FormDemoTests.production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -861,7 +901,7 @@
 		};
 		49B1F7881CE4B3DB00A29BFE /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85B3C49F7BFE4C4A611F4184 /* Pods-FormDemoTests.distribution.xcconfig */;
+			baseConfigurationReference = A2962B54A4EDA63BFA8B93FB /* Pods-Form-FormDemoTests.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -942,7 +982,7 @@
 		};
 		7A0EC6681535D8ED00E5F54A /* Stubs */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2580D84D46980EF950BF7775 /* Pods-FormDemo.stubs.xcconfig */;
+			baseConfigurationReference = 8723B8D5F983C7CBB4FBAA70 /* Pods-Form-FormDemo.stubs.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -997,7 +1037,7 @@
 		};
 		7A6BEEF81536FE3D0075E2A7 /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 965D13DB193DE3DF3E1B4BA0 /* Pods-FormDemo.distribution.xcconfig */;
+			baseConfigurationReference = 436D6AFCC5437EB0274119D3 /* Pods-Form-FormDemo.distribution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1052,7 +1092,7 @@
 		};
 		F88C93CF1A66D9D8009EB642 /* Preproduction */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6C95CE168A5A99547168530 /* Pods-FormDemo.preproduction.xcconfig */;
+			baseConfigurationReference = D0A77A50F980EA13702305C5 /* Pods-Form-FormDemo.preproduction.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1108,7 +1148,7 @@
 		};
 		F88C93D11A66DA0D009EB642 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00B833839386FBAEA590CFF9 /* Pods-FormDemo.production.xcconfig */;
+			baseConfigurationReference = 5721AFF15849D67EFB2D4975 /* Pods-Form-FormDemo.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
