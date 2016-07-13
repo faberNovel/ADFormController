@@ -24,6 +24,11 @@
     return self;
 }
 
+#pragma mark - NavigableView
+- (UIView *)view {
+    return self;
+}
+
 #pragma mark - Private
 
 - (void)_setup {

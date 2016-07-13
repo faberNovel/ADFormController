@@ -7,114 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */; };
-		490B37651BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */; };
-		490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */; };
-		494008D91C08976600E1FD21 /* FDTestFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494008D81C08976600E1FD21 /* FDTestFormTableViewController.m */; };
-		494008E31C0C3BBA00E1FD21 /* FDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494008E21C0C3BBA00E1FD21 /* FDTableViewController.m */; };
-		496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496042EA1B9A1A550010B11A /* Default-568h@2x.png */; };
-		497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */; };
-		49DC79001D01D125009DC7B7 /* FDFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DC78FF1D01D125009DC7B7 /* FDFormModel.m */; };
-		49F7C8331D096CF900086054 /* ADDatePickerTextFieldBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8111D096CF900086054 /* ADDatePickerTextFieldBinding.m */; };
-		49F7C8341D096CF900086054 /* ADFormCellBoolConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8141D096CF900086054 /* ADFormCellBoolConfiguration.m */; };
-		49F7C8351D096CF900086054 /* ADFormCellConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8171D096CF900086054 /* ADFormCellConfiguration.m */; };
-		49F7C8361D096CF900086054 /* ADFormCellTextConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8191D096CF900086054 /* ADFormCellTextConfiguration.m */; };
-		49F7C8371D096CF900086054 /* ADFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C81B1D096CF900086054 /* ADFormController.m */; };
-		49F7C8381D096CF900086054 /* ADFormDirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C81D1D096CF900086054 /* ADFormDirectionManager.m */; };
-		49F7C8391D096CF900086054 /* ADFormSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8201D096CF900086054 /* ADFormSwitchTableViewCell.m */; };
-		49F7C83A1D096CF900086054 /* ADFormTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8221D096CF900086054 /* ADFormTextFieldTableViewCell.m */; };
-		49F7C83B1D096CF900086054 /* ADFormTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8251D096CF900086054 /* ADFormTextViewTableViewCell.m */; };
-		49F7C83C1D096CF900086054 /* ADPickerViewTextFieldBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8271D096CF900086054 /* ADPickerViewTextFieldBinding.m */; };
-		49F7C83D1D096CF900086054 /* ADPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8291D096CF900086054 /* ADPlaceholderTextView.m */; };
-		49F7C83E1D096CF900086054 /* ADSimpleFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C82B1D096CF900086054 /* ADSimpleFormPickerDataSource.m */; };
-		49F7C83F1D096CF900086054 /* ADTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C82D1D096CF900086054 /* ADTextField.m */; };
-		49F7C8401D096CF900086054 /* ADTextInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */; };
-		49F7C8411D096CF900086054 /* UIView+Traverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C8321D096CF900086054 /* UIView+Traverse.m */; };
+		0C2010D11D2BF58F003051E4 /* RegistrableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2010D01D2BF58F003051E4 /* RegistrableView.swift */; };
+		0C3F9EFB1D34E131000260C6 /* FormDirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F9EFA1D34E131000260C6 /* FormDirectionManager.swift */; };
+		0C57B22A1D2BA878002BEB04 /* EnglishAccessoryToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57B2291D2BA878002BEB04 /* EnglishAccessoryToolbar.swift */; };
+		0CA91DB41D2A84C000D1B5D8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */; };
+		0CA91DB61D2A852C00D1B5D8 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB51D2A852C00D1B5D8 /* MenuTableViewController.swift */; };
+		0CA91DB81D2A862100D1B5D8 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB71D2A862100D1B5D8 /* FormModel.swift */; };
+		0CA91DBA1D2A872800D1B5D8 /* TestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91DB91D2A872800D1B5D8 /* TestFormViewController.swift */; };
+		0CB77FFD1D33D1C1001126EC /* FDCreditCardTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77FF41D33D1C1001126EC /* FDCreditCardTextFieldFormatter.m */; };
+		0CB77FFE1D33D1C1001126EC /* FDEnglishAccessoryToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77FF61D33D1C1001126EC /* FDEnglishAccessoryToolbar.m */; };
+		0CB77FFF1D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77FF81D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.m */; };
+		0CB780001D33D1C1001126EC /* FDMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77FFA1D33D1C1001126EC /* FDMenuTableViewController.m */; };
+		0CB780011D33D1C1001126EC /* FDTestFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77FFC1D33D1C1001126EC /* FDTestFormTableViewController.m */; };
+		0CB780051D33D2EB001126EC /* FDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB780041D33D2EB001126EC /* FDTableViewController.m */; };
+		0CB780081D33D332001126EC /* FDFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB780071D33D332001126EC /* FDFormModel.m */; };
+		0CB9ABFC1D34D9940037AE19 /* FormDirectionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9ABFB1D34D9940037AE19 /* FormDirectionManagerTests.swift */; };
+		0CD1AD3C1D2AA2DD00879301 /* FormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1AD3B1D2AA2DD00879301 /* FormConfiguration.swift */; };
+		0CD1AD3E1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1AD3D1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift */; };
+		0CD1AD401D2B95CF00879301 /* ExpirationDatePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1AD3F1D2B95CF00879301 /* ExpirationDatePickerDataSource.swift */; };
+		46AB1A7CA0E47969926CBA31 /* Pods_FormDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A58C23989AC0934C5373EF4 /* Pods_FormDemoTests.framework */; };
+		49B1F7811CE4B3DB00A29BFE /* FormDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1F7801CE4B3DB00A29BFE /* FormDemoTests.swift */; };
+		49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F41D0EDE6300086054 /* Logger.swift */; };
+		49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */; };
+		57C59D681BB1478A003798DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D671BB1478A003798DF /* Images.xcassets */; };
+		57C59D6A1BB1486B003798DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C59D691BB1486B003798DF /* LaunchScreen.storyboard */; };
+		57E1CD281C884F1C00A7DFFB /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */; };
+		57E1CD491C884F8900A7DFFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD481C884F8900A7DFFB /* AppDelegate.swift */; };
+		57E1CD4B1C8852FC00A7DFFB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD4A1C8852FC00A7DFFB /* Color.swift */; };
+		57E1CD4D1C8890CA00A7DFFB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CD4C1C8890CA00A7DFFB /* Fonts.swift */; };
+		57F7ECC41BB0042D0095AEEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57F7ECC31BB0042D0095AEEC /* Localizable.strings */; };
+		57F7ECC61BB004510095AEEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57F7ECC51BB004500095AEEC /* InfoPlist.strings */; };
 		6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */; };
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
-		7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A189F861535FB5300A22149 /* FDAppDelegate.m */; };
-		7A189F931535FD5C00A22149 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A189F901535FD5C00A22149 /* main.m */; };
-		7AB3195340BC26F702C59F40 /* libPods-FormDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5BBCB567435C7B7609E535 /* libPods-FormDemo.a */; };
-		7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */; };
-		924034581D18319900998373 /* FDEnglishAccessoryToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 924034571D18319900998373 /* FDEnglishAccessoryToolbar.m */; };
+		9F47452435E34FC1BE2FF807 /* Pods_FormDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4943719060043B9EC0857CF8 /* Pods_FormDemo.framework */; };
+		E5B054FB69487B6E61BF28A6 /* Pods_Form_FormDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BC998685BDB1D188AC93E8 /* Pods_Form_FormDemo.framework */; };
+		F6539B9636ACC3C7369C6057 /* Pods_Form_FormDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44DE2507EC64C19986269BB /* Pods_Form_FormDemoTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		49B1F7831CE4B3DB00A29BFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A0EC6461535D8ED00E5F54A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A0EC64E1535D8ED00E5F54A;
+			remoteInfo = FormDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		29F1671873AB26C23F1E1F55 /* Pods-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
-		354EF01F46EC1EE091C5B046 /* Pods-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
-		3C5BBCB567435C7B7609E535 /* libPods-FormDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FormDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		490418041BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCreditCardTextFieldFormatter.h; sourceTree = "<group>"; };
-		490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCreditCardTextFieldFormatter.m; sourceTree = "<group>"; };
-		490B37631BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDExpirationDateFormPickerDataSource.h; sourceTree = "<group>"; };
-		490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDExpirationDateFormPickerDataSource.m; sourceTree = "<group>"; };
-		490B376A1BCF9FCC008E0B5A /* FDMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDMenuTableViewController.h; sourceTree = "<group>"; };
-		490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDMenuTableViewController.m; sourceTree = "<group>"; };
-		494008D71C08976600E1FD21 /* FDTestFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTestFormTableViewController.h; sourceTree = "<group>"; };
-		494008D81C08976600E1FD21 /* FDTestFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTestFormTableViewController.m; sourceTree = "<group>"; };
-		494008E11C0C3BBA00E1FD21 /* FDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTableViewController.h; sourceTree = "<group>"; };
-		494008E21C0C3BBA00E1FD21 /* FDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTableViewController.m; sourceTree = "<group>"; };
-		496042EA1B9A1A550010B11A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = InputAccessoryView.xcassets; path = Ressources/Defaults/InputAccessoryView.xcassets; sourceTree = SOURCE_ROOT; };
-		49DC78FE1D01D125009DC7B7 /* FDFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFormModel.h; sourceTree = "<group>"; };
-		49DC78FF1D01D125009DC7B7 /* FDFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFormModel.m; sourceTree = "<group>"; };
-		49F7C8101D096CF900086054 /* ADDatePickerTextFieldBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDatePickerTextFieldBinding.h; sourceTree = "<group>"; };
-		49F7C8111D096CF900086054 /* ADDatePickerTextFieldBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDatePickerTextFieldBinding.m; sourceTree = "<group>"; };
-		49F7C8121D096CF900086054 /* ADFormBoolInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormBoolInputTableViewCell.h; sourceTree = "<group>"; };
-		49F7C8131D096CF900086054 /* ADFormCellBoolConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormCellBoolConfiguration.h; sourceTree = "<group>"; };
-		49F7C8141D096CF900086054 /* ADFormCellBoolConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormCellBoolConfiguration.m; sourceTree = "<group>"; };
-		49F7C8151D096CF900086054 /* ADFormCellConfigurable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormCellConfigurable.h; sourceTree = "<group>"; };
-		49F7C8161D096CF900086054 /* ADFormCellConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormCellConfiguration.h; sourceTree = "<group>"; };
-		49F7C8171D096CF900086054 /* ADFormCellConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormCellConfiguration.m; sourceTree = "<group>"; };
-		49F7C8181D096CF900086054 /* ADFormCellTextConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormCellTextConfiguration.h; sourceTree = "<group>"; };
-		49F7C8191D096CF900086054 /* ADFormCellTextConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormCellTextConfiguration.m; sourceTree = "<group>"; };
-		49F7C81A1D096CF900086054 /* ADFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormController.h; sourceTree = "<group>"; };
-		49F7C81B1D096CF900086054 /* ADFormController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormController.m; sourceTree = "<group>"; };
-		49F7C81C1D096CF900086054 /* ADFormDirectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormDirectionManager.h; sourceTree = "<group>"; };
-		49F7C81D1D096CF900086054 /* ADFormDirectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormDirectionManager.m; sourceTree = "<group>"; };
-		49F7C81E1D096CF900086054 /* ADFormPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormPickerDataSource.h; sourceTree = "<group>"; };
-		49F7C81F1D096CF900086054 /* ADFormSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormSwitchTableViewCell.h; sourceTree = "<group>"; };
-		49F7C8201D096CF900086054 /* ADFormSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormSwitchTableViewCell.m; sourceTree = "<group>"; };
-		49F7C8211D096CF900086054 /* ADFormTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormTextFieldTableViewCell.h; sourceTree = "<group>"; };
-		49F7C8221D096CF900086054 /* ADFormTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormTextFieldTableViewCell.m; sourceTree = "<group>"; };
-		49F7C8231D096CF900086054 /* ADFormTextInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormTextInputTableViewCell.h; sourceTree = "<group>"; };
-		49F7C8241D096CF900086054 /* ADFormTextViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFormTextViewTableViewCell.h; sourceTree = "<group>"; };
-		49F7C8251D096CF900086054 /* ADFormTextViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFormTextViewTableViewCell.m; sourceTree = "<group>"; };
-		49F7C8261D096CF900086054 /* ADPickerViewTextFieldBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPickerViewTextFieldBinding.h; sourceTree = "<group>"; };
-		49F7C8271D096CF900086054 /* ADPickerViewTextFieldBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPickerViewTextFieldBinding.m; sourceTree = "<group>"; };
-		49F7C8281D096CF900086054 /* ADPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPlaceholderTextView.h; sourceTree = "<group>"; };
-		49F7C8291D096CF900086054 /* ADPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPlaceholderTextView.m; sourceTree = "<group>"; };
-		49F7C82A1D096CF900086054 /* ADSimpleFormPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSimpleFormPickerDataSource.h; sourceTree = "<group>"; };
-		49F7C82B1D096CF900086054 /* ADSimpleFormPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSimpleFormPickerDataSource.m; sourceTree = "<group>"; };
-		49F7C82C1D096CF900086054 /* ADTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTextField.h; sourceTree = "<group>"; };
-		49F7C82D1D096CF900086054 /* ADTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTextField.m; sourceTree = "<group>"; };
-		49F7C82E1D096CF900086054 /* ADTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTextFieldFormatter.h; sourceTree = "<group>"; };
-		49F7C82F1D096CF900086054 /* ADTextInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTextInputAccessoryView.h; path = ADFormController/ADTextInputAccessoryView.h; sourceTree = "<group>"; };
-		49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTextInputAccessoryView.m; path = ADFormController/ADTextInputAccessoryView.m; sourceTree = "<group>"; };
-		49F7C8311D096CF900086054 /* UIView+Traverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Traverse.h"; sourceTree = "<group>"; };
-		49F7C8321D096CF900086054 /* UIView+Traverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Traverse.m"; sourceTree = "<group>"; };
-		5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
-		6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Distribution.h; sourceTree = "<group>"; };
-		6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Preproduction.h; sourceTree = "<group>"; };
-		6F69A4151A69668E00DF4971 /* FormDemo_Stubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Stubs.h; sourceTree = "<group>"; };
-		6FE3EFE91A6D3ABA007A4AD5 /* ADTargetSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADTargetSettings.h; path = ADTargetSettings/ADTargetSettings.h; sourceTree = "<group>"; };
-		6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADTargetSettings.m; path = ADTargetSettings/ADTargetSettings.m; sourceTree = "<group>"; };
-		7A0EC64F1535D8ED00E5F54A /* FD Stubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FD Stubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00B833839386FBAEA590CFF9 /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
+		0C2010D01D2BF58F003051E4 /* RegistrableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrableView.swift; sourceTree = "<group>"; };
+		0C3F9EFA1D34E131000260C6 /* FormDirectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormDirectionManager.swift; path = Modules/ADFormController/Classes/FormDirectionManager.swift; sourceTree = SOURCE_ROOT; };
+		0C57B2291D2BA878002BEB04 /* EnglishAccessoryToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishAccessoryToolbar.swift; sourceTree = "<group>"; };
+		0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		0CA91DB51D2A852C00D1B5D8 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		0CA91DB71D2A862100D1B5D8 /* FormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
+		0CA91DB91D2A872800D1B5D8 /* TestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFormViewController.swift; sourceTree = "<group>"; };
+		0CB77FF31D33D1C1001126EC /* FDCreditCardTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDCreditCardTextFieldFormatter.h; sourceTree = "<group>"; };
+		0CB77FF41D33D1C1001126EC /* FDCreditCardTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDCreditCardTextFieldFormatter.m; sourceTree = "<group>"; };
+		0CB77FF51D33D1C1001126EC /* FDEnglishAccessoryToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDEnglishAccessoryToolbar.h; sourceTree = "<group>"; };
+		0CB77FF61D33D1C1001126EC /* FDEnglishAccessoryToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDEnglishAccessoryToolbar.m; sourceTree = "<group>"; };
+		0CB77FF71D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDExpirationDateFormPickerDataSource.h; sourceTree = "<group>"; };
+		0CB77FF81D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDExpirationDateFormPickerDataSource.m; sourceTree = "<group>"; };
+		0CB77FF91D33D1C1001126EC /* FDMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDMenuTableViewController.h; sourceTree = "<group>"; };
+		0CB77FFA1D33D1C1001126EC /* FDMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDMenuTableViewController.m; sourceTree = "<group>"; };
+		0CB77FFB1D33D1C1001126EC /* FDTestFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTestFormTableViewController.h; sourceTree = "<group>"; };
+		0CB77FFC1D33D1C1001126EC /* FDTestFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTestFormTableViewController.m; sourceTree = "<group>"; };
+		0CB780021D33D220001126EC /* FDSharedObjectiveCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDSharedObjectiveCHeader.h; sourceTree = "<group>"; };
+		0CB780031D33D2EB001126EC /* FDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTableViewController.h; sourceTree = "<group>"; };
+		0CB780041D33D2EB001126EC /* FDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTableViewController.m; sourceTree = "<group>"; };
+		0CB780061D33D332001126EC /* FDFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFormModel.h; sourceTree = "<group>"; };
+		0CB780071D33D332001126EC /* FDFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFormModel.m; sourceTree = "<group>"; };
+		0CB9ABFB1D34D9940037AE19 /* FormDirectionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDirectionManagerTests.swift; sourceTree = "<group>"; };
+		0CD1AD3B1D2AA2DD00879301 /* FormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormConfiguration.swift; sourceTree = "<group>"; };
+		0CD1AD3D1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTextFieldFormatter.swift; sourceTree = "<group>"; };
+		0CD1AD3F1D2B95CF00879301 /* ExpirationDatePickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerDataSource.swift; sourceTree = "<group>"; };
+		2580D84D46980EF950BF7775 /* Pods-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
+		26BC998685BDB1D188AC93E8 /* Pods_Form_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BAD23C5D0535D40387BA486 /* Pods-Form-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
+		436D6AFCC5437EB0274119D3 /* Pods-Form-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
+		4943719060043B9EC0857CF8 /* Pods_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49B1F77E1CE4B3DB00A29BFE /* FormDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49B1F7801CE4B3DB00A29BFE /* FormDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDemoTests.swift; sourceTree = "<group>"; };
+		49B1F7821CE4B3DB00A29BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileLoggerFormatter.h; sourceTree = "<group>"; };
+		49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileLoggerFormatter.m; sourceTree = "<group>"; };
+		4A58C23989AC0934C5373EF4 /* Pods_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5721AFF15849D67EFB2D4975 /* Pods-Form-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
+		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
+		57E1CD291C884F3000A7DFFB /* FormDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FormDemo-Bridging-Header.h"; path = "Classes/FormDemo-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		57E1CD481C884F8900A7DFFB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		57E1CD4A1C8852FC00A7DFFB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		57E1CD4C1C8890CA00A7DFFB /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		57F7ECC31BB0042D0095AEEC /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		57F7ECC51BB004500095AEEC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		5F9EEB593281B9AA003F7847 /* Pods-Form-FormDemoTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.preproduction.xcconfig"; sourceTree = "<group>"; };
+		6FE3EFE91A6D3ABA007A4AD5 /* ADTargetSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTargetSettings.h; sourceTree = "<group>"; };
+		6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTargetSettings.m; sourceTree = "<group>"; };
+		7A0EC64F1535D8ED00E5F54A /* AD Stubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AD Stubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EC6531535D8ED00E5F54A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7A0EC6551535D8ED00E5F54A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7A189F851535FB5300A22149 /* FDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAppDelegate.h; sourceTree = "<group>"; };
-		7A189F861535FB5300A22149 /* FDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAppDelegate.m; sourceTree = "<group>"; };
-		7A189F901535FD5C00A22149 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		7A189F921535FD5C00A22149 /* FormDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FormDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		7A6BEEFB153700CF0075E2A7 /* FormDemo_Production.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDemo_Production.h; sourceTree = "<group>"; };
-		7ABC1627153612960039E546 /* FormDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDemo.h; sourceTree = "<group>"; };
-		7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVersionInfo.m; sourceTree = "<group>"; };
-		924034551D18284100998373 /* ADNavigableButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNavigableButtons.h; path = ADFormController/ADNavigableButtons.h; sourceTree = "<group>"; };
-		924034561D18319900998373 /* FDEnglishAccessoryToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDEnglishAccessoryToolbar.h; sourceTree = "<group>"; };
-		924034571D18319900998373 /* FDEnglishAccessoryToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDEnglishAccessoryToolbar.m; sourceTree = "<group>"; };
-		9E13BE430E290E650250C8DB /* Pods-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
+		85B3C49F7BFE4C4A611F4184 /* Pods-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
+		8723B8D5F983C7CBB4FBAA70 /* Pods-Form-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
+		906EF856C04E9FCFD734F058 /* Pods-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
+		965D13DB193DE3DF3E1B4BA0 /* Pods-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
+		A2962B54A4EDA63BFA8B93FB /* Pods-Form-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
+		B4DEE50D4FA42E65690A55C0 /* Pods-Form-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
+		C6C95CE168A5A99547168530 /* Pods-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
+		D0A77A50F980EA13702305C5 /* Pods-Form-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
+		D858C324C04CD988B0D32E14 /* Pods-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
+		E44DE2507EC64C19986269BB /* Pods_Form_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7B4829750BBDFD3A2508EDA /* Pods-FormDemoTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
 		F83B92181A7A8CCF009E7ADF /* Defaults-Info_Preproduction.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Preproduction.plist"; sourceTree = "<group>"; };
@@ -129,6 +139,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		49B1F77B1CE4B3DB00A29BFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AB1A7CA0E47969926CBA31 /* Pods_FormDemoTests.framework in Frameworks */,
+				F6539B9636ACC3C7369C6057 /* Pods_Form_FormDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A0EC64C1535D8ED00E5F54A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,127 +155,158 @@
 				7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */,
 				7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */,
 				7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */,
-				7AB3195340BC26F702C59F40 /* libPods-FormDemo.a in Frameworks */,
+				9F47452435E34FC1BE2FF807 /* Pods_FormDemo.framework in Frameworks */,
+				E5B054FB69487B6E61BF28A6 /* Pods_Form_FormDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		497C97981B9AC4F5002175AC /* Model */ = {
+		0C3F9EF91D34E105000260C6 /* FormControllerClasses */ = {
 			isa = PBXGroup;
 			children = (
-				490418041BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.h */,
-				490418051BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m */,
-				490B37631BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.h */,
-				490B37641BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m */,
-				49DC78FE1D01D125009DC7B7 /* FDFormModel.h */,
-				49DC78FF1D01D125009DC7B7 /* FDFormModel.m */,
+				0C3F9EFA1D34E131000260C6 /* FormDirectionManager.swift */,
+			);
+			name = FormControllerClasses;
+			sourceTree = "<group>";
+		};
+		0CB77FF21D33D1AA001126EC /* Objective-c Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0CB780091D33D4A6001126EC /* Model */,
+				0CB7800B1D33D4B1001126EC /* View */,
+				0CB7800A1D33D4AC001126EC /* Controller */,
+				0CB780021D33D220001126EC /* FDSharedObjectiveCHeader.h */,
+			);
+			name = "Objective-c Classes";
+			sourceTree = "<group>";
+		};
+		0CB780091D33D4A6001126EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CB77FF31D33D1C1001126EC /* FDCreditCardTextFieldFormatter.h */,
+				0CB77FF41D33D1C1001126EC /* FDCreditCardTextFieldFormatter.m */,
+				0CB77FF71D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.h */,
+				0CB77FF81D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.m */,
+				0CB780061D33D332001126EC /* FDFormModel.h */,
+				0CB780071D33D332001126EC /* FDFormModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		497C97991B9AC4FD002175AC /* Controller */ = {
+		0CB7800A1D33D4AC001126EC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				494008E11C0C3BBA00E1FD21 /* FDTableViewController.h */,
-				494008E21C0C3BBA00E1FD21 /* FDTableViewController.m */,
-				490B376A1BCF9FCC008E0B5A /* FDMenuTableViewController.h */,
-				490B376B1BCF9FCC008E0B5A /* FDMenuTableViewController.m */,
-				494008D71C08976600E1FD21 /* FDTestFormTableViewController.h */,
-				494008D81C08976600E1FD21 /* FDTestFormTableViewController.m */,
+				0CB780031D33D2EB001126EC /* FDTableViewController.h */,
+				0CB780041D33D2EB001126EC /* FDTableViewController.m */,
+				0CB77FF91D33D1C1001126EC /* FDMenuTableViewController.h */,
+				0CB77FFA1D33D1C1001126EC /* FDMenuTableViewController.m */,
+				0CB77FFB1D33D1C1001126EC /* FDTestFormTableViewController.h */,
+				0CB77FFC1D33D1C1001126EC /* FDTestFormTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		497C979A1B9AC50B002175AC /* View */ = {
+		0CB7800B1D33D4B1001126EC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				924034561D18319900998373 /* FDEnglishAccessoryToolbar.h */,
-				924034571D18319900998373 /* FDEnglishAccessoryToolbar.m */,
+				0CB77FF51D33D1C1001126EC /* FDEnglishAccessoryToolbar.h */,
+				0CB77FF61D33D1C1001126EC /* FDEnglishAccessoryToolbar.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
 		};
-		49F7C80F1D096CF900086054 /* ADFormController */ = {
+		2190369A1513CFD49B6D78E1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C81A1D096CF900086054 /* ADFormController.h */,
-				49F7C81B1D096CF900086054 /* ADFormController.m */,
-				924034541D18278D00998373 /* Accessory View */,
-				49F7C8421D096D0100086054 /* Cells */,
-				49F7C8431D096D0900086054 /* Custom View */,
-				49F7C8451D096D1900086054 /* Model */,
-				49F7C8461D096D2000086054 /* Category */,
+				2580D84D46980EF950BF7775 /* Pods-FormDemo.stubs.xcconfig */,
+				C6C95CE168A5A99547168530 /* Pods-FormDemo.preproduction.xcconfig */,
+				00B833839386FBAEA590CFF9 /* Pods-FormDemo.production.xcconfig */,
+				965D13DB193DE3DF3E1B4BA0 /* Pods-FormDemo.distribution.xcconfig */,
+				906EF856C04E9FCFD734F058 /* Pods-FormDemoTests.stubs.xcconfig */,
+				F7B4829750BBDFD3A2508EDA /* Pods-FormDemoTests.preproduction.xcconfig */,
+				D858C324C04CD988B0D32E14 /* Pods-FormDemoTests.production.xcconfig */,
+				85B3C49F7BFE4C4A611F4184 /* Pods-FormDemoTests.distribution.xcconfig */,
+				8723B8D5F983C7CBB4FBAA70 /* Pods-Form-FormDemo.stubs.xcconfig */,
+				D0A77A50F980EA13702305C5 /* Pods-Form-FormDemo.preproduction.xcconfig */,
+				5721AFF15849D67EFB2D4975 /* Pods-Form-FormDemo.production.xcconfig */,
+				436D6AFCC5437EB0274119D3 /* Pods-Form-FormDemo.distribution.xcconfig */,
+				2BAD23C5D0535D40387BA486 /* Pods-Form-FormDemoTests.stubs.xcconfig */,
+				5F9EEB593281B9AA003F7847 /* Pods-Form-FormDemoTests.preproduction.xcconfig */,
+				B4DEE50D4FA42E65690A55C0 /* Pods-Form-FormDemoTests.production.xcconfig */,
+				A2962B54A4EDA63BFA8B93FB /* Pods-Form-FormDemoTests.distribution.xcconfig */,
 			);
-			path = ADFormController;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		49F7C8421D096D0100086054 /* Cells */ = {
+		49B1F77F1CE4B3DB00A29BFE /* FormDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C8121D096CF900086054 /* ADFormBoolInputTableViewCell.h */,
-				49F7C81F1D096CF900086054 /* ADFormSwitchTableViewCell.h */,
-				49F7C8201D096CF900086054 /* ADFormSwitchTableViewCell.m */,
-				49F7C8231D096CF900086054 /* ADFormTextInputTableViewCell.h */,
-				49F7C8211D096CF900086054 /* ADFormTextFieldTableViewCell.h */,
-				49F7C8221D096CF900086054 /* ADFormTextFieldTableViewCell.m */,
-				49F7C8241D096CF900086054 /* ADFormTextViewTableViewCell.h */,
-				49F7C8251D096CF900086054 /* ADFormTextViewTableViewCell.m */,
+				0C3F9EF91D34E105000260C6 /* FormControllerClasses */,
+				49B1F7801CE4B3DB00A29BFE /* FormDemoTests.swift */,
+				49B1F7821CE4B3DB00A29BFE /* Info.plist */,
+				0CB9ABFB1D34D9940037AE19 /* FormDirectionManagerTests.swift */,
 			);
-			name = Cells;
+			path = FormDemoTests;
 			sourceTree = "<group>";
 		};
-		49F7C8431D096D0900086054 /* Custom View */ = {
+		49F7C9F31D0EDE6300086054 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C8281D096CF900086054 /* ADPlaceholderTextView.h */,
-				49F7C8291D096CF900086054 /* ADPlaceholderTextView.m */,
-				49F7C82C1D096CF900086054 /* ADTextField.h */,
-				49F7C82D1D096CF900086054 /* ADTextField.m */,
+				49F7C9F41D0EDE6300086054 /* Logger.swift */,
+				49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */,
+				49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */,
 			);
-			name = "Custom View";
+			path = Logger;
 			sourceTree = "<group>";
 		};
-		49F7C8451D096D1900086054 /* Model */ = {
+		57C59D6B1BB14A56003798DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C8471D096DA500086054 /* Configuration */,
-				49F7C82E1D096CF900086054 /* ADTextFieldFormatter.h */,
-				49F7C81E1D096CF900086054 /* ADFormPickerDataSource.h */,
-				49F7C82A1D096CF900086054 /* ADSimpleFormPickerDataSource.h */,
-				49F7C82B1D096CF900086054 /* ADSimpleFormPickerDataSource.m */,
-				49F7C81C1D096CF900086054 /* ADFormDirectionManager.h */,
-				49F7C81D1D096CF900086054 /* ADFormDirectionManager.m */,
-				49F7C8101D096CF900086054 /* ADDatePickerTextFieldBinding.h */,
-				49F7C8111D096CF900086054 /* ADDatePickerTextFieldBinding.m */,
-				49F7C8261D096CF900086054 /* ADPickerViewTextFieldBinding.h */,
-				49F7C8271D096CF900086054 /* ADPickerViewTextFieldBinding.m */,
+				0CD1AD3B1D2AA2DD00879301 /* FormConfiguration.swift */,
+				0CA91DB71D2A862100D1B5D8 /* FormModel.swift */,
+				0CD1AD3D1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift */,
+				0CD1AD3F1D2B95CF00879301 /* ExpirationDatePickerDataSource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		49F7C8461D096D2000086054 /* Category */ = {
+		57C59D6C1BB14A62003798DF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C8311D096CF900086054 /* UIView+Traverse.h */,
-				49F7C8321D096CF900086054 /* UIView+Traverse.m */,
+				57C59D6E1BB14A76003798DF /* Shared */,
+				0CA91DB51D2A852C00D1B5D8 /* MenuTableViewController.swift */,
+				0CA91DB91D2A872800D1B5D8 /* TestFormViewController.swift */,
 			);
-			name = Category;
+			name = Controller;
 			sourceTree = "<group>";
 		};
-		49F7C8471D096DA500086054 /* Configuration */ = {
+		57C59D6D1BB14A64003798DF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C8151D096CF900086054 /* ADFormCellConfigurable.h */,
-				49F7C8161D096CF900086054 /* ADFormCellConfiguration.h */,
-				49F7C8171D096CF900086054 /* ADFormCellConfiguration.m */,
-				49F7C8131D096CF900086054 /* ADFormCellBoolConfiguration.h */,
-				49F7C8141D096CF900086054 /* ADFormCellBoolConfiguration.m */,
-				49F7C8181D096CF900086054 /* ADFormCellTextConfiguration.h */,
-				49F7C8191D096CF900086054 /* ADFormCellTextConfiguration.m */,
+				0C2010D01D2BF58F003051E4 /* RegistrableView.swift */,
+				0C57B2291D2BA878002BEB04 /* EnglishAccessoryToolbar.swift */,
 			);
-			name = Configuration;
+			name = View;
+			sourceTree = "<group>";
+		};
+		57C59D6E1BB14A76003798DF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				57E1CD271C884F1C00A7DFFB /* SharedViewController.swift */,
+				0CA91DB31D2A84C000D1B5D8 /* TableViewController.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		57F7ECBC1BB0013C0095AEEC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				57E1CD4A1C8852FC00A7DFFB /* Color.swift */,
+				57E1CD4C1C8890CA00A7DFFB /* Fonts.swift */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		6FE3EFE81A6D3A8B007A4AD5 /* ADTargetSettings */ = {
@@ -265,28 +315,29 @@
 				6FE3EFE91A6D3ABA007A4AD5 /* ADTargetSettings.h */,
 				6FE3EFEA1A6D3ABA007A4AD5 /* ADTargetSettings.m */,
 			);
-			name = ADTargetSettings;
+			path = ADTargetSettings;
 			sourceTree = "<group>";
 		};
 		7A0EC6441535D8ED00E5F54A = {
 			isa = PBXGroup;
 			children = (
-				496042EA1B9A1A550010B11A /* Default-568h@2x.png */,
 				7A189F7F1535FB5300A22149 /* Classes */,
 				7AFC5ED1155AA37F009D92A7 /* Modules */,
 				7A189F8F1535FD0D00A22149 /* Other Sources */,
 				F83B92141A7A8CCF009E7ADF /* Configuration */,
 				7A189F951535FD6800A22149 /* Resources */,
+				49B1F77F1CE4B3DB00A29BFE /* FormDemoTests */,
 				7A0EC6521535D8ED00E5F54A /* Frameworks */,
 				7A0EC6501535D8ED00E5F54A /* Products */,
-				EB27F1D28218EBD841B2BFE5 /* Pods */,
+				2190369A1513CFD49B6D78E1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		7A0EC6501535D8ED00E5F54A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A0EC64F1535D8ED00E5F54A /* FD Stubs.app */,
+				7A0EC64F1535D8ED00E5F54A /* AD Stubs.app */,
+				49B1F77E1CE4B3DB00A29BFE /* FormDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -297,7 +348,10 @@
 				7A0EC6531535D8ED00E5F54A /* UIKit.framework */,
 				7A0EC6551535D8ED00E5F54A /* Foundation.framework */,
 				7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */,
-				3C5BBCB567435C7B7609E535 /* libPods-FormDemo.a */,
+				4943719060043B9EC0857CF8 /* Pods_FormDemo.framework */,
+				4A58C23989AC0934C5373EF4 /* Pods_FormDemoTests.framework */,
+				26BC998685BDB1D188AC93E8 /* Pods_Form_FormDemo.framework */,
+				E44DE2507EC64C19986269BB /* Pods_Form_FormDemoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,16 +359,12 @@
 		7A189F7F1535FB5300A22149 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7ABC1627153612960039E546 /* FormDemo.h */,
-				6F69A4151A69668E00DF4971 /* FormDemo_Stubs.h */,
-				6F69A4141A69668E00DF4971 /* FormDemo_Preproduction.h */,
-				7A6BEEFB153700CF0075E2A7 /* FormDemo_Production.h */,
-				6F69A4131A69668E00DF4971 /* FormDemo_Distribution.h */,
-				7A189F851535FB5300A22149 /* FDAppDelegate.h */,
-				7A189F861535FB5300A22149 /* FDAppDelegate.m */,
-				497C97981B9AC4F5002175AC /* Model */,
-				497C979A1B9AC50B002175AC /* View */,
-				497C97991B9AC4FD002175AC /* Controller */,
+				0CB77FF21D33D1AA001126EC /* Objective-c Classes */,
+				57E1CD481C884F8900A7DFFB /* AppDelegate.swift */,
+				57F7ECBC1BB0013C0095AEEC /* Categories */,
+				57C59D6B1BB14A56003798DF /* Model */,
+				57C59D6D1BB14A64003798DF /* View */,
+				57C59D6C1BB14A62003798DF /* Controller */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -322,8 +372,8 @@
 		7A189F8F1535FD0D00A22149 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7A189F901535FD5C00A22149 /* main.m */,
 				7A189F921535FD5C00A22149 /* FormDemo-Prefix.pch */,
+				57E1CD291C884F3000A7DFFB /* FormDemo-Bridging-Header.h */,
 			);
 			name = "Other Sources";
 			path = FormDemo;
@@ -336,47 +386,16 @@
 				F83B922C1A7A8CE1009E7ADF /* FormDemo */,
 			);
 			name = Resources;
-			path = FormDemo;
+			path = Ressources;
 			sourceTree = "<group>";
 		};
 		7AFC5ED1155AA37F009D92A7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				49F7C80F1D096CF900086054 /* ADFormController */,
+				49F7C9F31D0EDE6300086054 /* Logger */,
 				6FE3EFE81A6D3A8B007A4AD5 /* ADTargetSettings */,
-				7AFC5ED2155AA37F009D92A7 /* ADVersionInfo */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		7AFC5ED2155AA37F009D92A7 /* ADVersionInfo */ = {
-			isa = PBXGroup;
-			children = (
-				7AFC5ED3155AA37F009D92A7 /* ADVersionInfo.m */,
-			);
-			path = ADVersionInfo;
-			sourceTree = "<group>";
-		};
-		924034541D18278D00998373 /* Accessory View */ = {
-			isa = PBXGroup;
-			children = (
-				924034551D18284100998373 /* ADNavigableButtons.h */,
-				49F7C82F1D096CF900086054 /* ADTextInputAccessoryView.h */,
-				49F7C8301D096CF900086054 /* ADTextInputAccessoryView.m */,
-			);
-			name = "Accessory View";
-			path = ..;
-			sourceTree = "<group>";
-		};
-		EB27F1D28218EBD841B2BFE5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				354EF01F46EC1EE091C5B046 /* Pods-FormDemo.stubs.xcconfig */,
-				29F1671873AB26C23F1E1F55 /* Pods-FormDemo.preproduction.xcconfig */,
-				5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */,
-				9E13BE430E290E650250C8DB /* Pods-FormDemo.distribution.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		F83B92141A7A8CCF009E7ADF /* Configuration */ = {
@@ -392,10 +411,10 @@
 			isa = PBXGroup;
 			children = (
 				F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */,
-				F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */,
+				F83B921A1A7A8CCF009E7ADF /* Defaults-Info_Stubs.plist */,
 				F83B92181A7A8CCF009E7ADF /* Defaults-Info_Preproduction.plist */,
 				F83B92191A7A8CCF009E7ADF /* Defaults-Info_Production.plist */,
-				F83B921A1A7A8CCF009E7ADF /* Defaults-Info_Stubs.plist */,
+				F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */,
 			);
 			path = Defaults;
 			sourceTree = "<group>";
@@ -405,10 +424,10 @@
 			children = (
 				F83B922D1A7A8D04009E7ADF /* FormDemo-Info.plist */,
 				F83B921C1A7A8CCF009E7ADF /* FormDemo-Info_Defaults.plist */,
-				F83B921D1A7A8CCF009E7ADF /* FormDemo-Info_Distribution.plist */,
+				F83B92201A7A8CCF009E7ADF /* FormDemo-Info_Stubs.plist */,
 				F83B921E1A7A8CCF009E7ADF /* FormDemo-Info_Preproduction.plist */,
 				F83B921F1A7A8CCF009E7ADF /* FormDemo-Info_Production.plist */,
-				F83B92201A7A8CCF009E7ADF /* FormDemo-Info_Stubs.plist */,
+				F83B921D1A7A8CCF009E7ADF /* FormDemo-Info_Distribution.plist */,
 			);
 			path = FormDemo;
 			sourceTree = "<group>";
@@ -416,35 +435,59 @@
 		F83B922B1A7A8CE1009E7ADF /* Defaults */ = {
 			isa = PBXGroup;
 			children = (
-				497C97961B9AC3A2002175AC /* InputAccessoryView.xcassets */,
 			);
-			name = Defaults;
-			path = ../Resources/Defaults;
+			path = Defaults;
 			sourceTree = "<group>";
 		};
 		F83B922C1A7A8CE1009E7ADF /* FormDemo */ = {
 			isa = PBXGroup;
 			children = (
+				57C59D671BB1478A003798DF /* Images.xcassets */,
+				57F7ECC51BB004500095AEEC /* InfoPlist.strings */,
+				57F7ECC31BB0042D0095AEEC /* Localizable.strings */,
+				57C59D691BB1486B003798DF /* LaunchScreen.storyboard */,
 			);
-			name = FormDemo;
-			path = ../Resources/FormDemo;
+			path = FormDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		49B1F77D1CE4B3DB00A29BFE /* FormDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49B1F7891CE4B3DB00A29BFE /* Build configuration list for PBXNativeTarget "FormDemoTests" */;
+			buildPhases = (
+				A6A85E92266DAE1D134ACEEA /* [CP] Check Pods Manifest.lock */,
+				49B1F77A1CE4B3DB00A29BFE /* Sources */,
+				49B1F77B1CE4B3DB00A29BFE /* Frameworks */,
+				49B1F77C1CE4B3DB00A29BFE /* Resources */,
+				77213A42EFF7262DF8B75E25 /* [CP] Embed Pods Frameworks */,
+				D13C35CCCEE8F4CFEFEF5D75 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49B1F7841CE4B3DB00A29BFE /* PBXTargetDependency */,
+			);
+			name = FormDemoTests;
+			productName = FormDemoTests;
+			productReference = 49B1F77E1CE4B3DB00A29BFE /* FormDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7A0EC64E1535D8ED00E5F54A /* FormDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A0EC6671535D8ED00E5F54A /* Build configuration list for PBXNativeTarget "FormDemo" */;
 			buildPhases = (
-				596E6066ABDC90DAA8704A53 /* [CP] Check Pods Manifest.lock */,
+				CECB1C1E7B071D6D281D3BC0 /* [CP] Check Pods Manifest.lock */,
 				7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */,
 				7A0EC64B1535D8ED00E5F54A /* Sources */,
 				7A0EC64C1535D8ED00E5F54A /* Frameworks */,
 				7A0EC64D1535D8ED00E5F54A /* Resources */,
 				6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */,
-				D9D66D3E2697370B6248B2D0 /* [CP] Embed Pods Frameworks */,
-				A97B9FEE092CD014E5AF2053 /* [CP] Copy Pods Resources */,
+				490133B11C1EFC11000CC04B /* Turn TODO into Warning */,
+				490133B21C1EFC25000CC04B /* Warning if file > 250 lines */,
+				BDD5F3E9C530D463D230A81C /* [CP] Embed Pods Frameworks */,
+				F54137C79E310D050E5C1F2B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -452,7 +495,7 @@
 			);
 			name = FormDemo;
 			productName = FormDemo;
-			productReference = 7A0EC64F1535D8ED00E5F54A /* FD Stubs.app */;
+			productReference = 7A0EC64F1535D8ED00E5F54A /* AD Stubs.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -461,8 +504,16 @@
 		7A0EC6461535D8ED00E5F54A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = FD;
+				CLASSPREFIX = AD;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					49B1F77D1CE4B3DB00A29BFE = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2C897PS7YH;
+						TestTargetID = 7A0EC64E1535D8ED00E5F54A;
+					};
+				};
 			};
 			buildConfigurationList = 7A0EC6491535D8ED00E5F54A /* Build configuration list for PBXProject "FormDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -477,37 +528,60 @@
 			projectRoot = "";
 			targets = (
 				7A0EC64E1535D8ED00E5F54A /* FormDemo */,
+				49B1F77D1CE4B3DB00A29BFE /* FormDemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		49B1F77C1CE4B3DB00A29BFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A0EC64D1535D8ED00E5F54A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				497C97971B9AC3A2002175AC /* InputAccessoryView.xcassets in Resources */,
-				496042EB1B9A1A550010B11A /* Default-568h@2x.png in Resources */,
+				57C59D681BB1478A003798DF /* Images.xcassets in Resources */,
+				57C59D6A1BB1486B003798DF /* LaunchScreen.storyboard in Resources */,
+				57F7ECC41BB0042D0095AEEC /* Localizable.strings in Resources */,
+				57F7ECC61BB004510095AEEC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		596E6066ABDC90DAA8704A53 /* [CP] Check Pods Manifest.lock */ = {
+		490133B11C1EFC11000CC04B /* Turn TODO into Warning */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "Turn TODO into Warning";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}/Classes\" -name \"*.h\" -or -name \"*.m\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
+		490133B21C1EFC25000CC04B /* Warning if file > 250 lines */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Warning if file > 250 lines";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "find \"${SRCROOT}/Classes\" \\( -name \"*.h\" -or -name \"*.m\" \\) -and \\( -path \"${SRCROOT}/Pods/*\" -prune -o -print0 \\) | xargs -0 wc -l | awk '$1 > 250 && $2 != \"total\" {for(i=2;i<NF;i++){printf \"%s%s\", $i, \" \"} print $NF \":1: warning: File more than 250 lines (\" $1 \"), consider refactoring.\" }'";
 		};
 		6FE3EFF61A6D3EB1007A4AD5 /* Patch Info.plist according to the environment */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -522,6 +596,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "PLIST_FILENAME=$(basename \"$PRODUCT_SETTINGS_PATH\")\nPLIST_EXTENSION=\"${PLIST_FILENAME##*.}\"\nPLIST_FILENAME=\"${PLIST_FILENAME%.*}\"\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/$TARGET_NAME/${PLIST_FILENAME}_${CONFIGURATION}.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/$TARGET_NAME/${PLIST_FILENAME}_Defaults.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/Defaults/Defaults-Info_${CONFIGURATION}.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Merge ${SRCROOT}/Configuration/Defaults/Defaults-Info_Defaults.${PLIST_EXTENSION}\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n";
+			showEnvVarsInLog = 0;
+		};
+		77213A42EFF7262DF8B75E25 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */ = {
@@ -539,22 +628,22 @@
 			shellScript = "GIT_COMMIT=`git rev-parse --short HEAD`\nGIT_BRANCH=`git symbolic-ref HEAD`\nGIT_STATUS=`git status --porcelain -z`\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitCommit\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitBranch\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\n/usr/libexec/PlistBuddy -c \"Delete :CFBundleGitStatus\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\" >/dev/null 2>&1\nif [ -n \"$GIT_COMMIT\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitCommit string \\\"${GIT_COMMIT}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_BRANCH\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitBranch string \\\"${GIT_BRANCH}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi\nif [ -n \"$GIT_STATUS\" ]; then\n  /usr/libexec/PlistBuddy -c \"Add :CFBundleGitStatus string \\\"${GIT_STATUS}\\\"\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\nfi";
 			showEnvVarsInLog = 0;
 		};
-		A97B9FEE092CD014E5AF2053 /* [CP] Copy Pods Resources */ = {
+		A6A85E92266DAE1D134ACEEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D9D66D3E2697370B6248B2D0 /* [CP] Embed Pods Frameworks */ = {
+		BDD5F3E9C530D463D230A81C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -566,52 +655,301 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CECB1C1E7B071D6D281D3BC0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D13C35CCCEE8F4CFEFEF5D75 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F54137C79E310D050E5C1F2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		49B1F77A1CE4B3DB00A29BFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49B1F7811CE4B3DB00A29BFE /* FormDemoTests.swift in Sources */,
+				0CB9ABFC1D34D9940037AE19 /* FormDirectionManagerTests.swift in Sources */,
+				0C3F9EFB1D34E131000260C6 /* FormDirectionManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A0EC64B1535D8ED00E5F54A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49F7C83B1D096CF900086054 /* ADFormTextViewTableViewCell.m in Sources */,
-				49F7C8391D096CF900086054 /* ADFormSwitchTableViewCell.m in Sources */,
-				7A189F8A1535FB5300A22149 /* FDAppDelegate.m in Sources */,
-				7A189F931535FD5C00A22149 /* main.m in Sources */,
-				49F7C8371D096CF900086054 /* ADFormController.m in Sources */,
-				49F7C83E1D096CF900086054 /* ADSimpleFormPickerDataSource.m in Sources */,
-				49F7C8341D096CF900086054 /* ADFormCellBoolConfiguration.m in Sources */,
-				490B37651BCF9278008E0B5A /* FDExpirationDateFormPickerDataSource.m in Sources */,
-				49F7C8331D096CF900086054 /* ADDatePickerTextFieldBinding.m in Sources */,
-				924034581D18319900998373 /* FDEnglishAccessoryToolbar.m in Sources */,
-				49F7C83F1D096CF900086054 /* ADTextField.m in Sources */,
-				49F7C8381D096CF900086054 /* ADFormDirectionManager.m in Sources */,
-				490418061BC3AA9300AD1AAB /* FDCreditCardTextFieldFormatter.m in Sources */,
-				494008D91C08976600E1FD21 /* FDTestFormTableViewController.m in Sources */,
-				49F7C8401D096CF900086054 /* ADTextInputAccessoryView.m in Sources */,
-				494008E31C0C3BBA00E1FD21 /* FDTableViewController.m in Sources */,
-				49F7C8411D096CF900086054 /* UIView+Traverse.m in Sources */,
-				49F7C8351D096CF900086054 /* ADFormCellConfiguration.m in Sources */,
-				49F7C8361D096CF900086054 /* ADFormCellTextConfiguration.m in Sources */,
-				49F7C83A1D096CF900086054 /* ADFormTextFieldTableViewCell.m in Sources */,
+				0CB77FFF1D33D1C1001126EC /* FDExpirationDateFormPickerDataSource.m in Sources */,
+				57E1CD4D1C8890CA00A7DFFB /* Fonts.swift in Sources */,
+				49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */,
+				49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */,
+				0CB780001D33D1C1001126EC /* FDMenuTableViewController.m in Sources */,
+				0CB780051D33D2EB001126EC /* FDTableViewController.m in Sources */,
+				0CA91DB81D2A862100D1B5D8 /* FormModel.swift in Sources */,
+				0CA91DB41D2A84C000D1B5D8 /* TableViewController.swift in Sources */,
+				0CD1AD3E1D2AAE7800879301 /* CreditCardTextFieldFormatter.swift in Sources */,
+				57E1CD491C884F8900A7DFFB /* AppDelegate.swift in Sources */,
+				0C2010D11D2BF58F003051E4 /* RegistrableView.swift in Sources */,
+				0CB77FFD1D33D1C1001126EC /* FDCreditCardTextFieldFormatter.m in Sources */,
+				0CD1AD3C1D2AA2DD00879301 /* FormConfiguration.swift in Sources */,
+				0CA91DB61D2A852C00D1B5D8 /* MenuTableViewController.swift in Sources */,
+				0CA91DBA1D2A872800D1B5D8 /* TestFormViewController.swift in Sources */,
+				57E1CD4B1C8852FC00A7DFFB /* Color.swift in Sources */,
+				0C57B22A1D2BA878002BEB04 /* EnglishAccessoryToolbar.swift in Sources */,
+				0CD1AD401D2B95CF00879301 /* ExpirationDatePickerDataSource.swift in Sources */,
+				0CB77FFE1D33D1C1001126EC /* FDEnglishAccessoryToolbar.m in Sources */,
 				6FE3EFEB1A6D3ABA007A4AD5 /* ADTargetSettings.m in Sources */,
-				490B376C1BCF9FCC008E0B5A /* FDMenuTableViewController.m in Sources */,
-				49DC79001D01D125009DC7B7 /* FDFormModel.m in Sources */,
-				7AFC5ED4155AA37F009D92A7 /* ADVersionInfo.m in Sources */,
-				49F7C83D1D096CF900086054 /* ADPlaceholderTextView.m in Sources */,
-				49F7C83C1D096CF900086054 /* ADPickerViewTextFieldBinding.m in Sources */,
+				57E1CD281C884F1C00A7DFFB /* SharedViewController.swift in Sources */,
+				0CB780081D33D332001126EC /* FDFormModel.m in Sources */,
+				0CB780011D33D1C1001126EC /* FDTestFormTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		49B1F7841CE4B3DB00A29BFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A0EC64E1535D8ED00E5F54A /* FormDemo */;
+			targetProxy = 49B1F7831CE4B3DB00A29BFE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		49B1F7851CE4B3DB00A29BFE /* Stubs */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BAD23C5D0535D40387BA486 /* Pods-Form-FormDemoTests.stubs.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FormDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = applidium.FormDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AD Stubs.app/AD Stubs";
+			};
+			name = Stubs;
+		};
+		49B1F7861CE4B3DB00A29BFE /* Preproduction */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F9EEB593281B9AA003F7847 /* Pods-Form-FormDemoTests.preproduction.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FormDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = applidium.FormDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AD Stubs.app/AD Stubs";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Preproduction;
+		};
+		49B1F7871CE4B3DB00A29BFE /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4DEE50D4FA42E65690A55C0 /* Pods-Form-FormDemoTests.production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FormDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = applidium.FormDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AD Stubs.app/AD Stubs";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
+		};
+		49B1F7881CE4B3DB00A29BFE /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2962B54A4EDA63BFA8B93FB /* Pods-Form-FormDemoTests.distribution.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FormDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = applidium.FormDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AD Stubs.app/AD Stubs";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
 		7A0EC6651535D8ED00E5F54A /* Stubs */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -620,6 +958,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -634,21 +973,29 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Stubs;
 		};
 		7A0EC6681535D8ED00E5F54A /* Stubs */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 354EF01F46EC1EE091C5B046 /* Pods-FormDemo.stubs.xcconfig */;
+			baseConfigurationReference = 8723B8D5F983C7CBB4FBAA70 /* Pods-Form-FormDemo.stubs.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "FD Stubs";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "AD Stubs";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Stubs;
@@ -657,6 +1004,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -665,6 +1014,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -676,23 +1026,30 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Distribution;
 		};
 		7A6BEEF81536FE3D0075E2A7 /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E13BE430E290E650250C8DB /* Pods-FormDemo.distribution.xcconfig */;
+			baseConfigurationReference = 436D6AFCC5437EB0274119D3 /* Pods-Form-FormDemo.distribution.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -701,6 +1058,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -709,6 +1068,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -723,21 +1083,29 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Preproduction;
 		};
 		F88C93CF1A66D9D8009EB642 /* Preproduction */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29F1671873AB26C23F1E1F55 /* Pods-FormDemo.preproduction.xcconfig */;
+			baseConfigurationReference = D0A77A50F980EA13702305C5 /* Pods-Form-FormDemo.preproduction.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "FD Preprod";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "AD Preprod";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Preproduction;
@@ -746,6 +1114,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -754,6 +1124,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -768,21 +1139,29 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE = "$(PROFILE_UDID)";
 				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Production;
 		};
 		F88C93D11A66DA0D009EB642 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BCF4CF82503E7E6925F0795 /* Pods-FormDemo.production.xcconfig */;
+			baseConfigurationReference = 5721AFF15849D67EFB2D4975 /* Pods-Form-FormDemo.production.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Configuration/FormDemo/FormDemo-Info.plist";
+				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.applidium.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Production;
@@ -790,6 +1169,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		49B1F7891CE4B3DB00A29BFE /* Build configuration list for PBXNativeTarget "FormDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49B1F7851CE4B3DB00A29BFE /* Stubs */,
+				49B1F7861CE4B3DB00A29BFE /* Preproduction */,
+				49B1F7871CE4B3DB00A29BFE /* Production */,
+				49B1F7881CE4B3DB00A29BFE /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Distribution;
+		};
 		7A0EC6491535D8ED00E5F54A /* Build configuration list for PBXProject "FormDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

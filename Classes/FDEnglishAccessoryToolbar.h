@@ -6,8 +6,8 @@
 //
 //
 
-#import "ADNavigableButtons.h"
+#import "FDSharedObjectiveCHeader.h"
 
-@interface FDEnglishAccessoryToolbar : UIToolbar<ADNavigableButtons>
+@interface FDEnglishAccessoryToolbar : UIToolbar<NavigableView>
 
 @end

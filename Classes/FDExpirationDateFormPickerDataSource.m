@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, FDExpirationDateComponent) {
     return FDExpirationDateComponentCount;
 }
 
-- (NSArray *)optionsForComponent:(NSInteger)component {
+- (NSArray<NSString *> *)componentOptions:(NSInteger)component {
     switch (component) {
         case FDExpirationDateComponentMonth: {
             return [self _months];

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADFormPickerDataSource.h"
+#import "FDSharedObjectiveCHeader.h"
 
-@interface FDExpirationDateFormPickerDataSource : NSObject <ADFormPickerDataSource>
+@interface FDExpirationDateFormPickerDataSource : NSObject <FormPickerDataSource>
 
 @end
