@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>logLevel</key>
-	<string>0</string>
+	<integer>0</integer>
+	<key>useWatchdog</key>
+	<false/>
+	<key>useFileLogger</key>
+	<false/>
 </dict>
 </plist>

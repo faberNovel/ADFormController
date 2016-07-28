@@ -7,9 +7,15 @@
 //
 
 #import "ADTargetSettings.h"
-#import <CocoaLumberjack/CocoaLumberjack.h>
 
 @interface ADTargetSettings ()
+@property (nonatomic, strong, readwrite) NSString * hockeyAppId;
+@property (nonatomic, readwrite) BOOL useWatchdog;
+@property (nonatomic, readwrite) BOOL useFileLogger;
+@property (nonatomic, strong, readwrite) NSString * applidium_blue1;
+@property (nonatomic, strong, readwrite) NSString * applidium_blue2;
+@property (nonatomic, strong, readwrite) NSString * applidium_blue3;
+@property (nonatomic, strong, readwrite) NSString * applidium_blue4;
 - (instancetype)_initWithDictionary:(NSDictionary *)dictionary;
 - (void)_extractSettingsFromDictionary:(NSDictionary *)dictionary;
 @end
@@ -42,7 +48,6 @@ static ADTargetSettings * sSettings;
         _logLevel = DDLogLevelAll;
         NSLog(@"Unknown value %@ for log Level! Value range: [0..6]", logLevel);
     }
-
 }
 
 #pragma mark - Private
@@ -70,6 +75,5 @@ static ADTargetSettings * sSettings;
         }
     }
 }
-
 
 @end

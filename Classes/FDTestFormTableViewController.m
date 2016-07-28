@@ -7,14 +7,14 @@
 //
 
 #import "FDTestFormTableViewController.h"
-#import "ADFormController.h"
+#import "FDSharedObjectiveCHeader.h"
 #import "FDExpirationDateFormPickerDataSource.h"
 #import "FDCreditCardTextFieldFormatter.h"
-#import "ADSimpleFormPickerDataSource.h"
-#import "FDFormModel.h"
-#import "ADFormCellTextConfiguration.h"
-#import "ADFormCellBoolConfiguration.h"
 #import "FDEnglishAccessoryToolbar.h"
+#import "FDSharedObjectiveCHeader.h"
+#import "FDFormModel.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <ADDynamicLogLevel/ADDynamicLogLevel.h>
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,
@@ -40,8 +40,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     FDPasswordRowTypeCount
 };
 
-@interface FDTestFormTableViewController () <ADFormControllerDelegate> {
-    ADFormController * _formController;
+@interface FDTestFormTableViewController () <FormControllerDelegate> {
+    FormController * _formController;
     BOOL _passwordVisible;
 }
 @property (nonatomic, strong) FDFormModel * formModel;
@@ -65,7 +65,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     [super viewDidLoad];
 
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    _formController = [[ADFormController alloc] initWithTableView:self.tableView];
+    _formController = [[FormController alloc] initWithTableView:self.tableView];
     _formController.delegate = self;
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Print"
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                                                                              action:@selector(_printValues:)];
 
     if (self.customAccessoryView) {
-        _formController.defaultInputAccessoryView = [[FDEnglishAccessoryToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 64.0f)];
+        _formController.defaultAccessoryView = [[FDEnglishAccessoryToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 64.0f)];
     }
 }
 
@@ -133,17 +133,17 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     return [_formController cellForRowAtIndexPath:indexPath];
 }
 
-#pragma mark - ADFormControllerDelegate
+#pragma mark - FormControllerDelegate
 
-- (ADFormCellConfiguration *)configurationForFormController:(ADFormController *)formController
+- (FormCellConfiguration *)configurationForFormController:(FormController *)formController
                                                 atIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case FDRowTypeGender: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Gender";
-                configuration.cellType = ADFormTextCellTypePicker;
-                configuration.formPickerDataSource = [[ADSimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
+                configuration.cellType = FormTextCellTypePicker;
+                configuration.formPickerDataSource = [[SimpleFormPickerDataSource alloc] initWithOptions:@[ @"Male", @"Female" ]];
                 configuration.text = self.formModel.gender;
                 if (self.showTitles) {
                     configuration.title = @"Gender";
@@ -151,9 +151,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypeName: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Name";
-                configuration.cellType = ADFormTextCellTypeName;
+                configuration.cellType = FormTextCellTypeName;
                 configuration.text = self.formModel.name;
                 if (self.showTitles) {
                     configuration.title = @"Name";
@@ -161,9 +161,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypeEmail: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Email";
-                configuration.cellType = ADFormTextCellTypeEmail;
+                configuration.cellType = FormTextCellTypeEmail;
                 configuration.text = self.formModel.email;
                 if (self.showTitles) {
                     configuration.title = @"Email";
@@ -171,9 +171,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypePhoneNumber: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Phone";
-                configuration.cellType = ADFormTextCellTypePhone;
+                configuration.cellType = FormTextCellTypePhone;
                 configuration.text = self.formModel.phone;
                 if (self.showTitles) {
                     configuration.title = @"Phone";
@@ -181,9 +181,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypeLongText: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Long text";
-                configuration.cellType = ADFormTextCellTypeLongText;
+                configuration.cellType = FormTextCellTypeLongText;
                 configuration.text = self.formModel.summary;
                 if (self.showTitles) {
                     configuration.title = @"Long text";
@@ -191,9 +191,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypeDate: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Date";
-                configuration.cellType = ADFormTextCellTypeDate;
+                configuration.cellType = FormTextCellTypeDate;
                 configuration.dateFormatter = [self.class _dateFormatter];
                 configuration.text = [[self.class _dateFormatter] stringFromDate:self.formModel.birthDate];
                 if (self.showTitles) {
@@ -202,7 +202,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypeSwitch: {
-                ADFormCellBoolConfiguration * configuration = [[ADFormCellBoolConfiguration alloc] init];
+                FormCellBoolConfiguration * configuration = [[FormCellBoolConfiguration alloc] init];
                 configuration.boolValue = self.formModel.married;
                 configuration.title = @"Maried";
                 configuration.onTintColor = [UIColor greenColor];
@@ -211,9 +211,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDRowTypeNoInputAccessory: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Useless row with no input accessory";
-                configuration.cellType = ADFormTextCellTypeName;
+                configuration.cellType = FormTextCellTypeName;
                 if (self.showTitles) {
                     configuration.title = @"No accessory here";
                 }
@@ -225,9 +225,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     } else if (indexPath.section == 1) {
         switch (indexPath.row) {
             case FDCreditCardRowTypeNumber: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Credit card";
-                configuration.cellType = ADFormTextCellTypeNumber;
+                configuration.cellType = FormTextCellTypeNumber;
                 configuration.textFieldFormatter = [FDCreditCardTextFieldFormatter new];
                 configuration.text = self.formModel.creditCard;
                 if (self.showTitles) {
@@ -236,9 +236,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDCreditCardRowTypeExpirationDate: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Expiration Date";
-                configuration.cellType = ADFormTextCellTypePicker;
+                configuration.cellType = FormTextCellTypePicker;
                 configuration.formPickerDataSource = [FDExpirationDateFormPickerDataSource new];
                 configuration.text = self.formModel.expiration;
                 if (self.showTitles) {
@@ -250,10 +250,10 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     } else if (indexPath.section == 2) {
         switch (indexPath.row) {
             case FDPasswordRowTypeNewPassword: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"New password";
                 if (!_passwordVisible) {
-                    configuration.cellType = ADFormTextCellTypePassword;
+                    configuration.cellType = FormTextCellTypePassword;
                 }
                 if (self.isPrefilled) {
                     configuration.text = @"abcdef";
@@ -265,9 +265,9 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
                 return configuration;
             } break;
             case FDPasswordRowTypeNewPasswordConfirmation: {
-                ADFormCellTextConfiguration * configuration = [[ADFormCellTextConfiguration alloc] init];
+                FormCellTextConfiguration * configuration = [[FormCellTextConfiguration alloc] init];
                 configuration.placeholder = @"Confirmation";
-                configuration.cellType = ADFormTextCellTypePassword;
+                configuration.cellType = FormTextCellTypePassword;
                 if (self.isPrefilled) {
                     configuration.text = @"abcdef";
                 }
@@ -281,7 +281,7 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     return nil;
 }
 
-- (UIView *)formController:(ADFormController *)formController inputAccessoryViewForIndexPath:(NSIndexPath *)indexPath {
+- (UIView *)formController:(FormController *)formController inputAccessoryViewAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 2 && indexPath.row == FDPasswordRowTypeNewPasswordConfirmation) {
         UIToolbar * toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44.0f)];
         UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check password"
@@ -293,10 +293,10 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     } else if (indexPath.section == 0 && indexPath.row == FDRowTypeNoInputAccessory) {
         return nil;
     }
-    return formController.defaultInputAccessoryView;
+    return formController.defaultAccessoryView.view;
 }
 
-- (void)formController:(ADFormController *)formController valueChangedForIndexPath:(NSIndexPath *)indexPath {
+- (void)formController:(FormController *)formController valueChangedForIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case FDRowTypeGender: {

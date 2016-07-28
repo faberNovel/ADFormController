@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ADTextFieldFormatter.h"
+#import "FDSharedObjectiveCHeader.h"
 
-@interface FDCreditCardTextFieldFormatter : NSObject <ADTextFieldFormatter>
+@interface FDCreditCardTextFieldFormatter : NSObject <TextFieldFormatter>
 
 @end
