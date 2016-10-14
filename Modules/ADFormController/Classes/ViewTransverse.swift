@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     func superViewFromClass<T: UIView>() -> T? {
-        var view: UIView = self
+        let view: UIView = self
         guard let castedView = view as? T else {
             return view.superview.flatMap {
                 return $0.superViewFromClass()
