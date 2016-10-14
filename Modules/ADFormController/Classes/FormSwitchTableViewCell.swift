@@ -104,6 +104,8 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         let scale = CGAffineTransformMakeScale(CGFloat(configuration.switchZoom), CGFloat(configuration.switchZoom));
         let clipToRightTransform = CGAffineTransformMakeTranslation(CGFloat(CGRectGetWidth(switchView.frame)) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, 0.0);
         self.switchView.transform = CGAffineTransformConcat(scale, clipToRightTransform);
+
+        switchView.enabled = configuration.enabled
     }
 
     // MARK: Private

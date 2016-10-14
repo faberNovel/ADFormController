@@ -12,7 +12,7 @@ import ADFormController
 protocol RowConfigurable {
     var title: String { get }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration?
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration?
 }
 
 enum RowType: Int {
@@ -42,7 +42,7 @@ extension RowType: RowConfigurable {
         }
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration? {
         switch self {
         case RowTypeGender:
             let configuration = FormCellTextConfiguration();
@@ -53,6 +53,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Gender"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypeName:
             let configuration = FormCellTextConfiguration();
@@ -62,6 +63,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Name"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypeEmail:
             let configuration = FormCellTextConfiguration();
@@ -71,6 +73,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Email"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypePhoneNumber:
             let configuration = FormCellTextConfiguration();
@@ -80,6 +83,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Phone"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypeLongText:
             let configuration = FormCellTextConfiguration();
@@ -89,6 +93,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Long text"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypeDate:
             let configuration = FormCellTextConfiguration();
@@ -101,6 +106,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Date"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypeSwitch:
             let configuration = FormCellBoolConfiguration();
@@ -112,6 +118,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Maried"
             }
+            configuration.enabled = enabled
             return configuration
         case RowTypeNoInputAccessory:
             let configuration = FormCellTextConfiguration();
@@ -120,6 +127,7 @@ extension RowType: RowConfigurable {
             if showTitle {
                 configuration.title = "No accessory here"
             }
+            configuration.enabled = enabled
             return configuration
         }
     }
@@ -137,7 +145,7 @@ extension CreditCardRowType: RowConfigurable {
         return "Credit card"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration? {
         switch self {
         case CreditCardRowTypeNumber:
             let configuration = FormCellTextConfiguration();
@@ -148,6 +156,7 @@ extension CreditCardRowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Credit card"
             }
+            configuration.enabled = enabled
             return configuration
         case CreditCardRowTypeExpirationDate:
             let configuration = FormCellTextConfiguration();
@@ -158,6 +167,7 @@ extension CreditCardRowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Expiration Date"
             }
+            configuration.enabled = enabled
             return configuration
         }
     }
@@ -175,7 +185,7 @@ extension PasswordRowType: RowConfigurable {
         return "Password"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration? {
         switch self {
         case PasswordRowTypeNewPassword:
             let configuration = FormCellTextConfiguration();
@@ -190,6 +200,7 @@ extension PasswordRowType: RowConfigurable {
                 configuration.text = "abcdef"
             }
             configuration.rightView = accessoryView
+            configuration.enabled = enabled
             return configuration
         case PasswordRowTypeNewPasswordConfirmation:
             let configuration = FormCellTextConfiguration();
@@ -201,6 +212,7 @@ extension PasswordRowType: RowConfigurable {
             if prefilled {
                 configuration.text = "abcdef"
             }
+            configuration.enabled = enabled
             return configuration
         }
     }

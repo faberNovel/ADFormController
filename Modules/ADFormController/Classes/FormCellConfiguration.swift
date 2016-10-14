@@ -14,6 +14,7 @@ import UIKit
     public var titleColor: UIColor = UIColor.blackColor()
     public var tintColor: UIColor?
     public var rightView: UIView?
+    public var enabled: Bool = true
 
     public func visit(configurable: FormCellConfigurable, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         fatalError("Should be overriden")

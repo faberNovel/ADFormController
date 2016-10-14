@@ -246,6 +246,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         textFieldFormatter?.textFieldValueChanged(textField)
         datePickerBinding.dateFormatter = configuration.dateFormatter
         pickerViewBinding.formPickerDataSource = configuration.formPickerDataSource
+        textField.enabled = configuration.enabled
     }
 
     // MARK: Private
