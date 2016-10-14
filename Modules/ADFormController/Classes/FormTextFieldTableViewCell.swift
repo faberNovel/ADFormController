@@ -231,7 +231,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
 
     func applyConfiguration(configuration: FormCellTextConfiguration) {
         textField.placeholder = configuration.placeholder
-        leftLabel.text = configuration.title;
+        leftLabel.text = configuration.title
         cellType = configuration.cellType
         rightView = configuration.rightView
 
