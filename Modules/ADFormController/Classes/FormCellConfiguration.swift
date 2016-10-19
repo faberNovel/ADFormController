@@ -15,6 +15,7 @@ import UIKit
     public var tintColor: UIColor?
     public var rightView: UIView?
     public var enabled: Bool = true
+    public var textAlignment: NSTextAlignment = .Left
 
     public func visit(configurable: FormCellConfigurable, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         fatalError("Should be overriden")

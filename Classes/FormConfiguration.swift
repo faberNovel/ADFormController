@@ -12,7 +12,7 @@ import ADFormController
 protocol RowConfigurable {
     var title: String { get }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration?
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration?
 }
 
 enum RowType: Int {
@@ -42,7 +42,7 @@ extension RowType: RowConfigurable {
         }
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
         switch self {
         case RowTypeGender:
             let configuration = FormCellTextConfiguration();
@@ -54,6 +54,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Gender"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypeName:
             let configuration = FormCellTextConfiguration();
@@ -64,6 +65,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Name"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypeEmail:
             let configuration = FormCellTextConfiguration();
@@ -74,6 +76,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Email"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypePhoneNumber:
             let configuration = FormCellTextConfiguration();
@@ -84,6 +87,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Phone"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypeLongText:
             let configuration = FormCellTextConfiguration();
@@ -94,6 +98,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Long text"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypeDate:
             let configuration = FormCellTextConfiguration();
@@ -107,6 +112,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Date"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypeSwitch:
             let configuration = FormCellBoolConfiguration();
@@ -119,6 +125,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "Maried"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case RowTypeNoInputAccessory:
             let configuration = FormCellTextConfiguration();
@@ -128,6 +135,7 @@ extension RowType: RowConfigurable {
                 configuration.title = "No accessory here"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         }
     }
@@ -145,7 +153,7 @@ extension CreditCardRowType: RowConfigurable {
         return "Credit card"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
         switch self {
         case CreditCardRowTypeNumber:
             let configuration = FormCellTextConfiguration();
@@ -157,6 +165,7 @@ extension CreditCardRowType: RowConfigurable {
                 configuration.title = "Credit card"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case CreditCardRowTypeExpirationDate:
             let configuration = FormCellTextConfiguration();
@@ -168,6 +177,7 @@ extension CreditCardRowType: RowConfigurable {
                 configuration.title = "Expiration Date"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         }
     }
@@ -185,7 +195,7 @@ extension PasswordRowType: RowConfigurable {
         return "Password"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
         switch self {
         case PasswordRowTypeNewPassword:
             let configuration = FormCellTextConfiguration();
@@ -201,6 +211,7 @@ extension PasswordRowType: RowConfigurable {
             }
             configuration.rightView = accessoryView
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         case PasswordRowTypeNewPasswordConfirmation:
             let configuration = FormCellTextConfiguration();
@@ -213,6 +224,7 @@ extension PasswordRowType: RowConfigurable {
                 configuration.text = "abcdef"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
             return configuration
         }
     }

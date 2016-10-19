@@ -22,6 +22,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     var showTitles = false
     var shouldSetCustomAccessoryView = false
     var enabledInputs = true
+    var alignment: NSTextAlignment = .Left
 
     static let dateFormatter : NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
@@ -110,7 +111,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     // MARK: FormControllerDelegate
 
     func configurationForFormController(formController: FormController, atIndexPath indexPath: NSIndexPath) -> FormCellConfiguration? {
-        return rowConfigurableAtIndexPath(indexPath)?.formCellConfiguration(showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible, enabled: enabledInputs)
+        return rowConfigurableAtIndexPath(indexPath)?.formCellConfiguration(showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible, enabled: enabledInputs, alignment: alignment)
     }
 
     func formController(formController: FormController, inputAccessoryViewForIndexPath indexPath: NSIndexPath) -> UIView {
