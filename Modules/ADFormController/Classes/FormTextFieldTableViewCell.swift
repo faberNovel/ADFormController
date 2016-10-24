@@ -231,7 +231,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
 
     func applyConfiguration(configuration: FormCellTextConfiguration) {
         textField.placeholder = configuration.placeholder
-        leftLabel.text = configuration.title;
+        leftLabel.text = configuration.title
         cellType = configuration.cellType
         rightView = configuration.rightView
 
@@ -246,6 +246,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         textFieldFormatter?.textFieldValueChanged(textField)
         datePickerBinding.dateFormatter = configuration.dateFormatter
         pickerViewBinding.formPickerDataSource = configuration.formPickerDataSource
+        textField.enabled = configuration.enabled
+        textField.textAlignment = configuration.textAlignment
     }
 
     // MARK: Private

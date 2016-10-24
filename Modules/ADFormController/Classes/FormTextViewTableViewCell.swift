@@ -137,5 +137,6 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         textView.tintColor = configuration.tintColor
         textView.text = configuration.text
         (textView as! PlaceholderTextView).placeholder = configuration.placeholder
+        textView.editable = configuration.enabled
     }
 }

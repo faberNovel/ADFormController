@@ -78,7 +78,7 @@ class PlaceholderTextView: UITextView {
         guard let fontToUse = font == nil ? typingAttributes[NSFontAttributeName] : font else {
             return
         }
-        var newStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
+        let newStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         newStyle.lineBreakMode = .ByTruncatingTail
         newStyle.alignment = textAlignment
         let stringToDraw: NSString = placeholder
