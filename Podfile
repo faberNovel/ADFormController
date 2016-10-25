@@ -12,7 +12,7 @@ abstract_target 'Form' do
   pod 'ADFormController', :path => './'
 
   target 'FormDemo' do
-    pod 'Alamofire', '~> 3.0'
+    pod 'Alamofire', '~> 3.5'
     pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
     pod 'Watchdog', '~> 1.0'
   end
@@ -33,6 +33,7 @@ post_install do |installer|
             config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
             config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
             config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+            config.build_settings['SWIFT_VERSION'] = "2.3"
         end
     end
 end

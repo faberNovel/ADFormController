@@ -24,7 +24,7 @@ class MenuTableViewController: TableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -38,6 +38,10 @@ class MenuTableViewController: TableViewController {
             cell.textLabel?.text = "With Title"
         case 3:
             cell.textLabel?.text = "Custom default input accessory"
+        case 4:
+            cell.textLabel?.text = "Disabled inputs"
+        case 5:
+            cell.textLabel?.text = "With alignment"
         default:
             break
         }
@@ -61,6 +65,13 @@ class MenuTableViewController: TableViewController {
         case 3:
             testFormViewController.title = "Custom default input accessory"
             testFormViewController.shouldSetCustomAccessoryView = true
+        case 4:
+            testFormViewController.title = "Disabled inputs"
+            testFormViewController.enabledInputs = false
+        case 5:
+            testFormViewController.title = "With alignment"
+            testFormViewController.showTitles = true
+            testFormViewController.alignment = .Right
         default:
             break
         }

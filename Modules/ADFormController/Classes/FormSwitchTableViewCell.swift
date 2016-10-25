@@ -101,9 +101,10 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         //hack to have a nice background color for off position
         switchView.layer.cornerRadius = 16.0
         switchView.backgroundColor = configuration.tintColor
-        let scale = CGAffineTransformMakeScale(CGFloat(configuration.switchZoom), CGFloat(configuration.switchZoom));
-        let clipToRightTransform = CGAffineTransformMakeTranslation(CGFloat(CGRectGetWidth(switchView.frame)) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, 0.0);
-        self.switchView.transform = CGAffineTransformConcat(scale, clipToRightTransform);
+        let scale = CGAffineTransformMakeScale(CGFloat(configuration.switchZoom), CGFloat(configuration.switchZoom))
+        let clipToRightTransform = CGAffineTransformMakeTranslation(CGFloat(CGRectGetWidth(switchView.frame)) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, 0.0)
+        self.switchView.transform = CGAffineTransformConcat(scale, clipToRightTransform)
+        switchView.enabled = configuration.enabled
     }
 
     // MARK: Private
