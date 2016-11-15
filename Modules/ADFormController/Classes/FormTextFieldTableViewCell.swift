@@ -73,6 +73,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
                 textField.autocorrectionType = .Default;
             case .Number:
                 textField.keyboardType = .NumberPad;
+            case .Decimal:
+                textField.keyboardType = .DecimalPad
             case .Date:
                 textField.inputView = datePickerBinding.datePicker
                 textField.disablePasteAction = true

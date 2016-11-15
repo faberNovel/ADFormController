@@ -15,6 +15,7 @@ import UIKit
     case Phone
     case Text
     case Number
+    case Decimal
     case Date
     case Picker
     case LongText
