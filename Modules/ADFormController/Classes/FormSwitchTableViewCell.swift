@@ -33,21 +33,21 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
                 "switchView" : switchView,
                 "rightView" : rightView
             ]
-            let metrics : [String: AnyObject] = [
-                "rightViewWidth" : CGRectGetWidth(rightView.bounds),
-                "rightViewHeight" : CGRectGetHeight(rightView.bounds),
+            let metrics : [String: Any] = [
+                "rightViewWidth" : rightView.bounds.width,
+                "rightViewHeight" : rightView.bounds.height,
                 "margin" : margin
             ]
-            var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[switchView]-[rightView(rightViewWidth)]|",
-                                                                             options: .AlignAllCenterY,
+            var constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[switchView]-[rightView(rightViewWidth)]|",
+                                                                             options: .alignAllCenterY,
                                                                              metrics: metrics,
                                                                              views: views)
-            dynamicConstraints.appendContentsOf(constraints)
-            constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[rightView(rightViewHeight)]",
-                                                                         options: .AlignAllLeft,
+            dynamicConstraints.append(contentsOf: constraints)
+            constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[rightView(rightViewHeight)]",
+                                                                         options: .alignAllLeft,
                                                                          metrics: metrics,
                                                                          views: views)
-            dynamicConstraints.appendContentsOf(constraints)
+            dynamicConstraints.append(contentsOf: constraints)
         } else {
             let views = [
                 "switchView" : switchView
@@ -55,11 +55,11 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
             let metrics = [
                 "margin" : margin
             ]
-            let constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[switchView]-margin-|",
-                                                                             options: .AlignAllLeft,
+            let constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[switchView]-margin-|",
+                                                                             options: .alignAllLeft,
                                                                              metrics: metrics,
                                                                              views: views)
-            dynamicConstraints.appendContentsOf(constraints)
+            dynamicConstraints.append(contentsOf: constraints)
         }
         contentView.addConstraints(dynamicConstraints)
         super.updateConstraints()
@@ -68,11 +68,11 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
     // MARK: UITableViewCell
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        switchView.addTarget(self, action: #selector(FormSwitchTableViewCell.switchValueChanged(_:)), forControlEvents: .ValueChanged)
+        switchView.addTarget(self, action: #selector(FormSwitchTableViewCell.switchValueChanged(_:)), for: .valueChanged)
         contentView.addSubview(switchView)
         contentView.addSubview(leftLabel)
         setupStaticConstraints()
-        layoutMargins = UIEdgeInsetsZero
+        layoutMargins = UIEdgeInsets.zero
         separatorInset = UIEdgeInsetsMake(0, CGFloat(margin) as CGFloat, 0, 0)
     }
 
@@ -84,33 +84,33 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
     weak var delegate: FormBoolInputTableViewCellDelegate?
     var boolContent: Bool {
         get {
-            return switchView.on
+            return switchView.isOn
         }
         set {
-            switchView.on = newValue
+            switchView.isOn = newValue
         }
     }
 
-    func applyConfiguration(configuration: FormCellBoolConfiguration) {
+    func applyConfiguration(_ configuration: FormCellBoolConfiguration) {
         rightView = configuration.rightView
         leftLabel.text = configuration.title
         leftLabel.font = configuration.titleFont
         leftLabel.textColor = configuration.titleColor
-        switchView.on = configuration.boolValue
+        switchView.isOn = configuration.boolValue
         switchView.onTintColor = configuration.onTintColor
         //hack to have a nice background color for off position
         switchView.layer.cornerRadius = 16.0
         switchView.backgroundColor = configuration.tintColor
-        let scale = CGAffineTransformMakeScale(CGFloat(configuration.switchZoom), CGFloat(configuration.switchZoom))
-        let clipToRightTransform = CGAffineTransformMakeTranslation(CGFloat(CGRectGetWidth(switchView.frame)) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, 0.0)
-        self.switchView.transform = CGAffineTransformConcat(scale, clipToRightTransform)
-        switchView.enabled = configuration.enabled
+        let scale = CGAffineTransform(scaleX: CGFloat(configuration.switchZoom), y: CGFloat(configuration.switchZoom))
+        let clipToRightTransform = CGAffineTransform(translationX: CGFloat(switchView.frame.width) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, y: 0.0)
+        self.switchView.transform = scale.concatenating(clipToRightTransform)
+        switchView.isEnabled = configuration.enabled
     }
 
     // MARK: Private
 
     func setupStaticConstraints() {
-        switchView.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
+        switchView.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
         let views = [
             "switchView" : switchView,
             "leftLabel" : leftLabel
@@ -119,23 +119,23 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
             "margin" : margin
         ]
         addConstraint(NSLayoutConstraint(item: contentView,
-            attribute: .CenterY,
-            relatedBy: .Equal,
+            attribute: .centerY,
+            relatedBy: .equal,
             toItem: switchView,
-            attribute: .CenterY,
+            attribute: .centerY,
             multiplier: 1.0,
             constant: 0.0))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[leftLabel]-margin-[switchView]",
-            options: .AlignAllCenterY,
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-margin-[leftLabel]-margin-[switchView]",
+            options: .alignAllCenterY,
             metrics: metrics,
             views: views))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[leftLabel(>=42)]|",
-            options: .AlignAllLeft,
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[leftLabel(>=42)]|",
+            options: .alignAllLeft,
             metrics: metrics,
             views: views))
     }
 
-    @objc func switchValueChanged(sender: UISwitch) {
+    @objc func switchValueChanged(_ sender: UISwitch) {
         self.delegate?.boolInputTableViewCellDidChangeValue(self)
     }
 

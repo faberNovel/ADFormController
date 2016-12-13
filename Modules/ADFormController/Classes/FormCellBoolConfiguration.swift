@@ -8,12 +8,12 @@
 
 import UIKit
 
-@objc public class FormCellBoolConfiguration : FormCellConfiguration {
-    public var boolValue: Bool = false
-    public var onTintColor: UIColor?
-    public var switchZoom: Float = 1.0
+@objc open class FormCellBoolConfiguration : FormCellConfiguration {
+    open var boolValue: Bool = false
+    open var onTintColor: UIColor?
+    open var switchZoom: Float = 1.0
 
-    override public func visit(configurable: FormCellConfigurable, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
         return configurable.boolInputCellWithConfiguration(self, atIndexPath: indexPath)
     }
 }

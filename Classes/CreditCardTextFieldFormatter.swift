@@ -15,23 +15,23 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
     private var previousSelectionRange: UITextRange?
 
     // MARK: ADTextFieldFormatter
-    @objc func textFieldValueChanged(textField: UITextField) {
+    @objc func textFieldValueChanged(_ textField: UITextField) {
         reformAsCardNumber(textField)
     }
 
-    @objc func textField(textField: UITextField!, shouldChangeCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
+    @objc func textField(_ textField: UITextField!, shouldChangeCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
         previousSelectionRange = textField.selectedTextRange
         previousTextFieldContent = textField.text
         return true
     }
 
     // MARK: Private
-    private func reformAsCardNumber(textField: UITextField) {
+    private func reformAsCardNumber(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }
         guard var targetCursorPosition = textField.selectedTextRange.map({
-            return textField.offsetFromPosition(textField.beginningOfDocument, toPosition: $0.start)
+            return textField.offset(from: textField.beginningOfDocument, to: $0.start)
         }) else {
             return
         }
@@ -43,21 +43,21 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
         }
         let cardNumberWithSpacing = self.insertSpacesEveryFourDigitsAndPreserveCursorPosition(cardNumberWithoutSpacing, cursorPosition: &targetCursorPosition)
         textField.text = cardNumberWithSpacing
-        let targetPosition = textField.positionFromPosition(textField.beginningOfDocument, offset: targetCursorPosition)
-        textField.selectedTextRange = targetPosition.flatMap({textField.textRangeFromPosition($0, toPosition: $0)})
+        let targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition)
+        textField.selectedTextRange = targetPosition.flatMap({textField.textRange(from: $0, to: $0)})
     }
 
-    private func removeNonDigitsAndPreserveCursorPosition(string: String, inout cursorPosition: Int) -> String {
+    private func removeNonDigitsAndPreserveCursorPosition(_ string: String, cursorPosition: inout Int) -> String {
         let originalCursorPosition = cursorPosition
         let newCharacters = string.characters.filter { (character : Character) -> Bool in
             let scalars = String(character).unicodeScalars
-            return NSCharacterSet.decimalDigitCharacterSet().longCharacterIsMember(scalars[scalars.startIndex].value)
+            return CharacterSet.decimalDigits.contains(UnicodeScalar(scalars[scalars.startIndex].value)!)
         }
         cursorPosition = originalCursorPosition - (string.characters.count - newCharacters.count)
         return String(newCharacters)
     }
 
-    private func insertSpacesEveryFourDigitsAndPreserveCursorPosition(originalString: String, inout cursorPosition: Int) -> String {
+    private func insertSpacesEveryFourDigitsAndPreserveCursorPosition(_ originalString: String, cursorPosition: inout Int) -> String {
         let originalCursorPosition = cursorPosition
         var newString : String = String()
         for index in 0..<originalString.characters.count {
@@ -67,7 +67,7 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
                     cursorPosition += 1
                 }
             }
-            newString.append(originalString[originalString.startIndex.advancedBy(index)])
+            newString.append(originalString[originalString.characters.index(originalString.startIndex, offsetBy: index)])
         }
         return newString
     }

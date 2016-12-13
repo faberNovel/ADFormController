@@ -15,13 +15,13 @@ protocol FormTextInputTableViewCell {
     var textContent: String? { get set }
 
     func beginEditing()
-    func applyConfiguration(configuration: FormCellTextConfiguration)
+    func applyConfiguration(_ configuration: FormCellTextConfiguration)
 }
 
 protocol FormTextInputTableViewCellDelegate: class {
-    func textInputTableViewCellDidBeginEditing(cell: FormTextInputTableViewCell)
-    func textInputTableViewCellShouldReturn(cell: FormTextInputTableViewCell) -> Bool
-    func textInputTableViewCellValueChanged(cell: FormTextInputTableViewCell)
+    func textInputTableViewCellDidBeginEditing(_ cell: FormTextInputTableViewCell)
+    func textInputTableViewCellShouldReturn(_ cell: FormTextInputTableViewCell) -> Bool
+    func textInputTableViewCellValueChanged(_ cell: FormTextInputTableViewCell)
 }
 
 
@@ -29,9 +29,9 @@ protocol FormBoolInputTableViewCell {
     weak var delegate: FormBoolInputTableViewCellDelegate? { get set }
     var boolContent: Bool { get set }
 
-    func applyConfiguration(configuration: FormCellBoolConfiguration)
+    func applyConfiguration(_ configuration: FormCellBoolConfiguration)
 }
 
 protocol FormBoolInputTableViewCellDelegate: class {
-    func boolInputTableViewCellDidChangeValue(cell: FormBoolInputTableViewCell)
+    func boolInputTableViewCellDidChangeValue(_ cell: FormBoolInputTableViewCell)
 }

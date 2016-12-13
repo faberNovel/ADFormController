@@ -51,7 +51,7 @@ class PlaceholderTextView: UITextView {
         }
     }
 
-    override func insertText(text: String) {
+    override func insertText(_ text: String) {
         super.insertText(text)
         setNeedsDisplay()
     }
@@ -59,9 +59,9 @@ class PlaceholderTextView: UITextView {
     // MARK: UIView
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(PlaceholderTextView.textChanged(_:)),
-                                                         name: UITextViewTextDidChangeNotification,
+                                                         name: NSNotification.Name.UITextViewTextDidChange,
                                                          object: nil)
     }
 
@@ -69,8 +69,8 @@ class PlaceholderTextView: UITextView {
         super.init(coder: aDecoder)
     }
 
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         guard text.isEmpty && !placeholder.isEmpty else {
             return
         }
@@ -78,22 +78,22 @@ class PlaceholderTextView: UITextView {
         guard let fontToUse = font == nil ? typingAttributes[NSFontAttributeName] : font else {
             return
         }
-        let newStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        newStyle.lineBreakMode = .ByTruncatingTail
+        let newStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        newStyle.lineBreakMode = .byTruncatingTail
         newStyle.alignment = textAlignment
-        let stringToDraw: NSString = placeholder
-        stringToDraw.drawInRect(newRect,
+        let stringToDraw: NSString = placeholder as NSString
+        stringToDraw.draw(in: newRect,
                                 withAttributes: [NSFontAttributeName: fontToUse,
                                     NSParagraphStyleAttributeName: newStyle,
                                     NSForegroundColorAttributeName: placeholderColor])
     }
 
     // MARK: Private
-    @objc private func textChanged(notification: NSNotification) {
+    @objc private func textChanged(_ notification: Notification) {
         setNeedsDisplay()
     }
 
-    private func placeholderRectForBounds(bounds: CGRect) -> CGRect {
+    private func placeholderRectForBounds(_ bounds: CGRect) -> CGRect {
         var rect = UIEdgeInsetsInsetRect(bounds, contentInset)
         guard let style = typingAttributes[NSParagraphStyleAttributeName].flatMap({ $0 as? NSParagraphStyle }) else {
             return rect

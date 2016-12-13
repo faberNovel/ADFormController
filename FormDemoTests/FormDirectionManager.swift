@@ -96,7 +96,7 @@ private extension IndexPath {
         let nextRowIndex = row + 1
         guard nextRowIndex < tableView.numberOfRows(inSection: section) else {
             var newSection = section + 1
-            while newSection < tableView.numberOfSections && tableView.numberOfRows(inSection: newSection) == 0 {
+            while  newSection < tableView.numberOfSections && tableView.numberOfRows(inSection: newSection) == 0 {
                 newSection += 1
             }
             guard newSection < tableView.numberOfSections else {

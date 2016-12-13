@@ -20,8 +20,8 @@ import UIKit
 class TextInputAccessoryView: UIToolbar, NavigableView {
 
     // MARK: NavigableButtons
-    private(set) var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDNextIcon"), style: .Plain, target: nil, action: nil)
-    private(set) var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDPreviousIcon"), style: .Plain, target: nil, action: nil)
+    private(set) var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDNextIcon"), style: .plain, target: nil, action: nil)
+    private(set) var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage.bundleImage("FDPreviousIcon"), style: .plain, target: nil, action: nil)
 
     // MARK: NavigableView
     var view: UIView {
@@ -43,8 +43,8 @@ class TextInputAccessoryView: UIToolbar, NavigableView {
     private func initComponents() {
         nextBarButtonItem.width = 44.0
         previousBarButtonItem.width = 44.0
-        tintColor = UIColor.blackColor()
-        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        tintColor = UIColor.black
+        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.items = [previousBarButtonItem, flexibleItem, nextBarButtonItem]
     }
 }

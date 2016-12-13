@@ -9,45 +9,45 @@
 import UIKit
 
 @objc public enum FormTextCellType : Int {
-    case Email
-    case Password
-    case Name
-    case Phone
-    case Text
-    case Number
-    case Decimal
-    case Date
-    case Picker
-    case LongText
-    case PasswordNumber
+    case email
+    case password
+    case name
+    case phone
+    case text
+    case number
+    case decimal
+    case date
+    case picker
+    case longText
+    case passwordNumber
 
     var requiredCell : UITableViewCell {
         switch self {
-        case .LongText:
-            return FormTextViewTableViewCell(style: .Default, reuseIdentifier: nil)
+        case .longText:
+            return FormTextViewTableViewCell(style: .default, reuseIdentifier: nil)
         default:
-            return FormTextFieldTableViewCell(style: .Default, reuseIdentifier: nil)
+            return FormTextFieldTableViewCell(style: .default, reuseIdentifier: nil)
         }
     }
 
 }
 
-@objc public class FormCellTextConfiguration :FormCellConfiguration {
-    public var text: String = ""
-    public var textFont: UIFont? = UIFont.init(name: "HelveticaNeue-Light", size: 14.0)
-    public var textColor: UIColor = UIColor.blackColor()
-    public var placeholder: String = ""
-    public var dateFormatter: NSDateFormatter?
-    public var textFieldFormatter: TextFieldFormatter?
-    public var formPickerDataSource: FormPickerDataSource?
-    public var cellType: FormTextCellType = .Email
+@objc open class FormCellTextConfiguration :FormCellConfiguration {
+    open var text: String = ""
+    open var textFont: UIFont? = UIFont.init(name: "HelveticaNeue-Light", size: 14.0)
+    open var textColor: UIColor = UIColor.black
+    open var placeholder: String = ""
+    open var dateFormatter: DateFormatter?
+    open var textFieldFormatter: TextFieldFormatter?
+    open var formPickerDataSource: FormPickerDataSource?
+    open var cellType: FormTextCellType = .email
 
     override public init() {
         super.init()
-        tintColor = UIColor.blackColor()
+        tintColor = UIColor.black
     }
 
-    override public func visit(configurable: FormCellConfigurable, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
         let cell = configurable.textInputCellWithConfiguration(self, atIndexPath: indexPath)
         return cell
     }

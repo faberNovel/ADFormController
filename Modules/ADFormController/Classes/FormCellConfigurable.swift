@@ -9,6 +9,6 @@
 import UIKit
 
 @objc public protocol FormCellConfigurable {
-    func boolInputCellWithConfiguration(configuration: FormCellBoolConfiguration, atIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    func textInputCellWithConfiguration(configuration: FormCellTextConfiguration, atIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func boolInputCellWithConfiguration(_ configuration: FormCellBoolConfiguration, atIndexPath indexPath: IndexPath) -> UITableViewCell
+    func textInputCellWithConfiguration(_ configuration: FormCellTextConfiguration, atIndexPath indexPath: IndexPath) -> UITableViewCell
 }

@@ -9,15 +9,15 @@
 import UIKit
 
 class DatePickerTextFieldBinging: NSObject {
-    let datePicker : UIDatePicker = UIDatePicker()
-    var dateFormatter : NSDateFormatter?
+    let datePicker = UIDatePicker()
+    var dateFormatter: DateFormatter?
     private var textField : UITextField
 
     init(textField: UITextField) {
         self.textField = textField
         super.init()
-        datePicker.datePickerMode = .Date
-        datePicker.addTarget(self, action: #selector(DatePickerTextFieldBinging.dateChanged(_:)), forControlEvents: .ValueChanged)
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(DatePickerTextFieldBinging.dateChanged(_:)), for: .valueChanged)
     }
 
     func startEditing() {
@@ -25,8 +25,8 @@ class DatePickerTextFieldBinging: NSObject {
             dateChanged(datePicker)
             return
         }
-        guard let date = dateFormatter.flatMap({ (dateFormatter : NSDateFormatter) -> NSDate? in
-            return textField.text.flatMap({dateFormatter.dateFromString($0)})
+        guard let date = dateFormatter.flatMap({ (dateFormatter : DateFormatter) -> Date? in
+            return textField.text.flatMap({dateFormatter.date(from: $0)})
         }) else {
             return
         }
@@ -34,11 +34,11 @@ class DatePickerTextFieldBinging: NSObject {
     }
 
     // MARK: Private
-    @objc private func dateChanged(sender: UIDatePicker) {
+    @objc private func dateChanged(_ sender: UIDatePicker) {
         textField.text = ""
         guard let dateFormatter = dateFormatter else {
             return
         }
-        textField.insertText(dateFormatter.stringFromDate(sender.date))
+        textField.insertText(dateFormatter.string(from: sender.date))
     }
 }

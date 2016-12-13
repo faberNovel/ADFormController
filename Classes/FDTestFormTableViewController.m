@@ -392,8 +392,6 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 }
 
 - (void)_printValues:(id)sender {
-    BOOL isMarried = [_formController boolValueForIndexPath:[NSIndexPath indexPathForRow:FDRowTypeSwitch inSection:0]];
-    DDLogInfo(@"Married = %@", isMarried ? @"YES" : @"NO");
 }
 
 @end

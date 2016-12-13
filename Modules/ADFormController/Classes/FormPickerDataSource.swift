@@ -10,7 +10,7 @@ import Foundation
 
 @objc public protocol FormPickerDataSource {
     var numberOfComponents : Int { get }
-    func componentOptions(component: Int) -> [String]
-    func stringFromSelectedIndexes(indexes: [Int]) -> String
-    func selectedIndexesFromString(string: String) -> [Int]
+    func componentOptions(_ component: Int) -> [String]
+    func stringFromSelectedIndexes(_ indexes: [Int]) -> String
+    func selectedIndexesFromString(_ string: String) -> [Int]
 }
