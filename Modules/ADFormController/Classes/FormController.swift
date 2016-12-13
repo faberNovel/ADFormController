@@ -137,14 +137,15 @@ private extension FormInput {
     }
 
     // MARK: FormCellConfigurable
-    open func boolInputCellWithConfiguration(_ configuration: FormCellBoolConfiguration, atIndexPath indexPath:IndexPath) -> UITableViewCell {
+
+    open func boolInputCell(with configuration: FormCellBoolConfiguration, at indexPath:IndexPath) -> UITableViewCell {
         return FormInput.bool(configuration).buildCell(cells[indexPath],
                                                        accessoryView: defaultAccessoryView.view,
                                                        returnKeyType: returnKeyType(at: indexPath),
                                                        formController: self)
     }
 
-    open func textInputCellWithConfiguration(_ configuration: FormCellTextConfiguration, atIndexPath indexPath:IndexPath) -> UITableViewCell {
+    open func textInputCell(with configuration: FormCellTextConfiguration, at indexPath:IndexPath) -> UITableViewCell {
         let accessoryView = delegate?.formController?(self, inputAccessoryViewAt: indexPath) ?? defaultAccessoryView.view
         let input = (configuration.cellType == .longText) ? FormInput.longText(configuration) : FormInput.shortText(configuration)
         return input.buildCell(cells[indexPath],

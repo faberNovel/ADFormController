@@ -48,7 +48,7 @@ import UIKit
     }
 
     override open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let cell = configurable.textInputCellWithConfiguration(self, atIndexPath: indexPath)
+        let cell = configurable.textInputCell(with: self, at: indexPath)
         return cell
     }
 }

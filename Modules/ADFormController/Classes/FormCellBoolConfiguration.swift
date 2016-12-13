@@ -14,6 +14,6 @@ import UIKit
     open var switchZoom: Float = 1.0
 
     override open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
-        return configurable.boolInputCellWithConfiguration(self, atIndexPath: indexPath)
+        return configurable.boolInputCell(with: self, at: indexPath)
     }
 }
