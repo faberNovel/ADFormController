@@ -122,6 +122,11 @@ private extension FormInput {
         return configuration.visit(self, atIndexPath: indexPath)
     }
 
+    public func beginEditingAtIndexPath(indexPath: NSIndexPath) {
+        let targetCell = tableView.cellForRowAtIndexPath(indexPath) as? FormTextInputTableViewCell
+        targetCell?.beginEditing()
+    }
+
     // MARK: FormCellConfigurable
     public func boolInputCellWithConfiguration(configuration: FormCellBoolConfiguration, atIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         return FormInput.Bool(configuration).buildCell(cells[indexPath],
