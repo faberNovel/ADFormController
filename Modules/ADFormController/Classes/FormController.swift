@@ -140,7 +140,7 @@ private extension FormInput {
     open func boolInputCellWithConfiguration(_ configuration: FormCellBoolConfiguration, atIndexPath indexPath:IndexPath) -> UITableViewCell {
         return FormInput.bool(configuration).buildCell(cells[indexPath],
                                                        accessoryView: defaultAccessoryView.view,
-                                                       returnKeyType: returnKeyTypeAtIndexPath(indexPath),
+                                                       returnKeyType: returnKeyType(at: indexPath),
                                                        formController: self)
     }
 
@@ -149,7 +149,7 @@ private extension FormInput {
         let input = (configuration.cellType == .longText) ? FormInput.longText(configuration) : FormInput.shortText(configuration)
         return input.buildCell(cells[indexPath],
                                accessoryView: accessoryView,
-                               returnKeyType: returnKeyTypeAtIndexPath(indexPath),
+                               returnKeyType: returnKeyType(at: indexPath),
                                formController: self)
     }
 
@@ -180,7 +180,7 @@ private extension FormInput {
             return false
         }
         if formDirectionManager.canMoveToDirection(.next, fromIndexPath: indexPath) {
-            moveToDirection(.next, fromIndexPath: indexPath)
+            move(to: .next, from: indexPath)
             return false
         }
         delegate?.formControllerAction?(self)
@@ -195,11 +195,11 @@ private extension FormInput {
 
     // MARK: Private
     @objc private func next(_ sender: UIBarButtonItem) {
-        moveToDirection(.next)
+        move(to: .next)
     }
 
     @objc private func previous(_ sender: UIBarButtonItem) {
-        moveToDirection(.previous)
+        move(to: .previous)
     }
 
     private func indexPathForFirstResponder() -> IndexPath? {
@@ -214,14 +214,14 @@ private extension FormInput {
         }
     }
 
-    private func moveToDirection(_ direction: AccessoryViewDirection) {
+    private func move(to direction: AccessoryViewDirection) {
         guard let indexPath = indexPathForFirstResponder() else {
             return
         }
-        moveToDirection(direction, fromIndexPath: indexPath)
+        move(to: direction, from: indexPath)
     }
 
-    private func moveToDirection(_ direction: AccessoryViewDirection, fromIndexPath indexPath: IndexPath) {
+    private func move(to direction: AccessoryViewDirection, from indexPath: IndexPath) {
         guard let nextIndexPath = formDirectionManager.indexPathForDirection(direction, andBaseIndexPath: indexPath) else {
             return
         }
@@ -239,7 +239,7 @@ private extension FormInput {
         defaultAccessoryView.previousBarButtonItem.isEnabled = formDirectionManager.canMoveToDirection(.previous, fromIndexPath: indexPath)
     }
 
-    private func returnKeyTypeAtIndexPath(_ indexPath: IndexPath) -> UIReturnKeyType {
+    private func returnKeyType(at indexPath: IndexPath) -> UIReturnKeyType {
         let lastSection = tableView.numberOfSections - 1
         guard lastSection > 0 else {
             return .default
@@ -249,7 +249,7 @@ private extension FormInput {
         return (isLastRow && isLastSection) ? .go : .next
     }
 
-    private func textInputTableViewCellAtIndexPath<T: FormTextInputTableViewCell>(_ indexPath: IndexPath) -> T? {
+    private func textInputTableViewCell<T: FormTextInputTableViewCell>(at indexPath: IndexPath) -> T? {
         return tableView.cellForRow(at: indexPath) as? T
     }
 
