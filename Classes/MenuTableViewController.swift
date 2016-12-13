@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ADUtils
 
 class MenuTableViewController: TableViewController {
 
@@ -14,7 +15,7 @@ class MenuTableViewController: TableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerCells([RegisterableView.class(UITableViewCell.self)])
+        tableView.register(cell: .class(UITableViewCell.self))
     }
 
     // MARK: UITableViewDataSource
@@ -28,7 +29,7 @@ class MenuTableViewController: TableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let  cell : UITableViewCell = tableView.dequeueCellAtIndexPath(indexPath)
+        let  cell : UITableViewCell = tableView.dequeueCell(at: indexPath)
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Empty"

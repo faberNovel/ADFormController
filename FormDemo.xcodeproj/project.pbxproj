@@ -27,7 +27,6 @@
 		E738BFFC1E002DFC00F0AEF6 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738BFF81E002DFC00F0AEF6 /* FormModel.swift */; };
 		E738BFFD1E002DFC00F0AEF6 /* CreditCardTextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738BFF91E002DFC00F0AEF6 /* CreditCardTextFieldFormatter.swift */; };
 		E738BFFE1E002DFC00F0AEF6 /* ExpirationDatePickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738BFFA1E002DFC00F0AEF6 /* ExpirationDatePickerDataSource.swift */; };
-		E738C0021E002E1400F0AEF6 /* RegistrableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738C0001E002E1400F0AEF6 /* RegistrableView.swift */; };
 		E738C0031E002E1400F0AEF6 /* EnglishAccessoryToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738C0011E002E1400F0AEF6 /* EnglishAccessoryToolbar.swift */; };
 		E738C0071E0037FF00F0AEF6 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738C0051E0037FF00F0AEF6 /* MenuTableViewController.swift */; };
 		E738C0081E0037FF00F0AEF6 /* TestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738C0061E0037FF00F0AEF6 /* TestFormViewController.swift */; };
@@ -94,7 +93,6 @@
 		E738BFF81E002DFC00F0AEF6 /* FormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		E738BFF91E002DFC00F0AEF6 /* CreditCardTextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTextFieldFormatter.swift; sourceTree = "<group>"; };
 		E738BFFA1E002DFC00F0AEF6 /* ExpirationDatePickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerDataSource.swift; sourceTree = "<group>"; };
-		E738C0001E002E1400F0AEF6 /* RegistrableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrableView.swift; sourceTree = "<group>"; };
 		E738C0011E002E1400F0AEF6 /* EnglishAccessoryToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishAccessoryToolbar.swift; sourceTree = "<group>"; };
 		E738C0051E0037FF00F0AEF6 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		E738C0061E0037FF00F0AEF6 /* TestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFormViewController.swift; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 		E738BFFF1E002E0700F0AEF6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E738C0001E002E1400F0AEF6 /* RegistrableView.swift */,
 				E738C0011E002E1400F0AEF6 /* EnglishAccessoryToolbar.swift */,
 			);
 			name = View;
@@ -723,7 +720,6 @@
 				E738BFF01E002D8500F0AEF6 /* AppDelegate.swift in Sources */,
 				E738C0081E0037FF00F0AEF6 /* TestFormViewController.swift in Sources */,
 				49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */,
-				E738C0021E002E1400F0AEF6 /* RegistrableView.swift in Sources */,
 				E738C0161E00384E00F0AEF6 /* FDCreditCardTextFieldFormatter.m in Sources */,
 				E738C0031E002E1400F0AEF6 /* EnglishAccessoryToolbar.swift in Sources */,
 				49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */,
