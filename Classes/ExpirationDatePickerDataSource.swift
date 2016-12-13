@@ -58,7 +58,7 @@ class ExpirationDatePickerDataSource: NSObject, FormPickerDataSource {
         return options
     }
 
-    func stringFromSelectedIndexes(_ indexes: [Int]) -> String {
+    func string(from indexes: [Int]) -> String {
         let yearIndex = indexes[ExpirationDateComponent.expiractionDateComponentYear.rawValue]
         let monthIndex = indexes[ExpirationDateComponent.expirationDateComponentMonth.rawValue]
         let yearString = ExpirationDateComponent.years[yearIndex]
@@ -66,7 +66,7 @@ class ExpirationDatePickerDataSource: NSObject, FormPickerDataSource {
         return monthFormatedString + "/\(yearString.substring(from: yearString.characters.index(yearString.startIndex, offsetBy: 2)))"
     }
 
-    func selectedIndexesFromString(_ string: String) -> [Int] {
+    func selectedIndexes(from string: String) -> [Int] {
         let monthString = string.substring(to: string.characters.index(string.startIndex, offsetBy: 2))
         guard let monthIndex = Int(monthString) else {
             return []

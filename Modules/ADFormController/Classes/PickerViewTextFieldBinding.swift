@@ -29,7 +29,7 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
                 pickerView(pickerView, didSelectRow: 0, inComponent: index)
             }
         } else {
-            guard let selectedIndexes = formPickerDataSource?.selectedIndexesFromString(text) else {
+            guard let selectedIndexes = formPickerDataSource?.selectedIndexes(from: text) else {
                 return
             }
             for index in 0..<selectedIndexes.count {
@@ -68,8 +68,8 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
             return
         }
         let range = 0..<pickerView.numberOfComponents
-        let indexes = range.map { pickerView.selectedRow(inComponent: $0) }
-        let value = dataSource.stringFromSelectedIndexes(indexes)
+        let selectedIndexes = range.map { pickerView.selectedRow(inComponent: $0) }
+        let value = dataSource.string(from: selectedIndexes)
         textField.text = nil
         textField.insertText(value)
 
