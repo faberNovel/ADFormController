@@ -17,7 +17,7 @@ import UIKit
     open var enabled: Bool = true
     open var textAlignment: NSTextAlignment = .left
 
-    open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+    open func visit(_ configurable: FormCellConfigurable, at indexPath: IndexPath) -> UITableViewCell {
         fatalError("Should be overriden")
     }
 }

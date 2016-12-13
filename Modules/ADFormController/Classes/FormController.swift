@@ -127,7 +127,7 @@ private extension FormInput {
         guard let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
             return UITableViewCell()
         }
-        return configuration.visit(self, atIndexPath: indexPath)
+        return configuration.visit(self, at: indexPath)
     }
 
     @objc(beginEditingAtIndexPath:)

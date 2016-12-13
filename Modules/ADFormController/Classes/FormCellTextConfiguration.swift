@@ -47,7 +47,7 @@ import UIKit
         tintColor = UIColor.black
     }
 
-    override open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+    override open func visit(_ configurable: FormCellConfigurable, at indexPath: IndexPath) -> UITableViewCell {
         let cell = configurable.textInputCell(with: self, at: indexPath)
         return cell
     }

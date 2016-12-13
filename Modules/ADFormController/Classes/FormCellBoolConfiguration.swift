@@ -13,7 +13,7 @@ import UIKit
     open var onTintColor: UIColor?
     open var switchZoom: Float = 1.0
 
-    override open func visit(_ configurable: FormCellConfigurable, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+    override open func visit(_ configurable: FormCellConfigurable, at indexPath: IndexPath) -> UITableViewCell {
         return configurable.boolInputCell(with: self, at: indexPath)
     }
 }
