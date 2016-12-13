@@ -300,25 +300,25 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case FDRowTypeGender: {
-                self.formModel.gender = [formController stringValueForIndexPath:indexPath];
+                self.formModel.gender = [formController stringValueAtIndexPath:indexPath];
             } break;
             case FDRowTypeName: {
-                self.formModel.name = [formController stringValueForIndexPath:indexPath];
+                self.formModel.name = [formController stringValueAtIndexPath:indexPath];
             } break;
             case FDRowTypeEmail: {
-                self.formModel.email = [formController stringValueForIndexPath:indexPath];
+                self.formModel.email = [formController stringValueAtIndexPath:indexPath];
             } break;
             case FDRowTypePhoneNumber: {
-                self.formModel.phone = [formController stringValueForIndexPath:indexPath];
+                self.formModel.phone = [formController stringValueAtIndexPath:indexPath];
             } break;
             case FDRowTypeLongText: {
-                self.formModel.summary = [formController stringValueForIndexPath:indexPath];
+                self.formModel.summary = [formController stringValueAtIndexPath:indexPath];
             } break;
             case FDRowTypeDate: {
-                self.formModel.birthDate = [formController dateValueForIndexPath:indexPath];
+                self.formModel.birthDate = [formController dateValueAtIndexPath:indexPath];
             } break;
             case FDRowTypeSwitch: {
-                self.formModel.married = [formController boolValueForIndexPath:indexPath];
+                self.formModel.married = [formController boolValueAtIndexPath:indexPath];
             } break;
             default:
                 break;
@@ -326,10 +326,10 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
     } else if (indexPath.section == 1) {
         switch (indexPath.row) {
             case FDCreditCardRowTypeNumber: {
-                self.formModel.creditCard = [formController stringValueForIndexPath:indexPath];
+                self.formModel.creditCard = [formController stringValueAtIndexPath:indexPath];
             } break;
             case FDCreditCardRowTypeExpirationDate: {
-                self.formModel.expiration = [formController stringValueForIndexPath:indexPath];
+                self.formModel.expiration = [formController stringValueAtIndexPath:indexPath];
             } break;
         }
     }
@@ -374,8 +374,8 @@ typedef NS_ENUM(NSUInteger, FDPasswordRowType) {
 }
 
 - (void)_checkPassword:(id)sender {
-    NSString * newPassword = [_formController stringValueForIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2]];
-    NSString * newPasswordConfirmation = [_formController stringValueForIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPasswordConfirmation inSection:2]];
+    NSString * newPassword = [_formController stringValueAtIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPassword inSection:2]];
+    NSString * newPasswordConfirmation = [_formController stringValueAtIndexPath:[NSIndexPath indexPathForRow:FDPasswordRowTypeNewPasswordConfirmation inSection:2]];
     if ([newPassword isEqualToString:newPasswordConfirmation]) {
         NSLog(@"Same password \\o/");
     } else {

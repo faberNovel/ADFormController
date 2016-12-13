@@ -83,7 +83,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return formController.cellForRowAtIndexPath(indexPath)
+        return formController.cellForRow(at: indexPath)
     }
 
     // MARK: UITableViewDelegate
@@ -111,11 +111,11 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
 
     // MARK: FormControllerDelegate
 
-    public func configurationForFormController(_ formController: FormController, atIndexPath indexPath: IndexPath) -> FormCellConfiguration? {
+    func configurationForFormController(_ formController: FormController, at indexPath: IndexPath) -> FormCellConfiguration? {
         return rowConfigurableAtIndexPath(indexPath as IndexPath)?.formCellConfiguration(showTitle: showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible, enabled: enabledInputs, alignment: alignment)
     }
 
-    func formController(_ formController: FormController, inputAccessoryViewAtIndexPath indexPath: IndexPath) -> UIView {
+    func formController(_ formController: FormController, inputAccessoryViewAt indexPath: IndexPath) -> UIView {
         switch indexPath {
         case let confirmationIndexPath where (confirmationIndexPath.section == 2 && confirmationIndexPath.row == PasswordRowType.newPasswordConfirmation.rawValue):
             let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0))
@@ -129,7 +129,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         }
     }
 
-    func formController(_ formController: FormController, valueChangedForIndexPath indexPath: IndexPath) {
+    func formController(_ formController: FormController, valueChangedFor indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
             guard let rowType = RowType(rawValue: indexPath.row) else {
@@ -137,19 +137,19 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             }
             switch rowType {
             case .gender:
-                formModel.gender = formController.stringValueForIndexPath(indexPath)
+                formModel.gender = formController.stringValue(at: indexPath)
             case .name:
-                formModel.name = formController.stringValueForIndexPath(indexPath)
+                formModel.name = formController.stringValue(at: indexPath)
             case .email:
-                formModel.email = formController.stringValueForIndexPath(indexPath)
+                formModel.email = formController.stringValue(at: indexPath)
             case .phoneNumber:
-                formModel.phone = formController.stringValueForIndexPath(indexPath)
+                formModel.phone = formController.stringValue(at: indexPath)
             case .longText:
-                formModel.summary = formController.stringValueForIndexPath(indexPath)
+                formModel.summary = formController.stringValue(at: indexPath)
             case .date:
-                self.formModel.birthDate = formController.dateValueForIndexPath(indexPath)
+                self.formModel.birthDate = formController.dateValue(at: indexPath)
             case .switch:
-                self.formModel.married = formController.boolValueForIndexPath(indexPath)
+                self.formModel.married = formController.boolValue(at: indexPath)
             default:
                 break;
             }
@@ -159,9 +159,9 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             }
             switch (rowType) {
             case .number:
-                formModel.creditCard = formController.stringValueForIndexPath(indexPath)
+                formModel.creditCard = formController.stringValue(at: indexPath)
             case .expirationDate:
-                formModel.expiration = formController.stringValueForIndexPath(indexPath)
+                formModel.expiration = formController.stringValue(at: indexPath)
             }
         default:
             return
@@ -170,7 +170,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
 
     // MARK: Private
     @objc private func printValue () {
-        let isMarried = formController.boolValueForIndexPath(IndexPath(row: 0, section: 0))
+        let isMarried = formController.boolValue(at: IndexPath(row: 0, section: 0))
         DDLogInfo("Married =  \(isMarried)");
     }
 
@@ -197,8 +197,8 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     }
 
     @objc private func checkPasswork(_ sender: UIToolbar) {
-        let newPassword = formController.stringValueForIndexPath(IndexPath(row: PasswordRowType.newPassword.rawValue, section: 2))
-        let confirmation = formController.stringValueForIndexPath(IndexPath(row: PasswordRowType.newPasswordConfirmation.rawValue, section: 2))
+        let newPassword = formController.stringValue(at: IndexPath(row: PasswordRowType.newPassword.rawValue, section: 2))
+        let confirmation = formController.stringValue(at: IndexPath(row: PasswordRowType.newPasswordConfirmation.rawValue, section: 2))
         if newPassword == confirmation {
             print("Same password \\o/")
         } else {

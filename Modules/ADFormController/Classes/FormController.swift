@@ -57,9 +57,12 @@ private extension FormInput {
 }
 
 @objc public protocol FormControllerDelegate {
-    func configurationForFormController(_ formController: FormController, atIndexPath indexPath: IndexPath) -> FormCellConfiguration?
-    @objc optional func formController(_ formController: FormController, inputAccessoryViewAtIndexPath indexPath: IndexPath) -> UIView
-    @objc optional func formController(_ formController: FormController, valueChangedForIndexPath indexPath: IndexPath)
+    @objc(configurationForFormController:atIndexPath:)
+    func configurationForFormController(_ formController: FormController, at indexPath: IndexPath) -> FormCellConfiguration?
+    @objc(formController:inputAccessoryViewAtIndexPath:)
+    optional func formController(_ formController: FormController, inputAccessoryViewAt indexPath: IndexPath) -> UIView
+    @objc(formController:valueChangedForIndexPath:)
+    optional func formController(_ formController: FormController, valueChangedFor indexPath: IndexPath)
     @objc optional func formControllerAction(_ formController: FormController)
 }
 
@@ -86,7 +89,9 @@ private extension FormInput {
     }
 
     // MARK: Methods
-    open func stringValueForIndexPath(_ indexPath: IndexPath) -> String {
+
+    @objc(stringValueAtIndexPath:)
+    open func stringValue(at indexPath: IndexPath) -> String {
         guard let cell = tableView.cellForRow(at: indexPath) as? FormTextInputTableViewCell else {
             return ""
         }
@@ -96,18 +101,20 @@ private extension FormInput {
         return textToReturn
     }
 
-    open func boolValueForIndexPath(_ indexPath: IndexPath) -> Bool {
+    @objc(boolValueAtIndexPath:)
+    open func boolValue(at indexPath: IndexPath) -> Bool {
         guard let cell = tableView.cellForRow(at: indexPath) as? FormBoolInputTableViewCell else {
             return false
         }
         return cell.boolContent
     }
 
-    open func dateValueForIndexPath(_ indexPath: IndexPath) -> Date? {
+    @objc(dateValueAtIndexPath:)
+    open func dateValue(at indexPath: IndexPath) -> Date? {
         guard let cell = tableView.cellForRow(at: indexPath) as? FormTextFieldTableViewCell else {
             return nil
         }
-        guard let configuration = delegate?.configurationForFormController(self, atIndexPath: indexPath) as? FormCellTextConfiguration else {
+        guard let configuration = delegate?.configurationForFormController(self, at: indexPath) as? FormCellTextConfiguration else {
             return nil
         }
         return cell.textField.text.flatMap {
@@ -115,14 +122,16 @@ private extension FormInput {
         }
     }
 
-    open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
-        guard let configuration = delegate?.configurationForFormController(self, atIndexPath: indexPath) else {
+    @objc(cellForRowAtIndexPath:)
+    open func cellForRow(at indexPath: IndexPath) -> UITableViewCell {
+        guard let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
             return UITableViewCell()
         }
         return configuration.visit(self, atIndexPath: indexPath)
     }
 
-    public func beginEditing(at indexPath: IndexPath) {
+    @objc(beginEditingAtIndexPath:)
+    open func beginEditing(at indexPath: IndexPath) {
         let targetCell = tableView.cellForRow(at: indexPath) as? FormTextInputTableViewCell
         targetCell?.beginEditing()
     }
@@ -136,7 +145,7 @@ private extension FormInput {
     }
 
     open func textInputCellWithConfiguration(_ configuration: FormCellTextConfiguration, atIndexPath indexPath:IndexPath) -> UITableViewCell {
-        let accessoryView = delegate?.formController?(self, inputAccessoryViewAtIndexPath: indexPath) ?? defaultAccessoryView.view
+        let accessoryView = delegate?.formController?(self, inputAccessoryViewAt: indexPath) ?? defaultAccessoryView.view
         let input = (configuration.cellType == .longText) ? FormInput.longText(configuration) : FormInput.shortText(configuration)
         return input.buildCell(cells[indexPath],
                                accessoryView: accessoryView,
@@ -150,7 +159,7 @@ private extension FormInput {
         guard let indexPath = tableView.indexPath(for: cell as! UITableViewCell) else {
             return
         }
-        delegate?.formController?(self, valueChangedForIndexPath: indexPath)
+        delegate?.formController?(self, valueChangedFor: indexPath)
     }
 
     // MARK: FormTextInputTableViewCellDelegate
@@ -159,7 +168,7 @@ private extension FormInput {
         guard let indexPath = tableView.indexPath(for: cell as! UITableViewCell) else {
             return
         }
-        delegate?.formController?(self, valueChangedForIndexPath: indexPath)
+        delegate?.formController?(self, valueChangedFor: indexPath)
     }
 
     func textInputTableViewCellDidBeginEditing(_ cell: FormTextInputTableViewCell) {
