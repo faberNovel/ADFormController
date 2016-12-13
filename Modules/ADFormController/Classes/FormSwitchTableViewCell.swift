@@ -91,7 +91,7 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         }
     }
 
-    func applyConfiguration(_ configuration: FormCellBoolConfiguration) {
+    func apply(configuration: FormCellBoolConfiguration) {
         rightView = configuration.rightView
         leftLabel.text = configuration.title
         leftLabel.font = configuration.titleFont

@@ -231,7 +231,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         textField.becomeFirstResponder()
     }
 
-    func applyConfiguration(_ configuration: FormCellTextConfiguration) {
+    func apply(configuration: FormCellTextConfiguration) {
         textField.placeholder = configuration.placeholder
         leftLabel.text = configuration.title
         cellType = configuration.cellType

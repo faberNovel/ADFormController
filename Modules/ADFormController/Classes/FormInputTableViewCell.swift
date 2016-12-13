@@ -15,7 +15,7 @@ protocol FormTextInputTableViewCell {
     var textContent: String? { get set }
 
     func beginEditing()
-    func applyConfiguration(_ configuration: FormCellTextConfiguration)
+    func apply(configuration: FormCellTextConfiguration)
 }
 
 protocol FormTextInputTableViewCellDelegate: class {
@@ -29,7 +29,7 @@ protocol FormBoolInputTableViewCell {
     weak var delegate: FormBoolInputTableViewCellDelegate? { get set }
     var boolContent: Bool { get set }
 
-    func applyConfiguration(_ configuration: FormCellBoolConfiguration)
+    func apply(configuration configuration: FormCellBoolConfiguration)
 }
 
 protocol FormBoolInputTableViewCellDelegate: class {

@@ -25,7 +25,7 @@ private extension FormInput {
             } else {
                 cellToReturn = FormSwitchTableViewCell(style: .default, reuseIdentifier: nil)
             }
-            cellToReturn.applyConfiguration(boolConfiguration)
+            cellToReturn.apply(configuration: boolConfiguration)
             cellToReturn.delegate = formController
             return cellToReturn
         case let .shortText(textConfiguration):
@@ -35,7 +35,7 @@ private extension FormInput {
             } else {
                 cellToReturn = FormTextFieldTableViewCell(style: .default, reuseIdentifier: nil)
             }
-            cellToReturn.applyConfiguration(textConfiguration)
+            cellToReturn.apply(configuration: textConfiguration)
             cellToReturn.inputAccessoryView = accessoryView
             cellToReturn.returnKeyType = returnKeyType
             cellToReturn.delegate = formController
@@ -47,7 +47,7 @@ private extension FormInput {
             } else {
                 cellToReturn = FormTextViewTableViewCell(style: .default, reuseIdentifier: nil)
             }
-            cellToReturn.applyConfiguration(textConfiguration)
+            cellToReturn.apply(configuration: textConfiguration)
             cellToReturn.inputAccessoryView = accessoryView
             cellToReturn.returnKeyType = returnKeyType
             cellToReturn.delegate = formController

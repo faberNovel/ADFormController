@@ -127,7 +127,7 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         textView.becomeFirstResponder()
     }
 
-    func applyConfiguration(_ configuration: FormCellTextConfiguration) {
+    func apply(configuration: FormCellTextConfiguration) {
         titleLabel.text = configuration.title
 
         titleLabel.font = configuration.titleFont
