@@ -26,13 +26,13 @@ class FormDirectionManager : NSObject {
         guard lastSection >= 0 else {
             return nil
         }
-        return lastIndexPathStartingFromSection(lastSection)
+        return lastIndexPath(startingFromSection: lastSection)
     }
     private var firstTableViewIndexPath: IndexPath? {
         guard tableView.numberOfSections > 0 else {
             return nil
         }
-        return firstIndexPathStartingFromSection(0)
+        return firstIndexPath(startingFromSection: 0)
     }
 
     // MARK: LifeCycle
@@ -45,16 +45,17 @@ class FormDirectionManager : NSObject {
 
     func indexPath(for direction: AccessoryViewDirection, baseIndexPath baseIndexPath: IndexPath?) -> IndexPath? {
         return baseIndexPath.flatMap {
-            return nextIndexPathForDirection(direction, fromIndexPath: $0)
+            return nextIndexPath(for: direction, from: $0)
         }
     }
 
     func canMove(to direction: AccessoryViewDirection, from indexPath: IndexPath) -> Bool {
-        return nextIndexPathForDirection(direction, fromIndexPath: indexPath) != nil
+        return nextIndexPath(for: direction, from: indexPath) != nil
     }
 
     // MARK: Private
-    private func nextIndexPathForDirection(_ direction: AccessoryViewDirection, fromIndexPath indexPath: IndexPath) -> IndexPath? {
+
+    private func nextIndexPath(for direction: AccessoryViewDirection, from indexPath: IndexPath) -> IndexPath? {
         var newIndexPath: IndexPath?
         switch direction {
         case .next:
@@ -70,23 +71,23 @@ class FormDirectionManager : NSObject {
             if delegate == nil {
                 return unwrappedIndexPath
             }
-            return nextIndexPathForDirection(direction, fromIndexPath: unwrappedIndexPath)
+            return nextIndexPath(for: direction, from: unwrappedIndexPath)
         }
         return unwrappedIndexPath
     }
 
-    private func lastIndexPathStartingFromSection(_ section: Int) -> IndexPath? {
+    private func lastIndexPath(startingFromSection section: Int) -> IndexPath? {
         let lastRowInSection = (tableView.numberOfRows(inSection: section) - 1)
         guard lastRowInSection > 0 else {
-            return (section > 0) ? lastIndexPathStartingFromSection(section - 1) : nil
+            return (section > 0) ? lastIndexPath(startingFromSection: section - 1) : nil
         }
         return IndexPath(row: lastRowInSection, section: section)
     }
 
-    private func firstIndexPathStartingFromSection(_ section: Int) -> IndexPath? {
+    private func firstIndexPath(startingFromSection section: Int) -> IndexPath? {
         let numberOfSection = tableView.numberOfSections
         guard tableView.numberOfRows(inSection: section) > 0 else {
-            return section < numberOfSection ? firstIndexPathStartingFromSection(section + 1) : nil
+            return section < numberOfSection ? firstIndexPath(startingFromSection: section + 1) : nil
         }
         return IndexPath(row: 0, section: section)
     }
