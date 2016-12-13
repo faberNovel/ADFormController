@@ -180,7 +180,7 @@ private extension FormInput {
         guard let indexPath = tableView.indexPath(for: cell as! UITableViewCell) else {
             return false
         }
-        if formDirectionManager.canMoveToDirection(.next, fromIndexPath: indexPath) {
+        if formDirectionManager.canMove(to: .next, from: indexPath) {
             move(to: .next, from: indexPath)
             return false
         }
@@ -190,7 +190,7 @@ private extension FormInput {
 
     // MARK: FormDirectionManagerDelegate
 
-    func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAtIndexPath indexPath: IndexPath) -> Bool {
+    func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAt indexPath: IndexPath) -> Bool {
         return tableView.cellForRow(at: indexPath) is FormTextFieldTableViewCell
     }
 
@@ -223,7 +223,7 @@ private extension FormInput {
     }
 
     private func move(to direction: AccessoryViewDirection, from indexPath: IndexPath) {
-        guard let nextIndexPath = formDirectionManager.indexPathForDirection(direction, andBaseIndexPath: indexPath) else {
+        guard let nextIndexPath = formDirectionManager.indexPath(for: direction, baseIndexPath: indexPath) else {
             return
         }
         guard let cell = tableView.cellForRow(at: nextIndexPath) as? FormTextInputTableViewCell else {
@@ -236,8 +236,8 @@ private extension FormInput {
         guard let indexPath = indexPathForFirstResponder() else {
             return
         }
-        defaultAccessoryView.nextBarButtonItem.isEnabled = formDirectionManager.canMoveToDirection(.next, fromIndexPath: indexPath)
-        defaultAccessoryView.previousBarButtonItem.isEnabled = formDirectionManager.canMoveToDirection(.previous, fromIndexPath: indexPath)
+        defaultAccessoryView.nextBarButtonItem.isEnabled = formDirectionManager.canMove(to: .next, from: indexPath)
+        defaultAccessoryView.previousBarButtonItem.isEnabled = formDirectionManager.canMove(to: .previous, from: indexPath)
     }
 
     private func returnKeyType(at indexPath: IndexPath) -> UIReturnKeyType {

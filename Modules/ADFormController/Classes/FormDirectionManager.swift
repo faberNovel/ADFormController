@@ -15,7 +15,7 @@ enum AccessoryViewDirection: Int {
 }
 
 protocol FormDirectionManagerDelegate: class {
-    func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAtIndexPath indexPath: IndexPath) -> Bool
+    func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAt indexPath: IndexPath) -> Bool
 }
 
 class FormDirectionManager : NSObject {
@@ -42,13 +42,14 @@ class FormDirectionManager : NSObject {
     }
 
     // MARK: FormDirectionManager
-    func indexPathForDirection(_ direction: AccessoryViewDirection, andBaseIndexPath baseIndexPath: IndexPath?) -> IndexPath? {
+
+    func indexPath(for direction: AccessoryViewDirection, baseIndexPath baseIndexPath: IndexPath?) -> IndexPath? {
         return baseIndexPath.flatMap {
             return nextIndexPathForDirection(direction, fromIndexPath: $0)
         }
     }
 
-    func canMoveToDirection(_ direction: AccessoryViewDirection, fromIndexPath indexPath: IndexPath) -> Bool {
+    func canMove(to direction: AccessoryViewDirection, from indexPath: IndexPath) -> Bool {
         return nextIndexPathForDirection(direction, fromIndexPath: indexPath) != nil
     }
 
@@ -57,15 +58,15 @@ class FormDirectionManager : NSObject {
         var newIndexPath: IndexPath?
         switch direction {
         case .next:
-            newIndexPath = indexPath.nextIndexPathInTableView(tableView)
+            newIndexPath = indexPath.nextIndexPath(in: tableView)
         case .previous:
-            newIndexPath = indexPath.prevIndexPathInTableView(tableView)
+            newIndexPath = indexPath.previousIndexPath(in: tableView)
         }
 
         guard let unwrappedIndexPath = newIndexPath else {
             return nil
         }
-        guard let unwrappedDelegate = delegate, unwrappedDelegate.formDirectionManager(self, canEditCellAtIndexPath: unwrappedIndexPath) else {
+        guard let unwrappedDelegate = delegate, unwrappedDelegate.formDirectionManager(self, canEditCellAt: unwrappedIndexPath) else {
             if delegate == nil {
                 return unwrappedIndexPath
             }
@@ -92,7 +93,7 @@ class FormDirectionManager : NSObject {
 }
 
 private extension IndexPath {
-    func nextIndexPathInTableView(_ tableView: UITableView) -> IndexPath? {
+    func nextIndexPath(in tableView: UITableView) -> IndexPath? {
         let nextRowIndex = row + 1
         guard nextRowIndex < tableView.numberOfRows(inSection: section) else {
             var newSection = section + 1
@@ -107,7 +108,7 @@ private extension IndexPath {
         return IndexPath(row: nextRowIndex, section: section)
     }
 
-    func prevIndexPathInTableView(_ tableView: UITableView) -> IndexPath? {
+    func previousIndexPath(in tableView: UITableView) -> IndexPath? {
         let prevRowIndex = row - 1
         guard prevRowIndex >= 0 else {
             var newSection = section - 1
