@@ -2,56 +2,51 @@
   "global_config": {
     "workspace": "FormDemo.xcworkspace",
     "xcodeproj": "FormDemo.xcodeproj",
-    "hockeyapp_api_token": "251d65e4295d4d4caf25d95dbc38e370",
-    "slack_hook_url": "TODO_OR_REMOVE"
+    "hockeyapp_api_token": "251d65e4295d4d4caf25d95dbc38e370"
   },
-  "apps": [
-    {
-      "target": "FormDemo",
-      "bundles": {
-        "main_app": "com.applidium.FormDemo",
-        "extensions": [
-          {
-            "id": 0,
-            "bundle": "com.app.FormDemo.watchkitapp"
-          },
-          {
-            "id": 1,
-            "bundle": "com.app.FormDemo.watchkitextension"
-          }
-        ]
-      },
-      "code_signing": {
-        "apple_id": "devices@applidium.com",
-        "apple_id_password": "Appl1dium",
-        "team_id": "LL36D6ZV57",
-        "team_name": "APPLIDIUM",
-        "use_match": true,
-        "match_git": "ssh://git@scm.applidium.net/ADSigningAssets",
-        "match_git_password": "TODO_OR_REMOVE"
-      },
-      "itunes_connect": {
-        "apple_id": "TODO_OR_REMOVE",
-        "apple_id_password": "TODO_OR_REMOVE",
-        "team_id": "TODO",
-        "itc_provider": "TODO"
-      },
-      "hockeyapp": {
-        "Stubs": "TODO",
-        "Preproduction": "TODO",
-        "Production": "TODO",
-        "Distribution": "TODO"
-      }
-    }
-  ],
-  "extensions": [
-    {
-      "id": 0,
-      "name": "TODO Watchkit App Demo"
+  "apps": [{
+    "target": "FormDemo",
+    "inhouse": false,
+    "bundles": {
+      "main_app": "com.yourclient.appname",
+      "extensions": [{
+        "id": 0,
+        "bundle": "com.yourclient.appname.watchkitapp"
+      }, {
+        "id": 1,
+        "bundle": "com.yourclient.appname.watchkitextension"
+      }]
     },
-    {
-      "id": 1,
-      "name": "TODO Watchkit Ext Demo"
+    "code_signing": {
+      "apple_id": "emailToLoginToYourClientAppleDev",
+      "apple_id_password": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
+      "team_id": "TODO",
+      "team_name": "TODO",
+      "match_git": "TODO",
+      "match_git_password": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
+      "match_branch": "TODO"
+    },
+    "itunes_connect": {
+      "apple_id": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
+      "apple_id_password": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
+      "team_id": "TODO",
+      "itc_provider": "TODO"
+    },
+    "hockeyapp": {
+      "Stubs": null,
+      "Preproduction": "TODO",
+      "Production": "TODO",
+      "Distribution": "TODO"
+    },
+    "applidium_bundles": {
+      "main_app": "com.applidium.FormDemo",
+      "extensions": [{
+        "id": 0,
+        "bundle": "com.applidium.FormDemo.watchkitapp"
+      }, {
+        "id": 1,
+        "bundle": "com.applidium.FormDemo.watchkitextension"
+      }]
     }
-  ]
+  }]
 }

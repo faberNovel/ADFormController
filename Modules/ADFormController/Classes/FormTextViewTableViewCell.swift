@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 private struct Constants {
     static let titleLabelKeyPath: String = "titleLabel.text"
 }
@@ -15,7 +16,7 @@ private struct Constants {
 class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
     let textView: UITextView = {
         let placeholderTextView = PlaceholderTextView()
-        placeholderTextView.textContainerInset = UIEdgeInsetsZero;
+        placeholderTextView.textContainerInset = UIEdgeInsets.zero;
         placeholderTextView.textContainer.lineFragmentPadding = 0;
         placeholderTextView.translatesAutoresizingMaskIntoConstraints = false;
         return placeholderTextView
@@ -23,7 +24,7 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
+        label.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
         return label
     } ()
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -33,7 +34,7 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         removeObserver(self, forKeyPath: Constants.titleLabelKeyPath)
     }
 
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == Constants.titleLabelKeyPath {
             self .setNeedsUpdateConstraints()
         }
@@ -43,17 +44,17 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .None
+        selectionStyle = .none
         textView.delegate = self
         contentView.addSubview(textView)
         contentView.addSubview(titleLabel)
         separatorInset = UIEdgeInsetsMake(0, 15, 0, 0)
-        addObserver(self, forKeyPath: Constants.titleLabelKeyPath, options: .New, context: nil)
+        addObserver(self, forKeyPath: Constants.titleLabelKeyPath, options: .new, context: nil)
         let views = [
             "placeholderTextView" : textView
         ]
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[placeholderTextView]-15-|", options: .AlignAllCenterY, metrics: nil, views: views))
-        layoutMargins = UIEdgeInsetsZero
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[placeholderTextView]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
+        layoutMargins = UIEdgeInsets.zero
     }
 
     // MARK: UIView
@@ -70,11 +71,11 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
             "titleLabel" : titleLabel,
             "placeholderTextView" : textView,
         ]
-        if titleLabel.text?.characters.count > 0 {
-            dynamicConstraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-15-[titleLabel]-[placeholderTextView]-15-|", options: .AlignAllLeft, metrics: nil, views: views))
-            dynamicConstraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[titleLabel]-15-|", options: .AlignAllCenterY, metrics: nil, views: views))
+        if let count = titleLabel.text?.characters.count, count > 0 {
+            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[titleLabel]-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
+            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[titleLabel]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
         } else {
-            dynamicConstraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-15-[placeholderTextView]-15-|", options: .AlignAllLeft, metrics: nil, views: views))
+            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
         }
 
         contentView.addConstraints(dynamicConstraints)
@@ -83,11 +84,11 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
 
     // MARK: UITextViewdelegate
 
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         delegate?.textInputTableViewCellDidBeginEditing(self)
     }
 
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         delegate?.textInputTableViewCellValueChanged(self)
     }
 
@@ -126,7 +127,7 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         textView.becomeFirstResponder()
     }
 
-    func applyConfiguration(configuration: FormCellTextConfiguration) {
+    func apply(configuration: FormCellTextConfiguration) {
         titleLabel.text = configuration.title
 
         titleLabel.font = configuration.titleFont
@@ -137,6 +138,6 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         textView.tintColor = configuration.tintColor
         textView.text = configuration.text
         (textView as! PlaceholderTextView).placeholder = configuration.placeholder
-        textView.editable = configuration.enabled
+        textView.isEditable = configuration.enabled
     }
 }

@@ -20,7 +20,7 @@ extension UIView {
     }
 
     func findFirstResponder() -> UIView? {
-        if isFirstResponder() {
+        if isFirstResponder {
             return self
         }
         for subview in subviews {

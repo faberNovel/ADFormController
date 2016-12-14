@@ -8,7 +8,8 @@
 
 import Foundation
 
-@objc public class SimpleFormPickerDataSource: NSObject, FormPickerDataSource {
+@objc open class SimpleFormPickerDataSource: NSObject, FormPickerDataSource {
+
     private var options: [String]
 
     public required init(options: [String]) {
@@ -16,21 +17,21 @@ import Foundation
     }
 
     // MARK: FormPickerDataSource
-    public let numberOfComponents: Int = 1
+    open let numberOfComponents: Int = 1
 
-    public func componentOptions(component: Int) -> [String] {
+    open func componentOptions(_ component: Int) -> [String] {
         return options
     }
 
-    public func stringFromSelectedIndexes(indexes: [Int]) -> String {
-        guard let lastValue = indexes.last else {
+    open func string(from selectedIndexes: [Int]) -> String {
+        guard let lastValue = selectedIndexes.last else {
             return ""
         }
-        return options[options.startIndex.advancedBy(lastValue)]
+        return options[options.startIndex.advanced(by: lastValue)]
     }
 
-    public func selectedIndexesFromString(string: String) -> [Int] {
-        guard let index = options.indexOf(string) else {
+    open func selectedIndexes(from string: String) -> [Int] {
+        guard let index = options.index(of: string) else {
             return [0]
         }
         return [index]

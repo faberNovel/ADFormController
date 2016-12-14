@@ -16,16 +16,18 @@ protocol RowConfigurable {
 }
 
 enum RowType: Int {
-    case RowTypeGender = 0
-    case RowTypeName
-    case RowTypeEmail
-    case RowTypePhoneNumber
-    case RowTypeLongText
-    case RowTypeDate
-    case RowTypeSwitch
-    case RowTypeNoInputAccessory
+    case gender = 0
+    case name
+    case email
+    case phoneNumber
+    case longText
+    case date
+    case `switch`
+    case noInputAccessory
 
-    static var count: Int { return RowType.RowTypeNoInputAccessory.hashValue + 1}
+    static var count: Int {
+        return RowType.noInputAccessory.hashValue + 1
+    }
 }
 
 extension RowType: RowConfigurable {
@@ -35,7 +37,7 @@ extension RowType: RowConfigurable {
 
     var rowHeight: Float {
         switch self {
-        case .RowTypeLongText:
+        case .longText:
             return 100.0
         default:
             return 44.0
@@ -44,10 +46,10 @@ extension RowType: RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
         switch self {
-        case RowTypeGender:
+        case .gender:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Gender"
-            configuration.cellType = .Picker
+            configuration.cellType = .picker
             configuration.formPickerDataSource = SimpleFormPickerDataSource(options: ["Male", "Female"])
             configuration.text = model.gender;
             if showTitle {
@@ -56,10 +58,10 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypeName:
+        case .name:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Name"
-            configuration.cellType = .Name
+            configuration.cellType = .name
             configuration.text = model.name;
             if showTitle {
                 configuration.title = "Name"
@@ -67,10 +69,10 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypeEmail:
+        case .email:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Email"
-            configuration.cellType = .Email
+            configuration.cellType = .email
             configuration.text = model.email;
             if showTitle {
                 configuration.title = "Email"
@@ -78,10 +80,10 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypePhoneNumber:
+        case .phoneNumber:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Phone"
-            configuration.cellType = .Phone
+            configuration.cellType = .phone
             configuration.text = model.phone;
             if showTitle {
                 configuration.title = "Phone"
@@ -89,10 +91,10 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypeLongText:
+        case .longText:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Long text"
-            configuration.cellType = .LongText
+            configuration.cellType = .longText
             configuration.text = model.summary;
             if showTitle {
                 configuration.title = "Long text"
@@ -100,12 +102,12 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypeDate:
+        case .date:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Date"
-            configuration.cellType = .Date
+            configuration.cellType = .date
             configuration.dateFormatter = TestFormViewController.dateFormatter
-            if let text = model.birthDate.map({TestFormViewController.dateFormatter.stringFromDate($0)}) {
+            if let text = model.birthDate.map({TestFormViewController.dateFormatter.string(from: $0)}) {
                 configuration.text = text
             }
             if showTitle {
@@ -114,11 +116,11 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypeSwitch:
+        case .switch:
             let configuration = FormCellBoolConfiguration();
             configuration.title = "Maried"
-            configuration.onTintColor = UIColor.greenColor()
-            configuration.tintColor = UIColor.redColor()
+            configuration.onTintColor = UIColor.green
+            configuration.tintColor = UIColor.red
             configuration.switchZoom = 0.65;
             configuration.boolValue = model.married
             if showTitle {
@@ -127,10 +129,10 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case RowTypeNoInputAccessory:
+        case .noInputAccessory:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Useless row with no input accessory"
-            configuration.cellType = .Name
+            configuration.cellType = .name
             if showTitle {
                 configuration.title = "No accessory here"
             }
@@ -142,10 +144,12 @@ extension RowType: RowConfigurable {
 }
 
 enum CreditCardRowType: Int {
-    case CreditCardRowTypeNumber = 0
-    case CreditCardRowTypeExpirationDate
+    case number = 0
+    case expirationDate
 
-    static var count: Int { return CreditCardRowType.CreditCardRowTypeExpirationDate.hashValue + 1}
+    static var count: Int {
+        return CreditCardRowType.expirationDate.hashValue + 1
+    }
 }
 
 extension CreditCardRowType: RowConfigurable {
@@ -155,10 +159,10 @@ extension CreditCardRowType: RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
         switch self {
-        case CreditCardRowTypeNumber:
+        case .number:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Credit card"
-            configuration.cellType = .Number
+            configuration.cellType = .number
             configuration.textFieldFormatter = CreditCardTextFieldFormatter()
             configuration.text = model.creditCard;
             if showTitle {
@@ -167,10 +171,10 @@ extension CreditCardRowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case CreditCardRowTypeExpirationDate:
+        case .expirationDate:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Expiration Date"
-            configuration.cellType = .Picker
+            configuration.cellType = .picker
             configuration.formPickerDataSource = ExpirationDatePickerDataSource()
             configuration.text = model.expiration;
             if showTitle {
@@ -184,10 +188,12 @@ extension CreditCardRowType: RowConfigurable {
 }
 
 enum PasswordRowType: Int {
-    case PasswordRowTypeNewPassword
-    case PasswordRowTypeNewPasswordConfirmation
+    case newPassword
+    case newPasswordConfirmation
 
-    static var count: Int { return PasswordRowType.PasswordRowTypeNewPasswordConfirmation.hashValue + 1}
+    static var count: Int {
+        return PasswordRowType.newPasswordConfirmation.hashValue + 1
+    }
 }
 
 extension PasswordRowType: RowConfigurable {
@@ -197,11 +203,11 @@ extension PasswordRowType: RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
         switch self {
-        case PasswordRowTypeNewPassword:
+        case .newPassword:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "New password"
             if !passwordVisible {
-                configuration.cellType = .Password
+                configuration.cellType = .password
             }
             if showTitle {
                 configuration.title = "New password"
@@ -213,10 +219,10 @@ extension PasswordRowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             return configuration
-        case PasswordRowTypeNewPasswordConfirmation:
+        case .newPasswordConfirmation:
             let configuration = FormCellTextConfiguration();
             configuration.placeholder = "Confirmation"
-            configuration.cellType = .Password
+            configuration.cellType = .password
             if showTitle {
                 configuration.title = "Confirmation"
             }

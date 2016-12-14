@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ADUtils
 
 class MenuTableViewController: TableViewController {
 
@@ -14,21 +15,21 @@ class MenuTableViewController: TableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerCells([RegisterableView.Class(UITableViewCell)])
+        tableView.register(cell: .class(UITableViewCell.self))
     }
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let  cell : UITableViewCell = tableView.dequeueCellAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let  cell : UITableViewCell = tableView.dequeueCell(at: indexPath)
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Empty"
@@ -51,7 +52,7 @@ class MenuTableViewController: TableViewController {
 
     // MARK: UITableViewDelegate
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         let testFormViewController = TestFormViewController()
         switch indexPath.row {
         case 0:
@@ -71,7 +72,7 @@ class MenuTableViewController: TableViewController {
         case 5:
             testFormViewController.title = "With alignment"
             testFormViewController.showTitles = true
-            testFormViewController.alignment = .Right
+            testFormViewController.alignment = .right
         default:
             break
         }

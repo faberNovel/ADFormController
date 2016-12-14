@@ -29,7 +29,7 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
                 pickerView(pickerView, didSelectRow: 0, inComponent: index)
             }
         } else {
-            guard let selectedIndexes = formPickerDataSource?.selectedIndexesFromString(text) else {
+            guard let selectedIndexes = formPickerDataSource?.selectedIndexes(from: text) else {
                 return
             }
             for index in 0..<selectedIndexes.count {
@@ -40,14 +40,14 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
 
     // MARK: UIPickerViewDataSource
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         guard let dataSource = formPickerDataSource else {
             return 0
         }
         return dataSource.numberOfComponents
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         guard let dataSource = formPickerDataSource else {
             return 0
         }
@@ -56,20 +56,20 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
 
     // MARK: UIPickerViewDelegate
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let dataSource = formPickerDataSource else {
             return ""
         }
         return dataSource.componentOptions(component)[row]
     }
 
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let dataSource = formPickerDataSource else {
             return
         }
         let range = 0..<pickerView.numberOfComponents
-        let indexes = range.map { pickerView.selectedRowInComponent($0) }
-        let value = dataSource.stringFromSelectedIndexes(indexes)
+        let selectedIndexes = range.map { pickerView.selectedRow(inComponent: $0) }
+        let value = dataSource.string(from: selectedIndexes)
         textField.text = nil
         textField.insertText(value)
 

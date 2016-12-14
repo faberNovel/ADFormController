@@ -14,7 +14,7 @@ class FormModel {
     var email : String = ""
     var phone : String = ""
     var summary : String = ""
-    var birthDate : NSDate?
+    var birthDate : Date?
     var married : Bool = false
     var creditCard : String = ""
     var expiration : String = ""
@@ -26,7 +26,7 @@ class FormModel {
         phone = "0612131415"
         summary = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui."
         married = true
-        birthDate = NSDate()
+        birthDate = Date()
         creditCard = "5131423412231223"
         expiration = "04/25"
     }
