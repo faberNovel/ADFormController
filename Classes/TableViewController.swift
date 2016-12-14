@@ -8,6 +8,7 @@
 
 import UIKit
 import ADKeyboardManager
+import ADUtils
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tableView: UITableView!
@@ -15,34 +16,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     class var tableViewStyle : UITableViewStyle {
         return .grouped
-    }
-
-    func smoothlyDeselectRows() {
-        guard let selectedIndexPaths = tableView.indexPathsForVisibleRows, let parentController = parent else {
-            return
-        }
-
-        func deselectRows(_ animated: Bool) {
-            for indexPath in selectedIndexPaths {
-                tableView.deselectRow(at: indexPath, animated: animated)
-            }
-        }
-
-        guard let coordinator = transitionCoordinator else {
-            deselectRows(false)
-            return
-        }
-
-        coordinator.animateAlongsideTransition(in: parentController.view, animation: { (context: UIViewControllerTransitionCoordinatorContext) in
-            deselectRows(true)
-        }) { (context : UIViewControllerTransitionCoordinatorContext) in
-            guard context.isCancelled else {
-                return
-            }
-            for indexPath in selectedIndexPaths {
-                self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            }
-        }
     }
 
     // MARK: UIViewController
@@ -63,7 +36,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        smoothlyDeselectRows();
+        tableView.smoothlyDeselectItems(in: transitionCoordinator)
         keyboardManager.startObservingKeyboard()
     }
 
