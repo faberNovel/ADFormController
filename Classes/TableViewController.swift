@@ -27,7 +27,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        let views = ["tableView" : tableView]
+        let views: [String: Any] = ["tableView" : tableView]
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: .alignAllLeft, metrics: nil, views: views));
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: .alignAllLeft, metrics: nil, views: views));
 
