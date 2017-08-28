@@ -191,7 +191,12 @@ private extension FormInput {
     // MARK: FormDirectionManagerDelegate
 
     func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAt indexPath: IndexPath) -> Bool {
-        return tableView.cellForRow(at: indexPath) is FormTextFieldTableViewCell
+        guard let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
+            return false
+        }
+        let cell = tableView.cellForRow(at: indexPath)
+        return tableView.cellForRow(at: indexPath) is FormTextInputTableViewCell
+            && configuration.enabled
     }
 
     // MARK: Private

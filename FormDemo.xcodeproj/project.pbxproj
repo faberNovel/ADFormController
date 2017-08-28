@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2ED2C82E7199F0691827FFBC /* Pods_Form_FormDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F94D32BA9C07E567DF3C26 /* Pods_Form_FormDemoTests.framework */; };
-		47E17214F9A4009CF12359D7 /* Pods_FormDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C6332AC4E8FBA4930E980 /* Pods_FormDemoTests.framework */; };
 		49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49595DCD1D93E11D003F1816 /* TargetSettings.swift */; };
 		49F7C9F51D0EDE6300086054 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F41D0EDE6300086054 /* Logger.swift */; };
 		49F7C9F81D0EDE7100086054 /* ADFileLoggerFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */; };
@@ -57,17 +56,13 @@
 /* Begin PBXFileReference section */
 		0823DC29CAD5B0063AEAC722 /* Pods-Form-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
 		08411AEAF625777CD0D6A123 /* Pods_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		147C172E570244B76E9A8609 /* Pods-FormDemo.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.preproduction.xcconfig"; sourceTree = "<group>"; };
 		257CF15D9E4A3F14B772FC4C /* Pods-Form-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
 		29EF28CF9BC9256E6BD68BEA /* Pods-Form-FormDemoTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.preproduction.xcconfig"; sourceTree = "<group>"; };
-		32D3D6308F00B6B8059A24E8 /* Pods-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
-		4131DA2D9333046F6E9F313E /* Pods-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
 		49595DCD1D93E11D003F1816 /* TargetSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetSettings.swift; sourceTree = "<group>"; };
 		49B1F77E1CE4B3DB00A29BFE /* FormDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F7C9F41D0EDE6300086054 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		49F7C9F61D0EDE7100086054 /* ADFileLoggerFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFileLoggerFormatter.h; sourceTree = "<group>"; };
 		49F7C9F71D0EDE7100086054 /* ADFileLoggerFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFileLoggerFormatter.m; sourceTree = "<group>"; };
-		4A08E56FF1A2E6E1D873D90F /* Pods-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
 		57C59D671BB1478A003798DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57C59D691BB1486B003798DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E1CD291C884F3000A7DFFB /* FormDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FormDemo-Bridging-Header.h"; path = "Classes/FormDemo-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
@@ -75,7 +70,6 @@
 		57F7ECC51BB004500095AEEC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		5BF23BAC98A4E85D25230DE2 /* Pods-Form-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
 		62575CC9257A3955B476732F /* Pods-Form-FormDemoTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.production.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.production.xcconfig"; sourceTree = "<group>"; };
-		6E6A3AE8E44734C6530AC046 /* Pods-FormDemo.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.distribution.xcconfig"; sourceTree = "<group>"; };
 		74B13D48B34F32C4AF4AF506 /* Pods-Form-FormDemoTests.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.distribution.xcconfig"; sourceTree = "<group>"; };
 		7A0EC64F1535D8ED00E5F54A /* FormDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EC6531535D8ED00E5F54A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -83,7 +77,6 @@
 		7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7A189F921535FD5C00A22149 /* FormDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FormDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		7E4F8C919C6169B2F95CE40E /* Pods-Form-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
-		9C9220CDCE8C495437E023DB /* Pods-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		A0F94D32BA9C07E567DF3C26 /* Pods_Form_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06C6332AC4E8FBA4930E980 /* Pods_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E738BFEF1E002D8500F0AEF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +111,6 @@
 		E738C02E1E0038E000F0AEF6 /* FormDirectionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDirectionManagerTests.swift; sourceTree = "<group>"; };
 		E7A4784F1E00517900E0BC70 /* FormDirectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDirectionManager.swift; sourceTree = "<group>"; };
 		ED3B69AABFE03A41DA89EB5B /* Pods_Form_FormDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F58BBA250BE675C419ED2946 /* Pods-FormDemoTests.preproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemoTests.preproduction.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemoTests/Pods-FormDemoTests.preproduction.xcconfig"; sourceTree = "<group>"; };
 		F83B92161A7A8CCF009E7ADF /* Defaults-Info_Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Defaults.plist"; sourceTree = "<group>"; };
 		F83B92171A7A8CCF009E7ADF /* Defaults-Info_Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Distribution.plist"; sourceTree = "<group>"; };
 		F83B92181A7A8CCF009E7ADF /* Defaults-Info_Preproduction.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Defaults-Info_Preproduction.plist"; sourceTree = "<group>"; };
@@ -131,7 +123,6 @@
 		F83B92201A7A8CCF009E7ADF /* FormDemo-Info_Stubs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info_Stubs.plist"; sourceTree = "<group>"; };
 		F83B922D1A7A8D04009E7ADF /* FormDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FormDemo-Info.plist"; sourceTree = "<group>"; };
 		FA4647BEC16A7524C0937CF6 /* Pods-Form-FormDemo.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemo.production.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo.production.xcconfig"; sourceTree = "<group>"; };
-		FBD4BCB796711E590FFB6FC9 /* Pods-FormDemo.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormDemo.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-FormDemo/Pods-FormDemo.stubs.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47E17214F9A4009CF12359D7 /* Pods_FormDemoTests.framework in Frameworks */,
 				2ED2C82E7199F0691827FFBC /* Pods_Form_FormDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,14 +172,6 @@
 		6C0000BCAC8752038EA18DDB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FBD4BCB796711E590FFB6FC9 /* Pods-FormDemo.stubs.xcconfig */,
-				147C172E570244B76E9A8609 /* Pods-FormDemo.preproduction.xcconfig */,
-				4A08E56FF1A2E6E1D873D90F /* Pods-FormDemo.production.xcconfig */,
-				6E6A3AE8E44734C6530AC046 /* Pods-FormDemo.distribution.xcconfig */,
-				9C9220CDCE8C495437E023DB /* Pods-FormDemoTests.stubs.xcconfig */,
-				F58BBA250BE675C419ED2946 /* Pods-FormDemoTests.preproduction.xcconfig */,
-				32D3D6308F00B6B8059A24E8 /* Pods-FormDemoTests.production.xcconfig */,
-				4131DA2D9333046F6E9F313E /* Pods-FormDemoTests.distribution.xcconfig */,
 				257CF15D9E4A3F14B772FC4C /* Pods-Form-FormDemo.stubs.xcconfig */,
 				0823DC29CAD5B0063AEAC722 /* Pods-Form-FormDemo.preproduction.xcconfig */,
 				FA4647BEC16A7524C0937CF6 /* Pods-Form-FormDemo.production.xcconfig */,
@@ -631,7 +613,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BDD5F3E9C530D463D230A81C /* [CP] Embed Pods Frameworks */ = {
@@ -661,7 +643,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D13C35CCCEE8F4CFEFEF5D75 /* [CP] Copy Pods Resources */ = {
@@ -751,7 +733,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7E4F8C919C6169B2F95CE40E /* Pods-Form-FormDemoTests.stubs.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -782,7 +763,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29EF28CF9BC9256E6BD68BEA /* Pods-Form-FormDemoTests.preproduction.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -813,7 +793,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 62575CC9257A3955B476732F /* Pods-Form-FormDemoTests.production.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -844,7 +823,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74B13D48B34F32C4AF4AF506 /* Pods-Form-FormDemoTests.distribution.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -917,7 +895,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 257CF15D9E4A3F14B772FC4C /* Pods-Form-FormDemo.stubs.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -983,7 +960,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BF23BAC98A4E85D25230DE2 /* Pods-Form-FormDemo.distribution.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1048,7 +1024,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0823DC29CAD5B0063AEAC722 /* Pods-Form-FormDemo.preproduction.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1114,7 +1089,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA4647BEC16A7524C0937CF6 /* Pods-Form-FormDemo.production.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;

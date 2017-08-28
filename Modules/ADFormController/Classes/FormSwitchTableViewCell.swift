@@ -74,6 +74,7 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         setupStaticConstraints()
         layoutMargins = UIEdgeInsets.zero
         separatorInset = UIEdgeInsetsMake(0, CGFloat(margin) as CGFloat, 0, 0)
+        selectionStyle = .none
     }
 
     required init?(coder aDecoder: NSCoder) {

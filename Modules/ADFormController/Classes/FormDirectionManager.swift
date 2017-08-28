@@ -43,7 +43,7 @@ class FormDirectionManager : NSObject {
 
     // MARK: FormDirectionManager
 
-    func indexPath(for direction: AccessoryViewDirection, baseIndexPath baseIndexPath: IndexPath?) -> IndexPath? {
+    func indexPath(for direction: AccessoryViewDirection, baseIndexPath: IndexPath?) -> IndexPath? {
         return baseIndexPath.flatMap {
             return nextIndexPath(for: direction, from: $0)
         }
