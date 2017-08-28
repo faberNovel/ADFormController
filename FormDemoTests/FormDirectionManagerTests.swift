@@ -35,75 +35,75 @@ class FormDirectionManagerTests: XCTestCase, FormDirectionManagerDelegate {
     }
 
     func testSimpleNext() {
-        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(forRow: 0, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(row: 0, section: StubTableViewSection.first.rawValue))
         let expectedIndexPath = IndexPath(row: 1, section: StubTableViewSection.first.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testSimplePrev() {
-        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(forRow: 4, inSection: StubTableViewSection.third.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(row: 4, section: StubTableViewSection.third.rawValue))
         let expectedIndexPath = IndexPath(row: 3, section: StubTableViewSection.third.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testNextBetweenSection() {
-        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(forRow: StubTableViewSection.First.lastRow, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(row: StubTableViewSection.first.lastRow, section: StubTableViewSection.first.rawValue))
         let expectedIndexPath = IndexPath(row: 0, section: StubTableViewSection.second.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testPreviousBetweenSection() {
-        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(forRow: 0, inSection: StubTableViewSection.third.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(row: 0, section: StubTableViewSection.third.rawValue))
         let expectedIndexPath = IndexPath(row: StubTableViewSection.second.lastRow, section: StubTableViewSection.second.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testNextWithEmptySection() {
-        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(forRow: StubTableViewSection.third.lastRow, inSection: StubTableViewSection.Third.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(row: StubTableViewSection.third.lastRow, section: StubTableViewSection.third.rawValue))
         let expectedIndexPath = IndexPath(row: 0, section: StubTableViewSection.fifth.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testPreviousWithEmptySection() {
-        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(forRow: 0, inSection: StubTableViewSection.fifth.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(row: 0, section: StubTableViewSection.fifth.rawValue))
         let expectedIndexPath = IndexPath(row: StubTableViewSection.third.lastRow, section: StubTableViewSection.third.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testNextOutOftableView() {
-        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(forRow: StubTableViewSection.fifth.lastRow, inSection: StubTableViewSection.Fifth.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(row: StubTableViewSection.fifth.lastRow, section: StubTableViewSection.fifth.rawValue))
         XCTAssert(indexPath == nil)
     }
 
     func testPreviousOutOftableView() {
-        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(forRow: 0, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(row: 0, section: StubTableViewSection.first.rawValue))
         XCTAssert(indexPath == nil)
     }
 
     func testNextIndexPathWithoutDelegate() {
         directionManager.delegate = nil
-        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(forRow: 0, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(row: 0, section: StubTableViewSection.first.rawValue))
         let expectedIndexPath = IndexPath(row: 1, section: StubTableViewSection.first.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testPreviousIndexPathWithoutDelegate() {
         directionManager.delegate = nil
-        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(forRow: 1, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(row: 1, section: StubTableViewSection.first.rawValue))
         let expectedIndexPath = IndexPath(row: 0, section: StubTableViewSection.first.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testNextWithNextCellNotEditable() {
         disableDelegateOnce = true
-        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(forRow: 0, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.next, andBaseIndexPath: IndexPath(row: 0, section: StubTableViewSection.first.rawValue))
         let expectedIndexPath = IndexPath(row: 2, section: StubTableViewSection.first.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
 
     func testPreviousWithNextCellNotEditable() {
         disableDelegateOnce = true
-        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(forRow: 2, inSection: StubTableViewSection.first.rawValue))
+        let indexPath = directionManager.indexPathForDirection(.previous, andBaseIndexPath: IndexPath(row: 2, section: StubTableViewSection.first.rawValue))
         let expectedIndexPath = IndexPath(row: 0, section: StubTableViewSection.first.rawValue)
         XCTAssert(indexPath == expectedIndexPath)
     }
