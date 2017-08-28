@@ -29,7 +29,7 @@ protocol FormBoolInputTableViewCell {
     weak var delegate: FormBoolInputTableViewCellDelegate? { get set }
     var boolContent: Bool { get set }
 
-    func apply(configuration configuration: FormCellBoolConfiguration)
+    func apply(configuration: FormCellBoolConfiguration)
 }
 
 protocol FormBoolInputTableViewCellDelegate: class {
