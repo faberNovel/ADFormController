@@ -21,6 +21,7 @@ enum RowType: Int {
     case email
     case phoneNumber
     case longText
+    case disabled
     case date
     case `switch`
     case noInputAccessory
@@ -100,6 +101,16 @@ extension RowType: RowConfigurable {
                 configuration.title = "Long text"
             }
             configuration.enabled = enabled
+            configuration.textAlignment = alignment
+            return configuration
+        case .disabled:
+            let configuration = FormCellTextConfiguration();
+            configuration.placeholder = "Disabled"
+            configuration.cellType = .text
+            if showTitle {
+                configuration.title = "Disabled"
+            }
+            configuration.enabled = false
             configuration.textAlignment = alignment
             return configuration
         case .date:
