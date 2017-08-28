@@ -194,7 +194,6 @@ private extension FormInput {
         guard let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
             return false
         }
-        let cell = tableView.cellForRow(at: indexPath)
         return tableView.cellForRow(at: indexPath) is FormTextInputTableViewCell
             && configuration.enabled
     }
