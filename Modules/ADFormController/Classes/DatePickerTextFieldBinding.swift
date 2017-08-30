@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatePickerTextFieldBinging: NSObject {
+class DatePickerTextFieldBinding: NSObject {
     let datePicker = UIDatePicker()
     var dateFormatter: DateFormatter?
     private var textField : UITextField
@@ -17,7 +17,7 @@ class DatePickerTextFieldBinging: NSObject {
         self.textField = textField
         super.init()
         datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(DatePickerTextFieldBinging.dateChanged(_:)), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
     }
 
     func startEditing() {

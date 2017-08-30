@@ -41,8 +41,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         }
     }
     var textFieldFormatter: TextFieldFormatter?
-    lazy private var datePickerBinding: DatePickerTextFieldBinging = {
-        return DatePickerTextFieldBinging(textField: self.textField)
+    lazy private var datePickerBinding: DatePickerTextFieldBinding = {
+        return DatePickerTextFieldBinding(textField: self.textField)
     } ()
     lazy private var pickerViewBinding: PickerViewTextFieldBinding = {
         return PickerViewTextFieldBinding(textField: self.textField)
