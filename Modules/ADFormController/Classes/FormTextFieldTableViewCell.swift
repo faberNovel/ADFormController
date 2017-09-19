@@ -255,6 +255,10 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         pickerViewBinding.formPickerDataSource = configuration.formPickerDataSource
         textField.isEnabled = configuration.enabled
         textField.textAlignment = configuration.textAlignment
+
+        if let separatorInset = configuration.separatorInset {
+            self.separatorInset = separatorInset
+        }
     }
 
     // MARK: Private
