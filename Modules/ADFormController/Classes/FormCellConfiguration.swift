@@ -16,6 +16,7 @@ import UIKit
     open var rightView: UIView?
     open var enabled: Bool = true
     open var textAlignment: NSTextAlignment = .left
+    open var separatorInset: UIEdgeInsets? = nil
 
     open func visit(_ configurable: FormCellConfigurable, at indexPath: IndexPath) -> UITableViewCell {
         fatalError("Should be overriden")

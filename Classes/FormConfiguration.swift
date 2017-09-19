@@ -12,7 +12,14 @@ import ADFormController
 protocol RowConfigurable {
     var title: String { get }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration?
+    func formCellConfiguration(showTitle: Bool,
+                               model: FormModel,
+                               prefilled: Bool,
+                               accessoryView: UIView,
+                               passwordVisible: Bool,
+                               enabled: Bool,
+                               alignment: NSTextAlignment,
+                               separatorInset: UIEdgeInsets?) -> FormCellConfiguration?
 }
 
 enum RowType: Int {
@@ -23,6 +30,7 @@ enum RowType: Int {
     case longText
     case disabled
     case date
+    case time
     case `switch`
     case noInputAccessory
 
@@ -45,7 +53,14 @@ extension RowType: RowConfigurable {
         }
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool,
+                               model: FormModel,
+                               prefilled: Bool,
+                               accessoryView: UIView,
+                               passwordVisible: Bool,
+                               enabled: Bool,
+                               alignment: NSTextAlignment,
+                               separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
         case .gender:
             let configuration = FormCellTextConfiguration();
@@ -58,6 +73,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .name:
             let configuration = FormCellTextConfiguration();
@@ -69,6 +85,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .email:
             let configuration = FormCellTextConfiguration();
@@ -80,6 +97,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .phoneNumber:
             let configuration = FormCellTextConfiguration();
@@ -91,6 +109,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .longText:
             let configuration = FormCellTextConfiguration();
@@ -102,6 +121,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .disabled:
             let configuration = FormCellTextConfiguration();
@@ -112,6 +132,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = false
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .date:
             let configuration = FormCellTextConfiguration();
@@ -126,6 +147,22 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
+            return configuration
+        case .time:
+            let configuration = FormCellTextConfiguration();
+            configuration.placeholder = "Time"
+            configuration.cellType = .time
+            configuration.dateFormatter = TestFormViewController.timeFormatter
+            if let text = model.birthDate.map({TestFormViewController.timeFormatter.string(from: $0)}) {
+                configuration.text = text
+            }
+            if showTitle {
+                configuration.title = "Time"
+            }
+            configuration.enabled = enabled
+            configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .switch:
             let configuration = FormCellBoolConfiguration();
@@ -139,6 +176,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .noInputAccessory:
             let configuration = FormCellTextConfiguration();
@@ -149,6 +187,7 @@ extension RowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         }
     }
@@ -168,7 +207,14 @@ extension CreditCardRowType: RowConfigurable {
         return "Credit card"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool,
+                               model: FormModel,
+                               prefilled: Bool,
+                               accessoryView: UIView,
+                               passwordVisible: Bool,
+                               enabled: Bool,
+                               alignment: NSTextAlignment,
+                               separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
         case .number:
             let configuration = FormCellTextConfiguration();
@@ -181,6 +227,7 @@ extension CreditCardRowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .expirationDate:
             let configuration = FormCellTextConfiguration();
@@ -193,6 +240,7 @@ extension CreditCardRowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         }
     }
@@ -212,7 +260,14 @@ extension PasswordRowType: RowConfigurable {
         return "Password"
     }
 
-    func formCellConfiguration(showTitle: Bool, model: FormModel, prefilled: Bool, accessoryView: UIView, passwordVisible: Bool, enabled: Bool, alignment: NSTextAlignment) -> FormCellConfiguration? {
+    func formCellConfiguration(showTitle: Bool,
+                               model: FormModel,
+                               prefilled: Bool,
+                               accessoryView: UIView,
+                               passwordVisible: Bool,
+                               enabled: Bool,
+                               alignment: NSTextAlignment,
+                               separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
         case .newPassword:
             let configuration = FormCellTextConfiguration();
@@ -229,6 +284,7 @@ extension PasswordRowType: RowConfigurable {
             configuration.rightView = accessoryView
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         case .newPasswordConfirmation:
             let configuration = FormCellTextConfiguration();
@@ -242,6 +298,7 @@ extension PasswordRowType: RowConfigurable {
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
+            configuration.separatorInset = separatorInset
             return configuration
         }
     }

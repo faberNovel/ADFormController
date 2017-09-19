@@ -24,11 +24,19 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     var shouldSetCustomAccessoryView = false
     var enabledInputs = true
     var alignment: NSTextAlignment = .left
+    var separatorInset: UIEdgeInsets? = nil
 
     static let dateFormatter : DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = Locale.current
+        return dateFormatter;
+    }()
+
+    static let timeFormatter : DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.locale = Locale.current
         return dateFormatter;
     }()
 
@@ -112,7 +120,15 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     // MARK: FormControllerDelegate
 
     func configurationForFormController(_ formController: FormController, at indexPath: IndexPath) -> FormCellConfiguration? {
-        return rowConfigurableAtIndexPath(indexPath as IndexPath)?.formCellConfiguration(showTitle: showTitles, model: formModel, prefilled: prefilled, accessoryView: passwordButton, passwordVisible: passwordVisible, enabled: enabledInputs, alignment: alignment)
+        return rowConfigurableAtIndexPath(indexPath as IndexPath)?
+            .formCellConfiguration(showTitle: showTitles,
+                                   model: formModel,
+                                   prefilled: prefilled,
+                                   accessoryView: passwordButton,
+                                   passwordVisible: passwordVisible,
+                                   enabled: enabledInputs,
+                                   alignment: alignment,
+                                   separatorInset: separatorInset)
     }
 
     func formController(_ formController: FormController, inputAccessoryViewAt indexPath: IndexPath) -> UIView {
@@ -147,6 +163,8 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             case .longText:
                 formModel.summary = formController.stringValue(at: indexPath)
             case .date:
+                self.formModel.birthDate = formController.dateValue(at: indexPath)
+            case .time:
                 self.formModel.birthDate = formController.dateValue(at: indexPath)
             case .switch:
                 self.formModel.married = formController.boolValue(at: indexPath)

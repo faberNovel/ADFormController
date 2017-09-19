@@ -106,6 +106,9 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         let clipToRightTransform = CGAffineTransform(translationX: CGFloat(switchView.frame.width) * (1.0 - CGFloat(configuration.switchZoom)) / 2.0, y: 0.0)
         self.switchView.transform = scale.concatenating(clipToRightTransform)
         switchView.isEnabled = configuration.enabled
+        if let separatorInset = configuration.separatorInset {
+            self.separatorInset = separatorInset
+        }
     }
 
     // MARK: Private

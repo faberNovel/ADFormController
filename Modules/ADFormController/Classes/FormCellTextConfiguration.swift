@@ -17,6 +17,7 @@ import UIKit
     case number
     case decimal
     case date
+    case time
     case picker
     case longText
     case passwordNumber

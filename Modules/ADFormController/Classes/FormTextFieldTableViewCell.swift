@@ -41,8 +41,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         }
     }
     var textFieldFormatter: TextFieldFormatter?
-    lazy private var datePickerBinding: DatePickerTextFieldBinging = {
-        return DatePickerTextFieldBinging(textField: self.textField)
+    lazy private var datePickerBinding: DatePickerTextFieldBinding = {
+        return DatePickerTextFieldBinding(textField: self.textField)
     } ()
     lazy private var pickerViewBinding: PickerViewTextFieldBinding = {
         return PickerViewTextFieldBinding(textField: self.textField)
@@ -76,7 +76,12 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
             case .decimal:
                 textField.keyboardType = .decimalPad
             case .date:
-                textField.inputView = datePickerBinding.datePicker
+                datePickerBinding.datePickerMode = .date
+                textField.inputView = datePickerBinding.inputView
+                textField.disablePasteAction = true
+            case .time:
+                datePickerBinding.datePickerMode = .time
+                textField.inputView = datePickerBinding.inputView
                 textField.disablePasteAction = true
             case .picker:
                 textField.inputView = pickerViewBinding.pickerView
@@ -250,6 +255,10 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         pickerViewBinding.formPickerDataSource = configuration.formPickerDataSource
         textField.isEnabled = configuration.enabled
         textField.textAlignment = configuration.textAlignment
+
+        if let separatorInset = configuration.separatorInset {
+            self.separatorInset = separatorInset
+        }
     }
 
     // MARK: Private
