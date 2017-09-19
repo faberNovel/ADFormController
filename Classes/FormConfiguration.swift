@@ -23,6 +23,7 @@ enum RowType: Int {
     case longText
     case disabled
     case date
+    case time
     case `switch`
     case noInputAccessory
 
@@ -123,6 +124,20 @@ extension RowType: RowConfigurable {
             }
             if showTitle {
                 configuration.title = "Date"
+            }
+            configuration.enabled = enabled
+            configuration.textAlignment = alignment
+            return configuration
+        case .time:
+            let configuration = FormCellTextConfiguration();
+            configuration.placeholder = "Time"
+            configuration.cellType = .time
+            configuration.dateFormatter = TestFormViewController.timeFormatter
+            if let text = model.birthDate.map({TestFormViewController.timeFormatter.string(from: $0)}) {
+                configuration.text = text
+            }
+            if showTitle {
+                configuration.title = "Time"
             }
             configuration.enabled = enabled
             configuration.textAlignment = alignment
