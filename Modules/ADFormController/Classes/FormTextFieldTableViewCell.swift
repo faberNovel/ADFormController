@@ -76,7 +76,12 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
             case .decimal:
                 textField.keyboardType = .decimalPad
             case .date:
-                textField.inputView = datePickerBinding.datePicker
+                datePickerBinding.datePickerMode = .date
+                textField.inputView = datePickerBinding.inputView
+                textField.disablePasteAction = true
+            case .time:
+                datePickerBinding.datePickerMode = .time
+                textField.inputView = datePickerBinding.inputView
                 textField.disablePasteAction = true
             case .picker:
                 textField.inputView = pickerViewBinding.pickerView

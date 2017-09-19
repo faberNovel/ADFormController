@@ -9,14 +9,18 @@
 import UIKit
 
 class DatePickerTextFieldBinding: NSObject {
-    let datePicker = UIDatePicker()
     var dateFormatter: DateFormatter?
+    var inputView: UIView { return datePicker }
+    var datePickerMode: UIDatePickerMode {
+        get { return datePicker.datePickerMode }
+        set { datePicker.datePickerMode = newValue }
+    }
     private var textField : UITextField
+    private let datePicker = UIDatePicker()
 
     init(textField: UITextField) {
         self.textField = textField
         super.init()
-        datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
     }
 
