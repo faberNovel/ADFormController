@@ -9,6 +9,16 @@
 import UIKit
 import ADUtils
 
+private enum Configurations: String, EnumCollection {
+    case empty = "Empty"
+    case filled = "Filled"
+    case withTitle = "With Title"
+    case customDefaultInputAccessory = "Custom default input accessory"
+    case disabledInputs = "Disabled inputs"
+    case withAlignement = "With alignment"
+    case withCustomSeparatorInsets = "with custom separator insets"
+}
+
 class MenuTableViewController: TableViewController {
 
     // MARK: UIViewController
@@ -25,56 +35,42 @@ class MenuTableViewController: TableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return Configurations.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell : UITableViewCell = tableView.dequeueCell(at: indexPath)
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Empty"
-        case 1:
-            cell.textLabel?.text = "Filled"
-        case 2:
-            cell.textLabel?.text = "With Title"
-        case 3:
-            cell.textLabel?.text = "Custom default input accessory"
-        case 4:
-            cell.textLabel?.text = "Disabled inputs"
-        case 5:
-            cell.textLabel?.text = "With alignment"
-        default:
-            break
-        }
+        guard
+            (0...Configurations.count).contains(indexPath.row) else { return cell }
+        let configuration = Configurations.allValues[indexPath.row]
+        cell.textLabel?.text = configuration.rawValue
         return cell
-
     }
 
     // MARK: UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        guard
+            (0...Configurations.count).contains(indexPath.row) else { return }
+        let configuration = Configurations.allValues[indexPath.row]
         let testFormViewController = TestFormViewController()
-        switch indexPath.row {
-        case 0:
-            testFormViewController.title = "Empty"
-        case 1:
-            testFormViewController.title = "Filled"
+        testFormViewController.title = configuration.rawValue
+        switch configuration {
+        case .empty:
+            break
+        case .filled:
             testFormViewController.prefilled = true
-        case 2:
-            testFormViewController.title = "With title"
+        case .withTitle:
             testFormViewController.showTitles = true
-        case 3:
-            testFormViewController.title = "Custom default input accessory"
+        case .customDefaultInputAccessory:
             testFormViewController.shouldSetCustomAccessoryView = true
-        case 4:
-            testFormViewController.title = "Disabled inputs"
+        case .disabledInputs:
             testFormViewController.enabledInputs = false
-        case 5:
-            testFormViewController.title = "With alignment"
+        case .withAlignement:
             testFormViewController.showTitles = true
             testFormViewController.alignment = .right
-        default:
-            break
+        case .withCustomSeparatorInsets:
+            testFormViewController.separatorInset = UIEdgeInsets(horizontal: 35.0, vertical: 0.0)
         }
         navigationController?.pushViewController(testFormViewController, animated: true)
     }
