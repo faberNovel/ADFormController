@@ -63,11 +63,11 @@ extension RowType: RowConfigurable {
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
         case .gender:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Gender"
             configuration.cellType = .picker
             configuration.formPickerDataSource = SimpleFormPickerDataSource(options: ["Male", "Female"])
-            configuration.text = model.gender;
+            configuration.text = model.gender
             if showTitle {
                 configuration.title = "Gender"
             }
@@ -76,10 +76,10 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .name:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Name"
             configuration.cellType = .name
-            configuration.text = model.name;
+            configuration.text = model.name
             if showTitle {
                 configuration.title = "Name"
             }
@@ -88,10 +88,10 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .email:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Email"
             configuration.cellType = .email
-            configuration.text = model.email;
+            configuration.text = model.email
             if showTitle {
                 configuration.title = "Email"
             }
@@ -100,10 +100,10 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .phoneNumber:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Phone"
             configuration.cellType = .phone
-            configuration.text = model.phone;
+            configuration.text = model.phone
             if showTitle {
                 configuration.title = "Phone"
             }
@@ -112,10 +112,10 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .longText:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Long text"
             configuration.cellType = .longText
-            configuration.text = model.summary;
+            configuration.text = model.summary
             if showTitle {
                 configuration.title = "Long text"
             }
@@ -124,7 +124,7 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .disabled:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Disabled"
             configuration.cellType = .text
             if showTitle {
@@ -135,7 +135,7 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .date:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Date"
             configuration.cellType = .date
             configuration.dateFormatter = TestFormViewController.dateFormatter
@@ -150,7 +150,7 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .time:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Time"
             configuration.cellType = .time
             configuration.dateFormatter = TestFormViewController.timeFormatter
@@ -165,11 +165,11 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .switch:
-            let configuration = FormCellBoolConfiguration();
+            let configuration = FormCellBoolConfiguration()
             configuration.title = "Maried"
             configuration.onTintColor = UIColor.green
             configuration.tintColor = UIColor.red
-            configuration.switchZoom = 0.65;
+            configuration.switchZoom = 0.65
             configuration.boolValue = model.married
             if showTitle {
                 configuration.title = "Maried"
@@ -179,7 +179,7 @@ extension RowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .noInputAccessory:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Useless row with no input accessory"
             configuration.cellType = .name
             if showTitle {
@@ -217,11 +217,11 @@ extension CreditCardRowType: RowConfigurable {
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
         case .number:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Credit card"
             configuration.cellType = .number
             configuration.textFieldFormatter = CreditCardTextFieldFormatter()
-            configuration.text = model.creditCard;
+            configuration.text = model.creditCard
             if showTitle {
                 configuration.title = "Credit card"
             }
@@ -230,11 +230,11 @@ extension CreditCardRowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .expirationDate:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Expiration Date"
             configuration.cellType = .picker
             configuration.formPickerDataSource = ExpirationDatePickerDataSource()
-            configuration.text = model.expiration;
+            configuration.text = model.expiration
             if showTitle {
                 configuration.title = "Expiration Date"
             }
@@ -270,7 +270,7 @@ extension PasswordRowType: RowConfigurable {
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
         case .newPassword:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "New password"
             if !passwordVisible {
                 configuration.cellType = .password
@@ -287,7 +287,7 @@ extension PasswordRowType: RowConfigurable {
             configuration.separatorInset = separatorInset
             return configuration
         case .newPasswordConfirmation:
-            let configuration = FormCellTextConfiguration();
+            let configuration = FormCellTextConfiguration()
             configuration.placeholder = "Confirmation"
             configuration.cellType = .password
             if showTitle {

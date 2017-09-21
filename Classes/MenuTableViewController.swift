@@ -21,14 +21,14 @@ private enum Configurations: String, EnumCollection {
 
 class MenuTableViewController: TableViewController {
 
-    // MARK: UIViewController
+    //MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(cell: .class(UITableViewCell.self))
     }
 
-    // MARK: UITableViewDataSource
+    //MARK: - UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -39,19 +39,21 @@ class MenuTableViewController: TableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let  cell : UITableViewCell = tableView.dequeueCell(at: indexPath)
-        guard
-            (0...Configurations.count).contains(indexPath.row) else { return cell }
+        let cell: UITableViewCell = tableView.dequeueCell(at: indexPath)
+        guard (0...Configurations.count).contains(indexPath.row) else {
+            return cell
+        }
         let configuration = Configurations.allValues[indexPath.row]
         cell.textLabel?.text = configuration.rawValue
         return cell
     }
 
-    // MARK: UITableViewDelegate
+    //MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
-        guard
-            (0...Configurations.count).contains(indexPath.row) else { return }
+        guard (0...Configurations.count).contains(indexPath.row) else {
+            return
+        }
         let configuration = Configurations.allValues[indexPath.row]
         let testFormViewController = TestFormViewController()
         testFormViewController.title = configuration.rawValue

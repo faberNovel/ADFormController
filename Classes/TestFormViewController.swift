@@ -11,6 +11,20 @@ import ADFormController
 
 class TestFormViewController : TableViewController, FormControllerDelegate {
 
+    static let dateFormatter : DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.locale = Locale.current
+        return dateFormatter
+    }()
+
+    static let timeFormatter : DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.locale = Locale.current
+        return dateFormatter
+    }()
+
     var prefilled = false {
         didSet {
             if prefilled {
@@ -25,53 +39,35 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     var enabledInputs = true
     var alignment: NSTextAlignment = .left
     var separatorInset: UIEdgeInsets? = nil
-
-    static let dateFormatter : DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        dateFormatter.locale = Locale.current
-        return dateFormatter;
-    }()
-
-    static let timeFormatter : DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.locale = Locale.current
-        return dateFormatter;
-    }()
-
     private var formModel = FormModel()
-    lazy private var formController : FormController = {
-        let formController = FormController(tableView: self.tableView)
-        formController.delegate = self
-        return formController
-    }()
     private var passwordVisible = false
-    lazy private var passwordButton :UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Show", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.italicSystemFont(ofSize: 10.0)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
-        button.sizeToFit()
-        return button
-    }()
+    private lazy var formController : FormController = self.createFormController()
+    private lazy var passwordButton: UIButton = self.createPasswordButton()
 
-    // MARK: UIViewController
+    //MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.keyboardDismissMode = .onDrag
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(TestFormViewController.printValue))
-
-        passwordButton.addTarget(self, action: #selector(TestFormViewController.togglePassword), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Print",
+            style: .plain,
+            target: self,
+            action: #selector(TestFormViewController.printValue)
+        )
+        passwordButton.addTarget(
+            self,
+            action: #selector(TestFormViewController.togglePassword),
+            for: .touchUpInside
+        )
         if shouldSetCustomAccessoryView {
-            formController.defaultAccessoryView = EnglishAccessoryToolbar(frame: CGRect(x: 0, y: 0, width: (tableView.bounds).width, height: 64.0))
+            formController.defaultAccessoryView = EnglishAccessoryToolbar(
+                frame: CGRect(x: 0, y: 0, width: (tableView.bounds).width, height: 64.0)
+            )
         }
     }
 
-    // MARK: UITableViewDataSource
+    //MARK: - UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -94,14 +90,14 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         return formController.cellForRow(at: indexPath)
     }
 
-    // MARK: UITableViewDelegate
+    //MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44.0;
+        return 44.0
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return rowConfigurableAtIndexPath(IndexPath(row: 0, section: section))?.title
+        return rowConfigurable(at: IndexPath(row: 0, section: section))?.title
     }
 
     func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat {
@@ -114,28 +110,35 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         default:
             return 44.0
         }
-
     }
 
-    // MARK: FormControllerDelegate
+    //MARK: - FormControllerDelegate
 
     func configurationForFormController(_ formController: FormController, at indexPath: IndexPath) -> FormCellConfiguration? {
-        return rowConfigurableAtIndexPath(indexPath as IndexPath)?
-            .formCellConfiguration(showTitle: showTitles,
-                                   model: formModel,
-                                   prefilled: prefilled,
-                                   accessoryView: passwordButton,
-                                   passwordVisible: passwordVisible,
-                                   enabled: enabledInputs,
-                                   alignment: alignment,
-                                   separatorInset: separatorInset)
+        return rowConfigurable(at: indexPath as IndexPath)?.formCellConfiguration(
+            showTitle: showTitles,
+            model: formModel,
+            prefilled: prefilled,
+            accessoryView: passwordButton,
+            passwordVisible: passwordVisible,
+            enabled: enabledInputs,
+            alignment: alignment,
+            separatorInset: separatorInset
+        )
     }
 
     func formController(_ formController: FormController, inputAccessoryViewAt indexPath: IndexPath) -> UIView {
         switch indexPath {
         case let confirmationIndexPath where (confirmationIndexPath.section == 2 && confirmationIndexPath.row == PasswordRowType.newPasswordConfirmation.rawValue):
-            let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0))
-            let barButton = UIBarButtonItem(title: "Check passwork", style: .plain, target: self, action: #selector(TestFormViewController.checkPasswork(_:)))
+            let toolBar = UIToolbar(
+                frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0)
+            )
+            let barButton = UIBarButtonItem(
+                title: "Check passwork",
+                style: .plain,
+                target: self,
+                action: #selector(TestFormViewController.checkPasswork(_:))
+            )
             toolBar.items = [barButton]
             return toolBar
         case let noInputIndexPath where (noInputIndexPath.section == 0 && noInputIndexPath.row == RowType.noInputAccessory.rawValue):
@@ -169,13 +172,13 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             case .switch:
                 self.formModel.married = formController.boolValue(at: indexPath)
             default:
-                break;
+                break
             }
         case 1:
             guard let rowType = CreditCardRowType(rawValue: indexPath.row) else {
                 return
             }
-            switch (rowType) {
+            switch rowType {
             case .number:
                 formModel.creditCard = formController.stringValue(at: indexPath)
             case .expirationDate:
@@ -186,14 +189,32 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         }
     }
 
-    // MARK: Private
+    //MARK: - Private
+
+    private func createFormController() -> FormController {
+        let formController = FormController(tableView: self.tableView)
+        formController.delegate = self
+        return formController
+    }
+
+    private func createPasswordButton() -> UIButton {
+        let button = UIButton(type: .custom)
+        button.setTitle("Show", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = UIFont.italicSystemFont(ofSize: 10.0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
+        button.sizeToFit()
+        return button
+    }
+
     @objc private func printValue () {
-        let isMarried = formController.boolValue(at: IndexPath(row: RowType.switch.rawValue, section: 0))
-        DDLogInfo("Married =  \(isMarried)");
+        let indexPath = IndexPath(row: RowType.switch.rawValue, section: 0)
+        let isMarried = formController.boolValue(at: indexPath)
+        DDLogInfo("Married = \(isMarried)")
     }
 
     @objc private func togglePassword () {
-        passwordVisible = !passwordVisible;
+        passwordVisible = !passwordVisible
         let title = passwordVisible ? "Hide" : "Show"
         passwordButton.setTitle(title, for: .normal)
 
@@ -201,7 +222,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 
-    func rowConfigurableAtIndexPath(_ indexPath: IndexPath) -> RowConfigurable? {
+    func rowConfigurable(at indexPath: IndexPath) -> RowConfigurable? {
         switch indexPath.section {
         case 0:
             return RowType(rawValue: indexPath.row)
@@ -210,13 +231,15 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         case 2:
             return PasswordRowType(rawValue: indexPath.row)
         default:
-            return nil;
+            return nil
         }
     }
 
     @objc private func checkPasswork(_ sender: UIToolbar) {
-        let newPassword = formController.stringValue(at: IndexPath(row: PasswordRowType.newPassword.rawValue, section: 2))
-        let confirmation = formController.stringValue(at: IndexPath(row: PasswordRowType.newPasswordConfirmation.rawValue, section: 2))
+        let passwordIndexPath = IndexPath(row: PasswordRowType.newPassword.rawValue, section: 2)
+        let passwordConfirmationIndexPath = IndexPath(row: PasswordRowType.newPasswordConfirmation.rawValue, section: 2)
+        let newPassword = formController.stringValue(at: passwordIndexPath)
+        let confirmation = formController.stringValue(at: passwordConfirmationIndexPath)
         if newPassword == confirmation {
             print("Same password \\o/")
         } else {

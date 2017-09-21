@@ -26,12 +26,12 @@ private enum ExpirationDateComponent: Int {
         }
     }
 
-    static let months : [String] = {
+    static let months: [String] = {
         let dateFormatter = DateFormatter()
         return dateFormatter.monthSymbols
     }()
 
-    static let years : [String] = {
+    static let years: [String] = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         let currentYearString = dateFormatter.string(from: Date())
@@ -48,7 +48,8 @@ private enum ExpirationDateComponent: Int {
 
 class ExpirationDatePickerDataSource: NSObject, FormPickerDataSource {
 
-    // MARK: ADFormPickerDataSource
+    //MARK: - ADFormPickerDataSource
+
     let numberOfComponents: Int = ExpirationDateComponent.count
 
     func componentOptions(_ component: Int) -> [String] {
@@ -82,5 +83,4 @@ class ExpirationDatePickerDataSource: NSObject, FormPickerDataSource {
         }
         return [monthIndex - 1, yearIndex]
     }
-
 }
