@@ -118,7 +118,6 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         return rowConfigurable(at: indexPath as IndexPath)?.formCellConfiguration(
             showTitle: showTitles,
             model: formModel,
-            prefilled: prefilled,
             accessoryView: passwordButton,
             passwordVisible: passwordVisible,
             enabled: enabledInputs,
@@ -184,8 +183,18 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             case .expirationDate:
                 formModel.expiration = formController.stringValue(at: indexPath)
             }
+        case 2:
+            guard let rowType = PasswordRowType(rawValue: indexPath.row) else {
+                return
+            }
+            switch rowType {
+            case .newPassword:
+                formModel.password = formController.stringValue(at: indexPath)
+            case .newPasswordConfirmation:
+                formModel.passwordConfirmation = formController.stringValue(at: indexPath)
+            }
         default:
-            return
+            break
         }
     }
 

@@ -14,7 +14,6 @@ protocol RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool,
                                model: FormModel,
-                               prefilled: Bool,
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
@@ -55,7 +54,6 @@ extension RowType: RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool,
                                model: FormModel,
-                               prefilled: Bool,
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
@@ -209,7 +207,6 @@ extension CreditCardRowType: RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool,
                                model: FormModel,
-                               prefilled: Bool,
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
@@ -262,7 +259,6 @@ extension PasswordRowType: RowConfigurable {
 
     func formCellConfiguration(showTitle: Bool,
                                model: FormModel,
-                               prefilled: Bool,
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
@@ -278,9 +274,7 @@ extension PasswordRowType: RowConfigurable {
             if showTitle {
                 configuration.title = "New password"
             }
-            if prefilled {
-                configuration.text = "abcdef"
-            }
+            configuration.text = model.password
             configuration.rightView = accessoryView
             configuration.enabled = enabled
             configuration.textAlignment = alignment
@@ -293,9 +287,7 @@ extension PasswordRowType: RowConfigurable {
             if showTitle {
                 configuration.title = "Confirmation"
             }
-            if prefilled {
-                configuration.text = "abcdef"
-            }
+            configuration.text = model.passwordConfirmation
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             configuration.separatorInset = separatorInset
