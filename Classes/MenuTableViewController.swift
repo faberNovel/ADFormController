@@ -16,7 +16,7 @@ private enum Configurations: String, EnumCollection {
     case customDefaultInputAccessory = "Custom default input accessory"
     case disabledInputs = "Disabled inputs"
     case withAlignement = "With alignment"
-    case withCustomSeparatorInsets = "with custom separator insets"
+    case withCustomSeparatorInsets = "With custom separator insets"
 }
 
 class MenuTableViewController: TableViewController {
