@@ -188,7 +188,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
 
     // MARK: Private
     @objc private func printValue () {
-        let isMarried = formController.boolValue(at: IndexPath(row: 0, section: 0))
+        let isMarried = formController.boolValue(at: IndexPath(row: RowType.switch.rawValue, section: 0))
         DDLogInfo("Married =  \(isMarried)");
     }
 
