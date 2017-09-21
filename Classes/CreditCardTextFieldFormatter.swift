@@ -33,11 +33,17 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
         guard let text = textField.text else {
             return
         }
-        guard var targetCursorPosition = textField.selectedTextRange.map({
-            return textField.offset(from: textField.beginningOfDocument, to: $0.start)
-        }) else {
-            return
+
+        var targetCursorPosition: Int
+        if let selectedTextRange = textField.selectedTextRange {
+            targetCursorPosition = textField.offset(
+                from: textField.beginningOfDocument,
+                to: selectedTextRange.start
+            )
+        } else {
+            targetCursorPosition = (textField.text ?? "").characters.count
         }
+
         let cardNumberWithoutSpacing = removeNonDigitsAndPreserveCursorPosition(
             text,
             cursorPosition: &targetCursorPosition
