@@ -9,23 +9,19 @@
 import UIKit
 
 private struct Constants {
-    static let leftLabelKeyPath: String = "leftLabel.text"
+    static let leftLabelKeyPath = "leftLabel.text"
 }
 
 class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
-    let textField: FormTextField = {
-        let textField = FormTextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    } ()
-    let leftLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
-        label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
-        return label
-    } ()
-    var rightView: UIView? {
+
+    private(set) lazy var textField: FormTextField = self.createTextField()
+    private dynamic lazy var leftLabel: UILabel = self.createLeftLabel() // dynamic for KVO
+    private lazy var datePickerBinding: DatePickerTextFieldBinding = self.createDatePickerBinding()
+    private lazy var pickerViewBinding: PickerViewTextFieldBinding = self.createPickerViewBinding()
+    private var textFieldFormatter: TextFieldFormatter?
+    private var dynamicConstraints: [NSLayoutConstraint] = []
+
+    private var rightView: UIView? {
         willSet {
             guard let rightView = self.rightView else {
                 return
@@ -41,39 +37,32 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
             setNeedsUpdateConstraints()
         }
     }
-    var textFieldFormatter: TextFieldFormatter?
-    lazy private var datePickerBinding: DatePickerTextFieldBinding = {
-        return DatePickerTextFieldBinding(textField: self.textField)
-    } ()
-    lazy private var pickerViewBinding: PickerViewTextFieldBinding = {
-        return PickerViewTextFieldBinding(textField: self.textField)
-    } ()
-    private var dynamicConstraints: [NSLayoutConstraint] = []
+
     private var cellType: FormTextCellType = .email {
         didSet {
             textField.isSecureTextEntry = false
             switch self.cellType {
             case .email:
-                textField.keyboardType = .emailAddress;
-                textField.autocapitalizationType = .none;
-                textField.autocorrectionType = .no;
+                textField.keyboardType = .emailAddress
+                textField.autocapitalizationType = .none
+                textField.autocorrectionType = .no
             case .password:
                 textField.isSecureTextEntry = true
             case .passwordNumber:
-                textField.keyboardType = .numberPad;
+                textField.keyboardType = .numberPad
                 textField.isSecureTextEntry = true
             case .name:
-                textField.keyboardType = .asciiCapable;
-                textField.autocapitalizationType = .words;
-                textField.autocorrectionType = .no;
+                textField.keyboardType = .asciiCapable
+                textField.autocapitalizationType = .words
+                textField.autocorrectionType = .no
             case .phone:
-                textField.keyboardType = .phonePad;
+                textField.keyboardType = .phonePad
             case .text:
-                textField.keyboardType = .asciiCapable;
-                textField.autocapitalizationType = .sentences;
-                textField.autocorrectionType = .default;
+                textField.keyboardType = .asciiCapable
+                textField.autocapitalizationType = .sentences
+                textField.autocorrectionType = .default
             case .number:
-                textField.keyboardType = .numberPad;
+                textField.keyboardType = .numberPad
             case .decimal:
                 textField.keyboardType = .decimalPad
             case .date:
@@ -93,18 +82,45 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         }
     }
 
-    // MARK: UIView
+    //MARK: - Lifecycle
+
+    deinit {
+        removeObserver(self, forKeyPath: Constants.leftLabelKeyPath)
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(FormTextFieldTableViewCell.textChanged(_:)), for: .allEditingEvents)
+        contentView.addSubview(textField)
+        contentView.addSubview(leftLabel)
+        addObserver(self, forKeyPath: Constants.leftLabelKeyPath, options: .new, context: nil)
+        layoutMargins = UIEdgeInsets.zero
+        separatorInset = UIEdgeInsetsMake(0, 15.0, 0, 0)
+        let views = [
+            "textField": textField
+        ]
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textField]|", options: .alignAllLeft, metrics: nil, views: views))
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    //MARK: - UIView
+
     override func updateConstraints() {
-        self.contentView.removeConstraints(dynamicConstraints)
+        contentView.removeConstraints(dynamicConstraints)
         dynamicConstraints.removeAll()
-        var views = [
-            "textField" : textField,
-            "leftLabel" : leftLabel
+        var views: [String: Any] = [
+            "textField": textField,
+            "leftLabel": leftLabel
         ]
         if let rightView = rightView {
             let metrics = [
-                "rightViewWidth" : rightView.bounds.width,
-                "rightViewHeight" : rightView.bounds.height
+                "rightViewWidth": rightView.bounds.width,
+                "rightViewHeight": rightView.bounds.height
             ]
             views["rightView"] = rightView
             dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:[textField]-[rightView(rightViewWidth)]|",
@@ -141,42 +157,20 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         super.updateConstraints()
     }
 
-    // MARK: UITableViewCell
+    //MARK: - NSObject
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(FormTextFieldTableViewCell.textChanged(_:)), for: .allEditingEvents)
-        contentView.addSubview(textField)
-        contentView.addSubview(leftLabel)
-        addObserver(self, forKeyPath: Constants.leftLabelKeyPath, options: .new, context: nil)
-        layoutMargins = UIEdgeInsets.zero
-        separatorInset = UIEdgeInsetsMake(0, 15.0, 0, 0)
-        let views = [
-            "textField" : textField
-        ]
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textField]|", options: .alignAllLeft, metrics: nil, views: views))
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-
-    // MARK: NSObject
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == Constants.leftLabelKeyPath {
             textField.textAlignment = textLabel?.text?.characters.count == 0 ? .right : .left
             setNeedsUpdateConstraints()
         }
     }
 
-    deinit {
-        removeObserver(self, forKeyPath: Constants.leftLabelKeyPath)
-    }
+    //MARK: - UITextfieldDelegate
 
-    // MARK: UITextfieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch cellType {
         case .date:
@@ -203,11 +197,14 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         return delegate.textInputTableViewCellShouldReturn(self)
     }
 
-    // MARK: FormTextInputTableViewCell
+    //MARK: - FormTextInputTableViewCell
+
     weak var delegate: FormTextInputTableViewCellDelegate?
     private var _inputAccessoryView: UIView?
-    // The FormTextInputTableViewCell require inputAccessoryView to be read write. However inputAccessoryView is read only in UITableViewCell
+    // The FormTextInputTableViewCell require inputAccessoryView to be read write.
+    // However inputAccessoryView is read only in UITableViewCell
     // So we need to pass through an other var to make it read writeu
+
     override var inputAccessoryView: UIView? {
         get {
             return _inputAccessoryView
@@ -216,6 +213,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
             _inputAccessoryView = newValue
         }
     }
+
     var returnKeyType: UIReturnKeyType {
         get {
             return textField.returnKeyType
@@ -224,6 +222,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
             textField.returnKeyType = newValue
         }
     }
+
     var textContent: String? {
         get {
             return textField.text
@@ -262,7 +261,30 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         }
     }
 
-    // MARK: Private
+    //MARK: - Private
+
+    private func createTextField() -> FormTextField {
+        let textField = FormTextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }
+
+    private func createLeftLabel() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
+        return label
+    }
+
+    private func createDatePickerBinding() -> DatePickerTextFieldBinding {
+        return DatePickerTextFieldBinding(textField: textField)
+    }
+
+    private func createPickerViewBinding() -> PickerViewTextFieldBinding {
+        return PickerViewTextFieldBinding(textField: textField)
+    }
+
     @objc private func textChanged(_ sender: UITextField) {
         textFieldFormatter?.textFieldValueChanged(sender)
         delegate?.textInputTableViewCellValueChanged(self)

@@ -9,7 +9,8 @@
 import UIKit
 
 class FormTextField : UITextField {
-    open var disablePasteAction : Bool = false
+
+    var disablePasteAction = false
 
     // MARK: UITextField
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {

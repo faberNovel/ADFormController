@@ -16,7 +16,8 @@ import Foundation
         self.options = options
     }
 
-    // MARK: FormPickerDataSource
+    //MARK: - FormPickerDataSource
+
     open let numberOfComponents: Int = 1
 
     open func componentOptions(_ component: Int) -> [String] {
@@ -36,5 +37,4 @@ import Foundation
         }
         return [index]
     }
-
 }

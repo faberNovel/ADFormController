@@ -35,7 +35,7 @@ import UIKit
 
 @objc open class FormCellTextConfiguration :FormCellConfiguration {
     open var text: String = ""
-    open var textFont: UIFont? = UIFont.init(name: "HelveticaNeue-Light", size: 14.0)
+    open var textFont: UIFont? = UIFont(name: "HelveticaNeue-Light", size: 14.0)
     open var textColor: UIColor = UIColor.black
     open var placeholder: String = ""
     open var dateFormatter: DateFormatter?

@@ -16,6 +16,7 @@ private enum FormInput {
 }
 
 private extension FormInput {
+
     func buildCell(_ cell: UITableViewCell?, accessoryView: UIView, returnKeyType: UIReturnKeyType, formController: FormController) -> UITableViewCell {
         switch self {
         case let .bool(boolConfiguration):
@@ -67,6 +68,7 @@ private extension FormInput {
 }
 
 @objc open class FormController: NSObject , FormBoolInputTableViewCellDelegate, FormTextInputTableViewCellDelegate, FormDirectionManagerDelegate, FormCellConfigurable {
+
     open weak var delegate: FormControllerDelegate?
     open var defaultAccessoryView: NavigableView {
         didSet {
@@ -74,25 +76,28 @@ private extension FormInput {
         }
     }
 
-    private unowned let tableView: UITableView
+    private weak var tableView: UITableView?
     private let formDirectionManager: FormDirectionManager
     private var cells: [IndexPath: UITableViewCell] = [:]
 
-    // MARK: Methods
+    //MARK: - Init
+
     public init(tableView: UITableView) {
         self.tableView = tableView
         formDirectionManager = FormDirectionManager(tableView: tableView)
-        defaultAccessoryView = TextInputAccessoryView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0))
+        defaultAccessoryView = TextInputAccessoryView(
+            frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0)
+        )
         super.init()
         formDirectionManager.delegate = self
         setAccessoryViewActions()
     }
 
-    // MARK: Methods
+    //MARK: - Methods
 
     @objc(stringValueAtIndexPath:)
     open func stringValue(at indexPath: IndexPath) -> String {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FormTextInputTableViewCell else {
+        guard let cell = tableView?.cellForRow(at: indexPath) as? FormTextInputTableViewCell else {
             return ""
         }
         guard let textToReturn = cell.textContent else {
@@ -103,7 +108,7 @@ private extension FormInput {
 
     @objc(boolValueAtIndexPath:)
     open func boolValue(at indexPath: IndexPath) -> Bool {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FormBoolInputTableViewCell else {
+        guard let cell = tableView?.cellForRow(at: indexPath) as? FormBoolInputTableViewCell else {
             return false
         }
         return cell.boolContent
@@ -111,7 +116,7 @@ private extension FormInput {
 
     @objc(dateValueAtIndexPath:)
     open func dateValue(at indexPath: IndexPath) -> Date? {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FormTextFieldTableViewCell else {
+        guard let cell = tableView?.cellForRow(at: indexPath) as? FormTextFieldTableViewCell else {
             return nil
         }
         guard let configuration = delegate?.configurationForFormController(self, at: indexPath) as? FormCellTextConfiguration else {
@@ -132,42 +137,50 @@ private extension FormInput {
 
     @objc(beginEditingAtIndexPath:)
     open func beginEditing(at indexPath: IndexPath) {
-        let targetCell = tableView.cellForRow(at: indexPath) as? FormTextInputTableViewCell
+        let targetCell = tableView?.cellForRow(at: indexPath) as? FormTextInputTableViewCell
         targetCell?.beginEditing()
     }
 
-    // MARK: FormCellConfigurable
+    //MARK: - FormCellConfigurable
 
     open func boolInputCell(with configuration: FormCellBoolConfiguration, at indexPath:IndexPath) -> UITableViewCell {
-        return FormInput.bool(configuration).buildCell(cells[indexPath],
-                                                       accessoryView: defaultAccessoryView.view,
-                                                       returnKeyType: returnKeyType(at: indexPath),
-                                                       formController: self)
+        return FormInput.bool(configuration).buildCell(
+            cells[indexPath],
+            accessoryView: defaultAccessoryView.view,
+            returnKeyType: returnKeyType(at: indexPath),
+            formController: self
+        )
     }
 
     open func textInputCell(with configuration: FormCellTextConfiguration, at indexPath:IndexPath) -> UITableViewCell {
         let accessoryView = delegate?.formController?(self, inputAccessoryViewAt: indexPath) ?? defaultAccessoryView.view
         let input = (configuration.cellType == .longText) ? FormInput.longText(configuration) : FormInput.shortText(configuration)
-        return input.buildCell(cells[indexPath],
-                               accessoryView: accessoryView,
-                               returnKeyType: returnKeyType(at: indexPath),
-                               formController: self)
+        return input.buildCell(
+            cells[indexPath],
+            accessoryView: accessoryView,
+            returnKeyType: returnKeyType(at: indexPath),
+            formController: self
+        )
     }
 
-    // MARK: FormBoolInputTableViewCellDelegate
+    //MARK: - FormBoolInputTableViewCellDelegate
 
     func boolInputTableViewCellDidChangeValue(_ cell: FormBoolInputTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell as! UITableViewCell) else {
-            return
+        guard
+            let tableViewCell = cell as? UITableViewCell,
+            let indexPath = tableView?.indexPath(for: tableViewCell) else {
+                return
         }
         delegate?.formController?(self, valueChangedFor: indexPath)
     }
 
-    // MARK: FormTextInputTableViewCellDelegate
+    //MARK: - FormTextInputTableViewCellDelegate
 
     func textInputTableViewCellValueChanged(_ cell: FormTextInputTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell as! UITableViewCell) else {
-            return
+        guard
+            let tableViewCell = cell as? UITableViewCell,
+            let indexPath = tableView?.indexPath(for: tableViewCell) else {
+                return
         }
         delegate?.formController?(self, valueChangedFor: indexPath)
     }
@@ -177,8 +190,10 @@ private extension FormInput {
     }
 
     func textInputTableViewCellShouldReturn(_ cell: FormTextInputTableViewCell) -> Bool {
-        guard let indexPath = tableView.indexPath(for: cell as! UITableViewCell) else {
-            return false
+        guard
+            let tableViewCell = cell as? UITableViewCell,
+            let indexPath = tableView?.indexPath(for: tableViewCell) else {
+                return false
         }
         if formDirectionManager.canMove(to: .next, from: indexPath) {
             move(to: .next, from: indexPath)
@@ -188,17 +203,20 @@ private extension FormInput {
         return true
     }
 
-    // MARK: FormDirectionManagerDelegate
+    //MARK: - FormDirectionManagerDelegate
 
     func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAt indexPath: IndexPath) -> Bool {
-        guard let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
-            return false
+        guard
+            let tableView = tableView,
+            let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
+                return false
         }
         return tableView.cellForRow(at: indexPath) is FormTextInputTableViewCell
             && configuration.enabled
     }
 
-    // MARK: Private
+    //MARK: - Private
+
     @objc private func next(_ sender: UIBarButtonItem) {
         move(to: .next)
     }
@@ -208,6 +226,7 @@ private extension FormInput {
     }
 
     private func indexPathForFirstResponder() -> IndexPath? {
+        guard let tableView = tableView else { return nil }
         return tableView.findFirstResponder().flatMap {
             guard $0 is UITextInput else {
                 return nil
@@ -230,7 +249,7 @@ private extension FormInput {
         guard let nextIndexPath = formDirectionManager.indexPath(for: direction, baseIndexPath: indexPath) else {
             return
         }
-        guard let cell = tableView.cellForRow(at: nextIndexPath) as? FormTextInputTableViewCell else {
+        guard let cell = tableView?.cellForRow(at: nextIndexPath) as? FormTextInputTableViewCell else {
             return
         }
         cell.beginEditing()
@@ -245,24 +264,23 @@ private extension FormInput {
     }
 
     private func returnKeyType(at indexPath: IndexPath) -> UIReturnKeyType {
+        guard let tableView = tableView else { return .default }
         let lastSection = tableView.numberOfSections - 1
-        guard lastSection > 0 else {
-            return .default
-        }
+        guard lastSection > 0 else { return .default }
         let isLastSection = indexPath.section == lastSection
         let isLastRow = indexPath.row == tableView.numberOfRows(inSection: lastSection) - 1
         return (isLastRow && isLastSection) ? .go : .next
     }
 
     private func textInputTableViewCell<T: FormTextInputTableViewCell>(at indexPath: IndexPath) -> T? {
-        return tableView.cellForRow(at: indexPath) as? T
+        return tableView?.cellForRow(at: indexPath) as? T
     }
 
     private func setAccessoryViewActions() {
-        defaultAccessoryView.nextBarButtonItem.target = self;
-        defaultAccessoryView.nextBarButtonItem.action = #selector(FormController.next(_:));
+        defaultAccessoryView.nextBarButtonItem.target = self
+        defaultAccessoryView.nextBarButtonItem.action = #selector(FormController.next(_:))
 
-        defaultAccessoryView.previousBarButtonItem.target = self;
-        defaultAccessoryView.previousBarButtonItem.action = #selector(FormController.previous(_:));
+        defaultAccessoryView.previousBarButtonItem.target = self
+        defaultAccessoryView.previousBarButtonItem.action = #selector(FormController.previous(_:))
     }
 }
