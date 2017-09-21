@@ -22,6 +22,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
         return label
     } ()
     var rightView: UIView? {
