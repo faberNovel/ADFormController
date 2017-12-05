@@ -37,6 +37,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     var showTitles = false
     var shouldSetCustomAccessoryView = false
     var enabledInputs = true
+    var forceEnableFirstAndLastInput = false
     var alignment: NSTextAlignment = .left
     var separatorInset: UIEdgeInsets? = nil
     private var formModel = FormModel()
@@ -120,7 +121,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             model: formModel,
             accessoryView: passwordButton,
             passwordVisible: passwordVisible,
-            enabled: enabledInputs,
+            enabled: enableInput(at: indexPath),
             alignment: alignment,
             separatorInset: separatorInset
         )
@@ -254,5 +255,21 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         } else {
             print("/!\\ Password error")
         }
+    }
+
+    private func enableInput(at indexPath: IndexPath) -> Bool {
+        guard forceEnableFirstAndLastInput && !enabledInputs else {
+            return enabledInputs
+        }
+        return isFirstOrLastCell(indexPath)
+    }
+
+    private func isFirstOrLastCell(_ indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 && indexPath.section == 0 {
+            return true
+        }
+        let lastSection = numberOfSections(in: tableView) - 1
+        let lastRowsInLastSection = tableView(tableView, numberOfRowsInSection: lastSection) - 1
+        return indexPath.section == lastSection && indexPath.row == lastRowsInLastSection
     }
 }

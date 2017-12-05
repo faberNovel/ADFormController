@@ -211,7 +211,8 @@ private extension FormInput {
             let configuration = delegate?.configurationForFormController(self, at: indexPath) else {
                 return false
         }
-        return tableView.cellForRow(at: indexPath) is FormTextInputTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) ?? tableView.dataSource?.tableView(tableView, cellForRowAt: indexPath)
+        return cell is FormTextInputTableViewCell
             && configuration.enabled
     }
 
@@ -248,6 +249,15 @@ private extension FormInput {
     private func move(to direction: AccessoryViewDirection, from indexPath: IndexPath) {
         guard let nextIndexPath = formDirectionManager.indexPath(for: direction, baseIndexPath: indexPath) else {
             return
+        }
+        // In order to correctly assignFirstResponder to the nextCell we need for it to be loaded
+        // in the view hierarchy, to do so there is currently no other way than making the tableView
+        // load it by scrolling to it.
+        // Unfortunatly it's impossible to scroll with a completion so we have to perform the scroll
+        // without animation to make sure that the cell is loaded into the view hierarchy when we call
+        // cell.beginEditing()
+        if tableView?.cellForRow(at: nextIndexPath) == nil {
+            tableView?.scrollToRow(at: nextIndexPath, at: .none, animated: false)
         }
         guard let cell = tableView?.cellForRow(at: nextIndexPath) as? FormTextInputTableViewCell else {
             return

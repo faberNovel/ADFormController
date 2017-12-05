@@ -15,6 +15,7 @@ private enum Configurations: String, EnumCollection {
     case withTitle = "With Title"
     case customDefaultInputAccessory = "Custom default input accessory"
     case disabledInputs = "Disabled inputs"
+    case disableAllButFirstAndLastInput = "Disabled all but first and last inputs"
     case withAlignement = "With alignment"
     case withCustomSeparatorInsets = "With custom separator insets"
 }
@@ -73,6 +74,9 @@ class MenuTableViewController: TableViewController {
             testFormViewController.alignment = .right
         case .withCustomSeparatorInsets:
             testFormViewController.separatorInset = UIEdgeInsets(horizontal: 35.0, vertical: 0.0)
+        case .disableAllButFirstAndLastInput:
+            testFormViewController.enabledInputs = false
+            testFormViewController.forceEnableFirstAndLastInput = true
         }
         navigationController?.pushViewController(testFormViewController, animated: true)
     }
