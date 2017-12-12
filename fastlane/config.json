@@ -8,23 +8,15 @@
     "target": "FormDemo",
     "inhouse": false,
     "bundles": {
-      "main_app": "com.yourclient.appname",
-      "extensions": [{
-        "id": 0,
-        "bundle": "com.yourclient.appname.watchkitapp"
-      }, {
-        "id": 1,
-        "bundle": "com.yourclient.appname.watchkitextension"
-      }]
+      "main_app": "com.applidium.FormDemo"
     },
     "code_signing": {
-      "apple_id": "emailToLoginToYourClientAppleDev",
-      "apple_id_password": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
-      "team_id": "TODO",
-      "team_name": "TODO",
-      "match_git": "TODO",
-      "match_git_password": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
-      "match_branch": "TODO"
+      "apple_id": "fastlane@fabernovel.com",
+      "team_id": "U5M7X5V6ZG",
+      "team_name": "Whiteroom SARL",
+      "use_match": true,
+      "match_git": "ssh://git@scm.applidium.net/ADSigningAssets",
+      "match_branch": "whiteroom"
     },
     "itunes_connect": {
       "apple_id": "TODO_OR_REMOVE CAN_BE_PASSED_BY_CI",
@@ -34,19 +26,13 @@
     },
     "hockeyapp": {
       "Stubs": null,
-      "Preproduction": "TODO",
-      "Production": "TODO",
-      "Distribution": "TODO"
+      "Preproduction": null,
+      "Production": null,
+      "Distribution": null
     },
     "applidium_bundles": {
       "main_app": "com.applidium.FormDemo",
-      "extensions": [{
-        "id": 0,
-        "bundle": "com.applidium.FormDemo.watchkitapp"
-      }, {
-        "id": 1,
-        "bundle": "com.applidium.FormDemo.watchkitextension"
-      }]
+      "extensions": []
     }
   }]
 }
