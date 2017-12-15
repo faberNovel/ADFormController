@@ -9,9 +9,11 @@
 import UIKit
 
 class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    let pickerView : UIPickerView = UIPickerView()
-    var formPickerDataSource : FormPickerDataSource?
-    private var textField : UITextField
+
+    let pickerView = UIPickerView()
+    var formPickerDataSource: FormPickerDataSource?
+
+    private let textField: UITextField
 
     init(textField: UITextField) {
         self.textField = textField
@@ -24,7 +26,7 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
         guard let text = textField.text else {
             return
         }
-        if text.characters.count == 0 {
+        if text.isEmpty {
             for index in 0..<pickerView.numberOfComponents {
                 pickerView(pickerView, didSelectRow: 0, inComponent: index)
             }
@@ -38,7 +40,7 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
         }
     }
 
-    // MARK: UIPickerViewDataSource
+    //MARK: - UIPickerViewDataSource
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         guard let dataSource = formPickerDataSource else {
@@ -54,7 +56,7 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
         return dataSource.componentOptions(component).count
     }
 
-    // MARK: UIPickerViewDelegate
+    //MARK: - UIPickerViewDelegate
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let dataSource = formPickerDataSource else {
@@ -72,6 +74,5 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
         let value = dataSource.string(from: selectedIndexes)
         textField.text = nil
         textField.insertText(value)
-
     }
 }

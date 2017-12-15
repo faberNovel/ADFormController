@@ -8,19 +8,22 @@
 
 import UIKit
 
-class PlaceholderTextView: UITextView {
-    var placeholder: String = "" {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    var placeholderColor: UIColor = UIColor.init(red: (199.0/255.0), green: (199.0/255.0), blue: (205.0/255.0), alpha: 1.0) {
+class PlaceholderTextView : UITextView {
+
+    var placeholder = "" {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    // MARK: UITextView
+    var placeholderColor = UIColor(red: (199.0/255.0), green: (199.0/255.0), blue: (205.0/255.0), alpha: 1.0) {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
+    //MARK: - UITextView
+
     override var text: String! {
         didSet {
             setNeedsDisplay()
@@ -56,13 +59,16 @@ class PlaceholderTextView: UITextView {
         setNeedsDisplay()
     }
 
-    // MARK: UIView
+    //MARK: - UIView
+
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        NotificationCenter.default.addObserver(self,
-                                                         selector: #selector(PlaceholderTextView.textChanged(_:)),
-                                                         name: NSNotification.Name.UITextViewTextDidChange,
-                                                         object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(PlaceholderTextView.textChanged(_:)),
+            name: NSNotification.Name.UITextViewTextDidChange,
+            object: nil
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -78,17 +84,22 @@ class PlaceholderTextView: UITextView {
         guard let fontToUse = font == nil ? typingAttributes[NSFontAttributeName] : font else {
             return
         }
-        let newStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        guard let newStyle = NSMutableParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle else {
+            return
+        }
         newStyle.lineBreakMode = .byTruncatingTail
         newStyle.alignment = textAlignment
         let stringToDraw: NSString = placeholder as NSString
-        stringToDraw.draw(in: newRect,
-                                withAttributes: [NSFontAttributeName: fontToUse,
-                                    NSParagraphStyleAttributeName: newStyle,
-                                    NSForegroundColorAttributeName: placeholderColor])
+        let attributes = [
+            NSFontAttributeName: fontToUse,
+            NSParagraphStyleAttributeName: newStyle,
+            NSForegroundColorAttributeName: placeholderColor
+        ]
+        stringToDraw.draw(in: newRect, withAttributes: attributes)
     }
 
-    // MARK: Private
+    //MARK: - Private
+
     @objc private func textChanged(_ notification: Notification) {
         setNeedsDisplay()
     }

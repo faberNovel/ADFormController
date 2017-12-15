@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
             return
         }
         watchdog = Watchdog(threshold: 0.2) {
-            DDLogWarn("[Watchdog] Block main thread for over 0.2s");
+            DDLogWarn("[Watchdog] Block main thread for over 0.2s")
         }
     }
 }

@@ -18,6 +18,8 @@ class FormModel {
     var married : Bool = false
     var creditCard : String = ""
     var expiration : String = ""
+    var password: String = ""
+    var passwordConfirmation: String = ""
 
     func setStubValues() {
         gender = "Male"
@@ -29,6 +31,7 @@ class FormModel {
         birthDate = Date()
         creditCard = "5131423412231223"
         expiration = "04/25"
+        password = "abcdef"
     }
 
     func resetValues() {
@@ -41,5 +44,7 @@ class FormModel {
         birthDate = nil
         creditCard = ""
         expiration = ""
+        password = ""
+        passwordConfirmation = ""
     }
 }

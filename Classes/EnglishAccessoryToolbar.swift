@@ -29,14 +29,33 @@ class EnglishAccessoryToolbar: UIToolbar, NavigableView {
 
     //MARK: - NavigableButtons
 
-    private(set) var nextBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "next", style: .plain, target: nil, action: nil)
-    private(set) var previousBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "prev", style: .plain, target: nil, action: nil)
+    private(set) var nextBarButtonItem = UIBarButtonItem(
+        title: "next",
+        style: .plain,
+        target: nil,
+        action: nil
+    )
+
+    private(set) var previousBarButtonItem = UIBarButtonItem(
+        title: "prev",
+        style: .plain,
+        target: nil,
+        action: nil
+    )
 
     //MARK: - Private
 
     private func initComponents() {
         self.tintColor = UIColor.black
-        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        self.items = [previousBarButtonItem, flexibleItem, nextBarButtonItem]
+        let flexibleItem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        items = [
+            previousBarButtonItem,
+            flexibleItem,
+            nextBarButtonItem
+        ]
     }
 }
