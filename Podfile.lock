@@ -1,33 +1,31 @@
 PODS:
   - ADDynamicLogLevel (2.0.0):
     - CocoaLumberjack (~> 3.0)
-  - ADFormController (3.1.1):
+  - ADFormController (3.1.2):
     - ADKeyboardManager (~> 2.0)
   - ADKeyboardManager (2.2.0)
-  - ADUtils (3.6.0):
-    - ADUtils/objc (= 3.6.0)
-    - ADUtils/Swift (= 3.6.0)
-  - ADUtils/objc (3.6.0):
+  - ADUtils (4.5.0):
+    - ADUtils/objc (= 4.5.0)
+    - ADUtils/Swift (= 4.5.0)
+  - ADUtils/objc (4.5.0):
     - ADUtils/Swift
-  - ADUtils/Swift (3.6.0)
+  - ADUtils/Swift (4.5.0)
   - Alamofire (4.2.0)
-  - CocoaLumberjack (3.0.0):
-    - CocoaLumberjack/Default (= 3.0.0)
-    - CocoaLumberjack/Extensions (= 3.0.0)
-  - CocoaLumberjack/Core (3.0.0)
-  - CocoaLumberjack/Default (3.0.0):
-    - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (3.0.0):
+  - CocoaLumberjack (3.4.1):
+    - CocoaLumberjack/Default (= 3.4.1)
+    - CocoaLumberjack/Extensions (= 3.4.1)
+  - CocoaLumberjack/Default (3.4.1)
+  - CocoaLumberjack/Extensions (3.4.1):
     - CocoaLumberjack/Default
-  - CocoaLumberjack/Swift (3.0.0):
-    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Swift (3.4.1):
+    - CocoaLumberjack/Default
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - HockeySDK/CrashOnlyLib (3.8.6)
-  - Nimble (5.1.1)
+  - Nimble (7.0.3)
   - Nimble-Snapshots (4.3.0):
     - Nimble-Snapshots/Core (= 4.3.0)
   - Nimble-Snapshots/Core (4.3.0):
@@ -35,22 +33,22 @@ PODS:
     - Nimble
     - Quick
   - OCMock (3.3.1)
-  - Quick (1.0.0)
-  - Watchdog (3.0)
+  - Quick (1.2.0)
+  - Watchdog (4.0)
 
 DEPENDENCIES:
   - ADDynamicLogLevel (~> 2.0)
   - ADFormController (from `./`)
-  - ADUtils (~> 3.0)
+  - ADUtils (~> 4.0)
   - Alamofire (~> 4.0)
   - CocoaLumberjack/Swift (~> 3.0)
   - FBSnapshotTestCase (~> 2.1)
   - HockeySDK/CrashOnlyLib (~> 3.8)
-  - Nimble (~> 5.0)
+  - Nimble (~> 7.0)
   - Nimble-Snapshots (~> 4.3.0)
   - OCMock (~> 3.3)
-  - Quick (~> 1.0)
-  - Watchdog (~> 3.0)
+  - Quick (~> 1.2)
+  - Watchdog (~> 4.0)
 
 EXTERNAL SOURCES:
   ADFormController:
@@ -58,19 +56,19 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 434d0c73c113e481a3a1136678b926f9731c7a5c
-  ADFormController: 4da67824ed17dc1240794abc40e50aa90ba978a4
+  ADFormController: d377323361ab099538f4fdcfabc33862ebd08a7a
   ADKeyboardManager: 464fd2831535e5ab6f06768630d329d5d8d5f9b6
-  ADUtils: 924970fd079bd567e32911f3b2068aeadefff3f0
+  ADUtils: c297b003d90164d48dc6fd10d5a1e81353001f08
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   HockeySDK: ab68303eec6680f6b539de65d747742dd276e934
-  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  Watchdog: 141185b6b3a332a9f5721ea42dfa9681cf2d7c6b
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: 9dacf98a9b5c190c3923e5edc9270837ca5a24a2
+PODFILE CHECKSUM: 7d0c2227463b98fefbbb043e0d54b32ae16c1402
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0

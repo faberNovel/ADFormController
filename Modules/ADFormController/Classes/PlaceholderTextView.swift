@@ -81,7 +81,7 @@ class PlaceholderTextView : UITextView {
             return
         }
         let newRect = placeholderRectForBounds(bounds)
-        guard let fontToUse = font == nil ? typingAttributes[NSFontAttributeName] : font else {
+        guard let fontToUse = font == nil ? typingAttributes[NSAttributedStringKey.font.rawValue] : font else {
             return
         }
         guard let newStyle = NSMutableParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle else {
@@ -90,10 +90,10 @@ class PlaceholderTextView : UITextView {
         newStyle.lineBreakMode = .byTruncatingTail
         newStyle.alignment = textAlignment
         let stringToDraw: NSString = placeholder as NSString
-        let attributes = [
-            NSFontAttributeName: fontToUse,
-            NSParagraphStyleAttributeName: newStyle,
-            NSForegroundColorAttributeName: placeholderColor
+        let attributes : [NSAttributedStringKey : Any] = [
+            .font: fontToUse,
+            .paragraphStyle: newStyle,
+            .foregroundColor: placeholderColor
         ]
         stringToDraw.draw(in: newRect, withAttributes: attributes)
     }
@@ -106,7 +106,7 @@ class PlaceholderTextView : UITextView {
 
     private func placeholderRectForBounds(_ bounds: CGRect) -> CGRect {
         var rect = UIEdgeInsetsInsetRect(bounds, contentInset)
-        guard let style = typingAttributes[NSParagraphStyleAttributeName].flatMap({ $0 as? NSParagraphStyle }) else {
+        guard let style = typingAttributes[NSAttributedStringKey.paragraphStyle.rawValue].flatMap({ $0 as? NSParagraphStyle }) else {
             return rect
         }
         rect.origin.x += style.headIndent

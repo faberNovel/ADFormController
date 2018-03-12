@@ -51,7 +51,7 @@ class MenuTableViewController: TableViewController {
 
     //MARK: - UITableViewDelegate
 
-    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard (0...Configurations.count).contains(indexPath.row) else {
             return
         }

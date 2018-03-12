@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc open class FormCellConfiguration: NSObject {
+@objcMembers open class FormCellConfiguration: NSObject {
     open var title: String = ""
     open var titleFont: UIFont? = UIFont(name: "HelveticaNeue-Light", size: 14.0)
     open var titleColor: UIColor = UIColor.black

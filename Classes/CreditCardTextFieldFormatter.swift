@@ -41,14 +41,14 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
                 to: selectedTextRange.start
             )
         } else {
-            targetCursorPosition = (textField.text ?? "").characters.count
+            targetCursorPosition = (textField.text ?? "").count
         }
 
         let cardNumberWithoutSpacing = removeNonDigitsAndPreserveCursorPosition(
             text,
             cursorPosition: &targetCursorPosition
         )
-        if cardNumberWithoutSpacing.characters.count > 16 {
+        if cardNumberWithoutSpacing.count > 16 {
             textField.text = previousTextFieldContent
             textField.selectedTextRange = previousSelectionRange
             return
@@ -68,11 +68,11 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
     private func removeNonDigitsAndPreserveCursorPosition(_ string: String,
                                                           cursorPosition: inout Int) -> String {
         let originalCursorPosition = cursorPosition
-        let newCharacters = string.characters.filter { (character : Character) -> Bool in
+        let newCharacters = string.filter { (character : Character) -> Bool in
             let scalars = String(character).unicodeScalars
             return CharacterSet.decimalDigits.contains(UnicodeScalar(scalars[scalars.startIndex].value)!)
         }
-        cursorPosition = originalCursorPosition - (string.characters.count - newCharacters.count)
+        cursorPosition = originalCursorPosition - (string.count - newCharacters.count)
         return String(newCharacters)
     }
 
@@ -80,14 +80,14 @@ class CreditCardTextFieldFormatter: NSObject, TextFieldFormatter {
                                                                       cursorPosition: inout Int) -> String {
         let originalCursorPosition = cursorPosition
         var newString = ""
-        for index in 0..<originalString.characters.count {
+        for index in 0..<originalString.count {
             if index > 0 && index % 4 == 0 {
                 newString += " "
                 if index < originalCursorPosition {
                     cursorPosition += 1
                 }
             }
-            newString.append(originalString[originalString.characters.index(originalString.startIndex, offsetBy: index)])
+            newString.append(originalString[originalString.index(originalString.startIndex, offsetBy: index)])
         }
         return newString
     }

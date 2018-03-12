@@ -18,20 +18,15 @@ class DatePickerTextFieldBinding: NSObject {
     }
 
     private let textField: UITextField
-    private let datePicker = UIDatePicker()
+    private lazy var datePicker: UIDatePicker = self.createDatePicker()
 
     init(textField: UITextField) {
         self.textField = textField
         super.init()
-        datePicker.addTarget(
-            self,
-            action: #selector(dateChanged(_:)),
-            for: .valueChanged
-        )
     }
 
     func startEditing() {
-        if textField.text?.characters.count == 0 {
+        if textField.text?.count == 0 {
             dateChanged(datePicker)
             return
         }
@@ -44,6 +39,12 @@ class DatePickerTextFieldBinding: NSObject {
     }
 
     //MARK: - Private
+
+    private func createDatePicker() -> UIDatePicker {
+        let picker = UIDatePicker()
+        picker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        return picker
+    }
 
     @objc private func dateChanged(_ sender: UIDatePicker) {
         textField.text = ""

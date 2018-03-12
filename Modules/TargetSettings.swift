@@ -11,16 +11,15 @@ import Foundation
 class TargetSettings : NSObject {
 
     // Config
-    private(set) var logLevel: DDLogLevel = .all
-    private(set) var hockeyAppId: String = ""
-    private(set) var useWatchdog: Bool = false
-    private(set) var useFileLogger: Bool = false
+    @objc private(set) var logLevel: DDLogLevel = .all
+    @objc private(set) var hockeyAppId: String = ""
+    @objc private(set) var useWatchdog: Bool = false
+    @objc private(set) var useFileLogger: Bool = false
     // Colors
-    private(set) var applidium_blue1: String = ""
-    private(set) var applidium_blue2: String = ""
-    private(set) var applidium_blue3: String = ""
-    private(set) var applidium_blue4: String = ""
-
+    @objc private(set) var applidium_blue1: String = ""
+    @objc private(set) var applidium_blue2: String = ""
+    @objc private(set) var applidium_blue3: String = ""
+    @objc private(set) var applidium_blue4: String = ""
 
     static let shared = TargetSettings()
 
@@ -68,7 +67,6 @@ class TargetSettings : NSObject {
 private extension String {
     func firstLetterCapitalized() -> String {
         guard !isEmpty else { return "" }
-        let index = characters.index(startIndex, offsetBy: 1)
-        return substring(to: index).capitalized + substring(from: index)
+        return prefix(1).uppercased() + dropFirst()
     }
 }

@@ -12,7 +12,7 @@ import Foundation
 
     private var options: [String]
 
-    public required init(options: [String]) {
+    @objc public required init(options: [String]) {
         self.options = options
     }
 

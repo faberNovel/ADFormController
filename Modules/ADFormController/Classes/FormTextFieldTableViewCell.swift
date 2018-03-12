@@ -15,7 +15,7 @@ private struct Constants {
 class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
 
     private(set) lazy var textField: FormTextField = self.createTextField()
-    private dynamic lazy var leftLabel: UILabel = self.createLeftLabel() // dynamic for KVO
+    @objc private dynamic lazy var leftLabel: UILabel = self.createLeftLabel() // dynamic for KVO
     private lazy var datePickerBinding: DatePickerTextFieldBinding = self.createDatePickerBinding()
     private lazy var pickerViewBinding: PickerViewTextFieldBinding = self.createPickerViewBinding()
     private var textFieldFormatter: TextFieldFormatter?
@@ -138,7 +138,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
                 views: views))
         }
 
-        if let count = leftLabel.text?.characters.count, count > 0 {
+        if let count = leftLabel.text?.count, count > 0 {
             dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[leftLabel]-[textField]",
                 options: .alignAllCenterY,
                 metrics: nil,
@@ -164,7 +164,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
         if keyPath == Constants.leftLabelKeyPath {
-            textField.textAlignment = textLabel?.text?.characters.count == 0 ? .right : .left
+            textField.textAlignment = textLabel?.text?.count == 0 ? .right : .left
             setNeedsUpdateConstraints()
         }
     }
@@ -272,8 +272,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
     private func createLeftLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
-        label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
+        label.setContentHuggingPriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }
 

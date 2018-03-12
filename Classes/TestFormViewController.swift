@@ -101,7 +101,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         return rowConfigurable(at: IndexPath(row: 0, section: section))?.title
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             guard let rowType = RowType(rawValue: indexPath.row) else {
