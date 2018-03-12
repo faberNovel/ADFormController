@@ -33,7 +33,7 @@ import UIKit
 
 }
 
-@objc open class FormCellTextConfiguration :FormCellConfiguration {
+@objcMembers open class FormCellTextConfiguration : FormCellConfiguration {
     open var text: String = ""
     open var textFont: UIFont? = UIFont(name: "HelveticaNeue-Light", size: 14.0)
     open var textColor: UIColor = UIColor.black

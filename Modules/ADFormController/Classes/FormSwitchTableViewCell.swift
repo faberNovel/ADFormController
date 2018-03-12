@@ -139,7 +139,7 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
     }
 
     func setupStaticConstraints() {
-        switchView.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        switchView.setContentHuggingPriority(.required, for: .horizontal)
         let views: [String: Any] = [
             "switchView": switchView,
             "leftLabel": leftLabel

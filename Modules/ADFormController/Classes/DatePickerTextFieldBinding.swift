@@ -31,7 +31,7 @@ class DatePickerTextFieldBinding: NSObject {
     }
 
     func startEditing() {
-        if textField.text?.characters.count == 0 {
+        if textField.text?.count == 0 {
             dateChanged(datePicker)
             return
         }

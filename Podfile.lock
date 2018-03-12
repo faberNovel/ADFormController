@@ -4,12 +4,12 @@ PODS:
   - ADFormController (3.1.2):
     - ADKeyboardManager (~> 2.0)
   - ADKeyboardManager (2.2.0)
-  - ADUtils (3.6.0):
-    - ADUtils/objc (= 3.6.0)
-    - ADUtils/Swift (= 3.6.0)
-  - ADUtils/objc (3.6.0):
+  - ADUtils (4.5.0):
+    - ADUtils/objc (= 4.5.0)
+    - ADUtils/Swift (= 4.5.0)
+  - ADUtils/objc (4.5.0):
     - ADUtils/Swift
-  - ADUtils/Swift (3.6.0)
+  - ADUtils/Swift (4.5.0)
   - Alamofire (4.2.0)
   - CocoaLumberjack (3.0.0):
     - CocoaLumberjack/Default (= 3.0.0)
@@ -36,12 +36,12 @@ PODS:
     - Quick
   - OCMock (3.3.1)
   - Quick (1.0.0)
-  - Watchdog (3.0)
+  - Watchdog (4.0)
 
 DEPENDENCIES:
   - ADDynamicLogLevel (~> 2.0)
   - ADFormController (from `./`)
-  - ADUtils (~> 3.0)
+  - ADUtils (~> 4.0)
   - Alamofire (~> 4.0)
   - CocoaLumberjack/Swift (~> 3.0)
   - FBSnapshotTestCase (~> 2.1)
@@ -50,7 +50,7 @@ DEPENDENCIES:
   - Nimble-Snapshots (~> 4.3.0)
   - OCMock (~> 3.3)
   - Quick (~> 1.0)
-  - Watchdog (~> 3.0)
+  - Watchdog (~> 4.0)
 
 EXTERNAL SOURCES:
   ADFormController:
@@ -60,7 +60,7 @@ SPEC CHECKSUMS:
   ADDynamicLogLevel: 434d0c73c113e481a3a1136678b926f9731c7a5c
   ADFormController: d377323361ab099538f4fdcfabc33862ebd08a7a
   ADKeyboardManager: 464fd2831535e5ab6f06768630d329d5d8d5f9b6
-  ADUtils: 924970fd079bd567e32911f3b2068aeadefff3f0
+  ADUtils: c297b003d90164d48dc6fd10d5a1e81353001f08
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
@@ -69,8 +69,8 @@ SPEC CHECKSUMS:
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  Watchdog: 141185b6b3a332a9f5721ea42dfa9681cf2d7c6b
+  Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: 078fda2754fefce1478f2ee775c574186514d204
+PODFILE CHECKSUM: 8c66a19540b1e008a49946f7d716e34cc9bb733f
 
 COCOAPODS: 1.4.0

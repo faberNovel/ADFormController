@@ -15,7 +15,7 @@ private struct Constants {
 class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
 
     private lazy var textView: UITextView = self.createTextView()
-    private dynamic lazy var titleLabel: UILabel = self.createTitleLabel() // dynamic for KVO
+    @objc private dynamic lazy var titleLabel: UILabel = self.createTitleLabel() // dynamic for KVO
     private var dynamicConstraints: [NSLayoutConstraint] = []
 
     //MARK: - NSObject
@@ -64,7 +64,7 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
             "titleLabel": titleLabel,
             "placeholderTextView": textView,
         ]
-        if let count = titleLabel.text?.characters.count, count > 0 {
+        if let count = titleLabel.text?.count, count > 0 {
             dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[titleLabel]-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
             dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[titleLabel]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
         } else {
@@ -157,7 +157,7 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
     private func createTitleLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }
 }
