@@ -67,7 +67,6 @@ class TargetSettings : NSObject {
 private extension String {
     func firstLetterCapitalized() -> String {
         guard !isEmpty else { return "" }
-        let index = characters.index(startIndex, offsetBy: 1)
-        return substring(to: index).capitalized + substring(from: index)
+        return prefix(1).uppercased() + dropFirst()
     }
 }
