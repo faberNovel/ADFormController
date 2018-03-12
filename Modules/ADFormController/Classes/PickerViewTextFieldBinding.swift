@@ -10,7 +10,7 @@ import UIKit
 
 class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    let pickerView = UIPickerView()
+    private(set) lazy var pickerView: UIPickerView = self.createPickerView()
     var formPickerDataSource: FormPickerDataSource?
 
     private let textField: UITextField
@@ -18,8 +18,6 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
     init(textField: UITextField) {
         self.textField = textField
         super.init()
-        pickerView.delegate = self
-        pickerView.dataSource = self
     }
 
     func startEditing() {
@@ -74,5 +72,14 @@ class PickerViewTextFieldBinding : NSObject, UIPickerViewDataSource, UIPickerVie
         let value = dataSource.string(from: selectedIndexes)
         textField.text = nil
         textField.insertText(value)
+    }
+
+    //MARK: - Private
+
+    func createPickerView() -> UIPickerView {
+        let picker = UIPickerView()
+        picker.delegate = self
+        picker.dataSource = self
+        return picker
     }
 }
