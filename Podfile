@@ -1,7 +1,7 @@
 source 'ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs'
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '8.1'
+platform :ios, '9.0'
 use_frameworks!
 
 pod 'CocoaLumberjack/Swift', '~>  3.0', :inhibit_warnings => true
