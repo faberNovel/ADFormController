@@ -16,7 +16,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
     private lazy var pickerViewBinding: PickerViewTextFieldBinding = self.createPickerViewBinding()
     private var textFieldFormatter: TextFieldFormatter?
     private lazy var stackView: UIStackView = self.createStackView()
-    private lazy var rightContainerView: UIView = self.createRightContainerView()
+    private lazy var rightContainerView: UIView = self.createAccessoryContainerView()
+    private lazy var leftContainerView: UIView = self.createAccessoryContainerView()
 
     private var rightView: UIView? {
         willSet {
@@ -37,6 +38,29 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
                 rightView.leadingAnchor.constraint(equalTo: rightContainerView.leadingAnchor),
                 rightView.topAnchor.constraint(equalTo: rightContainerView.topAnchor),
                 rightView.bottomAnchor.constraint(equalTo: rightContainerView.bottomAnchor)
+            ])
+        }
+    }
+
+    private var leftView: UIView? {
+        willSet {
+            guard let leftView = self.leftView else {
+                return
+            }
+            leftView.removeFromSuperview()
+        }
+        didSet {
+            leftContainerView.isHidden = self.leftView == nil
+            guard let leftView = self.leftView else {
+                return
+            }
+            leftView.translatesAutoresizingMaskIntoConstraints = false
+            leftContainerView.addSubview(leftView)
+            NSLayoutConstraint.activate([
+                leftView.trailingAnchor.constraint(equalTo: leftContainerView.trailingAnchor),
+                leftView.leadingAnchor.constraint(equalTo: leftContainerView.leadingAnchor),
+                leftView.topAnchor.constraint(equalTo: leftContainerView.topAnchor),
+                leftView.bottomAnchor.constraint(equalTo: leftContainerView.bottomAnchor)
             ])
         }
     }
@@ -171,6 +195,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         textField.textAlignment = leftLabel.text?.count == 0 ? .right : .left
         cellType = configuration.cellType
         rightView = configuration.rightView
+        leftView = configuration.leftView
 
         textField.font = configuration.textFont
         textField.textColor = configuration.textColor
@@ -202,6 +227,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         layoutMargins = UIEdgeInsets.zero
         separatorInset = UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 0)
         updateStackViewConstraints(with: UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 15.0))
+        stackView.addArrangedSubview(leftContainerView)
         stackView.addArrangedSubview(leftLabel)
         stackView.addArrangedSubview(textField)
         stackView.addArrangedSubview(rightContainerView)
@@ -244,7 +270,7 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         return stackView
     }
 
-    private func createRightContainerView() -> UIView {
+    private func createAccessoryContainerView() -> UIView {
         let view = UIView()
         view.setContentHuggingPriority(.required, for: .horizontal)
         view.setContentCompressionResistancePriority(.required, for: .horizontal)

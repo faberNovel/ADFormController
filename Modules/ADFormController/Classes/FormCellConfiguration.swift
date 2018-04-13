@@ -14,6 +14,7 @@ import UIKit
     open var titleColor: UIColor = UIColor.black
     open var tintColor: UIColor?
     open var rightView: UIView?
+    open var leftView: UIView?
     open var enabled: Bool = true
     open var textAlignment: NSTextAlignment = .left
     open var separatorInset: UIEdgeInsets? = nil
