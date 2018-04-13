@@ -8,28 +8,57 @@
 
 import UIKit
 
-private struct Constants {
-    static let titleLabelKeyPath = "titleLabel.text"
-}
-
 class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
 
     private lazy var textView: UITextView = self.createTextView()
-    @objc private dynamic lazy var titleLabel: UILabel = self.createTitleLabel() // dynamic for KVO
-    private var dynamicConstraints: [NSLayoutConstraint] = []
+    private lazy var titleLabel: UILabel = self.createTitleLabel()
+    private lazy var stackView: UIStackView = self.createStackView()
+    private lazy var rightContainerView: UIView = self.createAccessoryContainerView()
+    private lazy var leftContainerView: UIView = self.createAccessoryContainerView()
 
-    //MARK: - NSObject
-
-    deinit {
-        removeObserver(self, forKeyPath: Constants.titleLabelKeyPath)
+    private var rightView: UIView? {
+        willSet {
+            guard let rightView = self.rightView else {
+                return
+            }
+            rightView.removeFromSuperview()
+        }
+        didSet {
+            rightContainerView.isHidden = self.rightView == nil
+            guard let rightView = self.rightView else {
+                return
+            }
+            rightView.translatesAutoresizingMaskIntoConstraints = false
+            rightContainerView.addSubview(rightView)
+            NSLayoutConstraint.activate([
+                rightView.trailingAnchor.constraint(equalTo: rightContainerView.trailingAnchor),
+                rightView.leadingAnchor.constraint(equalTo: rightContainerView.leadingAnchor),
+                rightView.topAnchor.constraint(equalTo: rightContainerView.topAnchor),
+                rightView.bottomAnchor.constraint(equalTo: rightContainerView.bottomAnchor)
+            ])
+        }
     }
 
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-        if keyPath == Constants.titleLabelKeyPath {
-            self .setNeedsUpdateConstraints()
+    private var leftView: UIView? {
+        willSet {
+            guard let leftView = self.leftView else {
+                return
+            }
+            leftView.removeFromSuperview()
+        }
+        didSet {
+            leftContainerView.isHidden = self.leftView == nil
+            guard let leftView = self.leftView else {
+                return
+            }
+            leftView.translatesAutoresizingMaskIntoConstraints = false
+            leftContainerView.addSubview(leftView)
+            NSLayoutConstraint.activate([
+                leftView.trailingAnchor.constraint(equalTo: leftContainerView.trailingAnchor),
+                leftView.leadingAnchor.constraint(equalTo: leftContainerView.leadingAnchor),
+                leftView.topAnchor.constraint(equalTo: leftContainerView.topAnchor),
+                leftView.bottomAnchor.constraint(equalTo: leftContainerView.bottomAnchor)
+            ])
         }
     }
 
@@ -37,42 +66,14 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        textView.delegate = self
-        contentView.addSubview(textView)
-        contentView.addSubview(titleLabel)
-        separatorInset = UIEdgeInsetsMake(0, 15, 0, 0)
-        addObserver(self, forKeyPath: Constants.titleLabelKeyPath, options: .new, context: nil)
-        let views = [
-            "placeholderTextView": textView
-        ]
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[placeholderTextView]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
-        layoutMargins = UIEdgeInsets.zero
+        setup()
     }
 
     //MARK: - UIView
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    override func updateConstraints() {
-        contentView.removeConstraints(dynamicConstraints)
-        dynamicConstraints.removeAll()
-
-        let views: [String: Any] = [
-            "titleLabel": titleLabel,
-            "placeholderTextView": textView,
-        ]
-        if let count = titleLabel.text?.count, count > 0 {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[titleLabel]-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[titleLabel]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
-        } else {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
-        }
-
-        contentView.addConstraints(dynamicConstraints)
-        super.updateConstraints()
+        setup()
     }
 
     //MARK: - UITextViewDelegate
@@ -127,9 +128,12 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
 
     func apply(configuration: FormCellTextConfiguration) {
         titleLabel.text = configuration.title
-
         titleLabel.font = configuration.titleFont
         titleLabel.textColor = configuration.titleColor
+        titleLabel.isHidden = configuration.title.isEmpty
+
+        rightView = configuration.rightView
+        leftView = configuration.leftView
 
         textView.font = configuration.textFont
         textView.textColor = configuration.textColor
@@ -142,15 +146,55 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
         }
+        if let contentInset = configuration.contentInset {
+            updateStackViewConstraints(with: contentInset)
+        }
     }
 
     //MARK: - Private
+
+    private func setup() {
+        selectionStyle = .none
+        layoutMargins = UIEdgeInsets.zero
+        separatorInset = UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 0)
+        updateStackViewConstraints(with: UIEdgeInsets(top: 15.0, left: 15.0, bottom: 15.0, right: 15.0))
+        stackView.addArrangedSubview(leftContainerView)
+        let verticalStackView = UIStackView()
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = 8.0
+        verticalStackView.addArrangedSubview(titleLabel)
+        verticalStackView.addArrangedSubview(textView)
+        stackView.addArrangedSubview(verticalStackView)
+        stackView.addArrangedSubview(rightContainerView)
+    }
+
+    private func updateStackViewConstraints(with insets: UIEdgeInsets) {
+        stackView.removeFromSuperview() // clear constraints
+        contentView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -insets.right),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insets.left),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insets.top),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -insets.bottom)
+        ])
+    }
+
+    private func createStackView() -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 8.0
+        return stackView
+    }
 
     private func createTextView() -> UITextView {
         let placeholderTextView = PlaceholderTextView()
         placeholderTextView.textContainerInset = UIEdgeInsets.zero
         placeholderTextView.textContainer.lineFragmentPadding = 0
         placeholderTextView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderTextView.delegate = self
         return placeholderTextView
     }
 
@@ -159,5 +203,12 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(.required, for: .horizontal)
         return label
+    }
+
+    private func createAccessoryContainerView() -> UIView {
+        let view = UIView()
+        view.setContentHuggingPriority(.required, for: .horizontal)
+        view.setContentCompressionResistancePriority(.required, for: .horizontal)
+        return view
     }
 }
