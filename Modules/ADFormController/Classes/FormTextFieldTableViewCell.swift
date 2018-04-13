@@ -189,6 +189,10 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
         }
+
+        if let contentInset = configuration.contentInset {
+            updateStackViewConstraints(with: contentInset)
+        }
     }
 
     //MARK: - Private
@@ -197,17 +201,22 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         selectionStyle = .none
         layoutMargins = UIEdgeInsets.zero
         separatorInset = UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 0)
-        contentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15.0),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15.0),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
+        updateStackViewConstraints(with: UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 15.0))
         stackView.addArrangedSubview(leftLabel)
         stackView.addArrangedSubview(textField)
         stackView.addArrangedSubview(rightContainerView)
+    }
+
+    private func updateStackViewConstraints(with insets: UIEdgeInsets) {
+        stackView.removeFromSuperview() // clear constraints
+        contentView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -insets.right),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insets.left),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insets.top),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -insets.bottom)
+        ])
     }
 
     private func createTextField() -> FormTextField {
