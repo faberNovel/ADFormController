@@ -8,62 +8,13 @@
 
 import UIKit
 
-class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
+class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
 
     private(set) lazy var textField: FormTextField = self.createTextField()
     private lazy var leftLabel: UILabel = self.createLeftLabel()
     private lazy var datePickerBinding: DatePickerTextFieldBinding = self.createDatePickerBinding()
     private lazy var pickerViewBinding: PickerViewTextFieldBinding = self.createPickerViewBinding()
     private var textFieldFormatter: TextFieldFormatter?
-    private lazy var stackView: UIStackView = self.createStackView()
-    private lazy var rightContainerView: UIView = self.createAccessoryContainerView()
-    private lazy var leftContainerView: UIView = self.createAccessoryContainerView()
-
-    private var rightView: UIView? {
-        willSet {
-            guard let rightView = self.rightView else {
-                return
-            }
-            rightView.removeFromSuperview()
-        }
-        didSet {
-            rightContainerView.isHidden = self.rightView == nil
-            guard let rightView = self.rightView else {
-                return
-            }
-            rightView.translatesAutoresizingMaskIntoConstraints = false
-            rightContainerView.addSubview(rightView)
-            NSLayoutConstraint.activate([
-                rightView.trailingAnchor.constraint(equalTo: rightContainerView.trailingAnchor),
-                rightView.leadingAnchor.constraint(equalTo: rightContainerView.leadingAnchor),
-                rightView.topAnchor.constraint(equalTo: rightContainerView.topAnchor),
-                rightView.bottomAnchor.constraint(equalTo: rightContainerView.bottomAnchor)
-            ])
-        }
-    }
-
-    private var leftView: UIView? {
-        willSet {
-            guard let leftView = self.leftView else {
-                return
-            }
-            leftView.removeFromSuperview()
-        }
-        didSet {
-            leftContainerView.isHidden = self.leftView == nil
-            guard let leftView = self.leftView else {
-                return
-            }
-            leftView.translatesAutoresizingMaskIntoConstraints = false
-            leftContainerView.addSubview(leftView)
-            NSLayoutConstraint.activate([
-                leftView.trailingAnchor.constraint(equalTo: leftContainerView.trailingAnchor),
-                leftView.leadingAnchor.constraint(equalTo: leftContainerView.leadingAnchor),
-                leftView.topAnchor.constraint(equalTo: leftContainerView.topAnchor),
-                leftView.bottomAnchor.constraint(equalTo: leftContainerView.bottomAnchor)
-            ])
-        }
-    }
 
     private var cellType: FormTextCellType = .email {
         didSet {
@@ -223,26 +174,8 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
     //MARK: - Private
 
     private func setup() {
-        selectionStyle = .none
-        layoutMargins = UIEdgeInsets.zero
-        separatorInset = UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 0)
-        updateStackViewConstraints(with: UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 15.0))
-        stackView.addArrangedSubview(leftContainerView)
-        stackView.addArrangedSubview(leftLabel)
-        stackView.addArrangedSubview(textField)
-        stackView.addArrangedSubview(rightContainerView)
-    }
-
-    private func updateStackViewConstraints(with insets: UIEdgeInsets) {
-        stackView.removeFromSuperview() // clear constraints
-        contentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -insets.right),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insets.left),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insets.top),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -insets.bottom)
-        ])
+        insertSubviewInStackView(leftLabel)
+        insertSubviewInStackView(textField)
     }
 
     private func createTextField() -> FormTextField {
@@ -259,22 +192,6 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
-    }
-
-    private func createStackView() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 8.0
-        return stackView
-    }
-
-    private func createAccessoryContainerView() -> UIView {
-        let view = UIView()
-        view.setContentHuggingPriority(.required, for: .horizontal)
-        view.setContentCompressionResistancePriority(.required, for: .horizontal)
-        return view
     }
 
     private func createDatePickerBinding() -> DatePickerTextFieldBinding {
