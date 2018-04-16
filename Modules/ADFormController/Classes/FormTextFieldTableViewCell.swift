@@ -8,35 +8,13 @@
 
 import UIKit
 
-private struct Constants {
-    static let leftLabelKeyPath = "leftLabel.text"
-}
-
-class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
+class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, FormTextInputTableViewCell {
 
     private(set) lazy var textField: FormTextField = self.createTextField()
-    @objc private dynamic lazy var leftLabel: UILabel = self.createLeftLabel() // dynamic for KVO
+    private lazy var leftLabel: UILabel = self.createLeftLabel()
     private lazy var datePickerBinding: DatePickerTextFieldBinding = self.createDatePickerBinding()
     private lazy var pickerViewBinding: PickerViewTextFieldBinding = self.createPickerViewBinding()
     private var textFieldFormatter: TextFieldFormatter?
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-
-    private var rightView: UIView? {
-        willSet {
-            guard let rightView = self.rightView else {
-                return
-            }
-            rightView.removeFromSuperview()
-        }
-        didSet {
-            guard let rightView = self.rightView else {
-                return
-            }
-            rightView.translatesAutoresizingMaskIntoConstraints = false
-            contentView.addSubview(rightView)
-            setNeedsUpdateConstraints()
-        }
-    }
 
     private var cellType: FormTextCellType = .email {
         didSet {
@@ -84,89 +62,14 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
 
     //MARK: - Lifecycle
 
-    deinit {
-        removeObserver(self, forKeyPath: Constants.leftLabelKeyPath)
-    }
-
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(FormTextFieldTableViewCell.textChanged(_:)), for: .allEditingEvents)
-        contentView.addSubview(textField)
-        contentView.addSubview(leftLabel)
-        addObserver(self, forKeyPath: Constants.leftLabelKeyPath, options: .new, context: nil)
-        layoutMargins = UIEdgeInsets.zero
-        separatorInset = UIEdgeInsetsMake(0, 15.0, 0, 0)
-        let views = [
-            "textField": textField
-        ]
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textField]|", options: .alignAllLeft, metrics: nil, views: views))
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    //MARK: - UIView
-
-    override func updateConstraints() {
-        contentView.removeConstraints(dynamicConstraints)
-        dynamicConstraints.removeAll()
-        var views: [String: Any] = [
-            "textField": textField,
-            "leftLabel": leftLabel
-        ]
-        if let rightView = rightView {
-            let metrics = [
-                "rightViewWidth": rightView.bounds.width,
-                "rightViewHeight": rightView.bounds.height
-            ]
-            views["rightView"] = rightView
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:[textField]-[rightView(rightViewWidth)]|",
-                options: .alignAllCenterY,
-                metrics: metrics,
-                views: views))
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:[rightView(rightViewHeight)]",
-                options: .alignAllLeft,
-                metrics: metrics,
-                views: views))
-        } else {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:[textField]-15-|",
-                options: .alignAllCenterY,
-                metrics: nil,
-                views: views))
-        }
-
-        if let count = leftLabel.text?.count, count > 0 {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[leftLabel]-[textField]",
-                options: .alignAllCenterY,
-                metrics: nil,
-                views: views))
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|[leftLabel]|",
-                options: .alignAllLeft,
-                metrics: nil,
-                views: views))
-        } else {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[textField]",
-                options: .alignAllCenterY,
-                metrics: nil,
-                views: views))
-        }
-        contentView.addConstraints(dynamicConstraints)
-        super.updateConstraints()
-    }
-
-    //MARK: - NSObject
-
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-        if keyPath == Constants.leftLabelKeyPath {
-            textField.textAlignment = textLabel?.text?.count == 0 ? .right : .left
-            setNeedsUpdateConstraints()
-        }
+        setup()
     }
 
     //MARK: - UITextfieldDelegate
@@ -239,8 +142,11 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
     func apply(configuration: FormCellTextConfiguration) {
         textField.placeholder = configuration.placeholder
         leftLabel.text = configuration.title
+        leftLabel.isHidden = configuration.title.isEmpty
+        textField.textAlignment = leftLabel.text?.count == 0 ? .right : .left
         cellType = configuration.cellType
         rightView = configuration.rightView
+        leftView = configuration.leftView
 
         textField.font = configuration.textFont
         textField.textColor = configuration.textColor
@@ -259,13 +165,24 @@ class FormTextFieldTableViewCell : UITableViewCell, UITextFieldDelegate, FormTex
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
         }
+
+        if let contentInset = configuration.contentInset {
+            updateStackViewConstraints(with: contentInset)
+        }
     }
 
     //MARK: - Private
 
+    private func setup() {
+        insertSubviewInStackView(leftLabel)
+        insertSubviewInStackView(textField)
+    }
+
     private func createTextField() -> FormTextField {
         let textField = FormTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(FormTextFieldTableViewCell.textChanged(_:)), for: .allEditingEvents)
         return textField
     }
 

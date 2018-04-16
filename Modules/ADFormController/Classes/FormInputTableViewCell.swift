@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FormTextInputTableViewCell {
-    weak var delegate: FormTextInputTableViewCellDelegate? { get set }
+    var delegate: FormTextInputTableViewCellDelegate? { get set } // must be weak !
     var inputAccessoryView: UIView? { get set }
     var returnKeyType: UIReturnKeyType { get set }
     var textContent: String? { get set }
@@ -26,7 +26,7 @@ protocol FormTextInputTableViewCellDelegate: class {
 
 
 protocol FormBoolInputTableViewCell {
-    weak var delegate: FormBoolInputTableViewCellDelegate? { get set }
+    var delegate: FormBoolInputTableViewCellDelegate? { get set }  // must be weak !
     var boolContent: Bool { get set }
 
     func apply(configuration: FormCellBoolConfiguration)

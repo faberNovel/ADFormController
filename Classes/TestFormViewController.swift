@@ -213,7 +213,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.italicSystemFont(ofSize: 10.0)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
-        button.sizeToFit()
+        button.setContentHuggingPriority(.required, for: .horizontal)
         return button
     }
 

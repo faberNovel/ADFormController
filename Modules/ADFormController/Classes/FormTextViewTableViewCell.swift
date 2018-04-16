@@ -8,71 +8,29 @@
 
 import UIKit
 
-private struct Constants {
-    static let titleLabelKeyPath = "titleLabel.text"
-}
-
-class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
+class FormTextViewTableViewCell : FormBaseTableViewCell, UITextViewDelegate, FormTextInputTableViewCell {
 
     private lazy var textView: UITextView = self.createTextView()
-    @objc private dynamic lazy var titleLabel: UILabel = self.createTitleLabel() // dynamic for KVO
-    private var dynamicConstraints: [NSLayoutConstraint] = []
+    private lazy var titleLabel: UILabel = self.createTitleLabel()
 
-    //MARK: - NSObject
+    // MARK: - FormBaseTableViewCell
 
-    deinit {
-        removeObserver(self, forKeyPath: Constants.titleLabelKeyPath)
-    }
-
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-        if keyPath == Constants.titleLabelKeyPath {
-            self .setNeedsUpdateConstraints()
-        }
+    override var defaultContentInset: UIEdgeInsets {
+        return UIEdgeInsets(top: 15.0, left: 15.0, bottom: 15.0, right: 15.0)
     }
 
     //MARK: - UITableViewCell
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        textView.delegate = self
-        contentView.addSubview(textView)
-        contentView.addSubview(titleLabel)
-        separatorInset = UIEdgeInsetsMake(0, 15, 0, 0)
-        addObserver(self, forKeyPath: Constants.titleLabelKeyPath, options: .new, context: nil)
-        let views = [
-            "placeholderTextView": textView
-        ]
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[placeholderTextView]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
-        layoutMargins = UIEdgeInsets.zero
+        setup()
     }
 
     //MARK: - UIView
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    override func updateConstraints() {
-        contentView.removeConstraints(dynamicConstraints)
-        dynamicConstraints.removeAll()
-
-        let views: [String: Any] = [
-            "titleLabel": titleLabel,
-            "placeholderTextView": textView,
-        ]
-        if let count = titleLabel.text?.count, count > 0 {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[titleLabel]-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[titleLabel]-15-|", options: .alignAllCenterY, metrics: nil, views: views))
-        } else {
-            dynamicConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-15-[placeholderTextView]-15-|", options: .alignAllLeft, metrics: nil, views: views))
-        }
-
-        contentView.addConstraints(dynamicConstraints)
-        super.updateConstraints()
+        setup()
     }
 
     //MARK: - UITextViewDelegate
@@ -127,9 +85,12 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
 
     func apply(configuration: FormCellTextConfiguration) {
         titleLabel.text = configuration.title
-
         titleLabel.font = configuration.titleFont
         titleLabel.textColor = configuration.titleColor
+        titleLabel.isHidden = configuration.title.isEmpty
+
+        rightView = configuration.rightView
+        leftView = configuration.leftView
 
         textView.font = configuration.textFont
         textView.textColor = configuration.textColor
@@ -142,15 +103,28 @@ class FormTextViewTableViewCell : UITableViewCell, UITextViewDelegate, FormTextI
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
         }
+        if let contentInset = configuration.contentInset {
+            updateStackViewConstraints(with: contentInset)
+        }
     }
 
     //MARK: - Private
+
+    private func setup() {
+        let verticalStackView = UIStackView()
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = 8.0
+        verticalStackView.addArrangedSubview(titleLabel)
+        verticalStackView.addArrangedSubview(textView)
+        insertSubviewInStackView(verticalStackView)
+    }
 
     private func createTextView() -> UITextView {
         let placeholderTextView = PlaceholderTextView()
         placeholderTextView.textContainerInset = UIEdgeInsets.zero
         placeholderTextView.textContainer.lineFragmentPadding = 0
         placeholderTextView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderTextView.delegate = self
         return placeholderTextView
     }
 

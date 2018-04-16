@@ -8,81 +8,21 @@
 
 import UIKit
 
-class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
+class FormSwitchTableViewCell: FormBaseTableViewCell, FormBoolInputTableViewCell {
 
     private lazy var switchView: UISwitch = self.createSwitchView()
-    private lazy var leftLabel = self.createLeftLabel()
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    private var rightView: UIView?
-    private let margin = 15.0
-
-    //MARK: - UIView
-
-    override func updateConstraints() {
-        contentView.removeConstraints(dynamicConstraints)
-        dynamicConstraints.removeAll()
-        if let rightView = rightView {
-            let views: [String: Any] = [
-                "switchView": switchView,
-                "rightView": rightView
-            ]
-            let metrics: [String: Any] = [
-                "rightViewWidth": rightView.bounds.width,
-                "rightViewHeight": rightView.bounds.height,
-                "margin": margin
-            ]
-            var constraints = NSLayoutConstraint.constraints(
-                withVisualFormat: "H:[switchView]-[rightView(rightViewWidth)]|",
-                options: .alignAllCenterY,
-                metrics: metrics,
-                views: views
-            )
-            dynamicConstraints.append(contentsOf: constraints)
-            constraints = NSLayoutConstraint.constraints(
-                withVisualFormat: "V:[rightView(rightViewHeight)]",
-                options: .alignAllLeft,
-                metrics: metrics,
-                views: views
-            )
-            dynamicConstraints.append(contentsOf: constraints)
-        } else {
-            let views = [
-                "switchView" : switchView
-            ]
-            let metrics = [
-                "margin" : margin
-            ]
-            let constraints = NSLayoutConstraint.constraints(
-                withVisualFormat: "H:[switchView]-margin-|",
-                options: .alignAllLeft,
-                metrics: metrics,
-                views: views
-            )
-            dynamicConstraints.append(contentsOf: constraints)
-        }
-        contentView.addConstraints(dynamicConstraints)
-        super.updateConstraints()
-    }
+    private lazy var leftLabel: UILabel = self.createLeftLabel()
 
     //MARK: - UITableViewCell
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        switchView.addTarget(
-            self,
-            action: #selector(FormSwitchTableViewCell.switchValueChanged(_:)),
-            for: .valueChanged
-        )
-        contentView.addSubview(switchView)
-        contentView.addSubview(leftLabel)
-        setupStaticConstraints()
-        layoutMargins = UIEdgeInsets.zero
-        separatorInset = UIEdgeInsetsMake(0, CGFloat(margin) as CGFloat, 0, 0)
-        selectionStyle = .none
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
 
     //MARK: - FormBoolInputTableViewCell
@@ -100,6 +40,7 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
 
     func apply(configuration: FormCellBoolConfiguration) {
         rightView = configuration.rightView
+        leftView = configuration.leftView
         leftLabel.text = configuration.title
         leftLabel.font = configuration.titleFont
         leftLabel.textColor = configuration.titleColor
@@ -121,13 +62,35 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
         }
+        if let contentInset = configuration.contentInset {
+            updateStackViewConstraints(with: contentInset)
+        }
     }
 
     //MARK: - Private
 
+    private func setup() {
+        insertSubviewInStackView(leftLabel)
+        let switchContainerView = UIView()
+        switchContainerView.translatesAutoresizingMaskIntoConstraints = false
+        switchContainerView.addSubview(switchView)
+        NSLayoutConstraint.activate([
+            switchView.trailingAnchor.constraint(equalTo: switchContainerView.trailingAnchor),
+            switchView.leadingAnchor.constraint(equalTo: switchContainerView.leadingAnchor),
+            switchView.centerYAnchor.constraint(equalTo: switchContainerView.centerYAnchor),
+        ])
+        insertSubviewInStackView(switchContainerView)
+    }
+
     private func createSwitchView() -> UISwitch {
         let switchView = UISwitch()
         switchView.translatesAutoresizingMaskIntoConstraints = false
+        switchView.setContentHuggingPriority(.required, for: .horizontal)
+        switchView.addTarget(
+            self,
+            action: #selector(FormSwitchTableViewCell.switchValueChanged(_:)),
+            for: .valueChanged
+        )
         return switchView
     }
 
@@ -136,44 +99,6 @@ class FormSwitchTableViewCell: UITableViewCell, FormBoolInputTableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
-    }
-
-    func setupStaticConstraints() {
-        switchView.setContentHuggingPriority(.required, for: .horizontal)
-        let views: [String: Any] = [
-            "switchView": switchView,
-            "leftLabel": leftLabel
-        ]
-        let metrics = [
-            "margin": margin
-        ]
-        addConstraint(
-            NSLayoutConstraint(
-                item: contentView,
-                attribute: .centerY,
-                relatedBy: .equal,
-                toItem: switchView,
-                attribute: .centerY,
-                multiplier: 1.0,
-                constant: 0.0
-            )
-        )
-        contentView.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-margin-[leftLabel]-margin-[switchView]",
-                options: .alignAllCenterY,
-                metrics: metrics,
-                views: views
-            )
-        )
-        contentView.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|[leftLabel(>=42)]|",
-                options: .alignAllLeft,
-                metrics: metrics,
-                views: views
-            )
-        )
     }
 
     @objc private func switchValueChanged(_ sender: UISwitch) {
