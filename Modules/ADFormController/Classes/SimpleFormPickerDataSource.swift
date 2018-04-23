@@ -25,10 +25,12 @@ import Foundation
     }
 
     open func string(from selectedIndexes: [Int]) -> String {
-        guard let lastValue = selectedIndexes.last else {
-            return ""
+        guard
+            let index = selectedIndexes.last,
+            index < options.count else {
+                return ""
         }
-        return options[options.startIndex.advanced(by: lastValue)]
+        return options[index]
     }
 
     open func selectedIndexes(from string: String) -> [Int] {
