@@ -37,7 +37,7 @@ private extension FormInput {
                 cellToReturn = FormTextFieldTableViewCell(style: .default, reuseIdentifier: nil)
             }
             cellToReturn.apply(configuration: textConfiguration)
-            cellToReturn.inputAccessoryView = accessoryView
+            cellToReturn.inputAccessoryView = textConfiguration.inputAccessoryView ?? accessoryView
             cellToReturn.returnKeyType = returnKeyType
             cellToReturn.delegate = formController
             return cellToReturn
@@ -49,7 +49,7 @@ private extension FormInput {
                 cellToReturn = FormTextViewTableViewCell(style: .default, reuseIdentifier: nil)
             }
             cellToReturn.apply(configuration: textConfiguration)
-            cellToReturn.inputAccessoryView = accessoryView
+            cellToReturn.inputAccessoryView = textConfiguration.inputAccessoryView ?? accessoryView
             cellToReturn.returnKeyType = returnKeyType
             cellToReturn.delegate = formController
             return cellToReturn
