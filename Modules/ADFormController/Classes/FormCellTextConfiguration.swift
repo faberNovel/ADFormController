@@ -42,6 +42,7 @@ import UIKit
     open var textFieldFormatter: TextFieldFormatter?
     open var formPickerDataSource: FormPickerDataSource?
     open var cellType: FormTextCellType = .email
+    open var inputAccessoryView: UIView? = nil
 
     override public init() {
         super.init()

@@ -1,7 +1,7 @@
 PODS:
   - ADDynamicLogLevel (2.0.0):
     - CocoaLumberjack (~> 3.0)
-  - ADFormController (5.0.0):
+  - ADFormController (5.0.1):
     - ADKeyboardManager (~> 2.0)
   - ADKeyboardManager (2.2.0)
   - ADUtils (4.5.0):
@@ -50,13 +50,29 @@ DEPENDENCIES:
   - Quick (~> 1.2)
   - Watchdog (~> 4.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CocoaLumberjack
+    - FBSnapshotTestCase
+    - HockeySDK
+    - Nimble
+    - Nimble-Snapshots
+    - OCMock
+    - Quick
+    - Watchdog
+  "ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs":
+    - ADDynamicLogLevel
+    - ADKeyboardManager
+    - ADUtils
+
 EXTERNAL SOURCES:
   ADFormController:
-    :path: ./
+    :path: "./"
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 446f21d2c807ad898bd6868513ac9f7b21253066
-  ADFormController: d2ea5f03cb56546e01a3c6de09ec370c9738dbd0
+  ADFormController: 3e3508a1c8e35b9f794e244e56835493d5329f12
   ADKeyboardManager: 6993d5bb6f383b47183dbc16a8d2e20040726068
   ADUtils: 02875938dcd47c3bf2ce141cfc29afa27d7909eb
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -71,4 +87,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0a1d2615b8dfd9b08d9bf2d7d41bcbd97c464413
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
