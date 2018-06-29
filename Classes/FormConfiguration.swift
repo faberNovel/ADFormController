@@ -17,6 +17,7 @@ protocol RowConfigurable {
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
+                               useCustomReturnAction: Bool,
                                alignment: NSTextAlignment,
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration?
 }
@@ -57,6 +58,7 @@ extension RowType: RowConfigurable {
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
+                               useCustomReturnAction: Bool,
                                alignment: NSTextAlignment,
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
@@ -84,6 +86,13 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             configuration.separatorInset = separatorInset
+            if useCustomReturnAction {
+                configuration.returnKeyType = .search
+                configuration.returnAction = {
+                    DDLogInfo("Custom action => SEARCH")
+                    return true
+                }
+            }
             return configuration
         case .email:
             let configuration = FormCellTextConfiguration()
@@ -213,6 +222,7 @@ extension CreditCardRowType: RowConfigurable {
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
+                               useCustomReturnAction: Bool,
                                alignment: NSTextAlignment,
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {
@@ -265,6 +275,7 @@ extension PasswordRowType: RowConfigurable {
                                accessoryView: UIView,
                                passwordVisible: Bool,
                                enabled: Bool,
+                               useCustomReturnAction: Bool,
                                alignment: NSTextAlignment,
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration? {
         switch self {

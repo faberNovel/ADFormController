@@ -195,6 +195,11 @@ private extension FormInput {
             let indexPath = tableView?.indexPath(for: tableViewCell) else {
                 return false
         }
+        // Use custom returnAction if any
+        if let configuration = validConfigurationForReturnAction(at: indexPath),
+            let returnAction = configuration.returnAction {
+            return returnAction()
+        }
         if formDirectionManager.canMove(to: .next, from: indexPath) {
             move(to: .next, from: indexPath)
             return false
@@ -274,6 +279,12 @@ private extension FormInput {
     }
 
     private func returnKeyType(at indexPath: IndexPath) -> UIReturnKeyType {
+        // Use custom returnKeyType if any
+        if let configuration = validConfigurationForReturnAction(at: indexPath),
+            let returnKeyType = configuration.returnKeyType {
+            return returnKeyType
+        }
+        // Default implementation
         guard let tableView = tableView else { return .default }
         let lastSection = tableView.numberOfSections - 1
         guard lastSection > 0 else { return .default }
@@ -292,5 +303,15 @@ private extension FormInput {
 
         defaultAccessoryView.previousBarButtonItem.target = self
         defaultAccessoryView.previousBarButtonItem.action = #selector(FormController.previous(_:))
+    }
+
+    private func validConfigurationForReturnAction(at indexPath: IndexPath) -> FormCellTextConfiguration? {
+        guard
+            let configuration = delegate?.configurationForFormController(self, at: indexPath) as? FormCellTextConfiguration,
+            configuration.returnKeyType != nil,
+            configuration.returnAction != nil else {
+                return nil
+        }
+        return configuration
     }
 }

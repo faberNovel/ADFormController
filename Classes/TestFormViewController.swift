@@ -40,6 +40,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     var forceEnableFirstAndLastInput = false
     var alignment: NSTextAlignment = .left
     var separatorInset: UIEdgeInsets? = nil
+    var useCustomReturnAction = false
     private var formModel = FormModel()
     private var passwordVisible = false
     private lazy var formController : FormController = self.createFormController()
@@ -122,6 +123,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             accessoryView: passwordButton,
             passwordVisible: passwordVisible,
             enabled: enableInput(at: indexPath),
+            useCustomReturnAction: useCustomReturnAction,
             alignment: alignment,
             separatorInset: separatorInset
         )
