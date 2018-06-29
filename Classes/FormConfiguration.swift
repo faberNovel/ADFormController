@@ -146,6 +146,9 @@ extension RowType: RowConfigurable {
             configuration.enabled = enabled
             configuration.textAlignment = alignment
             configuration.separatorInset = separatorInset
+            configuration.datePickerConfiguration = { datePicker in
+                datePicker.maximumDate = Date()
+            }
             return configuration
         case .time:
             let configuration = FormCellTextConfiguration()

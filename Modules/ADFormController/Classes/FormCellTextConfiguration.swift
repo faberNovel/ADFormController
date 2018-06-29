@@ -43,6 +43,7 @@ import UIKit
     open var formPickerDataSource: FormPickerDataSource?
     open var cellType: FormTextCellType = .email
     open var inputAccessoryView: UIView? = nil
+    open var datePickerConfiguration: ((UIDatePicker) -> Void)?
 
     override public init() {
         super.init()
