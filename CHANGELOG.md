@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.0]
+
+### Added
+- Add possibility to customize `UIDatePicker` in `.date` mode
+- Add possibility to override `returnKeyType` and `returnAction` for each cell
+
 ## [5.1.0]
 
 ### Added

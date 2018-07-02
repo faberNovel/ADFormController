@@ -43,6 +43,10 @@ import UIKit
     open var formPickerDataSource: FormPickerDataSource?
     open var cellType: FormTextCellType = .email
     open var inputAccessoryView: UIView? = nil
+    open var datePickerConfiguration: ((UIDatePicker) -> Void)?
+    open var returnKeyType: UIReturnKeyType?
+    /// Return true if the text field should implement its default behavior for the return button; otherwise, false.
+    open var returnAction: (() -> Bool)?
 
     override public init() {
         super.init()

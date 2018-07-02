@@ -18,6 +18,7 @@ private enum Configurations: String, EnumCollection {
     case disableAllButFirstAndLastInput = "Disabled all but first and last inputs"
     case withAlignement = "With alignment"
     case withCustomSeparatorInsets = "With custom separator insets"
+    case useCustomReturnAction = "Use custom return action for name"
 }
 
 class MenuTableViewController: TableViewController {
@@ -77,6 +78,8 @@ class MenuTableViewController: TableViewController {
         case .disableAllButFirstAndLastInput:
             testFormViewController.enabledInputs = false
             testFormViewController.forceEnableFirstAndLastInput = true
+        case .useCustomReturnAction:
+            testFormViewController.useCustomReturnAction = true
         }
         navigationController?.pushViewController(testFormViewController, animated: true)
     }

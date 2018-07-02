@@ -38,6 +38,10 @@ class DatePickerTextFieldBinding: NSObject {
         datePicker.date = date
     }
 
+    func apply(_ datePickerConfiguration: ((UIDatePicker) -> Void)?) {
+        datePickerConfiguration?(datePicker)
+    }
+
     //MARK: - Private
 
     private func createDatePicker() -> UIDatePicker {

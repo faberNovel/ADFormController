@@ -1,3 +1,140 @@
-import_from_git(url: 'ssh://git@gerrit.applidium.net:29418/ADFastlane',
-      path: 'ios/fastlane/Fastfile',
-      branch: 'v5.0+')
+import_from_git(url: 'ssh://git@codereview.technologies.fabernovel.com:29418/ADFastlane',
+                path: 'Fastfile_ios.rb',
+                branch: 'v6.0+')
+
+#####################################################
+# @!group Configuration
+#####################################################
+
+override_lane :get_project_configuration do
+  {
+    xcworkspace: 'FormDemo.xcworkspace',
+    xcodeproj: 'FormDemo.xcodeproj'
+  }
+end
+
+override_lane :get_variants_build_configurations do
+  {
+    'FormDemo_Prod' => {
+      scheme: 'FormDemo',
+      xcode_configuration: 'Production',
+      target_name: 'FormDemo'
+    },
+  }
+end
+
+override_lane :get_slack_configuration do
+  {
+    channel: 'TODO',
+    slack_url: nil # Use nil to use FABERNOVEL's default one
+  }
+end
+
+override_lane :get_variants_hockeyapp_configurations do
+  {
+    'FormDemo_Prod' => {
+      api_token: nil, # Use nil to use FABERNOVEL's default one
+      public_identifier: "TODO_OR_NIL" #can be passed through cli option (hockeyapp_id)
+    }
+  }
+end
+
+#####################################################
+# @!group CI
+#####################################################
+
+override_lane :get_variants_to_build_on_ci do |options|
+  case options[:commit_type]
+  when 'merge'
+    variants = ['FormDemo_Prod']
+  when 'release'
+    variants = ['FormDemo_Prod']
+  else
+    variants = ['FormDemo_Prod']
+  end
+  variants
+end
+
+#####################################################
+# @!group TEST
+#####################################################
+
+override_lane :get_test_configurations_for_ci do |options|
+end
+
+#####################################################
+# @!group Codesign
+#####################################################
+
+override_lane :get_variants_codesign_configurations do
+  MATCH_CUSTOMER_CONFIGURATION =
+    {
+      apple_id: "TODO",
+      apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
+      team_id: "TODO",
+      team_name: "TODO",
+      git_repository: "TODO",
+      git_branch: "TODO",
+      git_password: lane_context[:ALL_CLI_OPTIONS][:match_password],
+    }
+  {
+    'FormDemo_Prod' => {
+      bundles: ["com.yourclient.appname", "com.yourclient.appname.watchkitextension"],
+      fabernovel_bundles: ["com.applidium.FormDemo", "com.applidium.appname.watchkitextension"],
+      provisioning_profile_templates: ["TODO_OR_NIL"],
+      local_provisioning_profile_names: ["TODO_OR_NIL", "TODO_OR_NIL"],
+      match_configuration: MATCH_CUSTOMER_CONFIGURATION
+    }
+  }
+end
+
+override_lane :get_variants_itunes_connect_configurations do
+  ITC_CUSTOMER_CONFIGURATION = {
+    apple_id: "TODO_OR_REMOVE",
+    team_id: "TODO",
+    team_name: "TODO",
+    apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
+    itc_provider: "TODO"
+  }
+  {
+    'FormDemo_Prod' => ITC_CUSTOMER_CONFIGURATION
+  }
+end
+
+#####################################################
+# @!group PODS
+#####################################################
+
+override_lane :get_pod_configuration do
+  {
+    use_libraries: false,
+    extra_sources_repos: nil,
+    skip_lib_lint: false,
+    pod_repository: FT_POD_REPO # You can use ft_pod_repo, nil for the pod trunk repo
+  }
+end
+
+#####################################################
+# @!group LANES THAT CAN BE OVERRIDEN
+#####################################################
+
+# private_lane :get_variants_crashlytics_configurations do
+# end
+
+# private_lane :get_variants_s3_configurations do
+# end
+
+# private_lane :user_defined_prebuild_lane do |options|
+# end
+
+# private_lane :user_defined_postbuild_lane do |options|
+# end
+
+# override_lane :get_project_tests_configurations do
+# end
+
+# override_lane :get_test_configurations_for_ci do |options|
+# end
+
+# override_lane :get_appstore_screenshots_test_configurations_for_variant do
+# end

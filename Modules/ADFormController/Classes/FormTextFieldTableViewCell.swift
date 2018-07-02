@@ -158,6 +158,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
         textFieldFormatter = configuration.textFieldFormatter
         textFieldFormatter?.textFieldValueChanged(textField)
         datePickerBinding.dateFormatter = configuration.dateFormatter
+        datePickerBinding.apply(configuration.datePickerConfiguration)
         pickerViewBinding.formPickerDataSource = configuration.formPickerDataSource
         textField.isEnabled = configuration.enabled
         textField.textAlignment = configuration.textAlignment
