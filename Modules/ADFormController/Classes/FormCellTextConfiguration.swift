@@ -47,6 +47,7 @@ import UIKit
     open var returnKeyType: UIReturnKeyType?
     /// Return true if the text field should implement its default behavior for the return button; otherwise, false.
     open var returnAction: (() -> Bool)?
+    open var textInputAccessibilityIdentifier: String?
 
     override public init() {
         super.init()

@@ -162,6 +162,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
         pickerViewBinding.formPickerDataSource = configuration.formPickerDataSource
         textField.isEnabled = configuration.enabled
         textField.textAlignment = configuration.textAlignment
+        textField.accessibilityIdentifier = configuration.textInputAccessibilityIdentifier
 
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset

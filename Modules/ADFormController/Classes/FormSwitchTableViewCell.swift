@@ -46,6 +46,7 @@ class FormSwitchTableViewCell: FormBaseTableViewCell, FormBoolInputTableViewCell
         leftLabel.textColor = configuration.titleColor
         switchView.isOn = configuration.boolValue
         switchView.onTintColor = configuration.onTintColor
+        switchView.accessibilityIdentifier = configuration.switchAccessibilityIdentifier
         //hack to have a nice background color for off position
         switchView.layer.cornerRadius = 16.0
         switchView.backgroundColor = configuration.tintColor

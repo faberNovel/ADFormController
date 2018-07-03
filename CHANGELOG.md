@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.3.0]
+
+### Added
+- Add `textInputAccessibilityIdentifier` and `switchAccessibilityIdentifier` in configurations (usefull in UI tests)
+
 ## [5.2.0]
 
 ### Added
