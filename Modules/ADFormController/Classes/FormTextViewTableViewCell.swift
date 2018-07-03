@@ -96,6 +96,7 @@ class FormTextViewTableViewCell : FormBaseTableViewCell, UITextViewDelegate, For
         textView.textColor = configuration.textColor
         textView.tintColor = configuration.tintColor
         textView.text = configuration.text
+        textView.accessibilityIdentifier = configuration.textInputAccessibilityIdentifier
         if let placeholderTextView = textView as? PlaceholderTextView {
             placeholderTextView.placeholder = configuration.placeholder
         }
