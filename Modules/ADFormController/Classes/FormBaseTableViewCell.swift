@@ -10,6 +10,7 @@ import UIKit
 
 protocol FormTableViewCellActionHandler: class {
     func handleLeftViewAction(from cell: FormBaseTableViewCell)
+    func handleRightViewAction(from cell: FormBaseTableViewCell)
 }
 
 class FormBaseTableViewCell: UITableViewCell {
@@ -17,6 +18,7 @@ class FormBaseTableViewCell: UITableViewCell {
     private lazy var stackView: UIStackView = self.createStackView()
     private lazy var rightContainerView: UIView = self.createAccessoryContainerView()
     private lazy var leftContainerView: UIView = self.createAccessoryContainerView()
+    private lazy var rightContainerTapGesture: UITapGestureRecognizer = self.createRightViewTapGestureRecognizer()
     private lazy var leftContainerTapGesture: UITapGestureRecognizer = self.createLeftViewTapGestureRecognizer()
 
     weak var actionHandler: FormTableViewCellActionHandler?
@@ -106,9 +108,17 @@ class FormBaseTableViewCell: UITableViewCell {
 
     // MARK: - Actions
 
-    @objc private func leftViewTapGestureAction(_ sender: UITapGestureRecognizer) {
-        actionHandler?.handleLeftViewAction(from: self)
+    @objc private func tapGestureAction(_ sender: UITapGestureRecognizer) {
+        switch sender {
+        case leftContainerTapGesture:
+            actionHandler?.handleLeftViewAction(from: self)
+        case rightContainerTapGesture:
+            actionHandler?.handleRightViewAction(from: self)
+        default:
+            break
+        }
     }
+
 
     // MARK: - Private
 
@@ -120,6 +130,7 @@ class FormBaseTableViewCell: UITableViewCell {
         stackView.addArrangedSubview(leftContainerView)
         stackView.addArrangedSubview(rightContainerView)
         leftContainerView.addGestureRecognizer(leftContainerTapGesture)
+        rightContainerView.addGestureRecognizer(rightContainerTapGesture)
     }
 
     private func createStackView() -> UIStackView {
@@ -139,6 +150,10 @@ class FormBaseTableViewCell: UITableViewCell {
     }
 
     private func createLeftViewTapGestureRecognizer() -> UITapGestureRecognizer {
-        return UITapGestureRecognizer(target: self, action: #selector(leftViewTapGestureAction(_:)))
+        return UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(_:)))
+    }
+
+    private func createRightViewTapGestureRecognizer() -> UITapGestureRecognizer {
+        return UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(_:)))
     }
 }

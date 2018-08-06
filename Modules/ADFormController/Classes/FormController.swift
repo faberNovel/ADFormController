@@ -60,6 +60,11 @@ private extension FormInput {
     }
 }
 
+@objc public enum FormControllerAction: Int {
+    case leftViewTap
+    case rightViewTap
+}
+
 @objc public protocol FormControllerDelegate {
     @objc(configurationForFormController:atIndexPath:)
     func configurationForFormController(_ formController: FormController, at indexPath: IndexPath) -> FormCellConfiguration?
@@ -68,9 +73,10 @@ private extension FormInput {
     @objc(formController:valueChangedForIndexPath:)
     optional func formController(_ formController: FormController, valueChangedFor indexPath: IndexPath)
     @objc optional func formControllerAction(_ formController: FormController)
-    @objc(formController:didSelectLeftViewAtIndexPath:)
+    @objc(formController:didPerform:atIndexPath:)
     optional func formController(_ formController: FormController,
-                                 didSelectLeftViewAt indexPath: IndexPath)
+                                 didPerform action: FormControllerAction,
+                                 at indexPath: IndexPath)
 }
 
 @objcMembers open class FormController: NSObject,
@@ -178,7 +184,12 @@ private extension FormInput {
 
     func handleLeftViewAction(from cell: FormBaseTableViewCell) {
         guard let indexPath = tableView?.indexPath(for: cell) else { return }
-        delegate?.formController?(self, didSelectLeftViewAt: indexPath)
+        delegate?.formController?(self, didPerform: .leftViewTap, at: indexPath)
+    }
+
+    func handleRightViewAction(from cell: FormBaseTableViewCell) {
+        guard let indexPath = tableView?.indexPath(for: cell) else { return }
+        delegate?.formController?(self, didPerform: .rightViewTap, at: indexPath)
     }
 
     //MARK: - FormBoolInputTableViewCellDelegate
