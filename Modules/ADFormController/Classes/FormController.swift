@@ -18,6 +18,7 @@ private enum FormInput {
 private extension FormInput {
 
     func buildCell(_ cell: UITableViewCell?, accessoryView: UIView, returnKeyType: UIReturnKeyType, formController: FormController) -> UITableViewCell {
+        let baseCell: FormBaseTableViewCell
         switch self {
         case let .bool(boolConfiguration):
             var cellToReturn: FormSwitchTableViewCell
@@ -28,7 +29,7 @@ private extension FormInput {
             }
             cellToReturn.apply(configuration: boolConfiguration)
             cellToReturn.delegate = formController
-            return cellToReturn
+            baseCell = cellToReturn
         case let .shortText(textConfiguration):
             var cellToReturn: FormTextFieldTableViewCell
             if let unwrappedCell = cell.flatMap({ $0 as? FormTextFieldTableViewCell }) {
@@ -40,7 +41,7 @@ private extension FormInput {
             cellToReturn.inputAccessoryView = textConfiguration.inputAccessoryView ?? accessoryView
             cellToReturn.returnKeyType = returnKeyType
             cellToReturn.delegate = formController
-            return cellToReturn
+            baseCell = cellToReturn
         case let .longText(textConfiguration):
             var cellToReturn: FormTextViewTableViewCell
             if let unwrappedCell = cell.flatMap({ $0 as? FormTextViewTableViewCell }) {
@@ -52,8 +53,10 @@ private extension FormInput {
             cellToReturn.inputAccessoryView = textConfiguration.inputAccessoryView ?? accessoryView
             cellToReturn.returnKeyType = returnKeyType
             cellToReturn.delegate = formController
-            return cellToReturn
+            baseCell = cellToReturn
         }
+        baseCell.actionHandler = formController
+        return baseCell
     }
 }
 
@@ -65,9 +68,17 @@ private extension FormInput {
     @objc(formController:valueChangedForIndexPath:)
     optional func formController(_ formController: FormController, valueChangedFor indexPath: IndexPath)
     @objc optional func formControllerAction(_ formController: FormController)
+    @objc(formController:didSelectLeftViewAtIndexPath:)
+    optional func formController(_ formController: FormController,
+                                 didSelectLeftViewAt indexPath: IndexPath)
 }
 
-@objcMembers open class FormController: NSObject , FormBoolInputTableViewCellDelegate, FormTextInputTableViewCellDelegate, FormDirectionManagerDelegate, FormCellConfigurable {
+@objcMembers open class FormController: NSObject,
+    FormBoolInputTableViewCellDelegate,
+    FormTextInputTableViewCellDelegate,
+    FormDirectionManagerDelegate,
+    FormCellConfigurable,
+    FormTableViewCellActionHandler {
 
     open weak var delegate: FormControllerDelegate?
     open var defaultAccessoryView: NavigableView {
@@ -161,6 +172,13 @@ private extension FormInput {
             returnKeyType: returnKeyType(at: indexPath),
             formController: self
         )
+    }
+
+    // MARK: - FormTableViewCellActionHandler
+
+    func handleLeftViewAction(from cell: FormBaseTableViewCell) {
+        guard let indexPath = tableView?.indexPath(for: cell) else { return }
+        delegate?.formController?(self, didSelectLeftViewAt: indexPath)
     }
 
     //MARK: - FormBoolInputTableViewCellDelegate

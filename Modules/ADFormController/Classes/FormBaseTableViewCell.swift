@@ -8,11 +8,18 @@
 import Foundation
 import UIKit
 
+protocol FormTableViewCellActionHandler: class {
+    func handleLeftViewAction(from cell: FormBaseTableViewCell)
+}
+
 class FormBaseTableViewCell: UITableViewCell {
 
     private lazy var stackView: UIStackView = self.createStackView()
     private lazy var rightContainerView: UIView = self.createAccessoryContainerView()
     private lazy var leftContainerView: UIView = self.createAccessoryContainerView()
+    private lazy var leftContainerTapGesture: UITapGestureRecognizer = self.createLeftViewTapGestureRecognizer()
+
+    weak var actionHandler: FormTableViewCellActionHandler?
 
     var rightView: UIView? {
         willSet {
@@ -97,6 +104,12 @@ class FormBaseTableViewCell: UITableViewCell {
         ])
     }
 
+    // MARK: - Actions
+
+    @objc private func leftViewTapGestureAction(_ sender: UITapGestureRecognizer) {
+        actionHandler?.handleLeftViewAction(from: self)
+    }
+
     // MARK: - Private
 
     private func setup() {
@@ -106,6 +119,7 @@ class FormBaseTableViewCell: UITableViewCell {
         updateStackViewConstraints(with: defaultContentInset)
         stackView.addArrangedSubview(leftContainerView)
         stackView.addArrangedSubview(rightContainerView)
+        leftContainerView.addGestureRecognizer(leftContainerTapGesture)
     }
 
     private func createStackView() -> UIStackView {
@@ -122,5 +136,9 @@ class FormBaseTableViewCell: UITableViewCell {
         view.setContentHuggingPriority(.required, for: .horizontal)
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
+    }
+
+    private func createLeftViewTapGestureRecognizer() -> UITapGestureRecognizer {
+        return UITapGestureRecognizer(target: self, action: #selector(leftViewTapGestureAction(_:)))
     }
 }
