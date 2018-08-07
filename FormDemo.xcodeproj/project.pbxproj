@@ -19,6 +19,7 @@
 		7A0EC6541535D8ED00E5F54A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6531535D8ED00E5F54A /* UIKit.framework */; };
 		7A0EC6561535D8ED00E5F54A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6551535D8ED00E5F54A /* Foundation.framework */; };
 		7A0EC6581535D8ED00E5F54A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EC6571535D8ED00E5F54A /* CoreGraphics.framework */; };
+		E70174842119F58F00891315 /* FormRightAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70174832119F58F00891315 /* FormRightAccessoryView.swift */; };
 		E738BFF01E002D8500F0AEF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738BFEF1E002D8500F0AEF6 /* AppDelegate.swift */; };
 		E738BFF31E002DBA00F0AEF6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738BFF11E002DBA00F0AEF6 /* Color.swift */; };
 		E738BFF41E002DBA00F0AEF6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738BFF21E002DBA00F0AEF6 /* Fonts.swift */; };
@@ -79,6 +80,7 @@
 		7E4F8C919C6169B2F95CE40E /* Pods-Form-FormDemoTests.stubs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Form-FormDemoTests.stubs.xcconfig"; path = "Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests.stubs.xcconfig"; sourceTree = "<group>"; };
 		A0F94D32BA9C07E567DF3C26 /* Pods_Form_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Form_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06C6332AC4E8FBA4930E980 /* Pods_FormDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70174832119F58F00891315 /* FormRightAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRightAccessoryView.swift; sourceTree = "<group>"; };
 		E738BFEF1E002D8500F0AEF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E738BFF11E002DBA00F0AEF6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E738BFF21E002DBA00F0AEF6 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				E738C0011E002E1400F0AEF6 /* EnglishAccessoryToolbar.swift */,
+				E70174832119F58F00891315 /* FormRightAccessoryView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				E738C0261E00386D00F0AEF6 /* FDTestFormTableViewController.m in Sources */,
 				E738C0181E00384E00F0AEF6 /* FDFormModel.m in Sources */,
 				E738C00D1E00381A00F0AEF6 /* TableViewController.swift in Sources */,
+				E70174842119F58F00891315 /* FormRightAccessoryView.swift in Sources */,
 				E738BFFD1E002DFC00F0AEF6 /* CreditCardTextFieldFormatter.swift in Sources */,
 				E738BFF41E002DBA00F0AEF6 /* Fonts.swift in Sources */,
 				49595DCE1D93E11D003F1816 /* TargetSettings.swift in Sources */,
