@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.4.0]
+
+### Added
+- Add `FormControllerAction`: be notified when the user taps the right or the left view of a cell
+
 ## [5.3.0]
 
 ### Added
