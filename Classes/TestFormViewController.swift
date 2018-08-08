@@ -117,7 +117,7 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     //MARK: - FormControllerDelegate
 
     func configurationForFormController(_ formController: FormController, at indexPath: IndexPath) -> FormCellConfiguration? {
-        return rowConfigurable(at: indexPath as IndexPath)?.formCellConfiguration(
+        return rowConfigurable(at: indexPath)?.formCellConfiguration(
             showTitle: showTitles,
             model: formModel,
             accessoryView: passwordButton,
@@ -198,6 +198,17 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
             }
         default:
             break
+        }
+    }
+
+    func formController(_ formController: FormController,
+                        didPerform action: FormControllerAction,
+                        at indexPath: IndexPath) {
+        switch action {
+        case .leftViewTap:
+            break
+        case .rightViewTap:
+            formController.beginEditing(at: indexPath)
         }
     }
 

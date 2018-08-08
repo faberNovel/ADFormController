@@ -244,6 +244,7 @@ extension CreditCardRowType: RowConfigurable {
             configuration.placeholder = "Expiration Date"
             configuration.cellType = .picker
             configuration.formPickerDataSource = ExpirationDatePickerDataSource()
+            configuration.rightView = FormPickerRightAccessoryView()
             configuration.text = model.expiration
             if showTitle {
                 configuration.title = "Expiration Date"

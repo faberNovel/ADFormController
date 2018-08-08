@@ -45,21 +45,19 @@ fastlane/report.xml
 # deliver temporary files
 fastlane/Preview.html
 
-# snapshot generated screenshots
-fastlane/screenshots
+# scan/snapshot temporary files (default values)
+/metrics
+/tests_derived_data
+/screenshots
 
-# scan temporary files
-fastlane/test_output
-
-#fastlane bundler
-fastlane/Gemfile
-fastlane/Gemfile.lock
-fastlane/.bundle/config
-
-#Fastlane Plugins
+#fastlane plugins
+Pluginfile_fastlane
 Gemfile_fastlane
 Gemfile_fastlane.lock
-fastlane/Pluginfile
+
+#fastlane build artifacts
+/build
+/derived_data
 
 ##AppCode
 .idea/
