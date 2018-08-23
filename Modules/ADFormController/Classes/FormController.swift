@@ -158,6 +158,10 @@ private extension FormInput {
         targetCell?.beginEditing()
     }
 
+    open func currentEditingIndexPath() -> IndexPath? {
+        return indexPathForFirstResponder()
+    }
+
     //MARK: - FormCellConfigurable
 
     open func boolInputCell(with configuration: FormCellBoolConfiguration, at indexPath:IndexPath) -> UITableViewCell {
