@@ -163,6 +163,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
         textField.isEnabled = configuration.enabled
         textField.textAlignment = configuration.textAlignment
         textField.accessibilityIdentifier = configuration.textInputAccessibilityIdentifier
+        textField.clearButtonMode = configuration.clearButtonMode
 
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
