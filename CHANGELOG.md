@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.5.0]
+
+### Added
+- Add `clearButtonMode` to text configuration
+- Add `currentEditingIndexPath() -> IndexPath?` method on form controller
+
 ## [5.4.0]
 
 ### Added
