@@ -101,6 +101,7 @@ class FormTextViewTableViewCell : FormBaseTableViewCell, UITextViewDelegate, For
             placeholderTextView.placeholder = configuration.placeholder
         }
         textView.isEditable = configuration.enabled
+        textView.isSelectable = configuration.enabled
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
         }
