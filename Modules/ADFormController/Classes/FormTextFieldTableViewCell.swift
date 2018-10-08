@@ -30,13 +30,13 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
                 textField.keyboardType = .numberPad
                 textField.isSecureTextEntry = true
             case .name:
-                textField.keyboardType = .asciiCapable
+                textField.keyboardType = .default
                 textField.autocapitalizationType = .words
                 textField.autocorrectionType = .no
             case .phone:
                 textField.keyboardType = .phonePad
             case .text:
-                textField.keyboardType = .asciiCapable
+                textField.keyboardType = .default
                 textField.autocapitalizationType = .sentences
                 textField.autocorrectionType = .default
             case .number:

@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.5.2]
+
+### Fixed
+- Change `.asciiCapable` keyboard type to `.default`
+
 ## [5.5.1]
 
 ### Fixed
