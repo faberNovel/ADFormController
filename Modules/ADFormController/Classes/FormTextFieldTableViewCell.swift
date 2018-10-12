@@ -164,6 +164,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
         textField.textAlignment = configuration.textAlignment
         textField.accessibilityIdentifier = configuration.textInputAccessibilityIdentifier
         textField.clearButtonMode = configuration.clearButtonMode
+        hideRightViewWhenEditing = configuration.hideRightViewWhenEditing
 
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
@@ -206,6 +207,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
     }
 
     @objc private func textChanged(_ sender: UITextField) {
+        if hideRightViewWhenEditing { rightView?.isHidden = true }
         textFieldFormatter?.textFieldValueChanged(sender)
         delegate?.textInputTableViewCellValueChanged(self)
     }

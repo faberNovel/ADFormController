@@ -20,6 +20,7 @@ class FormBaseTableViewCell: UITableViewCell {
     private lazy var leftContainerView: UIView = self.createAccessoryContainerView()
     private lazy var rightContainerTapGesture: UITapGestureRecognizer = self.createRightViewTapGestureRecognizer()
     private lazy var leftContainerTapGesture: UITapGestureRecognizer = self.createLeftViewTapGestureRecognizer()
+    var hideRightViewWhenEditing = false
 
     weak var actionHandler: FormTableViewCellActionHandler?
 
