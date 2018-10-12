@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.5.3]
+
+### Added
+- Add `hideRightViewWhenEditing` to FormCellConfiguration
+
 ## [5.5.2]
 
 ### Fixed

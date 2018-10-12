@@ -36,6 +36,7 @@ class FormTextViewTableViewCell : FormBaseTableViewCell, UITextViewDelegate, For
     //MARK: - UITextViewDelegate
 
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if hideRightViewWhenEditing { rightView?.isHidden = true }
         delegate?.textInputTableViewCellDidBeginEditing(self)
     }
 
@@ -97,6 +98,7 @@ class FormTextViewTableViewCell : FormBaseTableViewCell, UITextViewDelegate, For
         textView.tintColor = configuration.tintColor
         textView.text = configuration.text
         textView.accessibilityIdentifier = configuration.textInputAccessibilityIdentifier
+        hideRightViewWhenEditing = configuration.hideRightViewWhenEditing
         if let placeholderTextView = textView as? PlaceholderTextView {
             placeholderTextView.placeholder = configuration.placeholder
         }

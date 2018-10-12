@@ -50,6 +50,7 @@ class FormSwitchTableViewCell: FormBaseTableViewCell, FormBoolInputTableViewCell
         //hack to have a nice background color for off position
         switchView.layer.cornerRadius = 16.0
         switchView.backgroundColor = configuration.tintColor
+        hideRightViewWhenEditing = configuration.hideRightViewWhenEditing
         let scale = CGAffineTransform(
             scaleX: CGFloat(configuration.switchZoom),
             y: CGFloat(configuration.switchZoom)
@@ -103,6 +104,7 @@ class FormSwitchTableViewCell: FormBaseTableViewCell, FormBoolInputTableViewCell
     }
 
     @objc private func switchValueChanged(_ sender: UISwitch) {
+        if hideRightViewWhenEditing { rightView?.isHidden = true }
         self.delegate?.boolInputTableViewCellDidChangeValue(self)
     }
 }

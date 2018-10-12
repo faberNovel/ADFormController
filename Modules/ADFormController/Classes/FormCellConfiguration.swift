@@ -19,6 +19,7 @@ import UIKit
     open var textAlignment: NSTextAlignment = .left
     open var separatorInset: UIEdgeInsets? = nil
     open var contentInset: UIEdgeInsets? = nil
+    open var hideRightViewWhenEditing: Bool = false
 
     open func visit(_ configurable: FormCellConfigurable, at indexPath: IndexPath) -> UITableViewCell {
         fatalError("Should be overriden")
