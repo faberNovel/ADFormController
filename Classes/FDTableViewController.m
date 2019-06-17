@@ -7,7 +7,7 @@
 //
 
 #import "FDTableViewController.h"
-#import "ADKeyboardManager.h"
+@import ADKeyboardManager;
 
 @interface FDTableViewController () {
     ADKeyboardManager * _keyboardManager;
@@ -42,12 +42,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [_keyboardManager startObservingKeyboard];
+    [_keyboardManager ad_startObservingKeyboard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [_keyboardManager endObservingKeyboard];
+    [_keyboardManager ad_stopObservingKeyboard];
 }
 
 #pragma mark - UITableViewDataSource

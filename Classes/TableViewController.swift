@@ -12,9 +12,9 @@ import ADUtils
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tableView: UITableView!
-    private var keyboardManager : ADKeyboardManager!
+    private var keyboardManager : KeyboardManager!
 
-    class var tableViewStyle : UITableViewStyle {
+    class var tableViewStyle : UITableView.Style {
         return .grouped
     }
 
@@ -31,18 +31,18 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: .alignAllLeft, metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: .alignAllLeft, metrics: nil, views: views))
 
-        keyboardManager = ADKeyboardManager(scrollView: tableView)
+        keyboardManager = KeyboardManager(scrollView: tableView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.smoothlyDeselectItems(in: transitionCoordinator)
+        tableView.ad_smoothlyDeselectItems(in: transitionCoordinator)
         keyboardManager.startObservingKeyboard()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        keyboardManager.endObservingKeyboard()
+        keyboardManager.stopObservingKeyboard()
     }
 
     // MARK: UITableViewDataSource

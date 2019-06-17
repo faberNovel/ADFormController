@@ -495,6 +495,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7A0EC6441535D8ED00E5F54A;
@@ -579,7 +580,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ADDynamicLogLevel/ADDynamicLogLevel.framework",
 				"${BUILT_PRODUCTS_DIR}/ADFormController/ADFormController.framework",
 				"${BUILT_PRODUCTS_DIR}/ADKeyboardManager/ADKeyboardManager.framework",
@@ -604,7 +605,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Form-FormDemoTests/Pods-Form-FormDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A0EC66A1535D91400E5F54A /* Inject git informations in Info.plist */ = {
@@ -646,7 +647,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ADDynamicLogLevel/ADDynamicLogLevel.framework",
 				"${BUILT_PRODUCTS_DIR}/ADFormController/ADFormController.framework",
 				"${BUILT_PRODUCTS_DIR}/ADKeyboardManager/ADKeyboardManager.framework",
@@ -667,7 +668,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CECB1C1E7B071D6D281D3BC0 /* [CP] Check Pods Manifest.lock */ = {
@@ -694,7 +695,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -703,7 +704,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Form-FormDemo/Pods-Form-FormDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -944,14 +945,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.applidium.FormDemo;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Stubs;
@@ -1014,13 +1015,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.applidium.FormDemo;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -1084,14 +1085,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.applidium.FormDemo;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Preproduction;
@@ -1155,14 +1156,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormDemo-Prefix.pch";
 				INFOPLIST_FILE = "Configuration/FormDemo/FormDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.applidium.FormDemo;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/FormDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Production;

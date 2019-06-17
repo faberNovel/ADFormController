@@ -9,7 +9,7 @@
 import UIKit
 import ADUtils
 
-private enum Configurations: String, EnumCollection {
+private enum Configurations: String, CaseIterable {
     case empty = "Empty"
     case filled = "Filled"
     case withTitle = "With Title"
@@ -37,15 +37,15 @@ class MenuTableViewController: TableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Configurations.count
+        return Configurations.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueCell(at: indexPath)
-        guard (0...Configurations.count).contains(indexPath.row) else {
+        guard (0...Configurations.allCases.count).contains(indexPath.row) else {
             return cell
         }
-        let configuration = Configurations.allValues[indexPath.row]
+        let configuration = Configurations.allCases[indexPath.row]
         cell.textLabel?.text = configuration.rawValue
         return cell
     }
@@ -53,10 +53,10 @@ class MenuTableViewController: TableViewController {
     //MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard (0...Configurations.count).contains(indexPath.row) else {
+        guard (0...Configurations.allCases.count).contains(indexPath.row) else {
             return
         }
-        let configuration = Configurations.allValues[indexPath.row]
+        let configuration = Configurations.allCases[indexPath.row]
         let testFormViewController = TestFormViewController()
         testFormViewController.title = configuration.rawValue
         switch configuration {

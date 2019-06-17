@@ -15,9 +15,9 @@ class Logger {
 
     private lazy var fileLogger: DDFileLogger? = {
         let logger = DDFileLogger()
-        logger?.rollingFrequency = TimeInterval(2 * 60 * 60) // 2 hours
-        logger?.logFileManager.maximumNumberOfLogFiles = 1
-        logger?.logFormatter = ADFileLoggerFormatter()
+        logger.rollingFrequency = TimeInterval(2 * 60 * 60) // 2 hours
+        logger.logFileManager.maximumNumberOfLogFiles = 1
+        logger.logFormatter = ADFileLoggerFormatter()
         return logger
     }()
 

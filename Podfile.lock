@@ -2,23 +2,19 @@ PODS:
   - ADDynamicLogLevel (2.0.0):
     - CocoaLumberjack (~> 3.0)
   - ADFormController (5.5.3):
-    - ADKeyboardManager (~> 2.0)
-  - ADKeyboardManager (2.2.0)
-  - ADUtils (4.5.0):
-    - ADUtils/objc (= 4.5.0)
-    - ADUtils/Swift (= 4.5.0)
-  - ADUtils/objc (4.5.0):
+    - ADKeyboardManager (~> 4.0)
+  - ADKeyboardManager (4.0.2)
+  - ADUtils (9.3.0):
+    - ADUtils/objc (= 9.3.0)
+  - ADUtils/objc (9.3.0):
     - ADUtils/Swift
-  - ADUtils/Swift (4.5.0)
-  - Alamofire (4.2.0)
-  - CocoaLumberjack (3.4.1):
-    - CocoaLumberjack/Default (= 3.4.1)
-    - CocoaLumberjack/Extensions (= 3.4.1)
-  - CocoaLumberjack/Default (3.4.1)
-  - CocoaLumberjack/Extensions (3.4.1):
-    - CocoaLumberjack/Default
-  - CocoaLumberjack/Swift (3.4.1):
-    - CocoaLumberjack/Default
+  - ADUtils/Swift (9.3.0)
+  - Alamofire (4.8.2)
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
+  - CocoaLumberjack/Swift (3.5.3):
+    - CocoaLumberjack/Core
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -39,9 +35,9 @@ PODS:
 DEPENDENCIES:
   - ADDynamicLogLevel (~> 2.0)
   - ADFormController (from `./`)
-  - ADUtils (~> 4.0)
-  - Alamofire (~> 4.0)
-  - CocoaLumberjack/Swift (~> 3.0)
+  - ADUtils (~> 9.3)
+  - Alamofire (~> 4.8)
+  - CocoaLumberjack/Swift (~> 3.5)
   - FBSnapshotTestCase (~> 2.1)
   - HockeySDK/CrashOnlyLib (~> 3.8)
   - Nimble (~> 7.0)
@@ -51,7 +47,8 @@ DEPENDENCIES:
   - Watchdog (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
+    - ADUtils
     - Alamofire
     - CocoaLumberjack
     - FBSnapshotTestCase
@@ -64,7 +61,6 @@ SPEC REPOS:
   "ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs":
     - ADDynamicLogLevel
     - ADKeyboardManager
-    - ADUtils
 
 EXTERNAL SOURCES:
   ADFormController:
@@ -72,11 +68,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 446f21d2c807ad898bd6868513ac9f7b21253066
-  ADFormController: 608f5638e2ad36052e316a70d58787739e0aab11
-  ADKeyboardManager: 6993d5bb6f383b47183dbc16a8d2e20040726068
-  ADUtils: 02875938dcd47c3bf2ce141cfc29afa27d7909eb
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
+  ADFormController: c5e9fc8c88babb36137f970460dd3d9936d85bfa
+  ADKeyboardManager: bc6cb82541878f9bd926c273b0e27f7f085bb4ec
+  ADUtils: 5414f38fff4a2cdbd73c06eb82608079c7372efe
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   HockeySDK: ab68303eec6680f6b539de65d747742dd276e934
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
@@ -85,6 +81,6 @@ SPEC CHECKSUMS:
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: 0a1d2615b8dfd9b08d9bf2d7d41bcbd97c464413
+PODFILE CHECKSUM: e7693754c2c1b529af8298f4b191f34c1ed21033
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.7.2

@@ -1,20 +1,20 @@
 source 'ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs'
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
-pod 'CocoaLumberjack/Swift', '~>  3.0', :inhibit_warnings => true
+pod 'CocoaLumberjack/Swift', '~>  3.5', :inhibit_warnings => true
 pod 'ADDynamicLogLevel', '~>  2.0', :inhibit_warnings => true
 
 abstract_target 'Form' do
     pod 'ADFormController', :path => './'
 
     target 'FormDemo' do
-      pod 'Alamofire', '~> 4.0'
+      pod 'Alamofire', '~> 4.8'
       pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
       pod 'Watchdog', '~> 4.0'
-      pod 'ADUtils', '~> 4.0'
+      pod 'ADUtils', '~> 9.3'
     end
 
     target 'FormDemoTests' do
@@ -30,7 +30,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = "4.0"
+      config.build_settings['SWIFT_VERSION'] = "5.0"
 
       # Change the Optimization level for each target/configuration
       if !config.name.include?("Distribution")
