@@ -21,7 +21,7 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - HockeySDK/CrashOnlyLib (3.8.6)
-  - Nimble (7.0.3)
+  - Nimble (8.0.2)
   - Nimble-Snapshots (4.3.0):
     - Nimble-Snapshots/Core (= 4.3.0)
   - Nimble-Snapshots/Core (4.3.0):
@@ -29,7 +29,7 @@ PODS:
     - Nimble
     - Quick
   - OCMock (3.3.1)
-  - Quick (1.2.0)
+  - Quick (2.1.0)
   - Watchdog (4.0)
 
 DEPENDENCIES:
@@ -40,10 +40,10 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift (~> 3.5)
   - FBSnapshotTestCase (~> 2.1)
   - HockeySDK/CrashOnlyLib (~> 3.8)
-  - Nimble (~> 7.0)
+  - Nimble (~> 8.0)
   - Nimble-Snapshots (~> 4.3.0)
   - OCMock (~> 3.3)
-  - Quick (~> 1.2)
+  - Quick (~> 2.1)
   - Watchdog (~> 4.0)
 
 SPEC REPOS:
@@ -75,12 +75,12 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   HockeySDK: ab68303eec6680f6b539de65d747742dd276e934
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
   Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: e7693754c2c1b529af8298f4b191f34c1ed21033
+PODFILE CHECKSUM: dc8da80e161648cf6571789c87aa9cb38db6dc22
 
 COCOAPODS: 1.7.2
