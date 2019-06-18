@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.0]
+
+### Fixed
+
+- Compilation with Xcode 10.2
+
+### Removed
+
+- Support for iOS 9
+
 ## [5.5.3]
 
 ### Added
