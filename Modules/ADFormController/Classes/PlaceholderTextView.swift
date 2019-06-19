@@ -66,7 +66,7 @@ class PlaceholderTextView : UITextView {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(PlaceholderTextView.textChanged(_:)),
-            name: NSNotification.Name.UITextViewTextDidChange,
+            name: UITextView.textDidChangeNotification,
             object: nil
         )
     }
@@ -81,7 +81,7 @@ class PlaceholderTextView : UITextView {
             return
         }
         let newRect = placeholderRectForBounds(bounds)
-        guard let fontToUse = font == nil ? typingAttributes[NSAttributedStringKey.font.rawValue] : font else {
+        guard let fontToUse = font == nil ? typingAttributes[NSAttributedString.Key.font] : font else {
             return
         }
         guard let newStyle = NSMutableParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle else {
@@ -90,7 +90,7 @@ class PlaceholderTextView : UITextView {
         newStyle.lineBreakMode = .byTruncatingTail
         newStyle.alignment = textAlignment
         let stringToDraw: NSString = placeholder as NSString
-        let attributes : [NSAttributedStringKey : Any] = [
+        let attributes : [NSAttributedString.Key: Any] = [
             .font: fontToUse,
             .paragraphStyle: newStyle,
             .foregroundColor: placeholderColor
@@ -105,8 +105,8 @@ class PlaceholderTextView : UITextView {
     }
 
     private func placeholderRectForBounds(_ bounds: CGRect) -> CGRect {
-        var rect = UIEdgeInsetsInsetRect(bounds, contentInset)
-        guard let style = typingAttributes[NSAttributedStringKey.paragraphStyle.rawValue].flatMap({ $0 as? NSParagraphStyle }) else {
+        var rect = bounds.inset(by: contentInset)
+        guard let style = typingAttributes[NSAttributedString.Key.paragraphStyle].flatMap({ $0 as? NSParagraphStyle }) else {
             return rect
         }
         rect.origin.x += style.headIndent

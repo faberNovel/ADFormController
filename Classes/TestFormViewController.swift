@@ -78,11 +78,11 @@ class TestFormViewController : TableViewController, FormControllerDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return RowType.count
+            return RowType.allCases.count
         case 1:
-            return CreditCardRowType.count
+            return CreditCardRowType.allCases.count
         case 2:
-            return PasswordRowType.count
+            return PasswordRowType.allCases.count
         default:
             return 0
         }

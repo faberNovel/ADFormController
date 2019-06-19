@@ -1,6 +1,6 @@
 import_from_git(url: 'ssh://git@codereview.technologies.fabernovel.com:29418/ADFastlane',
                 path: 'Fastfile_ios.rb',
-                branch: 'v6.0+')
+                branch: 'v6.5.0')
 
 #####################################################
 # @!group Configuration

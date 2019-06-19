@@ -48,7 +48,7 @@ import UIKit
     /// Return true if the text field should implement its default behavior for the return button; otherwise, false.
     open var returnAction: (() -> Bool)?
     open var textInputAccessibilityIdentifier: String?
-    open var clearButtonMode: UITextFieldViewMode = .never
+    open var clearButtonMode: UITextField.ViewMode = .never
 
     override public init() {
         super.init()

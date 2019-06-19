@@ -12,7 +12,7 @@ class DatePickerTextFieldBinding: NSObject {
 
     var dateFormatter: DateFormatter?
     var inputView: UIView { return datePicker }
-    var datePickerMode: UIDatePickerMode {
+    var datePickerMode: UIDatePicker.Mode {
         get { return datePicker.datePickerMode }
         set { datePicker.datePickerMode = newValue }
     }

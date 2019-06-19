@@ -22,7 +22,7 @@ protocol RowConfigurable {
                                separatorInset: UIEdgeInsets?) -> FormCellConfiguration?
 }
 
-enum RowType: Int {
+enum RowType: Int, CaseIterable {
     case gender = 0
     case name
     case email
@@ -33,10 +33,6 @@ enum RowType: Int {
     case time
     case `switch`
     case noInputAccessory
-
-    static var count: Int {
-        return RowType.noInputAccessory.hashValue + 1
-    }
 }
 
 extension RowType: RowConfigurable {
@@ -203,13 +199,9 @@ extension RowType: RowConfigurable {
     }
 }
 
-enum CreditCardRowType: Int {
+enum CreditCardRowType: Int, CaseIterable {
     case number = 0
     case expirationDate
-
-    static var count: Int {
-        return CreditCardRowType.expirationDate.hashValue + 1
-    }
 }
 
 extension CreditCardRowType: RowConfigurable {
@@ -257,13 +249,9 @@ extension CreditCardRowType: RowConfigurable {
     }
 }
 
-enum PasswordRowType: Int {
+enum PasswordRowType: Int, CaseIterable {
     case newPassword
     case newPasswordConfirmation
-
-    static var count: Int {
-        return PasswordRowType.newPasswordConfirmation.hashValue + 1
-    }
 }
 
 extension PasswordRowType: RowConfigurable {
