@@ -73,7 +73,13 @@ extension RowType: RowConfigurable {
             return configuration
         case .name:
             let configuration = FormCellTextConfiguration()
-            configuration.placeholder = "Name"
+            configuration.attributedPlaceholder = NSAttributedString(
+                string: "Name",
+                attributes: [
+                    .font: UIFont.boldSystemFont(ofSize: 14),
+                    .foregroundColor: UIColor.black
+                ]
+            )
             configuration.cellType = .name
             configuration.text = model.name
             if showTitle {

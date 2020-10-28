@@ -38,6 +38,7 @@ import UIKit
     open var textFont: UIFont? = UIFont(name: "HelveticaNeue-Light", size: 14.0)
     open var textColor: UIColor = UIColor.black
     open var placeholder: String = ""
+    open var attributedPlaceholder: NSAttributedString?
     open var dateFormatter: DateFormatter?
     open var textFieldFormatter: TextFieldFormatter?
     open var formPickerDataSource: FormPickerDataSource?
