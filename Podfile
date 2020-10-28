@@ -12,7 +12,6 @@ abstract_target 'Form' do
 
     target 'FormDemo' do
       pod 'Alamofire', '~> 4.8'
-      pod 'HockeySDK', '~> 3.8', :subspecs => ['CrashOnlyLib']
       pod 'Watchdog', '~> 4.0'
       pod 'ADUtils', '~> 9.3'
     end

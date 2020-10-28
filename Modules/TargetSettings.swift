@@ -12,7 +12,6 @@ class TargetSettings : NSObject {
 
     // Config
     @objc private(set) var logLevel: DDLogLevel = .all
-    @objc private(set) var hockeyAppId: String = ""
     @objc private(set) var useWatchdog: Bool = false
     @objc private(set) var useFileLogger: Bool = false
     // Colors
