@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [6.0.1]
+
+### Added
+- Add attributedPlaceholder to configuration
+
 ## [6.0.0]
 
 ### Fixed
