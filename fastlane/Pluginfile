@@ -1,0 +1,1 @@
+gem 'fastlane-plugin-ft_internal', git: "ssh://git@codereview.technologies.fabernovel.com:29418/ADFastlane", branch: 'develop'

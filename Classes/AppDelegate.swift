@@ -6,14 +6,13 @@
 //
 //
 
-import HockeySDK
 import UIKit
 import Watchdog
 
 let useObjcProject: Bool = false
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var watchdog: Watchdog?
@@ -21,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         setupLogger()
-        setupHockeyApp()
         setupWatchdog()
 
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -37,16 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
         return true
     }
 
-    //MARK: - BITHockeyManagerDelegate
-
-    func attachment(for crashManager: BITCrashManager!) -> BITHockeyAttachment! {
-        return BITHockeyAttachment(
-            filename: "report",
-            hockeyAttachmentData: Logger.sharedInstance.fileLogs(),
-            contentType: "text/plain"
-        )
-    }
-
     //MARK: - Private
 
     private func setupLogger() {
@@ -54,19 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BITHockeyManagerDelegate 
             return
         }
         Logger.sharedInstance.setup()
-    }
-
-    private func setupHockeyApp() {
-        guard !TargetSettings.shared.hockeyAppId.isEmpty else {
-            return
-        }
-        BITHockeyManager.shared().configure(withIdentifier: TargetSettings.shared.hockeyAppId)
-        BITHockeyManager.shared().crashManager.crashManagerStatus = .autoSend
-        BITHockeyManager.shared().crashManager.isAppNotTerminatingCleanlyDetectionEnabled = true
-        if TargetSettings.shared.useFileLogger {
-            BITHockeyManager.shared().delegate = self
-        }
-        BITHockeyManager.shared().start()
     }
 
     private func setupWatchdog() {

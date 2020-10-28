@@ -140,7 +140,13 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
     }
 
     func apply(configuration: FormCellTextConfiguration) {
-        textField.placeholder = configuration.placeholder
+        if let attributedPlaceholder = configuration.attributedPlaceholder {
+            textField.placeholder = nil
+            textField.attributedPlaceholder = attributedPlaceholder
+        } else {
+            textField.attributedPlaceholder = nil
+            textField.placeholder = configuration.placeholder
+        }
         leftLabel.text = configuration.title
         leftLabel.isHidden = configuration.title.isEmpty
         textField.textAlignment = leftLabel.text?.count == 0 ? .right : .left

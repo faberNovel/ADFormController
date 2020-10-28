@@ -57,5 +57,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         assert(false, "Should be overriden")
+        return UITableViewCell()
     }
 }
