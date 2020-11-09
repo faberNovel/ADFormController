@@ -76,8 +76,7 @@ extension RowType: RowConfigurable {
             configuration.attributedPlaceholder = NSAttributedString(
                 string: "Name",
                 attributes: [
-                    .font: UIFont.boldSystemFont(ofSize: 14),
-                    .foregroundColor: UIColor.black
+                    .font: UIFont.boldSystemFont(ofSize: 14.0)
                 ]
             )
             configuration.cellType = .name

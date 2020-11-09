@@ -140,6 +140,9 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
     }
 
     func apply(configuration: FormCellTextConfiguration) {
+        // ?!!! (Samuel Gallet) 09/11/20 Order matters here. We should set textField.font before assiging
+        // attributedPlaceholder. Otherwise the texteField's font override the placeholder's font
+        textField.font = configuration.textFont
         if let attributedPlaceholder = configuration.attributedPlaceholder {
             textField.placeholder = nil
             textField.attributedPlaceholder = attributedPlaceholder
@@ -154,7 +157,6 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
         rightView = configuration.rightView
         leftView = configuration.leftView
 
-        textField.font = configuration.textFont
         textField.textColor = configuration.textColor
         textField.tintColor = configuration.tintColor
         leftLabel.font = configuration.titleFont
