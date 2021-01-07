@@ -1,7 +1,7 @@
 PODS:
   - ADDynamicLogLevel (2.1.0):
     - CocoaLumberjack (~> 3.0)
-  - ADFormController (6.0.2):
+  - ADFormController (6.0.3):
     - ADKeyboardManager (~> 6.0)
   - ADKeyboardManager (6.0.0)
   - ADUtils (9.4.0):
@@ -65,7 +65,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ADDynamicLogLevel: 7b576c84ef7a96ae1aa115e66516fc68f1e86de1
-  ADFormController: c23de1c3a40ba66f696e83ee9ee97404342df6a2
+  ADFormController: 95290c99fc0264e0335d090e61cf595c0b324009
   ADKeyboardManager: a9dce48b8d2306c1fca5deb46d04fa8472516fe2
   ADUtils: c3521517403e01ae41ea9e37235fd637777f574c
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18

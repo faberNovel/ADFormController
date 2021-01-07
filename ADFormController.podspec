@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADFormController'
-  spec.version      = '6.0.2'
+  spec.version      = '6.0.3'
   spec.authors      = 'Applidium'
   spec.license      = 'none'
   spec.homepage     = 'http://applidium.com'
