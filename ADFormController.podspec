@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ADFormController'
-  spec.version      = '6.0.2'
+  spec.version      = '6.0.3'
   spec.authors      = 'Applidium'
   spec.license      = 'none'
   spec.homepage     = 'http://applidium.com'
@@ -12,6 +12,6 @@ Pod::Spec.new do |spec|
   spec.resource_bundle = {'ADFormController' => 'Modules/ADFormController/Ressources/InputAccessoryView.xcassets'}
   spec.framework    = 'Foundation', 'UIKit'
   spec.requires_arc = true
-  spec.dependency 'ADKeyboardManager', '~> 4.0'
+  spec.dependency 'ADKeyboardManager', '~> 6.0'
   spec.swift_version = '5.0'
 end
