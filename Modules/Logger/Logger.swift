@@ -28,9 +28,7 @@ class Logger {
             xCodeConsoleLogger.colorsEnabled = true
             DDLog.add(xCodeConsoleLogger, with: logLevel)
         }
-        if let appleSystemLogger = DDASLLogger.sharedInstance {
-            DDLog.add(appleSystemLogger, with: logLevel)
-        }
+        DDLog.add(DDOSLogger.sharedInstance, with: logLevel)
         if let fileLogger = fileLogger {
             DDLog.add(fileLogger, with: DDLogLevel.all)
         }
