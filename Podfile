@@ -1,11 +1,9 @@
-source 'ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs'
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '10.0'
 use_frameworks!
 
 pod 'CocoaLumberjack/Swift', '~>  3.5', :inhibit_warnings => true
-pod 'ADDynamicLogLevel', '~>  2.0', :inhibit_warnings => true
 
 abstract_target 'Form' do
     pod 'ADFormController', :path => './'
@@ -13,7 +11,7 @@ abstract_target 'Form' do
     target 'FormDemo' do
       pod 'Alamofire', '~> 4.8'
       pod 'Watchdog', '~> 4.0'
-      pod 'ADUtils', '~> 9.3'
+      pod 'ADUtils', '~> 10.0'
     end
 
     target 'FormDemoTests' do
