@@ -1,138 +1,111 @@
-import Fastlane::FtInternal.ios_fastfile_absolute_path
-
-#####################################################
-# @!group Configuration
-#####################################################
-
-override_lane :get_project_configuration do
-  {
-    xcworkspace: 'FormDemo.xcworkspace',
-    xcodeproj: 'FormDemo.xcodeproj'
-  }
+desc "Run all unit tests"
+lane :tests do
+  scan(
+    workspace: "FormDemo.xcworkspace",
+    configuration: "Stubs",
+    scheme: "FormDemo",
+    clean: true,
+    devices: ["iPhone 8"]
+  )
 end
 
-override_lane :get_variants_build_configurations do
-  {
-    'FormDemo_Prod' => {
-      scheme: 'FormDemo',
-      xcode_configuration: 'Production',
-      target_name: 'FormDemo'
-    },
-  }
+desc "Run CI check for a commit"
+lane :ci_check do
+  tests
+  pod_lib_lint(
+    use_bundle_exec: true,
+    allow_warnings: true
+  )
 end
 
-override_lane :get_slack_configuration do
-  {
-    channel: 'TODO',
-    slack_url: nil # Use nil to use FABERNOVEL's default one
-  }
+desc "Release a new version"
+lane :prepare_release do |options|
+  ensure_git_branch(branch: 'release/*')
+  ensure_git_status_clean
+
+  target_version = target_version_from_branch
+
+  next unless UI.confirm("Is your CHANGELOG up to date?")
+  update_changelog(target_version)
+  bump_podspec(target_version)
+
+  ensure_git_status_clean
 end
 
-override_lane :get_variants_hockeyapp_configurations do
-  {
-    'FormDemo_Prod' => {
-      api_token: nil, # Use nil to use FABERNOVEL's default one
-      public_identifier: "TODO_OR_NIL" #can be passed through cli option (hockeyapp_id)
-    }
-  }
-end
+desc "Create release PR"
+lane :create_release_pr do
+  ensure_git_branch(branch: 'release/*')
 
-#####################################################
-# @!group CI
-#####################################################
-
-override_lane :get_variants_to_build_on_ci do |options|
-  case options[:commit_type]
-  when 'merge'
-    variants = ['FormDemo_Prod']
-  when 'release'
-    variants = ['FormDemo_Prod']
-  else
-    variants = ['FormDemo_Prod']
+  ["master", "develop"].each do |base|
+    create_pull_request(
+      api_token: ENV["GITHUB_TOKEN"],
+      repo: ENV["REPO"],
+      title: "Release #{target_version_from_branch}",
+      base: base
+    )
   end
-  variants
+end
+
+desc "Publish release"
+lane :publish_release do
+  ensure_git_branch(branch: 'master')
+
+  target_version = version_get_podspec(path: ENV["PODSPEC"])
+  changelog = read_changelog(
+    changelog_path: ENV["CHANGELOG"],
+    section_identifier: "[#{target_version}]"
+  )
+  set_github_release(
+    repository_name: ENV["REPO"],
+    api_token: ENV["GITHUB_TOKEN"],
+    name: "v#{target_version}",
+    tag_name: "v#{target_version}",
+    description: changelog,
+    commitish: "master"
+  )
+
+  pod_push(allow_warnings: true)
 end
 
 #####################################################
-# @!group TEST
+# Private
 #####################################################
 
-override_lane :get_test_configurations_for_ci do |options|
+def update_changelog(target_version)
+  changelog_path = ENV["CHANGELOG"]
+  stamp_changelog(
+    changelog_path: changelog_path,
+    section_identifier: "#{target_version}"
+  )
+
+  git_add(path: changelog_path)
+  git_commit(
+    path: changelog_path,
+    message: "Update CHANGELOG"
+  )
 end
 
-#####################################################
-# @!group Codesign
-#####################################################
+def bump_podspec(target_version)
+  podspec_path = ENV["PODSPEC"]
+  version_bump_podspec(
+    path: podspec_path,
+    version_number: target_version
+  )
 
-override_lane :get_variants_codesign_configurations do
-  MATCH_CUSTOMER_CONFIGURATION =
-    {
-      apple_id: "TODO",
-      apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
-      team_id: "TODO",
-      team_name: "TODO",
-      git_repository: "TODO",
-      git_branch: "TODO",
-      git_password: lane_context[:ALL_CLI_OPTIONS][:match_password],
-    }
-  {
-    'FormDemo_Prod' => {
-      bundles: ["com.yourclient.appname", "com.yourclient.appname.watchkitextension"],
-      fabernovel_bundles: ["com.applidium.FormDemo", "com.applidium.appname.watchkitextension"],
-      provisioning_profile_templates: ["TODO_OR_NIL"],
-      local_provisioning_profile_names: ["TODO_OR_NIL", "TODO_OR_NIL"],
-      match_configuration: MATCH_CUSTOMER_CONFIGURATION
-    }
-  }
+  pod_install # update the Podfile.lock with the new version
+
+  path = [podspec_path, "Podfile.lock"]
+  git_add(path: path)
+  git_commit(
+    path: path,
+    message: "Bump to #{target_version}"
+  )
 end
 
-override_lane :get_variants_itunes_connect_configurations do
-  ITC_CUSTOMER_CONFIGURATION = {
-    apple_id: "TODO_OR_REMOVE",
-    team_id: "TODO",
-    team_name: "TODO",
-    apple_id_password: lane_context[:ALL_CLI_OPTIONS][:apple_password],
-    itc_provider: "TODO"
-  }
-  {
-    'FormDemo_Prod' => ITC_CUSTOMER_CONFIGURATION
-  }
+def target_version_from_branch
+  git_branch.gsub(/release\/[A-Za-z]*/, "")
 end
 
-#####################################################
-# @!group PODS
-#####################################################
-
-override_lane :get_pod_configuration do
-  {
-    use_libraries: false,
-    extra_sources_repos: nil,
-    skip_lib_lint: false,
-    pod_repository: FT_POD_REPO # You can use ft_pod_repo, nil for the pod trunk repo
-  }
+def pod_install
+  sh "bundle exec pod install"
 end
-
-#####################################################
-# @!group LANES THAT CAN BE OVERRIDEN
-#####################################################
-
-# private_lane :get_variants_crashlytics_configurations do
-# end
-
-# private_lane :get_variants_s3_configurations do
-# end
-
-# private_lane :user_defined_prebuild_lane do |options|
-# end
-
-# private_lane :user_defined_postbuild_lane do |options|
-# end
-
-# override_lane :get_project_tests_configurations do
-# end
-
-# override_lane :get_test_configurations_for_ci do |options|
-# end
-
-# override_lane :get_appstore_screenshots_test_configurations_for_variant do
-# end
