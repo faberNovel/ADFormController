@@ -1,6 +1,4 @@
 PODS:
-  - ADDynamicLogLevel (2.1.0):
-    - CocoaLumberjack (~> 3.0)
   - ADFormController (6.0.2):
     - ADKeyboardManager (~> 6.0)
   - ADKeyboardManager (6.0.0)
@@ -10,8 +8,6 @@ PODS:
     - ADUtils/Swift
   - ADUtils/Swift (10.5.0)
   - Alamofire (4.9.1)
-  - CocoaLumberjack (3.7.0):
-    - CocoaLumberjack/Core (= 3.7.0)
   - CocoaLumberjack/Core (3.7.0)
   - CocoaLumberjack/Swift (3.7.0):
     - CocoaLumberjack/Core
@@ -32,7 +28,6 @@ PODS:
   - Watchdog (4.0)
 
 DEPENDENCIES:
-  - ADDynamicLogLevel (~> 2.0)
   - ADFormController (from `./`)
   - ADUtils (~> 10.0)
   - Alamofire (~> 4.8)
@@ -56,15 +51,12 @@ SPEC REPOS:
     - OCMock
     - Quick
     - Watchdog
-  "ssh://git@codereview.technologies.fabernovel.com:29418/CocoaPodsSpecs":
-    - ADDynamicLogLevel
 
 EXTERNAL SOURCES:
   ADFormController:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADDynamicLogLevel: 7b576c84ef7a96ae1aa115e66516fc68f1e86de1
   ADFormController: c23de1c3a40ba66f696e83ee9ee97404342df6a2
   ADKeyboardManager: a9dce48b8d2306c1fca5deb46d04fa8472516fe2
   ADUtils: 67372e355673bbc53f6843423dc78ebf3771f8ec
@@ -77,6 +69,6 @@ SPEC CHECKSUMS:
   Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
   Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: a3039f7b3468d5f68abf24c01cea6b1339a6b80d
+PODFILE CHECKSUM: cde55cffb8e485ca348a8af64bd4a55211c4b9d9
 
 COCOAPODS: 1.10.0

@@ -14,7 +14,6 @@
 #import "FDSharedObjectiveCHeader.h"
 #import "FDFormModel.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import <ADDynamicLogLevel/ADDynamicLogLevel.h>
 
 typedef NS_ENUM(NSUInteger, FDRowType) {
     FDRowTypeGender,

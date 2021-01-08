@@ -4,7 +4,6 @@ platform :ios, '10.0'
 use_frameworks!
 
 pod 'CocoaLumberjack/Swift', '~>  3.5', :inhibit_warnings => true
-pod 'ADDynamicLogLevel', '~>  2.0', :inhibit_warnings => true
 
 abstract_target 'Form' do
     pod 'ADFormController', :path => './'
