@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [6.0.3]
+
+### Fix
+- Use cache to reuse formcontroller's cells
+
 ## [6.0.1]
 
 ### Added
