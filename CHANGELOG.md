@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [6.0.4]
+
+### Update
+- Use HTTPS over SSH for source files
+
 ## [6.0.3]
 
 ### Fix
