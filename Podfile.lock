@@ -1,5 +1,5 @@
 PODS:
-  - ADFormController (6.0.3):
+  - ADFormController (6.0.4):
     - ADKeyboardManager (~> 6.0)
   - ADKeyboardManager (6.0.0)
   - ADUtils (10.5.0):
@@ -57,7 +57,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADFormController: 8958aee18f0e1cf43726f9ed80cbdfdac3c6347c
+  ADFormController: 14c3bfc1f1981a3d6936afaac51a01a2090baeb5
   ADKeyboardManager: a9dce48b8d2306c1fca5deb46d04fa8472516fe2
   ADUtils: 67372e355673bbc53f6843423dc78ebf3771f8ec
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
