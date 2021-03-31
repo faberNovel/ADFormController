@@ -19,6 +19,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
     private var cellType: FormTextCellType = .email {
         didSet {
             textField.isSecureTextEntry = false
+            textField.inputView = nil
             switch self.cellType {
             case .email:
                 textField.keyboardType = .emailAddress
