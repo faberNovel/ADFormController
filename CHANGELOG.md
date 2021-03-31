@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.5]
+
+### Fix
+- Fix input view resetting in FormTextFieldTableViewCell
 
 ## [6.0.4]
 
