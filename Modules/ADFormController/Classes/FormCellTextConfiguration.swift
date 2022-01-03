@@ -50,6 +50,7 @@ import UIKit
     open var returnAction: (() -> Bool)?
     open var textInputAccessibilityIdentifier: String?
     open var clearButtonMode: UITextField.ViewMode = .never
+    open lazy var autocorrectionType: UITextAutocorrectionType = createDefaultAutoCorrectionType()
 
     override public init() {
         super.init()
@@ -59,5 +60,16 @@ import UIKit
     override open func visit(_ configurable: FormCellConfigurable, at indexPath: IndexPath) -> UITableViewCell {
         let cell = configurable.textInputCell(with: self, at: indexPath)
         return cell
+    }
+
+    // MARK: - Private
+
+    private func createDefaultAutoCorrectionType() -> UITextAutocorrectionType {
+        switch cellType {
+        case .email, .password, .name, .phone, .date, .time, .picker, .passwordNumber:
+            return .no
+        case .text, .number, .decimal, .longText:
+            return .default
+        }
     }
 }

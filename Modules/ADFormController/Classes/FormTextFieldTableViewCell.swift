@@ -24,7 +24,6 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
             case .email:
                 textField.keyboardType = .emailAddress
                 textField.autocapitalizationType = .none
-                textField.autocorrectionType = .no
             case .password:
                 textField.isSecureTextEntry = true
             case .passwordNumber:
@@ -33,13 +32,11 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
             case .name:
                 textField.keyboardType = .default
                 textField.autocapitalizationType = .words
-                textField.autocorrectionType = .no
             case .phone:
                 textField.keyboardType = .phonePad
             case .text:
                 textField.keyboardType = .default
                 textField.autocapitalizationType = .sentences
-                textField.autocorrectionType = .default
             case .number:
                 textField.keyboardType = .numberPad
             case .decimal:
@@ -174,6 +171,7 @@ class FormTextFieldTableViewCell : FormBaseTableViewCell, UITextFieldDelegate, F
         textField.accessibilityIdentifier = configuration.textInputAccessibilityIdentifier
         textField.clearButtonMode = configuration.clearButtonMode
         hideRightViewWhenEditing = configuration.hideRightViewWhenEditing
+        textField.autocorrectionType = configuration.autocorrectionType
 
         if let separatorInset = configuration.separatorInset {
             self.separatorInset = separatorInset
