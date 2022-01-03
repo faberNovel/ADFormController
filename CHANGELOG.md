@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.0.6]
+
+### Fix
+- Make autocorrection configurable
+
 ## [6.0.5]
 
 ### Fix
