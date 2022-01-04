@@ -16,8 +16,8 @@ abstract_target 'Form' do
 
     target 'FormDemoTests' do
       pod 'Quick', '~> 2.1'
-      pod 'Nimble', '~> 8.0'
-      pod 'Nimble-Snapshots', '~> 4.3.0'
+      pod 'Nimble', '~> 9.2'
+      pod 'Nimble-Snapshots', '~> 9.3'
       pod 'OCMock', '~> 3.3'
       pod 'FBSnapshotTestCase', '~> 2.1'
     end
