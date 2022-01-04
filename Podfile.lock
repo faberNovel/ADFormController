@@ -1,5 +1,5 @@
 PODS:
-  - ADFormController (6.0.5):
+  - ADFormController (6.0.6):
     - ADKeyboardManager (~> 6.0)
   - ADKeyboardManager (6.0.0)
   - ADUtils (10.5.0):
@@ -16,13 +16,17 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - Nimble (8.1.2)
-  - Nimble-Snapshots (4.3.0):
-    - Nimble-Snapshots/Core (= 4.3.0)
-  - Nimble-Snapshots/Core (4.3.0):
-    - FBSnapshotTestCase (~> 2.0)
+  - iOSSnapshotTestCase (8.0.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 8.0.0)
+  - iOSSnapshotTestCase/Core (8.0.0)
+  - iOSSnapshotTestCase/SwiftSupport (8.0.0):
+    - iOSSnapshotTestCase/Core
+  - Nimble (9.2.1)
+  - Nimble-Snapshots (9.3.0):
+    - Nimble-Snapshots/Core (= 9.3.0)
+  - Nimble-Snapshots/Core (9.3.0):
+    - iOSSnapshotTestCase (~> 8.0)
     - Nimble
-    - Quick
   - OCMock (3.8.1)
   - Quick (2.2.1)
   - Watchdog (4.0)
@@ -33,8 +37,8 @@ DEPENDENCIES:
   - Alamofire (~> 4.8)
   - CocoaLumberjack/Swift (~> 3.5)
   - FBSnapshotTestCase (~> 2.1)
-  - Nimble (~> 8.0)
-  - Nimble-Snapshots (~> 4.3.0)
+  - Nimble (~> 9.2)
+  - Nimble-Snapshots (~> 9.3)
   - OCMock (~> 3.3)
   - Quick (~> 2.1)
   - Watchdog (~> 4.0)
@@ -46,6 +50,7 @@ SPEC REPOS:
     - Alamofire
     - CocoaLumberjack
     - FBSnapshotTestCase
+    - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
     - OCMock
@@ -57,18 +62,19 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADFormController: 94683926ca258f47805cee9a0f29a8f95a919f0a
+  ADFormController: 93695de5dac8589ecb508bb82ef9f8f901789ffc
   ADKeyboardManager: a9dce48b8d2306c1fca5deb46d04fa8472516fe2
   ADUtils: 67372e355673bbc53f6843423dc78ebf3771f8ec
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Nimble: 3864815b4703c7ebffba875973c70e854489fbae
-  Nimble-Snapshots: 4ba722c35b73a680cbd856e4bc22076dfb8085d4
+  iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  Nimble-Snapshots: 97270cd48f0e6eebd6c80ccf7dd35d4e57fb9997
   OCMock: 29f6e52085b4e7d9b075cbf03ed7c3112f82f934
   Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
   Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: cde55cffb8e485ca348a8af64bd4a55211c4b9d9
+PODFILE CHECKSUM: 58e58508f61477761c3993c57deacd70a616450f
 
 COCOAPODS: 1.10.0
