@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Add support for Swift Package Manager
 
+### Removed
+- Drop support for iOS 10, 11 and 12
+
 ## [6.0.6]
 
 ### Fix
