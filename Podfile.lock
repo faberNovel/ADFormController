@@ -1,7 +1,7 @@
 PODS:
-  - ADFormController (6.0.6):
-    - ADKeyboardManager (~> 6.0)
-  - ADKeyboardManager (6.0.0)
+  - ADFormController (6.1.0):
+    - ADKeyboardManager (~> 7.0)
+  - ADKeyboardManager (7.0.0)
   - ADUtils (10.5.0):
     - ADUtils/objc (= 10.5.0)
   - ADUtils/objc (10.5.0):
@@ -44,7 +44,7 @@ DEPENDENCIES:
   - Watchdog (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - ADKeyboardManager
     - ADUtils
     - Alamofire
@@ -62,8 +62,8 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ADFormController: 93695de5dac8589ecb508bb82ef9f8f901789ffc
-  ADKeyboardManager: a9dce48b8d2306c1fca5deb46d04fa8472516fe2
+  ADFormController: 417d1a2fde612aefd8f18ecf7844de295019bf8a
+  ADKeyboardManager: bb6558207259e9902c6d8d03fb08c64dbd620a55
   ADUtils: 67372e355673bbc53f6843423dc78ebf3771f8ec
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
@@ -75,6 +75,6 @@ SPEC CHECKSUMS:
   Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
   Watchdog: 370d2c2a58c9bede0e3f9b8cc26bf297745c31c2
 
-PODFILE CHECKSUM: 58e58508f61477761c3993c57deacd70a616450f
+PODFILE CHECKSUM: 4bcb61d15aba77d572220074c5a13dd7f251a652
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.15.2
