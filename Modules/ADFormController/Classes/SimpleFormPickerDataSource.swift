@@ -34,7 +34,7 @@ import Foundation
     }
 
     open func selectedIndexes(from string: String) -> [Int] {
-        guard let index = options.index(of: string) else {
+        guard let index = options.firstIndex(of: string) else {
             return [0]
         }
         return [index]

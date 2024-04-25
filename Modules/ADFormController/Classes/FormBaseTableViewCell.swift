@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol FormTableViewCellActionHandler: class {
+protocol FormTableViewCellActionHandler: AnyObject {
     func handleLeftViewAction(from cell: FormBaseTableViewCell)
     func handleRightViewAction(from cell: FormBaseTableViewCell)
 }
