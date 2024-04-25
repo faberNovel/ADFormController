@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.5'
+ruby '3.3.0'
 
 gem 'cocoapods', '1.10.0'
 gem 'CFPropertyList', '2.3.6'
