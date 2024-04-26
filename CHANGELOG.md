@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 `ADFormController` adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.1.0]
+
+### Added
+- Add support for Swift Package Manager
+
+### Update
+- Update dependencies
+
+### Removed
+- Drop support for iOS 10, 11 and 12
+
 ## [6.0.6]
 
 ### Fix

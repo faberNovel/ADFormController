@@ -14,7 +14,7 @@ enum AccessoryViewDirection: Int {
     case next
 }
 
-protocol FormDirectionManagerDelegate: class {
+protocol FormDirectionManagerDelegate: AnyObject {
     func formDirectionManager(_ formDirectionManager: FormDirectionManager, canEditCellAt indexPath: IndexPath) -> Bool
 }
 

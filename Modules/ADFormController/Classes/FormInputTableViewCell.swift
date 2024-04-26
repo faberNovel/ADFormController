@@ -18,7 +18,7 @@ protocol FormTextInputTableViewCell {
     func apply(configuration: FormCellTextConfiguration)
 }
 
-protocol FormTextInputTableViewCellDelegate: class {
+protocol FormTextInputTableViewCellDelegate: AnyObject {
     func textInputTableViewCellDidBeginEditing(_ cell: FormTextInputTableViewCell)
     func textInputTableViewCellShouldReturn(_ cell: FormTextInputTableViewCell) -> Bool
     func textInputTableViewCellValueChanged(_ cell: FormTextInputTableViewCell)
@@ -32,6 +32,6 @@ protocol FormBoolInputTableViewCell {
     func apply(configuration: FormCellBoolConfiguration)
 }
 
-protocol FormBoolInputTableViewCellDelegate: class {
+protocol FormBoolInputTableViewCellDelegate: AnyObject {
     func boolInputTableViewCellDidChangeValue(_ cell: FormBoolInputTableViewCell)
 }

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "adkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:faberNovel/ADKeyboardManager.git",
+      "state" : {
+        "revision" : "127f96e0473e68dbc885f2fad02f96c768a1981d",
+        "version" : "7.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
