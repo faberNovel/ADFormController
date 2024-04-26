@@ -14,10 +14,8 @@ jobs:
 
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.5
-
-    - name: Bundle install
-      run: bundle install
+        ruby-version: 3.3.0
+        bundler-cache: true
 
     - name: Prepare release
       env:
