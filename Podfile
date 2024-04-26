@@ -29,7 +29,7 @@ post_install do |installer|
         project.targets.each do |target|
             if target.name == 'Watchdog' || target.name == 'FBSnapshotTestCase'
                 target.build_configurations.each do |config|
-                    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+                    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
                 end
             end
         end
